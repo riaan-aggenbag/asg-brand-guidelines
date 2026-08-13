@@ -1,7 +1,7 @@
 # ASG Design System — Master Reference
 **African Safari Group · Brand & Design System**
-Version: August 2026 (rev. 13 Aug) · Custodian: Riaan Aggenbag, CEO
-Status: **Claude Design system export v1.2-stamped, verified and approved (13 Aug 2026).** Ink Edition confirmed as loved; Option 4 (CMS × Ink) patterns now encoded in the exported design system. Formal Option 3 vs Option 4 direction decision still pending.
+Version: August 2026 (rev. 13 Aug, decision update) · Custodian: Riaan Aggenbag, CEO
+Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (Riaan, 13 Aug 2026).** Design system export v1.2-stamped, verified and approved. One colour system — Safari Brass, white text — across brand book, web, and email.
 
 ---
 
@@ -16,16 +16,16 @@ Status: **Claude Design system export v1.2-stamped, verified and approved (13 Au
 
 ---
 
-## 1. THE OPTIONS ON THE TABLE
+## 1. THE SYSTEM (DECIDED)
 
-| Option | What it is | Status |
+**FORMAL DECISION — Riaan, 13 Aug 2026: Option 4 (CMS × Ink) is the official ASG web/CMS system.** One colour system everywhere: Safari Brass #A8794B with white text, from brand book to booking flow. The #C8A96E pale gold (and its opposite dark-text rule) is retired with Option 3.
+
+| System | What it is | Status |
 |---|---|---|
-| **Ink Edition (v1.2)** | Core dark editorial-luxury brand system. 17-page guidelines. | ✅ Riaan loves it. Canonical brand book. |
-| **Light Edition** | Same palette, inverted ground (Ivory-led). Implemented as `data-theme="light"` layer in the export. | Reference only; ships as a theme, not a separate system. |
-| **Option 3 — Reserve-CMS** | The live safari-cms.replit.app system as-built: Ink nav/footer, cream body, pale gold #C8A96E accent (dark button text). | Riaan very impressed with the live site. |
-| **Option 4 — CMS × Ink** | Option 3's page architecture re-skinned in Ink Edition colours: Safari Brass #A8794B CTAs (white text), badges re-tuned to Ink family. | ⭐ Working direction. All seven patterns + behaviour spec now componentised in the design system export. |
-
-**Open decision:** formally pick Option 3 vs Option 4 (or confirmed hybrid) as the official ASG web/CMS system, then consolidate into the brand book.
+| **Ink Edition (v1.2)** | Core dark editorial-luxury brand system. 17-page guidelines. | ✅ Canonical brand book. |
+| **Light Edition** | Same palette, inverted ground (Ivory-led). Implemented as `data-theme="light"` layer in the export. | Reference; ships as a theme, not a separate system. |
+| **Option 4 — CMS × Ink** | Option 3's page architecture in Ink Edition colours: Safari Brass CTAs (white text), badges tuned to the Ink family. | ⭐ **OFFICIAL web/CMS system.** All seven patterns + behaviour spec componentised in the design system export. |
+| **Option 3 — Reserve-CMS** | The live safari-cms.replit.app system as-built: pale gold #C8A96E accent (dark button text). | 🗄️ **Retired to archive** (`brand-books/ASG_Option_3_Reserve_System.pdf`). The live site is to be re-skinned to Option 4. |
 
 ---
 
@@ -155,10 +155,10 @@ The Claude Design export is the machine-usable form of everything above. Stamped
 
 ## 10. BACKLOG / NEXT SESSION
 
-1. Continue Riaan's page-by-page feedback on the two Option 4 pages (mid-review).
-2. Build remaining six lodge pages in Option 4 (harvest each lodge's Pimcore gallery from safari-cms first).
-3. Formal decision: Option 3 vs Option 4 → then consolidate winner into the brand book as the Web/CMS component section.
+1. ~~Formal decision: Option 3 vs Option 4~~ — ✅ DONE 13 Aug 2026: Option 4 formalised.
+2. Build remaining six Amakhala lodge pages in Option 4 (harvest each lodge's Pimcore gallery from safari-cms first).
+3. Continue Riaan's page-by-page feedback on the two existing Option 4 pages (mid-review).
 4. Swap hero star glyphs for inline SVG in the working HTML pages.
-5. Apply chosen system back to the live safari-cms build (incl. removing "Cross-sell" label there).
+5. Re-skin the live safari-cms build to Option 4 (brass CTAs/white text, retire #C8A96E, remove "Cross-sell" label).
 6. Claude Design org setup: publish the verified export as the org design system.
-7. Brand book v1.3 (future): fold the brass-600 badge exception and the seven Option 4 patterns into the printed guidelines so PDF and design system stay in lockstep.
+7. Brand book v1.3: fold in the Option 4 formalisation, the brass-600 badge exception, and the seven web patterns so PDF and design system stay in lockstep.
