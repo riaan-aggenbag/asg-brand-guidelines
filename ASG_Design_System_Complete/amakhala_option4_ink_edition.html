@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amakhala Game Reserve — Malaria-Free Big Five Safari, Eastern Cape · Option 4 (Ink Edition)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171411; --charcoal:#2B2622; --soft-charcoal:#4A443C;
+  --brass:#A8794B; --brass-dark:#8F6A40; --sand:#C39F77; --ivory:#F6F1EA; --ivory-dim:#EDE6DB;
+  --bone:#B9AFA2; --white:#FFFFFF;
+  --badge-green:#4F6B51;
+  --serif:'Lora',Georgia,serif; --sans:'Poppins',sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans); color:var(--soft-charcoal); background:var(--ivory); line-height:1.6; -webkit-font-smoothing:antialiased;}
+img{display:block; max-width:100%; height:auto;}
+a{text-decoration:none; color:inherit;}
+.wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+h1,h2,h3{font-family:var(--serif); font-weight:500; color:var(--ink); line-height:1.15;}
+.eyebrow{font-family:var(--sans); font-weight:500; font-size:11px; letter-spacing:2.5px; color:var(--brass); text-transform:uppercase;}
+.btn{display:inline-flex; align-items:center; justify-content:center; font-family:var(--sans); font-weight:600; font-size:12px; letter-spacing:1.2px; text-transform:uppercase; padding:14px 28px; border-radius:3px; transition:all .2s ease; cursor:pointer; border:none;}
+.btn-brass{background:var(--brass); color:var(--white);}
+.btn-brass:hover{background:var(--brass-dark); transform:translateY(-1px);}
+.btn-outline-dark{background:transparent; color:var(--ivory); border:1px solid rgba(255,255,255,.35);}
+.btn-outline-dark:hover{border-color:var(--brass); color:var(--brass);}
+
+/* announce bar */
+.announce{background:var(--charcoal); color:var(--sand); text-align:center; font-size:11.5px; padding:8px 16px;}
+.announce b{color:var(--white); font-weight:500;}
+
+/* nav */
+nav{position:sticky; top:0; z-index:60; background:rgba(23,20,17,.97); backdrop-filter:blur(6px); border-bottom:1px solid rgba(255,255,255,.08);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; height:78px;}
+.logo img{height:44px; width:auto;}
+.nav-links{display:flex; gap:30px; align-items:center;}
+.nav-links a{font-size:12.5px; letter-spacing:1px; color:var(--ivory-dim); text-transform:uppercase; font-weight:400; position:relative; padding:4px 0;}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--brass);transition:width .25s ease;}
+.nav-links a:hover::after{width:100%;}
+
+/* hero */
+.hero{position:relative; min-height:78vh; display:flex; align-items:center; overflow:hidden; background:var(--ink);}
+.hero-bg{position:absolute; top:0; left:0; right:0; bottom:0; background-image:url('https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__72538__optimized-desktop/copyof_copyof_copyof_455283032.webp'); background-size:cover; background-position:center 60%;}
+.hero-scrim{position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(180deg, rgba(23,20,17,.68) 0%, rgba(23,20,17,.42) 40%, rgba(23,20,17,.88) 100%);}
+.hero-content{position:relative; z-index:2; width:100%; padding:90px 0;}
+.hero .eyebrow{color:var(--sand);}
+.hero h1{font-size:58px; color:var(--white); margin-top:14px; max-width:720px;}
+.hero p{font-weight:300; font-size:16.5px; color:var(--ivory-dim); max-width:560px; margin-top:20px; line-height:1.7;}
+.badge-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px;}
+.badge-row span{display:inline-flex; align-items:center; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.28); backdrop-filter:blur(4px); color:var(--white); font-family:var(--sans); font-size:12px; letter-spacing:.4px; font-weight:500; padding:9px 18px; border-radius:22px;}
+.badge-row span::before{content:'\2726'; color:var(--brass); margin-right:9px; font-size:11px;}
+.hero-ctas{display:flex; gap:16px; margin-top:38px;}
+
+/* sections */
+section{padding:100px 0;}
+.section-head{max-width:660px; margin-bottom:52px;}
+.section-head h2{font-size:36px; margin-top:14px;}
+.section-head p{font-weight:300; color:var(--soft-charcoal); font-size:15px; margin-top:16px; line-height:1.75;}
+.center{text-align:center; margin-left:auto; margin-right:auto;}
+
+/* about */
+.about-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
+.facts{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--bone); border:1px solid var(--bone); border-radius:6px; overflow:hidden; margin-top:38px;}
+.fact{background:var(--ivory); padding:20px 24px;}
+.fact .k{font-size:10px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); font-weight:600; margin-bottom:6px;}
+.fact .v{font-family:var(--serif); font-size:17px; color:var(--ink);}
+.about-img{border-radius:6px; overflow:hidden; box-shadow:0 24px 48px rgba(23,20,17,.16);}
+.about-img img{width:100%; height:520px; object-fit:cover;}
+
+/* wildlife */
+.wild{background:var(--ivory-dim);}
+.wild-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+.wcard{position:relative; border-radius:6px; overflow:hidden; height:340px;}
+.wcard img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+.wcard:hover img{transform:scale(1.06);}
+.wcard .scrim{position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(180deg, transparent 45%, rgba(23,20,17,.85) 100%);}
+.wcard .label{position:absolute; left:20px; bottom:18px; color:var(--white); font-family:var(--serif); font-size:19px;}
+.species{display:flex; flex-wrap:wrap; gap:10px; margin-top:34px;}
+.chip{background:var(--ivory); border:1px solid var(--bone); color:var(--soft-charcoal); font-size:11.5px; letter-spacing:.4px; padding:8px 16px; border-radius:20px;}
+
+/* lodges */
+.lodges-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+.lcard{background:var(--white); border-radius:6px; overflow:hidden; border:1px solid var(--ivory-dim); transition:box-shadow .25s ease, transform .25s ease; display:flex; flex-direction:column;}
+.lcard:hover{box-shadow:0 24px 48px rgba(23,20,17,.14); transform:translateY(-3px);}
+.lcard .img{height:210px; overflow:hidden;}
+.lcard .img img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+.lcard:hover .img img{transform:scale(1.06);}
+.lcard .body{padding:22px 24px 24px; display:flex; flex-direction:column; flex:1;}
+.lcard h3{font-size:19px; margin-bottom:8px;}
+.lcard .desc{font-size:13px; color:var(--soft-charcoal); line-height:1.65; margin-bottom:16px; flex:1;}
+.tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px;}
+.tag{background:var(--ivory-dim); color:var(--soft-charcoal); font-size:9.5px; letter-spacing:1px; text-transform:uppercase; font-weight:500; padding:5px 11px; border-radius:12px;}
+.lcard .price-row{border-top:1px solid var(--ivory-dim); padding-top:16px; font-size:13px; color:var(--brass); font-weight:600;}
+.lcard .price-row b{color:var(--ink); font-family:var(--serif); font-weight:500; font-size:15px;}
+
+/* seasons band (dark) */
+.seasons{background:linear-gradient(135deg,#1F1B17,#171411); color:var(--ivory);}
+.seasons .section-head h2{color:var(--white);}
+.seasons .section-head p{color:var(--bone);}
+.seasons-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:stretch;}
+.season-img{border-radius:6px; overflow:hidden;}
+.season-img img{width:100%; height:100%; object-fit:cover; min-height:320px;}
+.season-cards{display:grid; gap:18px;}
+.scard{background:var(--charcoal); border:1px solid rgba(255,255,255,.11); border-radius:6px; padding:26px 28px;}
+.scard h3{color:var(--brass); font-size:19px; margin-bottom:4px;}
+.scard .when{font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--sand); font-weight:500; margin-bottom:12px;}
+.scard p{font-size:13.5px; color:var(--bone); line-height:1.7;}
+
+/* getting there */
+.gt-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+.steps{display:grid; gap:26px; margin-top:8px;}
+.step{display:flex; gap:20px; align-items:flex-start;}
+.step .num{flex-shrink:0; width:40px; height:40px; border-radius:50%; background:var(--brass); color:var(--white); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:17px;}
+.step h3{font-size:16.5px; margin-bottom:6px; font-family:var(--sans); font-weight:600; color:var(--ink);}
+.step p{font-size:13.5px; color:var(--soft-charcoal); line-height:1.65;}
+.gt-img{border-radius:6px; overflow:hidden; box-shadow:0 24px 48px rgba(23,20,17,.16);}
+.gt-img img{width:100%; height:520px; object-fit:cover;}
+
+/* sightings & weather */
+.sw{background:var(--ivory-dim);}
+.sw-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:26px;}
+.panel{background:var(--white); border:1px solid var(--bone); border-radius:6px; padding:30px 32px;}
+.panel h3{font-size:19px; margin-bottom:20px;}
+.srow{display:flex; justify-content:space-between; align-items:center; padding:11px 0; border-bottom:1px solid var(--ivory-dim); font-size:13.5px;}
+.srow:last-of-type{border-bottom:none;}
+.srow .animal{color:var(--ink); font-weight:500;}
+.freq{font-size:10px; letter-spacing:1px; text-transform:uppercase; font-weight:600; padding:5px 12px; border-radius:12px;}
+.freq.most{background:var(--badge-green); color:var(--white);}
+.freq.very{background:var(--brass); color:var(--white);}
+.freq.often{background:var(--sand); color:var(--white);}
+.freq.rare{background:var(--charcoal); color:var(--white);}
+.note{font-size:11.5px; color:var(--soft-charcoal); opacity:.75; margin-top:16px; line-height:1.6;}
+.wrow{padding:16px 0; border-bottom:1px solid var(--ivory-dim);}
+.wrow:last-of-type{border-bottom:none;}
+.wrow .season-name{font-weight:600; color:var(--ink); font-size:14px;}
+.wrow .season-when{font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--brass); font-weight:500;}
+.wrow .temp{float:right; text-align:right; font-family:var(--serif); font-size:17px; color:var(--ink);}
+.wrow .temp em{display:block; font-family:var(--sans); font-style:normal; font-size:11px; color:var(--soft-charcoal); opacity:.75; margin-top:2px;}
+
+/* reviews */
+.reviews-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+.rvcard{background:var(--white); border:1px solid var(--ivory-dim); border-radius:6px; padding:30px;}
+.stars{color:var(--brass); font-size:13px; letter-spacing:2px; margin-bottom:16px;}
+.rvcard p{font-family:var(--serif); font-style:italic; font-size:15px; color:var(--charcoal); line-height:1.7; margin-bottom:20px;}
+.rvcard .who{font-size:12px; color:var(--soft-charcoal); font-weight:600;}
+.rvcard .who span{color:var(--brass); font-weight:400;}
+
+/* CTA banner */
+.banner{background:linear-gradient(135deg,#1F1B17,#171411); text-align:center; padding:96px 0;}
+.banner h2{color:var(--white); font-size:33px; max-width:600px; margin:0 auto 18px;}
+.banner p{color:var(--bone); font-weight:300; font-size:15px; max-width:520px; margin:0 auto 36px;}
+.banner .btns{display:flex; gap:16px; justify-content:center;}
+
+/* footer */
+footer{background:var(--ink); color:var(--bone); padding:76px 0 30px;}
+.foot-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:44px; padding-bottom:50px; border-bottom:1px solid rgba(255,255,255,.08);}
+.foot-logo img{height:52px; margin-bottom:18px;}
+.foot-grid p{font-size:13px; line-height:1.7; color:var(--bone); max-width:300px;}
+.foot-contact{margin-top:16px; font-size:13px;}
+.foot-contact a{display:block; color:var(--sand); margin-bottom:6px;}
+.foot-col h5{font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); margin-bottom:16px; font-weight:600;}
+.foot-col a{display:block; font-size:13px; color:var(--bone); margin-bottom:10px; opacity:.9;}
+.foot-col a:hover{color:var(--brass); opacity:1;}
+.accred{display:flex; flex-wrap:wrap; gap:10px; margin-top:34px;}
+.acc-pill{border:1px solid rgba(255,255,255,.18); color:var(--bone); font-size:11px; padding:7px 14px; border-radius:16px;}
+.rev-pill{border:1px solid rgba(168,121,75,.5); color:var(--sand); font-size:11px; padding:7px 14px; border-radius:16px;}
+.foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; font-size:12px; color:#7A7164; flex-wrap:wrap; gap:10px;}
+
+@media(max-width:1000px){
+  .about-grid,.gt-grid,.seasons-grid,.sw-grid{grid-template-columns:1fr;}
+  .wild-cards,.lodges-grid,.reviews-grid{grid-template-columns:1fr 1fr;}
+  .hero h1{font-size:42px;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .wild-cards,.lodges-grid,.reviews-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .hero h1{font-size:34px;}
+  .facts{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="announce">Option 4 preview · CMS structure in <b>Ink Edition colours</b> — imagery courtesy of Amakhala Game Reserve / African Safari Group.</div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#"><img src="https://amakhala.com/wp-content/uploads/logo/amakhala.png" alt="Amakhala Game Reserve"></a>
+    <div class="nav-links">
+      <a href="#about">Reserve</a>
+      <a href="#lodges">Lodges</a>
+      <a href="#">Activities</a>
+      <a href="#">Experiences</a>
+      <a href="#">Specials</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <a class="btn btn-brass" href="#">Start Planning / Enquire</a>
+  </div>
+</nav>
+
+<section class="hero" style="padding:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="eyebrow">Eastern Cape · South Africa</div>
+      <h1>Amakhala Game Reserve</h1>
+      <p>A malaria-free Big Five wilderness along the Bushman&rsquo;s River — where rolling savannah, river valleys and family-run lodges make for an effortless African safari.</p>
+      <div class="badge-row">
+        <span>Malaria-Free</span>
+        <span>Big Five</span>
+        <span>9,000 Hectares</span>
+        <span>72 km from Port Elizabeth</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#about" class="btn btn-brass">Discover the Reserve</a>
+        <a href="#lodges" class="btn btn-outline-dark">View Lodges</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow">About the Reserve</div>
+        <h2 style="font-size:36px; margin-top:14px;">A living wilderness, restored by its founders</h2>
+        <p style="font-weight:300; font-size:15px; margin-top:18px; line-height:1.75;">Amakhala is a privately owned reserve in the Eastern Cape, formed when seven neighbouring farms dropped their fences to restore the land to its original wilderness. Today it spans 9,000 hectares of rolling bushveld, river valleys and the Bushman&rsquo;s River, and is home to all of the Big Five.</p>
+        <p style="font-weight:300; font-size:15px; margin-top:14px; line-height:1.75;">Year-round and malaria-free, with five distinct ecosystems, it is ideal for first-time safari-goers, families with young children, and anyone pairing a reliable Big Five experience with the Garden Route.</p>
+        <div class="facts">
+          <div class="fact"><div class="k">Size</div><div class="v">≈ 9,000 hectares</div></div>
+          <div class="fact"><div class="k">Lodges</div><div class="v">7 lodges</div></div>
+          <div class="fact"><div class="k">Wildlife</div><div class="v">Big Five</div></div>
+          <div class="fact"><div class="k">From Airport</div><div class="v">72 km · Port Elizabeth</div></div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__72538__optimized-desktop/copyof_copyof_copyof_455283032.webp" alt="Rolling bushveld and plains at Amakhala Game Reserve">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wild">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Wildlife</div>
+      <h2>Home to the Big Five &amp; beyond</h2>
+      <p>Two daily game drives in open Land Rovers — one at sunrise, one at sunset — track lion, leopard, elephant, buffalo and both black &amp; white rhino, alongside cheetah, giraffe, hippo and great herds of plains game.</p>
+    </div>
+    <div class="wild-cards">
+      <div class="wcard">
+        <img src="https://pim.africansafarigroup.com/Sites/www.amakhalagamereserve.com/image-thumb__30946__optimized/wildlife.jpg" alt="Lion at Amakhala">
+        <div class="scrim"></div>
+        <div class="label">Lion</div>
+      </div>
+      <div class="wcard">
+        <img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__72539__optimized-desktop/copyof_copyof_455282757.webp" alt="African Elephant at Amakhala">
+        <div class="scrim"></div>
+        <div class="label">African Elephant</div>
+      </div>
+      <div class="wcard">
+        <img src="https://amakhala.com/wp-content/uploads/2024/09/Amakhala_Game_Lodge_Leeuwenbosch_Country_House_Giraffes_Regular.jpeg" alt="Giraffe at Amakhala">
+        <div class="scrim"></div>
+        <div class="label">Giraffe</div>
+      </div>
+    </div>
+    <div class="species">
+      <span class="chip">Buffalo</span><span class="chip">Cheetah</span><span class="chip">Giraffe</span><span class="chip">Hippo</span><span class="chip">Plains Zebra</span><span class="chip">Eland</span><span class="chip">Kudu</span><span class="chip">Springbok</span><span class="chip">Vervet Monkey &amp; Baboon</span><span class="chip">250+ Bird Species</span>
+    </div>
+  </div>
+</section>
+
+<section id="lodges">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Where to Stay</div>
+      <h2>Seven lodges across the reserve</h2>
+      <p>From Edwardian luxury and a historic Victorian manor to family bush lodges and classic tented camps, each lodge is independently run yet shares the same traversing rights across Amakhala&rsquo;s wilderness.</p>
+    </div>
+    <div class="lodges-grid">
+      <div class="lcard">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80217__optimized-desktop/Aerial%20view_4.webp" alt="Woodbury Lodge" loading="lazy"></div>
+        <div class="body">
+          <h3>Woodbury Lodge</h3>
+          <div class="desc">Stone-and-thatch suites perched above the Bushman&rsquo;s River valley, with sweeping views over the wilderness below.</div>
+          <div class="tags"><span class="tag">Stone &amp; Thatch</span><span class="tag">River Valley Views</span></div>
+          <div class="price-row">From <b>€354 pppn</b> · View lodge →</div>
+        </div>
+      </div>
+      <div class="lcard">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__79900__optimized-desktop/Amakhala%20Safari%20Lodge%20_2_9.webp" alt="Safari Lodge" loading="lazy"></div>
+        <div class="body">
+          <h3>Safari Lodge</h3>
+          <div class="desc">Edwardian-inspired luxury tucked into a private valley — ten elegant suites for an unhurried, refined safari.</div>
+          <div class="tags"><span class="tag">Edwardian Luxury</span><span class="tag">10 Suites</span><span class="tag">Private Valley</span></div>
+          <div class="price-row">From <b>$473 pppn</b> · View lodge →</div>
+        </div>
+      </div>
+      <div class="lcard">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__79989__optimized-desktop/Bush%20Lodge%20_1_4.webp" alt="Bush Lodge" loading="lazy"></div>
+        <div class="body">
+          <h3>Bush Lodge</h3>
+          <div class="desc">The most family-friendly lodge in Amakhala, with a dedicated kids&rsquo; programme and a pool to cool off between drives.</div>
+          <div class="tags"><span class="tag">Family-Friendly</span><span class="tag">Kids&rsquo; Programme</span><span class="tag">Pool</span></div>
+          <div class="price-row">From <b>$551 pppn</b> · View lodge →</div>
+        </div>
+      </div>
+      <div class="lcard">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80821__optimized-desktop/HillsNek%20Safari%20Camp.webp" alt="HillsNek Safari Camp" loading="lazy"></div>
+        <div class="body">
+          <h3>HillsNek Safari Camp</h3>
+          <div class="desc">Eight private chalets terraced into a hillside, each with a deck framing long, uninterrupted views of the bush.</div>
+          <div class="tags"><span class="tag">Hillside Chalets</span><span class="tag">8 Chalets</span></div>
+          <div class="price-row">From <b>£357 pppn</b> · View lodge →</div>
+        </div>
+      </div>
+      <div class="lcard">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80012__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Evening%20Sky_3.webp" alt="Leeuwenbosch Country House" loading="lazy"></div>
+        <div class="body">
+          <h3>Leeuwenbosch Country House</h3>
+          <div class="desc">An 1875 Victorian manor home to five generations of one family — five gracious suites steeped in history.</div>
+          <div class="tags"><span class="tag">1875 Manor</span><span class="tag">Historic</span><span class="tag">5 Suites</span></div>
+          <div class="price-row">From <b>$298 pppn</b> · View lodge →</div>
+        </div>
+      </div>
+      <div class="lcard">
+        <div class="img"><img src="https://pim.africansafarigroup.com/B-Lodges/image-thumb__71297__optimized-desktop/copyof___copyof___copyof___589473542.webp" alt="Quatermains 1920s Safari Camp" loading="lazy"></div>
+        <div class="body">
+          <h3>Quatermains 1920s Safari Camp</h3>
+          <div class="desc">An old-school colonial-explorer tented camp on the banks of the Bushman&rsquo;s River, full of canvas-and-lantern romance.</div>
+          <div class="tags"><span class="tag">Tented Camp</span><span class="tag">Colonial Style</span><span class="tag">Riverside</span></div>
+          <div class="price-row">From <b>$227 pppn</b> · View lodge →</div>
+        </div>
+      </div>
+      <div class="lcard">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80243__optimized-desktop/Comfortable%20Tent_1.webp" alt="Woodbury Tented Camp" loading="lazy"></div>
+        <div class="body">
+          <h3>Woodbury Tented Camp</h3>
+          <div class="desc">Authentic en-suite safari tents overlooking the ancient floodplain of the Bushman&rsquo;s River.</div>
+          <div class="tags"><span class="tag">Tented Camp</span><span class="tag">Family-Friendly</span><span class="tag">River Views</span></div>
+          <div class="price-row">From <b>€261 pppn</b> · View lodge →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seasons">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Best Time to Visit</div>
+      <h2>A year-round, malaria-free safari</h2>
+      <p>Being malaria-free, Amakhala welcomes guests in every season. Your perfect time depends on whether you prefer crisp winter sightings or lush summer landscapes.</p>
+    </div>
+    <div class="seasons-grid">
+      <div class="season-img">
+        <img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80014__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Gardens%20_2.webp" alt="Lush green-season gardens at Amakhala Game Reserve">
+      </div>
+      <div class="season-cards">
+        <div class="scard">
+          <h3>Dry Winter</h3>
+          <div class="when">May – September</div>
+          <p>Animals gather at the water and thinner bush opens up the views, making for excellent, reliable game viewing. Expect cold mornings, minimal rain and few mosquitoes. Peak game viewing.</p>
+        </div>
+        <div class="scard">
+          <h3>Green Summer</h3>
+          <div class="when">October – March</div>
+          <p>Lush landscapes, newborn animals and migratory birds fill the reserve. Warm days of 25–32&nbsp;°C (77–90&nbsp;°F) and busier periods over the South African school holidays.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="gt-grid">
+      <div>
+        <div class="eyebrow">Getting There</div>
+        <h2 style="font-size:36px; margin-top:14px;">Easy to reach, worlds away</h2>
+        <p style="font-weight:300; font-size:15px; margin-top:16px; line-height:1.75;">Just 72 km (about 75 minutes) from Port Elizabeth (Gqeberha) Airport, with daily flights from Johannesburg, Cape Town and Durban — no long transfers or bush flights required to reach true Big Five country.</p>
+        <div class="steps" style="margin-top:34px;">
+          <div class="step">
+            <div class="num">1</div>
+            <div><h3>Fly to Port Elizabeth (Gqeberha)</h3><p>The airport receives daily flights from Johannesburg, Cape Town and Durban — just 72 km (about 75 minutes) from the reserve.</p></div>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <div><h3>Transfer &amp; open with a sundowner drive</h3><p>Fly in, transfer in the late afternoon, and start your safari with a sundowner game drive on the evening you arrive.</p></div>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <div><h3>Self-drive or add to your route</h3><p>A paved road runs to the gate, making Amakhala self-drive friendly — and an easy add-on to the Garden Route or Addo Elephant Park.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="gt-img">
+        <img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80220__optimized-desktop/Breakfast_5.webp" alt="Guests dining on a deck overlooking Amakhala Game Reserve">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sw">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Sightings &amp; Weather</div>
+      <h2>What to expect, season by season</h2>
+      <p>Two open-vehicle drives a day across a compact reserve mean reliable sightings year-round — here is roughly how often you can expect to see each, and the weather to pack for.</p>
+    </div>
+    <div class="sw-grid">
+      <div class="panel">
+        <h3>Sightings frequency</h3>
+        <div class="srow"><span class="animal">Elephant</span><span class="freq most">Most drives</span></div>
+        <div class="srow"><span class="animal">Buffalo</span><span class="freq most">Most drives</span></div>
+        <div class="srow"><span class="animal">White &amp; black rhino</span><span class="freq very">Very often</span></div>
+        <div class="srow"><span class="animal">Lion</span><span class="freq very">Very often</span></div>
+        <div class="srow"><span class="animal">Giraffe, zebra &amp; antelope</span><span class="freq most">Every drive</span></div>
+        <div class="srow"><span class="animal">Cheetah</span><span class="freq often">Often</span></div>
+        <div class="srow"><span class="animal">Leopard</span><span class="freq rare">Rarely · elusive</span></div>
+        <div class="note">Sightings are wild and never guaranteed — leopard in particular are shy and seen far less often than the rest of the Big Five.</div>
+      </div>
+      <div class="panel">
+        <h3>Weather at a glance</h3>
+        <div class="wrow">
+          <span class="temp">8–22 °C<em>46–72 °F</em></span>
+          <div class="season-name">Dry Winter</div>
+          <div class="season-when">May – September</div>
+        </div>
+        <div class="wrow">
+          <span class="temp">17–32 °C<em>63–90 °F</em></span>
+          <div class="season-name">Green Summer</div>
+          <div class="season-when">October – March</div>
+        </div>
+        <div class="note">Mornings and evening drives are cold in winter — bring a warm layer whatever the season.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Reviews</div>
+      <h2>Loved by our guests</h2>
+      <p>Thousands of five-star reviews across TripAdvisor, Google and the Feedback Company.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="rvcard">
+        <div class="stars">★★★★★</div>
+        <p>&ldquo;Roxanne was our reservations specialist and she has been nothing short of fantastic. Every detail of our safari was taken care of.&rdquo;</p>
+        <div class="who">Ally Brown <span>· TripAdvisor</span></div>
+      </div>
+      <div class="rvcard">
+        <div class="stars">★★★★★</div>
+        <p>&ldquo;If I could give David 10 stars I would. So easy to plan, a great location and beautiful accommodation in a true Big Five reserve.&rdquo;</p>
+        <div class="who">Chessie McHugh <span>· Google</span></div>
+      </div>
+      <div class="rvcard">
+        <div class="stars">★★★★★</div>
+        <p>&ldquo;Outstanding help from the team throughout — seamless from first enquiry to arrival. Malaria-free made it perfect for the kids.&rdquo;</p>
+        <div class="who">James &amp; Sarah <span>· Feedback Company</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="banner">
+  <div class="wrap">
+    <h2>Start planning your Amakhala safari</h2>
+    <p>Tell us your dates and who&rsquo;s travelling — a safari specialist will reply within 24 hours with the right lodges, experiences and any current specials.</p>
+    <div class="btns">
+      <a href="#" class="btn btn-brass">Start Planning / Enquire</a>
+      <a href="#" class="btn btn-outline-dark">View Current Specials</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img src="https://amakhala.com/wp-content/uploads/logo/amakhala.png" alt="Amakhala Game Reserve"></div>
+        <p>A 9,000-hectare malaria-free Big Five reserve on the Bushman&rsquo;s River in the Eastern Cape — seven family-run lodges, open-vehicle game drives and an easy add-on to the Garden Route.</p>
+        <div class="foot-contact">
+          <a href="tel:+27212005960">+27 21 200 5960</a>
+          <a href="mailto:bookings@africansafarigroup.com">bookings@africansafarigroup.com</a>
+          <span style="color:var(--bone);">Cape Town, South Africa</span>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="#about">The Reserve</a>
+        <a href="#lodges">Lodges</a>
+        <a href="#">Activities</a>
+        <a href="#">Experiences</a>
+        <a href="#">Specials</a>
+        <a href="#">Start Planning</a>
+      </div>
+      <div class="foot-col">
+        <h5>Lodges</h5>
+        <a href="#">Woodbury Lodge</a>
+        <a href="#">Safari Lodge</a>
+        <a href="#">Bush Lodge</a>
+        <a href="#">HillsNek Safari Camp</a>
+        <a href="#">Leeuwenbosch Country House</a>
+        <a href="#">Quatermains 1920s Safari Camp</a>
+        <a href="#">Woodbury Tented Camp</a>
+      </div>
+    </div>
+    <div class="accred">
+      <span class="acc-pill">Cape Town Tourism</span>
+      <span class="acc-pill">SATSA</span>
+      <span class="acc-pill">ATTA Corporate</span>
+      <span class="acc-pill">TripAdvisor Certificate of Excellence</span>
+      <span class="rev-pill">TripAdvisor · 1,000+ reviews</span>
+      <span class="rev-pill">Feedback Company · 1,000+ reviews</span>
+      <span class="rev-pill">Google · 400+ reviews</span>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Amakhala Game Reserve · Eastern Cape, South Africa</div>
+      <div>Option 4 preview — CMS structure × Ink Edition colours · Part of African Safari Group</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
