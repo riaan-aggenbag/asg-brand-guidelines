@@ -1,0 +1,64 @@
+<!-- @dsCard group="ASG Direct Bookings" viewport="1320x860" name="ASG Direct Bookings" subtitle="Direct booking — search · property · checkout · confirm" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASG Direct Bookings · African Safari Group</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-base); }
+  .screenbar{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:1300;display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(14,12,10,.82);backdrop-filter:blur(10px);border:1px solid var(--border-default);box-shadow:var(--shadow-lg);}
+  .screenbar button{font-family:var(--font-body);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);background:none;border:0;padding:8px 15px;border-radius:999px;cursor:pointer;transition:color .15s,background .15s;}
+  .screenbar button:hover{color:var(--text-body);}
+  .screenbar button.on{background:var(--asg-brass-600);color:var(--text-on-brass);}
+  .screenbar__sep{width:1px;align-self:stretch;margin:4px 2px;background:var(--border-default);}
+  /* ---- Light Edition overrides (active under data-theme="light") ---- */
+  [data-theme="light"] .sbn-header{background:rgba(246,241,234,.9);border-bottom:1px solid var(--border-default);}
+  [data-theme="light"] .sbn-photo{background:linear-gradient(135deg,#ece2d4 0%,#ddd0bb 100%);}
+  [data-theme="light"] .sbn-photo::before{opacity:.3;}
+  [data-theme="light"] .sbn-photo__t{color:#9a8f7e;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="SbnChrome.jsx"></script>
+<script type="text/babel" src="ResultsScreen.jsx"></script>
+<script type="text/babel" src="PropertyScreen.jsx"></script>
+<script type="text/babel" src="CheckoutScreen.jsx"></script>
+<script type="text/babel" src="ConfirmScreen.jsx"></script>
+<script type="text/babel">
+  const KEY = "asg-sbn-route";
+  const THEME_KEY = "asg-theme";
+  function App() {
+    const [route, setRoute] = React.useState(() => localStorage.getItem(KEY) || "results");
+    const [theme, setTheme] = React.useState(() => localStorage.getItem(THEME_KEY) || "dark");
+    React.useEffect(() => {
+      if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+      else document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem(THEME_KEY, theme);
+    }, [theme]);
+    const go = React.useCallback((r) => { setRoute(r); localStorage.setItem(KEY, r); window.scrollTo({top:0,behavior:"auto"}); }, []);
+    const Screen = { results: ResultsScreen, property: PropertyScreen, checkout: CheckoutScreen, confirm: ConfirmScreen }[route] || ResultsScreen;
+    const screens = [["results","Search"],["property","Property"],["checkout","Checkout"],["confirm","Confirmed"]];
+    return (
+      <React.Fragment>
+        <SbnHeader step={route} go={go} theme={theme} />
+        <Screen go={go} />
+        <SbnFooter />
+        <div className="screenbar">
+          {screens.map(([id,label]) => <button key={id} className={route===id?"on":""} onClick={() => go(id)}>{label}</button>)}
+          <span className="screenbar__sep"></span>
+          <button onClick={() => setTheme(theme==="light"?"dark":"light")}>{theme==="light"?"Dark":"Light"}</button>
+        </div>
+      </React.Fragment>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile Preview — African Safari Group</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { margin: 0; background: var(--asg-ink-900); font-family: var(--font-body); }
+  .wrap { max-width: 1440px; margin: 0 auto; padding: 48px clamp(20px, 4vw, 56px) 80px; }
+  .head { margin-bottom: 40px; }
+  .head .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--accent); }
+  .head h1 { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.9rem, 1.4rem + 1.8vw, 2.6rem); color: var(--text-primary); margin: 12px 0 0; }
+  .head p { color: var(--text-body); font-size: 15px; line-height: 1.65; max-width: 62ch; margin: 14px 0 0; }
+  .head .rule { width: 64px; height: 2px; background: var(--asg-brass); margin-top: 20px; }
+  .row { display: flex; gap: 36px; flex-wrap: wrap; align-items: flex-start; }
+  .phone { display: flex; flex-direction: column; gap: 14px; }
+  .phone .label { font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); }
+  .phone .label b { color: var(--text-primary); font-weight: 600; }
+  .bezel { width: 390px; height: 780px; border: 1px solid var(--border-default); border-radius: 10px; overflow: hidden; background: var(--asg-ink); box-shadow: var(--shadow-lg); }
+  .bezel iframe { width: 390px; height: 780px; border: 0; display: block; }
+  .hint { margin-top: 36px; font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 70ch; }
+  .hint b { color: var(--text-body); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <span class="eyebrow">African Safari Group · Design System</span>
+    <h1>Mobile preview</h1>
+    <p>The three live products at phone width (390px). Each frame is fully interactive — tap the menu icon to open the new navigation drawer, and on search results tap Filters.</p>
+    <div class="rule"></div>
+  </div>
+  <div class="row">
+    <div class="phone">
+      <span class="label"><b>Flagship website</b> · dark / light toggle inside</span>
+      <div class="bezel"><iframe src="ui_kits/flagship-website/index.html" title="Flagship website — mobile"></iframe></div>
+    </div>
+    <div class="phone">
+      <span class="label"><b>Flagship — editorial blend</b></span>
+      <div class="bezel"><iframe src="ui_kits/flagship-website/editorial.html" title="Flagship editorial — mobile"></iframe></div>
+    </div>
+    <div class="phone">
+      <span class="label"><b>ASG Direct Bookings</b> · search → checkout</span>
+      <div class="bezel"><iframe src="ui_kits/asg-direct-bookings/index.html" title="ASG Direct Bookings — mobile"></iframe></div>
+    </div>
+  </div>
+  <p class="hint">What changed for mobile: a system <b>Drawer</b> component (now in the component library), a <b>menu button</b> in every header below desktop width, a <b>compact step indicator</b> ("2 of 3 · Property") in the booking flow, and a <b>Filters drawer</b> on search results. Desktop layouts are untouched.</p>
+</div>
+</body>
+</html>

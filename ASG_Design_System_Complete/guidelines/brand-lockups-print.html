@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 26px 30px; background: var(--surface-base); display: flex; align-items: center; gap: 44px; }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .cell img { display: block; }
+  .lab { font-family: var(--font-body); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
+  /* horizontal lockup, composed */
+  .horiz { display: flex; align-items: center; gap: 16px; }
+  .horiz .wm { display: flex; flex-direction: column; gap: 4px; }
+  .wm .nm { font-family: var(--font-serif); font-weight: 500; font-size: 22px; letter-spacing: .12em; color: var(--text-primary); line-height: 1; white-space: nowrap; }
+  /* GROUP lockup — faithful to the master: inward arrow + rule either side */
+  .wm .sub { display: flex; align-items: center; gap: 10px; color: var(--text-primary); }
+  .wm .sub .txt { font-family: var(--font-body); font-size: 11px; letter-spacing: .34em; }
+  .wm .sub .side { display: flex; align-items: center; gap: 3px; flex: 1; }
+  .wm .sub .ln { height: 1.5px; flex: 1; background: currentColor; }
+  .wm .sub .ar { width: 0; height: 0; border-top: 3px solid transparent; border-bottom: 3px solid transparent; }
+  .wm .sub .ar--r { border-left: 6px solid currentColor; }
+  .wm .sub .ar--l { border-right: 6px solid currentColor; }
+  .div { width: 1px; align-self: stretch; background: var(--border-default); }
+
+  /* ---- Print: standard sheet, full-bleed dark ground ---- */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { size: letter landscape; margin: 0; }
+  @media print {
+    html, body { background: var(--surface-base); }
+    body {
+      padding: 0.6in;
+      min-height: 100vh;
+      box-sizing: border-box;
+      justify-content: center;
+      gap: 56px;
+    }
+    .div { align-self: center; height: 150px; }
+    *, *::before, *::after {
+      animation-delay: -99s !important; animation-duration: .001s !important;
+      animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+      animation-play-state: running !important; transition-duration: 0s !important;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="cell"><img src="../assets/logos/asg-stacked-white.png" alt="ASG stacked" height="118"><span class="lab">Master — original, unaltered</span></div>
+  <div class="div"></div>
+  <div class="cell">
+    <div class="horiz">
+      <img src="../assets/logos/asg-icon-white.png" alt="ASG icon" height="62">
+      <div class="wm"><span class="nm">AFRICAN SAFARI</span><span class="sub"><span class="side"><i class="ln"></i><i class="ar ar--r"></i></span><span class="txt">GROUP</span><span class="side"><i class="ar ar--l"></i><i class="ln"></i></span></span></div>
+    </div>
+    <span class="lab">Horizontal — preferred for nav</span>
+  </div>
+  <div class="div"></div>
+  <div class="cell"><img src="../assets/logos/asg-icon-white.png" alt="ASG icon only" height="68"><span class="lab">Icon only</span></div>
+<script>
+addEventListener('load', () => {
+  (async () => {
+    try { await document.fonts.ready; } catch (e) {}
+    const imgs = Array.from(document.images).filter((i) => !i.complete);
+    await Promise.race([
+      Promise.allSettled(imgs.map((i) => i.decode())),
+      new Promise((r) => setTimeout(r, 8000)),
+    ]);
+    setTimeout(() => window.print(), 500);
+  })();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- @dsCard group="Light Edition" viewport="700x150" name="Light — 60 / 30 / 10 Inverted" subtitle="Ivory dominant, ink for text, brass the signal" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--surface-base); }
+  .bar { display: flex; height: 70px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-default); }
+  .seg { display: flex; flex-direction: column; justify-content: flex-end; padding: 10px 14px; }
+  .pct { font-family: var(--font-display); font-size: 20px; line-height: 1; }
+  .nm { font-family: var(--font-body); font-size: 11px; margin-top: 4px; letter-spacing: .04em; text-transform: uppercase; }
+  .s60 { flex: 60; background: var(--asg-warm-ivory); }
+  .s60 .pct, .s60 .nm { color: var(--asg-ink); }
+  .s30 { flex: 30; background: var(--asg-ink); }
+  .s30 .pct, .s30 .nm { color: var(--asg-warm-ivory); }
+  .s10 { flex: 10; background: var(--asg-brass); align-items: flex-start; }
+  .s10 .pct, .s10 .nm { color: var(--asg-ink); }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <div class="seg s60"><div class="pct">60</div><div class="nm">Ivory / White</div></div>
+    <div class="seg s30"><div class="pct">30</div><div class="nm">Ink / Charcoal · text</div></div>
+    <div class="seg s10"><div class="pct">10</div><div class="nm">Brass</div></div>
+  </div>
+</body>
+</html>

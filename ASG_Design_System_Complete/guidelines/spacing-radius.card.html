@@ -1,0 +1,31 @@
+<!-- @dsCard group="Spacing" viewport="700x160" name="Radius & Elevation" subtitle="Near-square corners, soft warm-black shadows" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 24px 28px; background: var(--surface-base); display: flex; gap: 26px; align-items: center; }
+  .grp { display: flex; gap: 16px; align-items: center; }
+  .box { width: 58px; height: 58px; background: var(--asg-charcoal); border: 1px solid var(--border-default); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px; }
+  .box span { font-family: var(--font-numeric); font-size: 10px; color: var(--text-muted); }
+  .sh { width: 58px; height: 58px; background: var(--asg-charcoal); border-radius: var(--radius-md); }
+  .div { width: 1px; align-self: stretch; background: var(--border-default); }
+  .cap { font-family: var(--font-body); font-size: 11px; color: var(--text-muted); letter-spacing: .04em; position: absolute; }
+</style>
+</head>
+<body>
+  <div class="grp">
+    <div class="box" style="border-radius:var(--radius-xs)"><span>2</span></div>
+    <div class="box" style="border-radius:var(--radius-sm)"><span>4</span></div>
+    <div class="box" style="border-radius:var(--radius-md)"><span>6</span></div>
+    <div class="box" style="border-radius:var(--radius-lg)"><span>10</span></div>
+  </div>
+  <div class="div"></div>
+  <div class="grp">
+    <div class="sh" style="box-shadow:var(--shadow-sm)"></div>
+    <div class="sh" style="box-shadow:var(--shadow-md)"></div>
+    <div class="sh" style="box-shadow:var(--shadow-lg)"></div>
+  </div>
+</body>
+</html>

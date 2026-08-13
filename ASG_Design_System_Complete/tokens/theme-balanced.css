@@ -1,0 +1,64 @@
+/* African Safari Group — BALANCED theme (proposal, additive — originals untouched)
+   A warm espresso middle ground: lighter than the near-black dark system, richer
+   than the ivory light edition. Heritage Sand #C39F77 returns as the working
+   accent (CTAs, links, focus); Safari Brass is held for pressed/deep states.
+   Apply with data-theme="balanced" on any root. Loads AFTER styles.css. */
+
+[data-theme="balanced"] {
+  /* Accent family — camel forward, brass beneath */
+  --asg-brass:        #C39F77;
+  --asg-brass-400:    #D3B48F;
+  --asg-brass-500:    #C39F77;
+  --asg-brass-600:    #A8794B;
+  --asg-brass-a20:    rgba(195, 159, 119, 0.20);
+  --asg-brass-a40:    rgba(195, 159, 119, 0.40);
+
+  /* Surfaces — warm espresso ladder */
+  --surface-base:     #332D26;
+  --surface-raised:   #443C32;
+  --surface-overlay:  #4C443A;
+  --surface-inset:    #60564A;
+  --surface-ivory:        var(--asg-warm-ivory);
+  --surface-ivory-raised: var(--asg-white);
+
+  /* Text — ivory family, lifted for the lighter ground */
+  --text-primary:     #F6F1EA;
+  --text-body:        #E4DBCE;
+  --text-muted:       #B5AA9B;
+  --text-faint:       #A29786;
+  --text-on-brass:    #FFFFFF; /* brand rule: white on brass, both themes */
+
+  /* Accent aliases */
+  --accent:           #C39F77;
+  --accent-hover:     #D3B48F;
+  --accent-active:    #A8794B;
+  --accent-quiet:     #A8794B;
+  --link:             #C39F77;
+
+  /* Borders — two steps more visible than the dark system */
+  --border-subtle:    rgba(246, 241, 234, 0.09);
+  --border-default:   rgba(246, 241, 234, 0.16);
+  --border-strong:    #766B5C;
+  --border-rule:      #C39F77;
+
+  /* Focus */
+  --focus-ring:        #C39F77;
+  --focus-ring-shadow: 0 0 0 3px rgba(195, 159, 119, 0.40);
+
+  /* Base tokens components reference directly */
+  --asg-ivory-a08:    rgba(246, 241, 234, 0.09);
+  --asg-ivory-a14:    rgba(246, 241, 234, 0.16);
+  --asg-charcoal-500: #766B5C;   /* input hover border, switch track, avatar bg */
+  --asg-charcoal:     #443C32;   /* native <option> background */
+  --asg-ink-900:      #1D1915;   /* tooltip bubble, deep wells */
+
+  /* Feedback — lifted to match the ground */
+  --success:  #86A06D;  --success-bg: #39402E;
+  --warning:  #D3A055;  --warning-bg: #443624;
+  --danger:   #C96A60;  --danger-bg:  #462B27;
+  --info:     #C39F77;  --info-bg:    #423829;
+
+  color: var(--text-body);
+  background: var(--surface-base);
+}
+[data-theme="balanced"] ::selection { background: rgba(195, 159, 119, 0.40); color: var(--asg-warm-ivory); }

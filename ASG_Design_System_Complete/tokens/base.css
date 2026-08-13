@@ -1,0 +1,113 @@
+/* African Safari Group — Base & Utilities
+   Element defaults + a small set of brand utility classes. Dark ground by
+   default (brand heroes/headers/footers). Wrap light editorial areas in
+   .asg-on-ivory to flip text colours. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--text-body);
+  background: var(--surface-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- Headings — Lora display, one serif moment per screen ---- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
+}
+h1 { font-size: var(--fs-h1); line-height: var(--lh-display); letter-spacing: var(--ls-display); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); font-family: var(--font-body); font-weight: var(--fw-semibold); }
+
+p { margin: 0 0 var(--space-4); max-width: var(--measure); text-wrap: pretty; }
+
+a { color: var(--link); text-decoration: none; transition: color var(--dur-fast) var(--ease-standard); }
+a:hover { color: var(--accent-hover); }
+
+strong { font-weight: var(--fw-semibold); color: var(--text-primary); }
+small { font-size: var(--fs-caption); }
+
+/* Numerals are always Poppins, even inside serif */
+.asg-num, .asg-price, time, [data-numeric] {
+  font-family: var(--font-numeric);
+  font-weight: var(--fw-medium);
+  font-feature-settings: "tnum" 1;
+}
+
+/* ---- Display & editorial helpers ---- */
+.asg-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--text-primary);
+  font-weight: var(--fw-medium);
+  margin: 0;
+}
+
+.asg-lead {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-snug);
+  color: var(--text-body);
+  max-width: var(--measure);
+}
+
+/* Eyebrow — tracked caps, the recurring label moment */
+.asg-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-block;
+}
+
+/* Brass rule line — used under eyebrows / wordmarks, a key brand moment */
+.asg-rule {
+  width: 56px;
+  height: var(--border-rule-w);
+  background: var(--border-rule);
+  border: 0;
+  margin: var(--space-4) 0;
+}
+.asg-rule--center { margin-inline: auto; }
+
+/* ---- Layout ---- */
+.asg-container { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--gutter); }
+.asg-container--wide { max-width: var(--container-wide); }
+.asg-container--text { max-width: var(--container-text); }
+.asg-section { padding-block: var(--gap-section); }
+
+/* ---- Theme scopes ---- */
+.asg-on-ivory {
+  background: var(--surface-ivory);
+  color: var(--text-body-ink);
+}
+.asg-on-ivory h1, .asg-on-ivory h2, .asg-on-ivory h3, .asg-on-ivory h4 { color: var(--text-primary-ink); }
+.asg-on-ivory a { color: var(--link-on-light); }
+.asg-on-ivory strong { color: var(--text-primary-ink); }
+
+/* ---- Selection ---- */
+::selection { background: var(--asg-brass-a40); color: var(--asg-warm-ivory); }
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}

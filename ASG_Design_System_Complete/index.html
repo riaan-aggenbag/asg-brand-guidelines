@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>African Safari Group — Design System</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--surface-base);color:var(--text-body);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 40px;}
+
+  /* ---- Hero ---- */
+  header.hero{padding:80px 0 54px;border-bottom:1px solid var(--border-default);position:relative;overflow:hidden;}
+  .hero__inner{display:flex;flex-direction:column;align-items:flex-start;gap:26px;}
+  .hero img{height:96px;width:auto;}
+  .hero .eyebrow{font-size:11px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--accent-hover);margin:0;}
+  .hero h1{font-family:var(--font-display);font-weight:500;font-size:52px;line-height:1.04;letter-spacing:-.015em;color:var(--text-primary);margin:0;max-width:16ch;}
+  .hero p{font-size:15.5px;line-height:1.6;color:var(--text-muted);max-width:60ch;margin:0;}
+  .hero .rule{width:72px;height:2px;background:var(--accent);border:0;margin:0;}
+  .meta{display:flex;gap:34px;flex-wrap:wrap;margin-top:4px;}
+  .meta div{display:flex;flex-direction:column;gap:3px;}
+  .meta .k{font-size:9.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);}
+  .meta .v{font-family:var(--font-display);font-size:17px;color:var(--text-primary);}
+
+  /* ---- Section ---- */
+  section{padding:54px 0;border-bottom:1px solid var(--border-subtle);}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:26px;}
+  .sec-head .no{font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--accent);min-width:34px;}
+  .sec-head h2{font-family:var(--font-display);font-weight:500;font-size:26px;color:var(--text-primary);margin:0;letter-spacing:-.01em;}
+  .sec-head .desc{font-size:13px;color:var(--text-muted);margin:0 0 0 auto;text-align:right;max-width:42ch;}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .grid.two{grid-template-columns:repeat(2,1fr);}
+
+  .tile{display:flex;flex-direction:column;gap:8px;padding:20px 22px;background:var(--surface-raised);border:1px solid var(--border-default);border-radius:10px;transition:border-color .18s,transform .18s,background .18s;min-height:112px;}
+  .tile:hover{border-color:var(--accent);transform:translateY(-2px);background:var(--tile-hover);}
+  .tile:hover .go{color:var(--accent-hover);}
+  .tile .t{font-family:var(--font-display);font-size:17px;color:var(--text-primary);line-height:1.15;}
+  .tile .s{font-size:12px;line-height:1.5;color:var(--text-muted);}
+  .tile .go{margin-top:auto;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-hover);display:flex;align-items:center;gap:6px;}
+  .tile .go svg{width:12px;height:12px;stroke:var(--accent-hover);}
+
+  /* feature tiles (brief + kits) */
+  .feat{grid-column:span 3;display:flex;gap:0;background:var(--surface-raised);border:1px solid var(--border-default);border-radius:12px;overflow:hidden;min-height:150px;transition:border-color .18s,transform .18s;}
+  .feat:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .feat__art{flex:none;width:200px;background:var(--asg-ink);display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border-default);}
+  .feat__art img{height:66px;}
+  .feat__art.brass{background:var(--accent);}
+  .feat__body{padding:24px 28px;display:flex;flex-direction:column;gap:8px;justify-content:center;}
+  .feat__body .tag{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-hover);}
+  .feat__body .t{font-family:var(--font-display);font-size:24px;color:var(--text-primary);line-height:1.1;}
+  .feat__body .s{font-size:13.5px;line-height:1.6;color:var(--text-muted);max-width:56ch;}
+  .feat__body .go{font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-hover);margin-top:4px;display:flex;align-items:center;gap:6px;}
+  .feat__body .go svg{width:13px;height:13px;stroke:var(--accent-hover);}
+
+  .kit{grid-column:span 3;}
+  .swatchbar{display:flex;height:6px;border-radius:4px;overflow:hidden;margin-top:2px;}
+
+  footer{padding:48px 0 70px;}
+  footer .fwrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
+  footer .brand{font-family:var(--font-display);font-size:16px;color:var(--text-primary);}
+  footer .contact{font-size:12px;line-height:1.8;color:var(--text-muted);}
+  footer .contact a{color:var(--accent-hover);}
+  footer .note{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);}
+
+  /* theme-aware hover + editions */
+  html{--tile-hover:#332d28;}
+  [data-theme="light"]{--tile-hover:#EFE7DB;}
+  header.hero,footer{background:var(--surface-base);}
+  html[data-sys="blend"] header.hero,html[data-sys="blend"] footer{--surface-base:#171411;--surface-raised:#2B2622;--text-primary:#F6F1EA;--text-body:#D9D1C6;--text-muted:#9A9085;--text-faint:#6A6259;--border-default:rgba(246,241,234,.14);--border-subtle:rgba(246,241,234,.08);--accent-hover:var(--asg-brass-400);}
+  [data-theme="light"] .feat__art{background:var(--asg-warm-ivory);}
+  /* blend seams + interior dark band for rhythm */
+  html[data-sys="blend"] header.hero{border-bottom:1px solid var(--asg-brass);}
+  html[data-sys="blend"] footer{border-top:1px solid var(--asg-brass);}
+  html[data-sys="blend"] section.band{background:#171411;border-radius:16px;padding:44px 34px;margin:40px 0;border-bottom:0;--surface-raised:#2B2622;--text-primary:#F6F1EA;--text-body:#D9D1C6;--text-muted:#9A9085;--text-faint:#6A6259;--border-default:rgba(246,241,234,.14);--border-subtle:rgba(246,241,234,.08);--accent-hover:var(--asg-brass-400);--tile-hover:#332d28;}
+
+  /* edition switch (always visible) */
+  .sys-switch{position:fixed;top:20px;right:20px;z-index:60;display:flex;gap:2px;padding:3px;background:rgba(23,20,17,.82);backdrop-filter:blur(8px);border:1px solid rgba(246,241,234,.16);border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);}
+  .sys-switch button{appearance:none;border:0;background:transparent;color:#9A9085;font-family:var(--font-body);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:999px;cursor:pointer;transition:color .15s,background .15s;}
+  .sys-switch button.on{background:var(--accent);color:#171411;}
+  .sys-switch button:not(.on):hover{color:#F6F1EA;}
+
+  /* tweaks panel */
+  .tw{position:fixed;bottom:22px;right:22px;z-index:60;width:252px;background:rgba(23,20,17,.94);backdrop-filter:blur(10px);border:1px solid rgba(246,241,234,.16);border-radius:14px;padding:16px 16px 18px;box-shadow:0 20px 50px rgba(0,0,0,.5);display:none;font-family:var(--font-body);color:#D9D1C6;}
+  .tw.show{display:block;}
+  .tw__h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+  .tw__h b{font-family:var(--font-display);font-weight:500;font-size:15px;color:#F6F1EA;}
+  .tw__x{appearance:none;border:0;background:transparent;color:#9A9085;font-size:19px;line-height:1;cursor:pointer;padding:0 4px;}
+  .tw__x:hover{color:#F6F1EA;}
+  .tw__lab{font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9A9085;margin:15px 0 8px;}
+  .tw__lab.first{margin-top:0;}
+  .tw-seg{display:flex;gap:2px;padding:3px;background:rgba(246,241,234,.06);border-radius:9px;}
+  .tw-seg button{flex:1;appearance:none;border:0;background:transparent;color:#9A9085;font-family:var(--font-body);font-size:10.5px;font-weight:600;letter-spacing:.05em;padding:8px 0;border-radius:6px;cursor:pointer;transition:.15s;}
+  .tw-seg button.on{background:var(--accent);color:#171411;}
+  .tw-sw{display:flex;gap:9px;}
+  .tw-sw button{width:30px;height:30px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;transition:.15s;}
+  .tw-sw button.on{border-color:#F6F1EA;}
+  .tw-row{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .tw-row span{font-size:12px;color:#D9D1C6;}
+  .tw-tog{width:40px;height:23px;border-radius:999px;background:rgba(246,241,234,.16);border:0;cursor:pointer;position:relative;transition:.18s;flex:none;}
+  .tw-tog.on{background:var(--accent);}
+  .tw-tog::after{content:"";position:absolute;top:2px;left:2px;width:19px;height:19px;border-radius:50%;background:#F6F1EA;transition:.18s;}
+  .tw-tog.on::after{transform:translateX(17px);}
+  /* element preview modal */
+  .modal{position:fixed;inset:0;z-index:80;display:none;}
+  .modal.show{display:block;}
+  .modal__scrim{position:absolute;inset:0;background:rgba(10,8,6,.72);backdrop-filter:blur(3px);}
+  .modal__win{position:absolute;inset:3.5vh 3.5vw;background:var(--asg-ink);border:1px solid rgba(246,241,234,.16);border-radius:14px;box-shadow:0 40px 100px rgba(0,0,0,.6);display:flex;flex-direction:column;overflow:hidden;}
+  .modal__bar{display:flex;align-items:center;gap:14px;padding:11px 12px 11px 20px;background:#171411;border-bottom:1px solid rgba(246,241,234,.12);flex:none;}
+  .modal__title{font-family:var(--font-display);font-size:16px;color:#F6F1EA;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .modal__seg{display:flex;gap:2px;padding:3px;background:rgba(246,241,234,.06);border-radius:9px;flex:none;}
+  .modal__seg button{appearance:none;border:0;background:transparent;color:#9A9085;font-family:var(--font-body);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:7px 13px;border-radius:6px;cursor:pointer;transition:.15s;}
+  .modal__seg button.on{background:var(--accent);color:#171411;}
+  .modal__seg button:not(.on):hover{color:#F6F1EA;}
+  .modal__open,.modal__x{appearance:none;border:0;background:transparent;color:#9A9085;cursor:pointer;line-height:1;padding:6px 9px;border-radius:8px;text-decoration:none;flex:none;font-size:17px;}
+  .modal__x{font-size:23px;}
+  .modal__open:hover,.modal__x:hover{color:#F6F1EA;background:rgba(246,241,234,.08);}
+  .modal__body{flex:1;min-height:0;background:var(--asg-ink);}
+  .modal__body iframe{width:100%;height:100%;border:0;display:block;background:var(--asg-ink);}
+  .blend-chrome{display:none;flex:none;background:#0E0C0A;align-items:center;font-family:var(--font-body);}
+  .modal__body.blend{display:flex;flex-direction:column;padding:0;background:#171411;}
+  .modal__body.blend .blend-chrome{display:flex;}
+  .modal__body.blend iframe{flex:1;width:100%;height:auto;border-radius:0;box-shadow:none;}
+  .blend-chrome--top{justify-content:space-between;padding:13px 24px;border-bottom:1px solid var(--asg-brass);}
+  .blend-chrome--top .wm{font-family:var(--font-serif);font-size:14px;letter-spacing:.12em;color:var(--asg-warm-ivory);}
+  .blend-chrome--top .nav{display:flex;gap:16px;align-items:center;}
+  .blend-chrome--top .nav>span{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#9A9085;}
+  .blend-chrome--top .cta{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#171411!important;background:var(--accent);padding:6px 12px;border-radius:3px;}
+  .blend-chrome--bot{justify-content:space-between;padding:12px 24px;border-top:1px solid var(--asg-brass);}
+  .blend-chrome--bot span{font-size:9px;letter-spacing:.06em;color:#6A6259;}
+  .blend-chrome--bot .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);}
+  @media (max-width:820px){.modal__win{inset:0;border-radius:0;}.modal__title{display:none;}}
+
+  @media print{.sys-switch,.tw,.modal{display:none!important;}}
+
+  @media (max-width:820px){
+    .grid,.grid.two{grid-template-columns:1fr;}
+    .feat{flex-direction:column;} .feat__art{width:100%;height:120px;border-right:0;border-bottom:1px solid var(--border-default);}
+    .hero h1{font-size:38px;} .sec-head .desc{display:none;}
+    .wrap{padding:0 24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="sys-switch" role="group" aria-label="Design edition">
+  <button type="button" data-sys="dark" class="on">Dark</button>
+  <button type="button" data-sys="light">Light</button>
+  <button type="button" data-sys="blend">Blend</button>
+</div>
+
+<aside class="tw" id="tw" aria-label="Tweaks">
+  <div class="tw__h"><b>Tweaks</b><button type="button" class="tw__x" id="twx" aria-label="Close">×</button></div>
+  <div class="tw__lab first">Edition</div>
+  <div class="tw-seg" id="twSeg">
+    <button type="button" data-sys="dark">Dark</button>
+    <button type="button" data-sys="light">Light</button>
+    <button type="button" data-sys="blend">Blend</button>
+  </div>
+  <div class="tw__lab">Accent</div>
+  <div class="tw-sw" id="twSw">
+    <button type="button" data-accent="brass" style="background:#A8794B" title="Safari Brass"></button>
+    <button type="button" data-accent="bronze" style="background:#8E6238" title="Deep Bronze"></button>
+    <button type="button" data-accent="sand" style="background:#C39F77" title="Heritage Sand"></button>
+  </div>
+  <div class="tw__lab">Links</div>
+  <div class="tw-row"><span>Open cards in new tab</span><button type="button" class="tw-tog" id="twTab" aria-label="Open in new tab"></button></div>
+</aside>
+
+<header class="hero">
+  <div class="wrap hero__inner">
+    <img id="heroLogo" src="assets/logos/asg-stacked-white.png" alt="African Safari Group">
+    <p class="eyebrow">African Safari Group</p>
+    <h1>The Design System</h1>
+    <hr class="rule">
+    <p>The single source of truth for how the ASG brand looks, sounds, and is built — for our team, our partners, and any designer or agency working on our behalf. Everything here is authoritative. When in doubt, choose restraint.</p>
+    <div class="meta">
+      <div><span class="k">Version</span><span class="v">2026 · 1.0</span></div>
+      <div><span class="k">Editions</span><span class="v">Dark · Light</span></div>
+      <div><span class="k">Typefaces</span><span class="v">Lora · Poppins</span></div>
+      <div><span class="k">Accent</span><span class="v">Safari Brass</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Brand Brief -->
+  <section>
+    <div class="sec-head"><span class="no">A</span><h2>Start here — the Brand Brief</h2><p class="desc">The complete, print-ready guidelines document. Send this to partners.</p></div>
+    <div class="grid">
+      <a class="feat" href="brand-brief/Brand Guidelines 2026.html" target="_blank" rel="noopener">
+        <div class="feat__art brass"><img src="assets/logos/asg-stacked-ink.png" alt=""></div>
+        <div class="feat__body">
+          <span class="tag">Comprehensive · 20 pages · A4</span>
+          <span class="t">Brand Guidelines 2026</span>
+          <span class="s">Logo, colour, type, voice and full application rules — stationery, business cards, folders, websites and newsletters — with do &amp; don't at every step. Print-ready as PDF.</span>
+          <span class="go">Open the brief <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Foundations -->
+  <section>
+    <div class="sec-head"><span class="no">01</span><h2>Brand foundations</h2><p class="desc">The fixed core — logo, colour, type, spacing. Not to be altered.</p></div>
+    <div class="grid">
+      <a class="tile" href="guidelines/brand-lockups.card.html" target="_blank" rel="noopener"><span class="t">Logo Lockups</span><span class="s">Stacked, horizontal &amp; crest-only — the mark is fixed.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/brand-grounds.card.html" target="_blank" rel="noopener"><span class="t">Approved Grounds</span><span class="s">Ink, Ivory, Brass &amp; Heritage Sand — never elsewhere.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/brand-subbrands.card.html" target="_blank" rel="noopener"><span class="t">Sub-Brand Architecture</span><span class="s">One mark, many domains — only the wordmark changes.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/brand-voice.card.html" target="_blank" rel="noopener"><span class="t">Voice</span><span class="s">Specific over superlative. Never salesy, never shouting.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/spacing-scale.card.html" target="_blank" rel="noopener"><span class="t">Spacing Scale</span><span class="s">4px base unit — generous, editorial rhythm.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/spacing-radius.card.html" target="_blank" rel="noopener"><span class="t">Radius &amp; Elevation</span><span class="s">Near-square corners, soft warm-black shadows.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </section>
+
+  <!-- Colour -->
+  <section>
+    <div class="sec-head"><span class="no">02</span><h2>Colour</h2><p class="desc">One deep ground, one brass accent — signal, never ground.</p></div>
+    <div class="grid">
+      <a class="tile" href="guidelines/colors-grounds.card.html" target="_blank" rel="noopener"><span class="t">Primary Grounds</span><span class="s">Ink &amp; charcoal — the dominant 60%.</span><span class="swatchbar"><i style="flex:1;background:#171411"></i><i style="flex:1;background:#2B2622"></i><i style="flex:1;background:#4A443C"></i></span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/colors-neutrals.card.html" target="_blank" rel="noopener"><span class="t">Warm Neutrals</span><span class="s">Light grounds, heritage tone &amp; hairlines — the 30%.</span><span class="swatchbar"><i style="flex:1;background:#F6F1EA"></i><i style="flex:1;background:#C39F77"></i><i style="flex:1;background:#B9AFA2"></i></span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/colors-brass.card.html" target="_blank" rel="noopener"><span class="t">Safari Brass</span><span class="s">The single accent. Signal only — the 10%.</span><span class="swatchbar"><i style="flex:1;background:#8E6238"></i><i style="flex:1;background:#A8794B"></i><i style="flex:1;background:#BB9165"></i></span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/colors-ratio.card.html" target="_blank" rel="noopener"><span class="t">The 60 / 30 / 10 Rule</span><span class="s">Use brass like brass fittings — signal, never ground.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/colors-feedback.card.html" target="_blank" rel="noopener"><span class="t">Semantic / Feedback</span><span class="s">Warm, restrained status colours — never neon.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </section>
+
+  <!-- Type -->
+  <section>
+    <div class="sec-head"><span class="no">03</span><h2>Typography</h2><p class="desc">Lora for the serif moment, Poppins for everything else.</p></div>
+    <div class="grid">
+      <a class="tile" href="guidelines/type-display.card.html" target="_blank" rel="noopener"><span class="t">Lora — Display</span><span class="s">The serif moment. Short, confident, one per screen.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/type-body.card.html" target="_blank" rel="noopener"><span class="t">Poppins — Body &amp; UI</span><span class="s">Body copy at a 60–75 character measure.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/type-scale.card.html" target="_blank" rel="noopener"><span class="t">Type Scale</span><span class="s">Lora headings → Poppins body, in descending order.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/type-eyebrow.card.html" target="_blank" rel="noopener"><span class="t">Eyebrows &amp; Labels</span><span class="s">Tracked caps — never body, never below 9pt.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/type-numerals.card.html" target="_blank" rel="noopener"><span class="t">Numerals</span><span class="s">Prices, dates &amp; stats stay Poppins — even in serif.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section class="band">
+    <div class="sec-head"><span class="no">04</span><h2>Components</h2><p class="desc">Live, interactive building blocks — the dark edition.</p></div>
+    <div class="grid">
+      <a class="tile" href="components/core/core.card.html" target="_blank" rel="noopener"><span class="t">Core</span><span class="s">Buttons, icons, badges, tags, avatars, logo.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="components/data/data.card.html" target="_blank" rel="noopener"><span class="t">Content — Cards &amp; Data</span><span class="s">Lodge card, stats, accordion.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="components/forms/forms.card.html" target="_blank" rel="noopener"><span class="t">Forms</span><span class="s">Inputs, select, checkbox, radio, switch.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="components/feedback/feedback.card.html" target="_blank" rel="noopener"><span class="t">Feedback</span><span class="s">Alerts, toast, tooltip, spinner.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="components/overlay/dialog.card.html" target="_blank" rel="noopener"><span class="t">Dialog</span><span class="s">Modal over a dark scrim.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="components/navigation/navigation.card.html" target="_blank" rel="noopener"><span class="t">Navigation</span><span class="s">Tabs, breadcrumb, pagination.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </section>
+
+  <!-- Light Edition -->
+  <section>
+    <div class="sec-head"><span class="no">05</span><h2>Light edition &amp; editorial blend</h2><p class="desc">The inverted ratio for long-form reading and documents.</p></div>
+    <div class="grid">
+      <a class="tile" href="guidelines/light-ratio.card.html" target="_blank" rel="noopener"><span class="t">Light — 60 / 30 / 10 Inverted</span><span class="s">Ivory dominant, ink for text, brass the signal.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/light-surfaces.card.html" target="_blank" rel="noopener"><span class="t">Light — Surfaces &amp; Text</span><span class="s">Ivory ground, white raised, ink text.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/light-components.card.html" target="_blank" rel="noopener"><span class="t">Light — Components</span><span class="s">The same components, on the light theme.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="tile" href="guidelines/editorial-recipe.card.html" target="_blank" rel="noopener"><span class="t">The Editorial Blend</span><span class="s">Dark chrome bookends a layered light body.</span><span class="go">View <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </section>
+
+  <!-- UI Kits -->
+  <section style="border-bottom:0;">
+    <div class="sec-head"><span class="no">06</span><h2>Live product — the system in use</h2><p class="desc">Full interactive prototypes built entirely from the system.</p></div>
+    <div class="grid">
+      <a class="feat kit" href="ui_kits/flagship-website/index.html" target="_blank" rel="noopener">
+        <div class="feat__art"><img id="kitFlag" src="assets/logos/asg-icon-brass.png" alt=""></div>
+        <div class="feat__body">
+          <span class="tag">Flagship Website · Interactive</span>
+          <span class="t">The ASG marketing site</span>
+          <span class="s">Home, reserve, lodge and enquiry — the full editorial customer journey. Also available as the dark/light editorial blend.</span>
+          <span class="go">Open prototype <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="feat kit" href="ui_kits/asg-direct-bookings/index.html" target="_blank" rel="noopener">
+        <div class="feat__art brass"><img src="assets/logos/asg-icon-ink.png" alt=""></div>
+        <div class="feat__body">
+          <span class="tag">ASG Direct Bookings · Interactive</span>
+          <span class="t">The direct booking flow</span>
+          <span class="s">Search, property, checkout and confirmation — the transactional side of the brand, applied end to end.</span>
+          <span class="go">Open prototype <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap fwrap">
+    <div>
+      <div class="brand">African Safari Group</div>
+      <div class="contact">14 Green Way, Mountainside, Gordon's Bay, Cape Town<br><a href="https://www.africansafarigroup.com" target="_blank" rel="noopener">africansafarigroup.com</a> · hi@africansafarigroup.com</div>
+    </div>
+    <div class="note">Design System 2026 · v1.0 · Confidential</div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__scrim" data-close></div>
+  <div class="modal__win" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__bar">
+      <div class="modal__title" id="modalTitle">Preview</div>
+      <div class="modal__seg" id="modalSeg" role="group" aria-label="Edition">
+        <button type="button" data-med="dark">Dark</button>
+        <button type="button" data-med="light">Light</button>
+        <button type="button" data-med="blend">Blend</button>
+      </div>
+      <a class="modal__open" id="modalOpen" href="#" target="_blank" rel="noopener" title="Open in new tab" aria-label="Open in new tab">↗</a>
+      <button type="button" class="modal__x" id="modalX" data-close aria-label="Close">×</button>
+    </div>
+    <div class="modal__body">
+      <div class="blend-chrome blend-chrome--top"><span class="wm">AFRICAN SAFARI</span><span class="nav"><span>Destinations</span><span>Experiences</span><span>About</span><span class="cta">Plan My Safari</span></span></div>
+      <iframe id="modalFrame" title="Element preview"></iframe>
+      <div class="blend-chrome blend-chrome--bot"><span>© 2026 African Safari Group</span><span class="dot"></span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var TWEAKS = /*EDITMODE-BEGIN*/{
+    "edition": "blend",
+    "accent": "sand",
+    "openInNewTab": false
+  }/*EDITMODE-END*/;
+  var ACCENTS = {brass:{a:'#A8794B',h:'#BB9165'},bronze:{a:'#8E6238',h:'#A8794B'},sand:{a:'#C39F77',h:'#D3B48F'}};
+  var state = Object.assign({}, TWEAKS);
+  try{ var s=JSON.parse(localStorage.getItem('asg-ds-tweaks')||'null'); if(s) state=Object.assign(state,s); }catch(e){}
+  var root=document.documentElement;
+
+  function applyEdition(){
+    root.removeAttribute('data-theme'); root.removeAttribute('data-sys');
+    if(state.edition==='light'){ root.setAttribute('data-theme','light'); }
+    else if(state.edition==='blend'){ root.setAttribute('data-theme','light'); root.setAttribute('data-sys','blend'); }
+    document.querySelectorAll('.sys-switch button,#twSeg button').forEach(function(b){ b.classList.toggle('on', b.dataset.sys===state.edition); });
+    var hl=document.getElementById('heroLogo'); if(hl) hl.src = state.edition==='light' ? 'assets/logos/asg-stacked-ink.png' : 'assets/logos/asg-stacked-white.png';
+    var kf=document.getElementById('kitFlag'); if(kf) kf.src = (state.edition==='light'||state.edition==='blend') ? 'assets/logos/asg-icon-ink.png' : 'assets/logos/asg-icon-brass.png';
+  }
+  function applyAccent(){
+    var A=ACCENTS[state.accent]||ACCENTS.brass;
+    root.style.setProperty('--accent',A.a); root.style.setProperty('--accent-hover',A.h); root.style.setProperty('--link',A.a);
+    document.querySelectorAll('#twSw button').forEach(function(b){ b.classList.toggle('on', b.dataset.accent===state.accent); });
+  }
+  function applyLinks(){
+    document.querySelectorAll('a.tile,a.feat').forEach(function(a){ if(state.openInNewTab){a.target='_blank';a.rel='noopener';} else {a.removeAttribute('target');} });
+    var t=document.getElementById('twTab'); if(t) t.classList.toggle('on', !!state.openInNewTab);
+  }
+  function persist(){
+    try{ localStorage.setItem('asg-ds-tweaks', JSON.stringify(state)); }catch(e){}
+    try{ window.parent.postMessage({type:'__edit_mode_set_keys',edits:state},'*'); }catch(e){}
+  }
+
+  document.querySelectorAll('.sys-switch button,#twSeg button').forEach(function(b){
+    b.addEventListener('click',function(){ state.edition=b.dataset.sys; applyEdition(); persist(); });
+  });
+  document.querySelectorAll('#twSw button').forEach(function(b){
+    b.addEventListener('click',function(){ state.accent=b.dataset.accent; applyAccent(); persist(); });
+  });
+  var tab=document.getElementById('twTab');
+  if(tab) tab.addEventListener('click',function(){ state.openInNewTab=!state.openInNewTab; applyLinks(); persist(); });
+
+  var panel=document.getElementById('tw');
+  window.addEventListener('message',function(e){
+    var d=e.data||{};
+    if(d.type==='__activate_edit_mode'){ panel.classList.add('show'); }
+    else if(d.type==='__deactivate_edit_mode'){ panel.classList.remove('show'); }
+  });
+  var x=document.getElementById('twx');
+  if(x) x.addEventListener('click',function(){ panel.classList.remove('show'); try{window.parent.postMessage({type:'__edit_mode_dismissed'},'*');}catch(e){} });
+
+  // ---- Element preview modal (in-page, with Dark/Light/Blend) ----
+  var modal=document.getElementById('modal');
+  var frame=document.getElementById('modalFrame');
+  var mTitle=document.getElementById('modalTitle');
+  var mOpen=document.getElementById('modalOpen');
+  var curMed='dark';
+  function updateSeg(){ document.querySelectorAll('#modalSeg button').forEach(function(b){ b.classList.toggle('on', b.dataset.med===curMed); }); }
+  function lum(c){var m=(c||'').match(/\d+(\.\d+)?/g);if(!m||m.length<3)return 0;return 0.2126*(m[0]/255)+0.7152*(m[1]/255)+0.0722*(m[2]/255);}
+  function fixLogos(d){
+    var win=d.defaultView||window;
+    d.querySelectorAll('img').forEach(function(im){
+      var src=im.getAttribute('src')||'';
+      if(!/white/i.test(src)) return;
+      if(curMed==='dark'){ im.style.filter=''; return; }
+      var el=im, darkBg=false;
+      while(el){ var c=win.getComputedStyle(el).backgroundColor; if(c&&c!=='rgba(0, 0, 0, 0)'&&c!=='transparent'){ darkBg=lum(c)<0.45; break; } el=el.parentElement; }
+      im.style.filter = darkBg ? '' : 'brightness(0)';
+    });
+  }
+  function applyMed(med){
+    curMed=med; updateSeg();
+    var mb=modal.querySelector('.modal__body'); if(mb) mb.classList.toggle('blend', med==='blend');
+    var d; try{ d=frame.contentDocument; }catch(e){ return; }
+    if(!d||!d.documentElement) return;
+    var h=d.documentElement;
+    h.removeAttribute('data-theme');
+    if(med==='light'||med==='blend'){ h.setAttribute('data-theme','light'); }
+    try{ fixLogos(d); }catch(e){}
+  }
+  function openModal(url,title){
+    mTitle.textContent=title||'Preview'; mOpen.href=url;
+    curMed=state.edition; updateSeg();
+    frame.onload=function(){ applyMed(curMed); };
+    frame.src=url;
+    modal.classList.add('show'); modal.setAttribute('aria-hidden','false');
+  }
+  function closeModal(){ modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); frame.src='about:blank'; }
+  document.querySelectorAll('#modalSeg button').forEach(function(b){ b.addEventListener('click',function(){ applyMed(b.dataset.med); }); });
+  modal.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click',closeModal); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&modal.classList.contains('show')) closeModal(); });
+  document.querySelectorAll('a.tile,a.feat').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(state.openInNewTab) return;            // tweak forces new tab instead
+      if(e.metaKey||e.ctrlKey||e.shiftKey||e.button===1) return;  // let power-users open a tab
+      e.preventDefault();
+      var t=a.querySelector('.t'); openModal(a.getAttribute('href'), t?t.textContent.trim():'Preview');
+    });
+  });
+
+  applyEdition(); applyAccent(); applyLinks();
+  try{ window.parent.postMessage({type:'__edit_mode_available'},'*'); }catch(e){}
+})();
+</script>
+
+</body>
+</html>

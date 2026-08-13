@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>African Safari Group — Brand Guidelines 2026</title>
+<link rel="stylesheet" href="../styles.css">
+<template id="__bundler_thumbnail" data-bg-color="#171411">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#171411"/>
+    <text x="600" y="360" text-anchor="middle" font-family="Georgia,serif" font-size="120" fill="#F6F1EA" letter-spacing="14">ASG</text>
+    <rect x="540" y="430" width="120" height="4" fill="#A8794B"/>
+    <text x="600" y="510" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#BB9165" letter-spacing="10">BRAND 2026</text>
+  </svg>
+</template>
+<style>
+  :root{
+    --ink:#171411; --charcoal:#2B2622; --soft:#4A443C;
+    --brass:#A8794B; --brass-600:#8E6238; --brass-400:#BB9165;
+    --sand:#C39F77; --sand-tint:#E8DCCB;
+    --ivory:#F6F1EA; --ivory-200:#EFE7DB; --white:#FDFBF8;
+    --bone:#B9AFA2; --bone-300:#D8CFC2;
+    --ink-body:#4A443C; --ink-muted:#7A7166;
+    --ok:#6E8A5A; --warn:#C08A3E; --bad:#B5524A;
+    --serif:'Lora',Georgia,serif; --sans:'Poppins','Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:#26221e;font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+
+  /* ---- Paged A4 ---- */
+  .book{display:flex;flex-direction:column;align-items:center;gap:22px;padding:34px 16px 60px;}
+  .sheet{width:210mm;height:297mm;background:var(--ivory);position:relative;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.5);color:var(--ink);}
+  .pad{padding:20mm 20mm 18mm;}
+  .dark{background:var(--ink);color:var(--ivory);}
+  .charc{background:var(--charcoal);color:var(--ivory);}
+
+  /* ---- Shared type ---- */
+  .ey{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--brass);margin:0;}
+  .dark .ey,.charc .ey{color:var(--brass-400);}
+  .rule{width:64px;height:2px;background:var(--brass);border:0;margin:11px 0 0;}
+  .rule.wide{width:100%;}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;color:var(--ink);margin:0;line-height:1.1;text-wrap:balance;}
+  .dark h1,.dark h2,.dark h3,.charc h1,.charc h2{color:var(--ivory);}
+  .h-page{font-size:33px;line-height:1.05;margin:15px 0 0;letter-spacing:.005em;}
+  .h-sub{font-size:20px;margin:0;}
+  p{margin:0;line-height:1.62;font-size:12.5px;color:var(--ink-body);max-width:62ch;}
+  .lead{font-size:15.5px;line-height:1.6;color:var(--soft);font-weight:300;}
+  .muted{color:var(--ink-muted);}
+  .sans-cap{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-muted);}
+  .serif-it{font-family:var(--serif);font-style:italic;}
+  .num{font-family:var(--sans);font-weight:500;font-feature-settings:"tnum" 1;}
+  strong,b{font-weight:600;color:var(--ink);}
+  .dark strong,.dark b,.charc strong,.charc b{color:var(--ivory);}
+  p strong{color:var(--ink);}
+
+  /* running header / footer on content pages */
+  .rhead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--bone-300);padding-bottom:8px;margin-bottom:22px;}
+  .rhead .sans-cap{color:var(--ink-muted);}
+  .foot{position:absolute;left:20mm;right:20mm;bottom:12mm;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bone-300);padding-top:7px;}
+  .foot span{font-family:var(--sans);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);}
+
+  /* ---- Cover ---- */
+  .cover{display:flex;flex-direction:column;justify-content:space-between;padding:26mm 22mm;background:radial-gradient(120% 90% at 50% 12%, #211d18 0%, #171411 62%);}
+  .cover-top{display:flex;justify-content:space-between;align-items:flex-start;}
+  .cover-top .sans-cap{color:var(--bone);letter-spacing:.24em;}
+  .cover-mid{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;}
+  .cover-mid img{width:150px;height:auto;margin-bottom:26px;}
+  .cover-mid .eyc{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.42em;text-transform:uppercase;color:var(--brass-400);margin:0 0 18px;}
+  .cover-mid h1{font-size:62px;line-height:.98;color:var(--ivory);letter-spacing:.01em;}
+  .cover-mid .yr{font-family:var(--sans);font-weight:200;font-size:44px;color:var(--brass);letter-spacing:.2em;margin-top:6px;}
+  .cover-rule{width:80px;height:2px;background:var(--brass);margin:26px auto 0;}
+  .cover-tag{font-family:var(--serif);font-style:italic;font-size:16px;color:#C9C0B4;margin:22px auto 0;max-width:34ch;line-height:1.5;}
+  .cover-bot{display:flex;justify-content:space-between;align-items:flex-end;}
+  .cover-bot span{font-family:var(--sans);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bone);}
+
+  /* ---- Section divider ---- */
+  .divider{display:flex;flex-direction:column;justify-content:center;padding:0 26mm;}
+  .divider .dnum{font-family:var(--serif);font-size:150px;line-height:.8;color:var(--brass);opacity:.9;}
+  .divider h1{font-size:52px;margin:6px 0 0;color:var(--ivory);}
+  .divider .dlist{margin-top:34px;display:flex;flex-direction:column;gap:11px;max-width:70%;}
+  .divider .dlist .di{display:flex;gap:16px;align-items:baseline;font-family:var(--sans);font-size:12.5px;color:#C9C0B4;border-top:1px solid rgba(246,241,234,.12);padding-top:11px;}
+  .divider .dlist .di b{color:var(--brass-400);font-weight:600;min-width:26px;}
+  .divider .dtag{position:absolute;bottom:22mm;left:26mm;right:26mm;display:flex;justify-content:space-between;font-family:var(--sans);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone);border-top:1px solid rgba(246,241,234,.12);padding-top:12px;}
+
+  /* ---- Contents ---- */
+  .toc2{display:grid;grid-template-columns:1fr 1fr;gap:26px 46px;margin-top:28px;align-content:start;}
+  .tg .gh{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-600);padding-bottom:8px;border-bottom:1px solid var(--brass);margin-bottom:6px;}
+  .tg .gi{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:6px 0;}
+  .tg .gi .t{font-family:var(--serif);font-size:13.5px;color:var(--ink);line-height:1.3;}
+  .tg .gi .pg{font-family:var(--sans);font-size:10.5px;font-weight:600;color:var(--ink-muted);flex:none;}
+
+  /* ---- Layout helpers ---- */
+  .col2{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .col2u{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;}
+  .stack{display:flex;flex-direction:column;gap:14px;}
+  .body-copy{margin-top:16px;display:flex;flex-direction:column;gap:10px;}
+
+  /* ---- Logo specimens ---- */
+  .logo-cell{background:var(--ink);border-radius:4px;display:flex;align-items:center;justify-content:center;padding:26px;min-height:130px;}
+  .logo-cell.light{background:var(--white);border:1px solid var(--bone-300);}
+  .logo-cell img{max-height:70px;width:auto;}
+  .logo-cell.tall img{max-height:96px;}
+  .spec-cap{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);margin-top:8px;}
+
+  /* clear space diagram */
+  .clear{position:relative;background:var(--white);border:1px solid var(--bone-300);border-radius:4px;padding:40px;display:flex;align-items:center;justify-content:center;}
+  .clear .box{position:relative;padding:44px;}
+  .clear .box::before{content:"";position:absolute;inset:0;border:1px dashed var(--brass);}
+  .clear .box img{height:80px;display:block;}
+  .clear .x{position:absolute;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--brass);}
+
+  /* ---- Swatches ---- */
+  .sw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px;}
+  .sw{border:1px solid var(--bone-300);border-radius:5px;overflow:hidden;}
+  .sw .chip{height:74px;}
+  .sw .info{padding:9px 12px;background:var(--white);}
+  .sw .nm{font-family:var(--sans);font-weight:600;font-size:12px;color:var(--ink);}
+  .sw .hex{font-family:var(--sans);font-weight:500;font-size:11px;color:var(--ink-muted);letter-spacing:.02em;}
+  .sw .ro{font-family:var(--sans);font-size:9.5px;color:var(--ink-muted);margin-top:2px;line-height:1.35;}
+
+  /* 60/30/10 bar */
+  .ratio-bar{display:flex;height:88px;border-radius:5px;overflow:hidden;border:1px solid var(--bone-300);margin-top:4px;}
+  .ratio-bar .seg{display:flex;align-items:flex-end;padding:10px 12px;}
+  .ratio-bar .seg span{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.08em;}
+  .ratio-leg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;}
+  .ratio-leg .lg{border-top:2px solid;padding-top:8px;}
+  .ratio-leg .lg .pc{font-family:var(--serif);font-size:22px;}
+  .ratio-leg .lg .lb{font-family:var(--sans);font-size:10.5px;color:var(--ink-body);line-height:1.4;margin-top:3px;}
+
+  /* ---- Type specimens ---- */
+  .type-spec{border:1px solid var(--bone-300);border-radius:5px;padding:20px 22px;background:var(--white);}
+  .type-spec .big{font-family:var(--serif);font-size:52px;line-height:1;color:var(--ink);}
+  .type-spec .big.sans{font-family:var(--sans);font-weight:600;}
+  .type-spec .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .type-spec .row b{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);border:1px solid var(--bone-300);border-radius:3px;padding:3px 8px;}
+  .scale-row{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--bone-300);padding:11px 0;gap:16px;}
+  .scale-row .lbl{font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);white-space:nowrap;}
+
+  /* ---- Do / Don't ---- */
+  .dd{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px;}
+  .dd-card{border-radius:6px;padding:16px 17px;border:1px solid;}
+  .dd-do{background:rgba(110,138,90,.09);border-color:rgba(110,138,90,.4);}
+  .dd-no{background:rgba(181,82,74,.07);border-color:rgba(181,82,74,.35);}
+  .dd-h{display:flex;align-items:center;gap:9px;margin-bottom:11px;}
+  .dd-badge{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;}
+  .dd-badge svg{width:11px;height:11px;}
+  .dd-do .dd-badge{background:var(--ok);} .dd-no .dd-badge{background:var(--bad);}
+  .dd-h b{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+  .dd-do .dd-h b{color:#4d6b3c;} .dd-no .dd-h b{color:#9a3f38;}
+  .dd ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .dd li{font-family:var(--sans);font-size:11px;line-height:1.45;color:var(--soft);padding-left:14px;position:relative;}
+  .dd li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--bone);}
+
+  /* ---- Mockups ---- */
+  .mock-wrap{display:flex;gap:22px;align-items:flex-start;margin-top:4px;}
+  .mock-cap{font-family:var(--sans);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);margin-top:9px;text-align:center;}
+  .shadow{box-shadow:0 10px 26px rgba(23,20,17,.18);}
+
+  /* letterhead mock (A4 mini) */
+  .lh{width:150px;height:212px;background:var(--white);border:1px solid var(--bone-300);padding:16px 15px;display:flex;flex-direction:column;}
+  .lh .lh-top{display:flex;justify-content:space-between;align-items:flex-start;}
+  .lh .lh-top img{height:26px;}
+  .lh .lh-addr{font-family:var(--sans);font-size:4.6px;line-height:1.5;color:var(--ink-muted);text-align:right;}
+  .lh .lh-rule{height:1.5px;background:var(--brass);width:34px;margin:13px 0 12px;}
+  .lh .bar{height:3px;background:var(--bone-300);border-radius:2px;margin-bottom:4.5px;}
+  .lh .bar.s{width:60%;} .lh .bar.m{width:88%;} .lh .bar.l{width:100%;}
+  .lh .lh-foot{margin-top:auto;border-top:1px solid var(--bone-300);padding-top:6px;font-family:var(--sans);font-size:4.4px;letter-spacing:.05em;color:var(--ink-muted);text-align:center;line-height:1.5;}
+
+  /* compliment slip */
+  .slip{width:210px;height:96px;background:var(--white);border:1px solid var(--bone-300);padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between;}
+  .slip img{height:22px;width:auto;align-self:flex-start;}
+  .slip .cw{font-family:var(--serif);font-style:italic;font-size:12px;color:var(--soft);}
+  .slip .sf{font-family:var(--sans);font-size:6px;letter-spacing:.06em;color:var(--ink-muted);}
+
+  /* business cards */
+  .bc{width:214px;height:131px;border-radius:6px;padding:17px 19px;display:flex;flex-direction:column;justify-content:space-between;}
+  .bc.front{background:var(--ink);justify-content:space-between;}
+  .bc.front .nm{font-family:var(--serif);font-size:16px;color:var(--ivory);line-height:1.05;}
+  .bc.front .ti{font-family:var(--sans);font-size:7px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-400);margin-top:4px;}
+  .bc.front .cd{font-family:var(--sans);font-size:7px;line-height:1.9;color:var(--bone);letter-spacing:.02em;}
+  .bc.back{background:var(--ink);align-items:center;justify-content:center;}
+  .bc.back img{height:64px;width:auto;}
+
+  /* folder */
+  .folder{width:150px;height:196px;background:var(--ink);border-radius:4px 4px 8px 8px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+  .folder::before{content:"";position:absolute;top:0;left:0;right:0;height:26px;background:linear-gradient(var(--charcoal),transparent);}
+  .folder img{height:64px;margin-bottom:14px;}
+  .folder .fr{width:44px;height:2px;background:var(--brass);}
+  .folder .ft{font-family:var(--sans);font-size:6px;letter-spacing:.34em;text-transform:uppercase;color:var(--bone);margin-top:12px;}
+
+  /* document/report */
+  .doc{width:150px;height:196px;background:var(--white);border:1px solid var(--bone-300);padding:15px 14px;display:flex;flex-direction:column;}
+  .doc img{height:16px;width:auto;align-self:flex-start;}
+  .doc .dt{font-family:var(--serif);font-size:11px;color:var(--ink);margin:16px 0 3px;line-height:1.15;}
+  .doc .de{font-family:var(--sans);font-size:5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-600);}
+  .doc .dr{height:1.5px;width:26px;background:var(--brass);margin:9px 0 11px;}
+  .doc .bar{height:2.5px;background:var(--bone-300);border-radius:2px;margin-bottom:4px;}
+
+  /* website mock */
+  .web{width:250px;border-radius:6px;overflow:hidden;border:1px solid var(--bone-300);background:var(--white);}
+  .web .wbar{height:20px;background:var(--ink);display:flex;align-items:center;padding:0 10px;gap:5px;justify-content:space-between;}
+  .web .wbar img{height:9px;}
+  .web .wnav{display:flex;gap:6px;}
+  .web .wnav i{width:14px;height:3px;background:rgba(246,241,234,.4);border-radius:2px;display:block;}
+  .web .whero{height:96px;background:linear-gradient(160deg,#2b2622,#171411);position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;}
+  .web .whero .we{font-family:var(--sans);font-size:5.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-400);}
+  .web .whero .wh{font-family:var(--serif);font-size:13px;color:var(--ivory);margin-top:3px;line-height:1.05;}
+  .web .whero .wc{margin-top:8px;width:52px;height:12px;background:var(--brass);border-radius:2px;}
+  .web .wbody{padding:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+  .web .wbody .wt{height:34px;background:var(--ivory-200);border-radius:3px;}
+
+  /* newsletter mock */
+  .nl{width:172px;border-radius:6px;overflow:hidden;border:1px solid var(--bone-300);background:var(--white);}
+  .nl .nh{background:var(--ink);padding:12px;display:flex;justify-content:center;}
+  .nl .nh img{height:26px;}
+  .nl .nhero{height:82px;background:linear-gradient(160deg,#3a342e,#171411);}
+  .nl .nbody{padding:14px;}
+  .nl .ne{font-family:var(--sans);font-size:6px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-600);}
+  .nl .nt{font-family:var(--serif);font-size:14px;color:var(--ink);margin:5px 0 8px;line-height:1.1;}
+  .nl .bar{height:2.5px;background:var(--bone-300);border-radius:2px;margin-bottom:4px;}
+  .nl .ncta{margin-top:11px;width:82px;height:16px;background:var(--brass);border-radius:2px;}
+  .nl .nfoot{background:var(--ivory-200);padding:9px 12px;font-family:var(--sans);font-size:5px;letter-spacing:.06em;color:var(--ink-muted);text-align:center;line-height:1.6;}
+
+  /* photo slot */
+  .pslot{background:repeating-linear-gradient(45deg,#211d18,#211d18 8px,#1c1815 8px,#1c1815 16px);border-radius:5px;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;}
+  .pslot span{font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone);line-height:1.6;}
+
+  /* callout / rulebox */
+  .note{border-left:2px solid var(--brass);background:var(--ivory-200);padding:12px 15px;border-radius:0 4px 4px 0;}
+  .note p{font-size:11.5px;color:var(--soft);}
+  .note .serif-it{color:var(--ink);}
+
+  /* fill-in marker */
+  .fill{background:rgba(168,121,75,.14);border-bottom:1px dashed var(--brass);padding:0 2px;color:var(--brass-600);font-style:normal;}
+
+  /* accreditation chips */
+  .accs{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .acc{border:1px solid rgba(246,241,234,.18);border-radius:5px;padding:10px 13px;display:flex;flex-direction:column;gap:2px;min-width:120px;}
+  .acc b{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--ivory);}
+  .acc span{font-family:var(--sans);font-size:8.5px;letter-spacing:.04em;color:var(--bone);line-height:1.4;}
+
+  @media print{
+    body{background:#fff;}
+    .book{padding:0;gap:0;}
+    .sheet{box-shadow:none;margin:0;page-break-after:always;break-after:page;}
+    .sheet:last-child{page-break-after:auto;break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<div class="book">
+
+  <!-- ============ 01 · COVER ============ -->
+  <section class="sheet dark cover" data-screen-label="Cover">
+    <div class="cover-top">
+      <span class="sans-cap">African Safari Group</span>
+      <span class="sans-cap">Brand Standards</span>
+    </div>
+    <div class="cover-mid">
+      <img src="../assets/logos/asg-stacked-white.png" alt="African Safari Group">
+      <p class="eyc">Brand Guidelines</p>
+      <h1>Brand<br>Guidelines</h1>
+      <div class="yr">2026</div>
+      <div class="cover-rule"></div>
+      <p class="cover-tag">The single source for how our brand looks, sounds and behaves — for every partner, supplier and team member.</p>
+    </div>
+    <div class="cover-bot">
+      <span>Version 1.0 · 2026</span>
+      <span>africansafarigroup.com</span>
+    </div>
+  </section>
+
+  <!-- ============ 02 · CONTENTS ============ -->
+  <section class="sheet pad" data-screen-label="Contents">
+    <div class="rhead"><span class="sans-cap">Brand Guidelines 2026</span><span class="sans-cap">African Safari Group</span></div>
+    <p class="ey">Contents</p>
+    <h2 class="h-page">What's inside</h2>
+    <div class="rule"></div>
+    <div class="toc2">
+      <div class="tg">
+        <div class="gh">Foundations</div>
+        <div class="gi"><span class="t">Introduction &amp; how to use this guide</span><span class="pg">03</span></div>
+      </div>
+      <div class="tg">
+        <div class="gh">01 · The Logo</div>
+        <div class="gi"><span class="t">The crest &amp; primary lockups</span><span class="pg">05</span></div>
+        <div class="gi"><span class="t">Clear space &amp; minimum size</span><span class="pg">06</span></div>
+        <div class="gi"><span class="t">Logo misuse — what never to do</span><span class="pg">07</span></div>
+        <div class="gi"><span class="t">Approved grounds &amp; sub-brands</span><span class="pg">08</span></div>
+      </div>
+      <div class="tg">
+        <div class="gh">02 · Colour</div>
+        <div class="gi"><span class="t">The primary palette</span><span class="pg">10</span></div>
+        <div class="gi"><span class="t">The 60 / 30 / 10 rule</span><span class="pg">11</span></div>
+        <div class="gi"><span class="t">Neutrals &amp; feedback colours</span><span class="pg">12</span></div>
+      </div>
+      <div class="tg">
+        <div class="gh">03 · Typography</div>
+        <div class="gi"><span class="t">Lora &amp; Poppins — our two typefaces</span><span class="pg">14</span></div>
+        <div class="gi"><span class="t">Type scale &amp; usage rules</span><span class="pg">15</span></div>
+      </div>
+      <div class="tg">
+        <div class="gh">04 · Voice &amp; Imagery</div>
+        <div class="gi"><span class="t">How we write — voice &amp; tone</span><span class="pg">17</span></div>
+        <div class="gi"><span class="t">Photography direction</span><span class="pg">18</span></div>
+      </div>
+      <div class="tg">
+        <div class="gh">05 · Applications</div>
+        <div class="gi"><span class="t">Stationery — letterhead &amp; slip</span><span class="pg">20</span></div>
+        <div class="gi"><span class="t">Business cards</span><span class="pg">21</span></div>
+        <div class="gi"><span class="t">Folders, files &amp; documents</span><span class="pg">22</span></div>
+        <div class="gi"><span class="t">Websites</span><span class="pg">23</span></div>
+        <div class="gi"><span class="t">Newsletters &amp; email</span><span class="pg">24</span></div>
+        <div class="gi"><span class="t">Quick do &amp; don't reference</span><span class="pg">25</span></div>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>02</span></div>
+  </section>
+
+  <!-- ============ 03 · INTRODUCTION ============ -->
+  <section class="sheet pad" data-screen-label="Introduction">
+    <div class="rhead"><span class="sans-cap">Brand Guidelines 2026</span><span class="sans-cap">Introduction</span></div>
+    <p class="ey">Introduction</p>
+    <h2 class="h-page">A brand built on quiet confidence</h2>
+    <div class="rule"></div>
+    <div class="col2u" style="margin-top:22px;">
+      <div class="stack">
+        <p class="lead">African Safari Group is a Premier Inbound Travel Agent, designing and fulfilling five-star safari journeys across Southern and East Africa — sold through consultation, never self-service.</p>
+        <p>Our brand is <strong>dark, restrained, editorial luxury</strong> — closer to Aman or Singita than a typical travel agency. Confidence is shown through precision and space, never volume. This guide exists so that every touchpoint — a letter, a business card, a website, a newsletter — feels unmistakably like us.</p>
+        <p>Please treat it as the single source of truth. When in doubt, choose restraint: fewer colours, more space, one clear message.</p>
+      </div>
+      <div class="stack">
+        <div class="note"><p class="serif-it" style="font-size:14px;">"Specific over superlative. Never salesy, never shouting."</p><p style="margin-top:6px;">Our voice in one line.</p></div>
+        <div>
+          <p class="sans-cap" style="margin-bottom:8px;">How to use this guide</p>
+          <p style="font-size:11.5px;">Sections 01–04 define the fixed foundations — logo, colour, type, voice. Section 05 shows how they come together across the materials you'll produce most: stationery, cards, folders, websites and newsletters. The foundations never change; the applications show you how to apply them.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:26px;">
+      <p class="sans-cap" style="margin-bottom:10px;">The four principles</p>
+      <div class="col2" style="grid-template-columns:repeat(4,1fr);gap:14px;">
+        <div class="note" style="border-color:var(--brass);background:transparent;border-left-width:2px;"><p class="serif-it" style="font-size:15px;color:var(--ink);">Restraint</p><p style="font-size:10px;margin-top:4px;">Space and silence do the work.</p></div>
+        <div class="note" style="border-color:var(--brass);background:transparent;border-left-width:2px;"><p class="serif-it" style="font-size:15px;color:var(--ink);">Precision</p><p style="font-size:10px;margin-top:4px;">Specific detail over adjectives.</p></div>
+        <div class="note" style="border-color:var(--brass);background:transparent;border-left-width:2px;"><p class="serif-it" style="font-size:15px;color:var(--ink);">Warmth</p><p style="font-size:10px;margin-top:4px;">Authoritative, never cold.</p></div>
+        <div class="note" style="border-color:var(--brass);background:transparent;border-left-width:2px;"><p class="serif-it" style="font-size:15px;color:var(--ink);">Consistency</p><p style="font-size:10px;margin-top:4px;">One brass, one crest, everywhere.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>03</span></div>
+  </section>
+
+  <!-- ============ 04 · DIVIDER: LOGO ============ -->
+  <section class="sheet dark divider" data-screen-label="Divider — Logo">
+    <div class="dnum">01</div>
+    <h1>The Logo</h1>
+    <div class="cover-rule" style="margin:22px 0 0;"></div>
+    <div class="dlist">
+      <div class="di"><b>05</b><span>The crest &amp; primary lockups</span></div>
+      <div class="di"><b>06</b><span>Clear space &amp; minimum size</span></div>
+      <div class="di"><b>07</b><span>Misuse — what never to do</span></div>
+      <div class="di"><b>08</b><span>Approved grounds &amp; sub-brand architecture</span></div>
+    </div>
+    <div class="dtag"><span>African Safari Group</span><span>Brand Guidelines 2026</span></div>
+  </section>
+
+  <!-- ============ 05 · LOGO LOCKUPS ============ -->
+  <section class="sheet pad" data-screen-label="Logo — lockups">
+    <div class="rhead"><span class="sans-cap">01 · The Logo</span><span class="sans-cap">Lockups</span></div>
+    <p class="ey">The Mark</p>
+    <h2 class="h-page">The crest &amp; primary lockups</h2>
+    <div class="rule"></div>
+    <p style="margin-top:16px;">Our mark pairs a fixed lion crest with a tracked serif wordmark. The crest is <strong>never redrawn</strong>. Use the lockup that fits the space — and always give it room to breathe.</p>
+    <div class="col2" style="margin-top:20px;">
+      <div><div class="logo-cell tall"><img src="../assets/logos/asg-stacked-white.png" alt="Stacked lockup"></div><p class="spec-cap">Stacked — the master lockup</p></div>
+      <div><div class="logo-cell"><img src="../assets/logos/asg-horizontal-white.webp" alt="Horizontal lockup"></div><p class="spec-cap">Horizontal — preferred for nav &amp; headers</p></div>
+    </div>
+    <div class="col2" style="margin-top:16px;">
+      <div><div class="logo-cell" style="min-height:96px;"><img src="../assets/logos/asg-icon-white.png" alt="Crest" style="max-height:64px;"></div><p class="spec-cap">Crest only — favicons, stamps, tight spaces</p></div>
+      <div><div class="logo-cell light" style="min-height:96px;"><img src="../assets/logos/asg-stacked-ink.png" alt="Ink stacked" style="max-height:64px;"></div><p class="spec-cap">Ink version — for light grounds</p></div>
+    </div>
+    <div class="note" style="margin-top:20px;"><p><strong>One mark, three lockups.</strong> Choose by context, not preference. The stacked lockup leads on covers and formal documents; the horizontal lockup runs in website and letterhead headers; the crest alone appears only where the full name already reads nearby.</p></div>
+    <div class="foot"><span>African Safari Group</span><span>05</span></div>
+  </section>
+
+  <!-- ============ 06 · CLEAR SPACE ============ -->
+  <section class="sheet pad" data-screen-label="Logo — clear space">
+    <div class="rhead"><span class="sans-cap">01 · The Logo</span><span class="sans-cap">Clear space &amp; size</span></div>
+    <p class="ey">Protection</p>
+    <h2 class="h-page">Clear space &amp; minimum size</h2>
+    <div class="rule"></div>
+    <div class="col2u" style="margin-top:20px;">
+      <div>
+        <div class="clear">
+          <div class="box"><img src="../assets/logos/asg-icon-ink.png" alt="" style="filter:none;"></div>
+        </div>
+        <p class="spec-cap" style="text-align:center;">Minimum clear space = the height of the crest, on all sides</p>
+      </div>
+      <div class="stack">
+        <p>Always surround the logo with clear space at least equal to the <strong>height of the crest</strong>. Keep type, images, edges and other logos out of this zone.</p>
+        <div>
+          <p class="sans-cap" style="margin-bottom:8px;">Minimum sizes</p>
+          <div class="scale-row"><span style="font-family:var(--serif);font-size:15px;">Stacked lockup</span><span class="lbl">32 px / 12 mm</span></div>
+          <div class="scale-row"><span style="font-family:var(--serif);font-size:15px;">Horizontal lockup</span><span class="lbl">28 px / 24 mm wide</span></div>
+          <div class="scale-row" style="border-bottom:0;"><span style="font-family:var(--serif);font-size:15px;">Crest only</span><span class="lbl">20 px / 8 mm</span></div>
+        </div>
+        <p style="font-size:11px;">Below these sizes the crest detail breaks down. When a mark must go smaller than the minimum, use the crest alone rather than the full lockup.</p>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>06</span></div>
+  </section>
+
+  <!-- ============ 07 · MISUSE ============ -->
+  <section class="sheet pad" data-screen-label="Logo — misuse">
+    <div class="rhead"><span class="sans-cap">01 · The Logo</span><span class="sans-cap">Misuse</span></div>
+    <p class="ey">What never to do</p>
+    <h2 class="h-page">Logo misuse</h2>
+    <div class="rule"></div>
+    <p style="margin-top:16px;">The mark is fixed. These are the most common mistakes — each one weakens the brand. If a use isn't shown as approved elsewhere in this guide, don't do it.</p>
+    <div class="col2" style="grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;">
+      <div><div class="logo-cell" style="min-height:100px;position:relative;"><img src="../assets/logos/asg-icon-white.png" style="max-height:56px;transform:scaleX(1.6);"><span style="position:absolute;bottom:8px;right:10px;color:var(--bad);font-size:20px;">✕</span></div><p class="spec-cap">Don't stretch or distort</p></div>
+      <div><div class="logo-cell" style="min-height:100px;background:#3a6b2f;position:relative;"><img src="../assets/logos/asg-icon-white.png" style="max-height:56px;"><span style="position:absolute;bottom:8px;right:10px;color:#fff;font-size:20px;">✕</span></div><p class="spec-cap">Don't place on off-brand colours</p></div>
+      <div><div class="logo-cell" style="min-height:100px;position:relative;"><img src="../assets/logos/asg-icon-white.png" style="max-height:56px;filter:drop-shadow(3px 4px 3px rgba(255,255,255,.6));"><span style="position:absolute;bottom:8px;right:10px;color:var(--bad);font-size:20px;">✕</span></div><p class="spec-cap">Don't add shadows or effects</p></div>
+      <div><div class="logo-cell light" style="min-height:100px;position:relative;"><img src="../assets/logos/asg-icon-brass.png" style="max-height:56px;"><span style="position:absolute;bottom:8px;right:10px;color:var(--bad);font-size:20px;">✕</span></div><p class="spec-cap">Don't use brass crest on light</p></div>
+      <div><div class="logo-cell" style="min-height:100px;position:relative;"><img src="../assets/logos/asg-icon-white.png" style="max-height:56px;transform:rotate(-12deg);"><span style="position:absolute;bottom:8px;right:10px;color:var(--bad);font-size:20px;">✕</span></div><p class="spec-cap">Don't rotate or tilt</p></div>
+      <div><div class="logo-cell" style="min-height:100px;position:relative;"><img src="../assets/logos/asg-icon-white.png" style="max-height:56px;opacity:.35;"><span style="position:absolute;bottom:8px;right:10px;color:var(--bad);font-size:20px;">✕</span></div><p class="spec-cap">Don't lower opacity as a watermark</p></div>
+    </div>
+    <div class="note" style="margin-top:20px;border-color:var(--bad);"><p><strong>Also never:</strong> recolour the crest outside Ink, Ivory, Brass, Heritage Sand or White · redraw or replace the lion · crop the crest · box the logo in a coloured shape · set the wordmark in a different typeface.</p></div>
+    <div class="foot"><span>African Safari Group</span><span>07</span></div>
+  </section>
+
+  <!-- ============ 08 · GROUNDS + SUBBRANDS ============ -->
+  <section class="sheet pad" data-screen-label="Logo — grounds & sub-brands">
+    <div class="rhead"><span class="sans-cap">01 · The Logo</span><span class="sans-cap">Grounds &amp; sub-brands</span></div>
+    <p class="ey">Approved use</p>
+    <h2 class="h-page">Grounds &amp; sub-brands</h2>
+    <div class="rule"></div>
+    <p style="margin-top:14px;">The crest sits only on approved grounds. Match the crest colour to the background for contrast and warmth.</p>
+    <div class="col2" style="grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;">
+      <div><div class="logo-cell" style="min-height:88px;background:var(--ink);"><img src="../assets/logos/asg-icon-white.png" style="max-height:48px;"></div><p class="spec-cap">White on Ink</p></div>
+      <div><div class="logo-cell light" style="min-height:88px;"><img src="../assets/logos/asg-icon-ink.png" style="max-height:48px;"></div><p class="spec-cap">Ink on Ivory</p></div>
+      <div><div class="logo-cell" style="min-height:88px;background:var(--brass);"><img src="../assets/logos/asg-icon-white.png" style="max-height:48px;"></div><p class="spec-cap">White on Brass</p></div>
+      <div><div class="logo-cell" style="min-height:88px;background:var(--sand);"><img src="../assets/logos/asg-icon-ink.png" style="max-height:48px;"></div><p class="spec-cap">Ink on Heritage Sand</p></div>
+    </div>
+    <p class="ey" style="margin-top:24px;">Sub-brand architecture</p>
+    <h3 class="h-sub" style="margin-top:8px;">One crest, many domains</h3>
+    <p style="margin-top:8px;">Sub-brands share the same crest and serif setting — <strong>only the wordmark changes.</strong> Every sub-brand carries a "Part of African Safari Group" endorsement line.</p>
+    <div class="col2" style="margin-top:14px;gap:12px;">
+      <div class="logo-cell light" style="min-height:70px;justify-content:flex-start;gap:14px;"><img src="../assets/logos/asg-icon-ink.png" style="max-height:40px;"><div><div style="font-family:var(--serif);font-size:15px;letter-spacing:.08em;color:var(--ink);">SABI SAND</div><div style="font-family:var(--sans);font-size:8px;letter-spacing:.28em;color:var(--ink-muted);">GAME RESERVE</div></div></div>
+      <div class="logo-cell light" style="min-height:70px;justify-content:flex-start;gap:14px;"><img src="../assets/logos/asg-icon-ink.png" style="max-height:40px;"><div><div style="font-family:var(--serif);font-size:15px;letter-spacing:.08em;color:var(--ink);">ASG DIRECT</div><div style="font-family:var(--sans);font-size:8px;letter-spacing:.28em;color:var(--ink-muted);">BOOKINGS</div></div></div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>08</span></div>
+  </section>
+
+  <!-- ============ 09 · DIVIDER: COLOUR ============ -->
+  <section class="sheet dark divider" data-screen-label="Divider — Colour">
+    <div class="dnum">02</div>
+    <h1>Colour</h1>
+    <div class="cover-rule" style="margin:22px 0 0;"></div>
+    <div class="dlist">
+      <div class="di"><b>10</b><span>The primary palette</span></div>
+      <div class="di"><b>11</b><span>The 60 / 30 / 10 rule</span></div>
+      <div class="di"><b>12</b><span>Neutrals &amp; feedback colours</span></div>
+    </div>
+    <div class="dtag"><span>African Safari Group</span><span>Brand Guidelines 2026</span></div>
+  </section>
+
+  <!-- ============ 10 · PALETTE ============ -->
+  <section class="sheet pad" data-screen-label="Colour — palette">
+    <div class="rhead"><span class="sans-cap">02 · Colour</span><span class="sans-cap">Primary palette</span></div>
+    <p class="ey">Palette</p>
+    <h2 class="h-page">The primary palette</h2>
+    <div class="rule"></div>
+    <p style="margin-top:14px;">One deep near-black ground, a single brass accent, warm neutrals for breathing room. That's the whole system — hold to it.</p>
+    <div class="sw-grid" style="margin-top:16px;">
+      <div class="sw"><div class="chip" style="background:#171411;"></div><div class="info"><div class="nm">ASG Ink</div><div class="hex">#171411</div><div class="ro">Primary ground — heroes, headers, footers</div></div></div>
+      <div class="sw"><div class="chip" style="background:#A8794B;"></div><div class="info"><div class="nm">Safari Brass</div><div class="hex">#A8794B</div><div class="ro">The single accent — CTAs, links, signal only</div></div></div>
+      <div class="sw"><div class="chip" style="background:#2B2622;"></div><div class="info"><div class="nm">Charcoal</div><div class="hex">#2B2622</div><div class="ro">Secondary dark surface — cards, panels</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F6F1EA;"></div><div class="info"><div class="nm">Warm Ivory</div><div class="hex">#F6F1EA</div><div class="ro">Light editorial ground &amp; breathing room</div></div></div>
+      <div class="sw"><div class="chip" style="background:#C39F77;"></div><div class="info"><div class="nm">Heritage Sand</div><div class="hex">#C39F77</div><div class="ro">Legacy tone — tints &amp; secondary accents only</div></div></div>
+      <div class="sw"><div class="chip" style="background:#4A443C;"></div><div class="info"><div class="nm">Soft Charcoal</div><div class="hex">#4A443C</div><div class="ro">Body copy on light backgrounds</div></div></div>
+    </div>
+    <div class="note" style="margin-top:18px;border-color:var(--bad);"><p><strong>Brass is a fitting, not a floor.</strong> Never let brass become a dominant background — as a large ground it reads as cheap gold. Used sparingly, it signals luxury.</p></div>
+    <div class="foot"><span>African Safari Group</span><span>10</span></div>
+  </section>
+
+  <!-- ============ 11 · 60/30/10 ============ -->
+  <section class="sheet pad" data-screen-label="Colour — 60/30/10">
+    <div class="rhead"><span class="sans-cap">02 · Colour</span><span class="sans-cap">The 60 / 30 / 10 rule</span></div>
+    <p class="ey">Proportion</p>
+    <h2 class="h-page">The 60 / 30 / 10 rule</h2>
+    <div class="rule"></div>
+    <p style="margin-top:14px;">Every layout follows one proportion. Use brass like brass fittings in a lodge — signal, never ground.</p>
+    <div class="ratio-bar" style="margin-top:18px;">
+      <div class="seg" style="flex:60;background:var(--ink);"><span style="color:var(--ivory);">60%</span></div>
+      <div class="seg" style="flex:30;background:var(--ivory);"><span style="color:var(--ink);">30%</span></div>
+      <div class="seg" style="flex:10;background:var(--brass);"><span style="color:var(--ink);">10%</span></div>
+    </div>
+    <div class="ratio-leg">
+      <div class="lg" style="border-color:var(--ink);"><div class="pc">60%</div><div class="lb"><strong>Ink &amp; Charcoal</strong> — the dominant dark ground carrying most of the surface.</div></div>
+      <div class="lg" style="border-color:var(--bone);"><div class="pc">30%</div><div class="lb"><strong>Ivory &amp; White</strong> — breathing room, light editorial areas, negative space.</div></div>
+      <div class="lg" style="border-color:var(--brass);"><div class="pc" style="color:var(--brass-600);">10%</div><div class="lb"><strong>Brass</strong> — one primary CTA, key numerals, active states, the rule-line.</div></div>
+    </div>
+    <div class="dd" style="margin-top:24px;">
+      <div class="dd-card dd-do">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M4 12l5 5L20 6"/></svg></span><b>Do</b></div>
+        <ul><li>Let ink and ivory carry the layout</li><li>Reserve brass for a single point of emphasis per view</li><li>Use generous negative space as a design element</li></ul>
+      </div>
+      <div class="dd-card dd-no">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M6 6l12 12M18 6L6 18"/></svg></span><b>Don't</b></div>
+        <ul><li>Fill backgrounds or large blocks with brass</li><li>Use multiple accent colours competing for attention</li><li>Crowd the layout — density reads as cheap</li></ul>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>11</span></div>
+  </section>
+
+  <!-- ============ 12 · NEUTRALS + FEEDBACK ============ -->
+  <section class="sheet pad" data-screen-label="Colour — neutrals & feedback">
+    <div class="rhead"><span class="sans-cap">02 · Colour</span><span class="sans-cap">Neutrals &amp; feedback</span></div>
+    <p class="ey">Support</p>
+    <h2 class="h-page">Neutrals &amp; feedback</h2>
+    <div class="rule"></div>
+    <p class="ey" style="margin-top:20px;color:var(--ink-muted);">Warm neutrals — the 30%</p>
+    <div class="sw-grid" style="grid-template-columns:repeat(4,1fr);margin-top:8px;">
+      <div class="sw"><div class="chip" style="background:#FDFBF8;height:56px;"></div><div class="info"><div class="nm">White</div><div class="hex">#FDFBF8</div></div></div>
+      <div class="sw"><div class="chip" style="background:#EFE7DB;height:56px;"></div><div class="info"><div class="nm">Ivory 200</div><div class="hex">#EFE7DB</div></div></div>
+      <div class="sw"><div class="chip" style="background:#E8DCCB;height:56px;"></div><div class="info"><div class="nm">Sand Tint</div><div class="hex">#E8DCCB</div></div></div>
+      <div class="sw"><div class="chip" style="background:#B9AFA2;height:56px;"></div><div class="info"><div class="nm">Bone</div><div class="hex">#B9AFA2</div></div></div>
+    </div>
+    <p style="margin-top:12px;font-size:11px;">Bone and Ivory 200 are for hairlines, dividers and low-contrast panels on light grounds. Never use them for body text.</p>
+    <p class="ey" style="margin-top:24px;color:var(--ink-muted);">Feedback colours — warm &amp; muted, never neon</p>
+    <div class="sw-grid" style="grid-template-columns:repeat(4,1fr);margin-top:8px;">
+      <div class="sw"><div class="chip" style="background:#6E8A5A;height:56px;"></div><div class="info"><div class="nm">Success</div><div class="hex">#6E8A5A</div></div></div>
+      <div class="sw"><div class="chip" style="background:#C08A3E;height:56px;"></div><div class="info"><div class="nm">Warning</div><div class="hex">#C08A3E</div></div></div>
+      <div class="sw"><div class="chip" style="background:#B5524A;height:56px;"></div><div class="info"><div class="nm">Danger</div><div class="hex">#B5524A</div></div></div>
+      <div class="sw"><div class="chip" style="background:#C39F77;height:56px;"></div><div class="info"><div class="nm">Info</div><div class="hex">Sand</div></div></div>
+    </div>
+    <div class="note" style="margin-top:20px;"><p>Feedback colours appear only in interfaces — form validation, alerts, status. They're deliberately desaturated to sit inside the warm palette. <strong>Never use bright or neon status colours.</strong></p></div>
+    <div class="foot"><span>African Safari Group</span><span>12</span></div>
+  </section>
+
+  <!-- ============ 13 · DIVIDER: TYPE ============ -->
+  <section class="sheet dark divider" data-screen-label="Divider — Typography">
+    <div class="dnum">03</div>
+    <h1>Typography</h1>
+    <div class="cover-rule" style="margin:22px 0 0;"></div>
+    <div class="dlist">
+      <div class="di"><b>14</b><span>Lora &amp; Poppins — our two typefaces</span></div>
+      <div class="di"><b>15</b><span>Type scale &amp; usage rules</span></div>
+    </div>
+    <div class="dtag"><span>African Safari Group</span><span>Brand Guidelines 2026</span></div>
+  </section>
+
+  <!-- ============ 14 · TYPEFACES ============ -->
+  <section class="sheet pad" data-screen-label="Type — typefaces">
+    <div class="rhead"><span class="sans-cap">03 · Typography</span><span class="sans-cap">Typefaces</span></div>
+    <p class="ey">Two typefaces</p>
+    <h2 class="h-page">Lora &amp; Poppins</h2>
+    <div class="rule"></div>
+    <div class="stack" style="margin-top:20px;">
+      <div class="type-spec">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;"><span class="ey" style="color:var(--brass-600);">Serif — display &amp; headlines</span><span class="sans-cap">Lora</span></div>
+        <div class="big" style="margin-top:10px;">Where lions still rule</div>
+        <div class="row"><b>Regular 400</b><b>Medium 500</b><b>Semibold 600</b><b>Italic</b></div>
+        <p style="margin-top:12px;font-size:11px;">One serif moment per screen. Short, confident headlines of six to nine words. Italic — often in Heritage Sand — for emphasis.</p>
+      </div>
+      <div class="type-spec">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;"><span class="ey" style="color:var(--brass-600);">Sans — body, UI &amp; all numerals</span><span class="sans-cap">Poppins</span></div>
+        <div class="big sans" style="margin-top:10px;">Three nights, R 14,500</div>
+        <div class="row"><b>Regular 400</b><b>Medium 500</b><b>Semibold 600</b><b>Bold 700</b></div>
+        <p style="margin-top:12px;font-size:11px;">Body copy, navigation, captions — and <strong>all numerals</strong>, even inside serif paragraphs (Poppins Medium, tabular figures). Prices in Rand: R 14,500.</p>
+      </div>
+    </div>
+    <div class="note" style="margin-top:18px;"><p><strong>Only these two typefaces.</strong> Never substitute Arial, Times, or a decorative font. If Lora or Poppins is unavailable in an app, use the nearest system serif / sans and correct it in the final artwork.</p></div>
+    <div class="foot"><span>African Safari Group</span><span>14</span></div>
+  </section>
+
+  <!-- ============ 15 · TYPE SCALE ============ -->
+  <section class="sheet pad" data-screen-label="Type — scale & rules">
+    <div class="rhead"><span class="sans-cap">03 · Typography</span><span class="sans-cap">Scale &amp; rules</span></div>
+    <p class="ey">Hierarchy</p>
+    <h2 class="h-page">Type scale &amp; rules</h2>
+    <div class="rule"></div>
+    <div style="margin-top:16px;">
+      <div class="scale-row"><span style="font-family:var(--serif);font-size:34px;color:var(--ink);">Display</span><span class="lbl">Lora Medium · headlines</span></div>
+      <div class="scale-row"><span style="font-family:var(--serif);font-size:24px;color:var(--ink);">Heading</span><span class="lbl">Lora · section titles</span></div>
+      <div class="scale-row"><span style="font-family:var(--serif);font-size:18px;color:var(--ink);">Subheading</span><span class="lbl">Lora · sub-sections</span></div>
+      <div class="scale-row"><span style="font-family:var(--sans);font-size:13px;color:var(--ink);">Body copy — Poppins Regular set at a 60–75 character measure for comfortable reading.</span><span class="lbl">Poppins · body</span></div>
+      <div class="scale-row"><span style="font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-600);">Eyebrow · tracked caps</span><span class="lbl">Poppins · labels</span></div>
+    </div>
+    <div class="dd" style="margin-top:24px;">
+      <div class="dd-card dd-do">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M4 12l5 5L20 6"/></svg></span><b>Do</b></div>
+        <ul><li>Keep headlines short — six to nine words</li><li>Hold body to a 60–75 character line</li><li>Set numerals in Poppins, even within serif text</li><li>Use tracked caps only for eyebrows &amp; labels</li></ul>
+      </div>
+      <div class="dd-card dd-no">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M6 6l12 12M18 6L6 18"/></svg></span><b>Don't</b></div>
+        <ul><li>Set tracked caps as body text</li><li>Use type below ~9 pt for labels</li><li>Run more than one serif headline per view</li><li>Use exclamation points</li></ul>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>15</span></div>
+  </section>
+
+  <!-- ============ 16 · DIVIDER: VOICE ============ -->
+  <section class="sheet dark divider" data-screen-label="Divider — Voice & Imagery">
+    <div class="dnum">04</div>
+    <h1>Voice &amp;<br>Imagery</h1>
+    <div class="cover-rule" style="margin:22px 0 0;"></div>
+    <div class="dlist">
+      <div class="di"><b>17</b><span>How we write — voice &amp; tone</span></div>
+      <div class="di"><b>18</b><span>Photography direction</span></div>
+    </div>
+    <div class="dtag"><span>African Safari Group</span><span>Brand Guidelines 2026</span></div>
+  </section>
+
+  <!-- ============ 17 · VOICE ============ -->
+  <section class="sheet pad" data-screen-label="Voice & tone">
+    <div class="rhead"><span class="sans-cap">04 · Voice &amp; Imagery</span><span class="sans-cap">Voice &amp; tone</span></div>
+    <p class="ey">How we write</p>
+    <h2 class="h-page">Voice &amp; tone</h2>
+    <div class="rule"></div>
+    <p style="margin-top:14px;">We write like the specialist a client is grateful to have found — <strong>authoritative, warm, restrained.</strong> Confidence shows through precision, never volume.</p>
+    <div class="dd" style="margin-top:18px;">
+      <div class="dd-card dd-no">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M6 6l12 12M18 6L6 18"/></svg></span><b>Instead of</b></div>
+        <p class="serif-it" style="font-size:14px;color:var(--soft);">"Experience the adventure of a lifetime on this dream safari!"</p>
+      </div>
+      <div class="dd-card dd-do">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M4 12l5 5L20 6"/></svg></span><b>Write</b></div>
+        <p class="serif-it" style="font-size:14px;color:var(--ink);">"Sabi Sand has the highest leopard-sighting density in Africa. Three nights gives you the best odds."</p>
+      </div>
+    </div>
+    <div class="col2" style="margin-top:22px;">
+      <div class="stack">
+        <p class="sans-cap" style="margin-bottom:4px;">Principles</p>
+        <p style="font-size:11.5px;"><strong>Specific over superlative.</strong> Name the lodge, the season, the sighting odds — not "unforgettable" or "dream".</p>
+        <p style="font-size:11.5px;"><strong>Declarative sentences.</strong> Short, certain statements.</p>
+        <p style="font-size:11.5px;"><strong>A person, not a funnel.</strong> Consultation-led, never transactional. Lead with what the guest experiences.</p>
+      </div>
+      <div class="stack">
+        <p class="sans-cap" style="margin-bottom:4px;">Mechanics</p>
+        <p style="font-size:11.5px;"><strong>"We" and "you".</strong> First person plural for us; address the guest directly.</p>
+        <p style="font-size:11.5px;"><strong>No exclamation points.</strong> Calm confidence outperforms enthusiasm.</p>
+        <p style="font-size:11.5px;"><strong>No emoji, ever.</strong> Numerals carry weight — prices, night counts, reply times, sighting percentages.</p>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>17</span></div>
+  </section>
+
+  <!-- ============ 18 · PHOTOGRAPHY ============ -->
+  <section class="sheet pad" data-screen-label="Photography">
+    <div class="rhead"><span class="sans-cap">04 · Voice &amp; Imagery</span><span class="sans-cap">Photography</span></div>
+    <p class="ey">Imagery</p>
+    <h2 class="h-page">Photography direction</h2>
+    <div class="rule"></div>
+    <p style="margin-top:14px;">Photography carries more of this brand than any single design element. The direction is <strong>cinematic and restrained</strong> — one clear subject, real negative space, a warm, slightly desaturated grade.</p>
+    <div class="col2" style="margin-top:16px;gap:14px;">
+      <div class="pslot" style="height:120px;"><span>Golden-hour wildlife<br>one clear subject</span></div>
+      <div class="pslot" style="height:120px;"><span>Wide environmental lodge<br>with negative space</span></div>
+    </div>
+    <div class="dd" style="margin-top:20px;">
+      <div class="dd-card dd-do">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M4 12l5 5L20 6"/></svg></span><b>Do</b></div>
+        <ul><li>Shoot at golden hour, one clear subject</li><li>Leave real negative space in frame</li><li>Keep a consistent warm, slightly desaturated grade</li><li>Place any text over a dark bottom-up scrim</li></ul>
+      </div>
+      <div class="dd-card dd-no">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M6 6l12 12M18 6L6 18"/></svg></span><b>Don't</b></div>
+        <ul><li>Use flat midday light or crowded grids</li><li>Use generic OTA / stock imagery</li><li>Over-saturate — neon grass, orange HDR skies</li><li>Cram text over busy detail</li></ul>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>18</span></div>
+  </section>
+
+  <!-- ============ 19 · DIVIDER: APPLICATIONS ============ -->
+  <section class="sheet dark divider" data-screen-label="Divider — Applications">
+    <div class="dnum">05</div>
+    <h1>Applications</h1>
+    <div class="cover-rule" style="margin:22px 0 0;"></div>
+    <div class="dlist">
+      <div class="di"><b>20</b><span>Stationery — letterhead &amp; compliment slip</span></div>
+      <div class="di"><b>21</b><span>Business cards</span></div>
+      <div class="di"><b>22</b><span>Folders, files &amp; documents</span></div>
+      <div class="di"><b>23</b><span>Websites</span></div>
+      <div class="di"><b>24</b><span>Newsletters &amp; email</span></div>
+    </div>
+    <div class="dtag"><span>African Safari Group</span><span>Brand Guidelines 2026</span></div>
+  </section>
+
+  <!-- ============ 20 · STATIONERY ============ -->
+  <section class="sheet pad" data-screen-label="Stationery">
+    <div class="rhead"><span class="sans-cap">05 · Applications</span><span class="sans-cap">Stationery</span></div>
+    <p class="ey">Stationery</p>
+    <h2 class="h-page">Letterhead &amp; compliment slip</h2>
+    <div class="rule"></div>
+    <div class="col2u" style="margin-top:18px;align-items:start;">
+      <div class="mock-wrap" style="justify-content:center;">
+        <div>
+          <div class="lh shadow">
+            <div class="lh-top"><img src="../assets/logos/asg-stacked-ink.png" alt=""><div class="lh-addr"><span class="fill">14 Green Way, Mountainside</span><br><span class="fill">Gordon's Bay, Cape Town</span><br>+27 21 200 5960<br>hi@africansafarigroup.com</div></div>
+            <div class="lh-rule"></div>
+            <div class="bar l"></div><div class="bar m"></div><div class="bar l"></div><div class="bar s"></div>
+            <div style="height:10px;"></div>
+            <div class="bar m"></div><div class="bar l"></div><div class="bar m"></div>
+            <div class="lh-foot">African Safari Group · africansafarigroup.com · SATSA member 3099</div>
+          </div>
+          <p class="mock-cap">A4 letterhead — 210 × 297 mm</p>
+        </div>
+      </div>
+      <div class="stack">
+        <p style="font-size:11.5px;">Letterhead is <strong>ink on white</strong>, not a dark sheet — it must print cleanly and photocopy. The stacked or horizontal ink logo sits top-left; contact details align top-right in Poppins.</p>
+        <div class="dd" style="grid-template-columns:1fr;gap:12px;">
+          <div class="dd-card dd-do"><div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M4 12l5 5L20 6"/></svg></span><b>Do</b></div><ul><li>Ink logo on white; brass rule-line only</li><li>Generous margins (min. 20 mm)</li><li>Body in Soft Charcoal, Poppins</li></ul></div>
+          <div class="dd-card dd-no"><div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M6 6l12 12M18 6L6 18"/></svg></span><b>Don't</b></div><ul><li>Print full-bleed dark ink for letters</li><li>Fill the sheet edge-to-edge with brass</li><li>Add taglines or clip-art</li></ul></div>
+        </div>
+      </div>
+    </div>
+    <p class="ey" style="margin-top:20px;color:var(--ink-muted);">Compliment slip · 210 × 99 mm</p>
+    <div class="mock-wrap" style="margin-top:8px;">
+      <div class="slip shadow"><img src="../assets/logos/asg-stacked-ink.png" alt=""><span class="cw">With compliments</span><span class="sf">africansafarigroup.com · +27 21 200 5960</span></div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>20</span></div>
+  </section>
+
+  <!-- ============ 21 · BUSINESS CARDS ============ -->
+  <section class="sheet pad" data-screen-label="Business cards">
+    <div class="rhead"><span class="sans-cap">05 · Applications</span><span class="sans-cap">Business cards</span></div>
+    <p class="ey">Business cards</p>
+    <h2 class="h-page">Business cards</h2>
+    <div class="rule"></div>
+    <p style="margin-top:14px;">The card is where the dark brand shows best. <strong>One side carries the person; the other, the logo</strong> — 90 × 55 mm, rounded 3 mm corners optional.</p>
+    <div class="mock-wrap" style="justify-content:center;gap:26px;margin-top:20px;">
+      <div><div class="bc front shadow"><div><div class="nm">Stuart Pittorino</div><div class="ti">Sales Manager</div></div><div class="cd">+27 21 200 5960<br>hi@africansafarigroup.com<br>africansafarigroup.com</div></div><p class="mock-cap">Front — name, title &amp; details</p></div>
+      <div><div class="bc back shadow"><img src="../assets/logos/asg-stacked-white.png" alt=""></div><p class="mock-cap">Back — full logo</p></div>
+    </div>
+    <div class="dd" style="margin-top:24px;">
+      <div class="dd-card dd-do">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M4 12l5 5L20 6"/></svg></span><b>Do</b></div>
+        <ul><li>Name in Lora, title in tracked Poppins caps</li><li>Keep the reverse to the logo alone</li><li>Print on uncoated or soft-touch matte stock</li></ul>
+      </div>
+      <div class="dd-card dd-no">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M6 6l12 12M18 6L6 18"/></svg></span><b>Don't</b></div>
+        <ul><li>Crowd both sides with information</li><li>Use glossy UV or rainbow foil</li><li>Add social icons or QR codes to the front</li></ul>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>21</span></div>
+  </section>
+
+  <!-- ============ 22 · FOLDERS & FILES ============ -->
+  <section class="sheet pad" data-screen-label="Folders & files">
+    <div class="rhead"><span class="sans-cap">05 · Applications</span><span class="sans-cap">Folders &amp; files</span></div>
+    <p class="ey">Folders &amp; files</p>
+    <h2 class="h-page">Folders, files &amp; documents</h2>
+    <div class="rule"></div>
+    <p style="margin-top:14px;">Presentation folders and covers are the one place the <strong>full dark treatment</strong> belongs — a deep ink ground, centred crest, single brass rule. Internal documents stay light for readability.</p>
+    <div class="mock-wrap" style="justify-content:center;gap:30px;margin-top:20px;">
+      <div><div class="folder shadow"><img src="../assets/logos/asg-stacked-white.png" alt=""><div class="fr"></div><div class="ft">Itineraries</div></div><p class="mock-cap">A4 presentation folder — Ink</p></div>
+      <div><div class="doc shadow"><img src="../assets/logos/asg-stacked-ink.png" alt=""><div class="dt">Your Safari Itinerary</div><div class="de">Prepared for you</div><div class="dr"></div><div class="bar" style="width:100%;"></div><div class="bar" style="width:92%;"></div><div class="bar" style="width:96%;"></div><div class="bar" style="width:70%;"></div><div style="height:8px;"></div><div class="bar" style="width:88%;"></div><div class="bar" style="width:100%;"></div></div><p class="mock-cap">Document / report — Ink on White</p></div>
+    </div>
+    <div class="dd" style="margin-top:22px;">
+      <div class="dd-card dd-do">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M4 12l5 5L20 6"/></svg></span><b>Do</b></div>
+        <ul><li>Covers &amp; folders: dark ink, centred crest</li><li>Interior document pages: ink on white</li><li>Name files clearly — brand, document, date</li></ul>
+      </div>
+      <div class="dd-card dd-no">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M6 6l12 12M18 6L6 18"/></svg></span><b>Don't</b></div>
+        <ul><li>Set long body copy on a dark ground</li><li>Mix multiple accent colours on a cover</li><li>Stretch the crest to fill the folder</li></ul>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>22</span></div>
+  </section>
+
+  <!-- ============ 23 · WEBSITES ============ -->
+  <section class="sheet pad" data-screen-label="Websites">
+    <div class="rhead"><span class="sans-cap">05 · Applications</span><span class="sans-cap">Websites</span></div>
+    <p class="ey">Digital</p>
+    <h2 class="h-page">Websites</h2>
+    <div class="rule"></div>
+    <p style="margin-top:14px;">Sites lead with a <strong>dark cinematic hero</strong>, one serif headline and a single brass call-to-action. Body content sits on ivory for reading. The 60 / 30 / 10 rule governs every screen.</p>
+    <div class="mock-wrap" style="justify-content:center;margin-top:20px;">
+      <div><div class="web shadow"><div class="wbar"><img src="../assets/logos/asg-horizontal-white.webp" alt=""><div class="wnav"><i></i><i></i><i></i></div></div><div class="whero"><div class="we">Sabi Sand · Malaria-free</div><div class="wh">Where lions still rule</div><div class="wc"></div></div><div class="wbody"><div class="wt"></div><div class="wt"></div><div class="wt"></div></div></div><p class="mock-cap">Homepage — dark hero, light body</p></div>
+    </div>
+    <div class="dd" style="margin-top:22px;">
+      <div class="dd-card dd-do">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M4 12l5 5L20 6"/></svg></span><b>Do</b></div>
+        <ul><li>One primary brass CTA per screen</li><li>Near-square corners, hairline borders</li><li>Text over photos on a dark scrim</li><li>Generous whitespace between sections</li></ul>
+      </div>
+      <div class="dd-card dd-no">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M6 6l12 12M18 6L6 18"/></svg></span><b>Don't</b></div>
+        <ul><li>Use bright gradients or heavy drop-shadows</li><li>Fill sections with brass backgrounds</li><li>Stack multiple competing CTAs</li><li>Use rounded "bubbly" buttons or emoji</li></ul>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>23</span></div>
+  </section>
+
+  <!-- ============ 24 · NEWSLETTERS ============ -->
+  <section class="sheet pad" data-screen-label="Newsletters">
+    <div class="rhead"><span class="sans-cap">05 · Applications</span><span class="sans-cap">Newsletters</span></div>
+    <p class="ey">Email</p>
+    <h2 class="h-page">Newsletters &amp; email</h2>
+    <div class="rule"></div>
+    <div class="col2u" style="margin-top:18px;align-items:start;">
+      <div class="mock-wrap" style="justify-content:center;">
+        <div><div class="nl shadow"><div class="nh"><img src="../assets/logos/asg-horizontal-white.webp" alt=""></div><div class="nhero"></div><div class="nbody"><div class="ne">Field notes · October</div><div class="nt">The green season, quietly</div><div class="bar" style="width:100%;"></div><div class="bar" style="width:94%;"></div><div class="bar" style="width:98%;"></div><div class="bar" style="width:64%;"></div><div class="ncta"></div></div><div class="nfoot"><span class="fill">14 Green Way, Gordon's Bay, Cape Town</span><br>Unsubscribe · africansafarigroup.com</div></div><p class="mock-cap">Email newsletter — single column</p></div>
+      </div>
+      <div class="stack">
+        <p style="font-size:11.5px;">Email is a <strong>single narrow column</strong> — a dark header with the horizontal logo, one cinematic image, a serif headline, short editorial copy and a single brass button. Restraint reads as premium in the inbox.</p>
+        <div class="dd" style="grid-template-columns:1fr;gap:12px;">
+          <div class="dd-card dd-do"><div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M4 12l5 5L20 6"/></svg></span><b>Do</b></div><ul><li>One image, one headline, one CTA</li><li>Dark header, ivory/white body</li><li>Include physical address &amp; unsubscribe</li></ul></div>
+          <div class="dd-card dd-no"><div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M6 6l12 12M18 6L6 18"/></svg></span><b>Don't</b></div><ul><li>Multi-column, busy promo layouts</li><li>Multiple CTAs or discount shouting</li><li>Emoji in subject lines or body</li></ul></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>African Safari Group</span><span>24</span></div>
+  </section>
+
+  <!-- ============ 25 · QUICK REFERENCE ============ -->
+  <section class="sheet pad" data-screen-label="Quick reference">
+    <div class="rhead"><span class="sans-cap">Quick reference</span><span class="sans-cap">Do &amp; Don't</span></div>
+    <p class="ey">At a glance</p>
+    <h2 class="h-page">The essentials</h2>
+    <div class="rule"></div>
+    <div class="dd" style="margin-top:20px;">
+      <div class="dd-card dd-do">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M4 12l5 5L20 6"/></svg></span><b>Always</b></div>
+        <ul>
+          <li>Hold to 60 / 30 / 10 — ink, ivory, brass</li>
+          <li>Use brass sparingly, as a signal</li>
+          <li>Keep the crest fixed &amp; give it clear space</li>
+          <li>Set headlines in Lora, everything else in Poppins</li>
+          <li>Write specific, calm, declarative copy</li>
+          <li>Choose restraint and negative space</li>
+          <li>Cite accreditations on formal materials</li>
+        </ul>
+      </div>
+      <div class="dd-card dd-no">
+        <div class="dd-h"><span class="dd-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M6 6l12 12M18 6L6 18"/></svg></span><b>Never</b></div>
+        <ul>
+          <li>Use brass as a large background</li>
+          <li>Recolour, stretch, rotate or shadow the crest</li>
+          <li>Introduce a third typeface or new colours</li>
+          <li>Use bright / neon colours or heavy gradients</li>
+          <li>Use exclamation points or emoji</li>
+          <li>Set long body copy on dark grounds</li>
+          <li>Crowd a layout — density reads as cheap</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note" style="margin-top:22px;"><p class="serif-it" style="font-size:15px;color:var(--ink);">"When in doubt, choose restraint — fewer colours, more space, one clear message."</p></div>
+    <div class="foot"><span>African Safari Group</span><span>25</span></div>
+  </section>
+
+  <!-- ============ 26 · BACK COVER ============ -->
+  <section class="sheet dark" data-screen-label="Back cover" style="display:flex;flex-direction:column;justify-content:space-between;padding:26mm 22mm;">
+    <div>
+      <img src="../assets/logos/asg-icon-brass.png" alt="" style="height:54px;">
+      <p class="ey" style="margin-top:24px;">Questions &amp; assets</p>
+      <h2 style="font-size:30px;color:var(--ivory);margin-top:10px;">Keep the brand consistent</h2>
+      <div class="cover-rule" style="margin:18px 0 0 0;"></div>
+      <p style="color:#C9C0B4;font-size:12.5px;margin-top:18px;max-width:52ch;">For logo files, templates or anything not covered here, contact the team before improvising. Consistency is the brand's greatest asset.</p>
+    </div>
+    <div>
+      <p class="ey" style="margin-bottom:12px;">Accreditations</p>
+      <div class="accs">
+        <div class="acc"><b>SATSA</b><span>Member 3099 · Southern Africa Tourism Services Association</span></div>
+        <div class="acc"><b>Atta</b><span>African Travel &amp; Tourism Association</span></div>
+        <div class="acc"><b>Cape Town Tourism</b><span>Classic Tier member</span></div>
+        <div class="acc"><b>Tripadvisor</b><span>Listed operator</span></div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(246,241,234,.16);padding-top:20px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;">
+      <div>
+        <p class="sans-cap" style="color:var(--brass-400);margin-bottom:8px;">African Safari Group</p>
+        <p style="font-family:var(--sans);font-size:11px;color:var(--bone);line-height:1.8;">14 Green Way, Mountainside, Gordon's Bay, Cape Town<br>+27 21 200 5960<br>hi@africansafarigroup.com · bookings@africansafarigroup.com<br>africansafarigroup.com</p>
+      </div>
+      <div>
+        <p class="sans-cap" style="color:var(--brass-400);margin-bottom:8px;">Follow</p>
+        <p style="font-family:var(--sans);font-size:11px;color:var(--bone);line-height:1.8;">Facebook · /africansafarigroup<br>Instagram · @africansafarigroup<br>X · @AnAfricanSafari<br>LinkedIn · african-safari-group</p>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(246,241,234,.16);padding-top:14px;"><span class="cover-bot" style="font-size:9.5px;color:var(--bone);letter-spacing:.18em;text-transform:uppercase;">Brand Guidelines · Version 1.0 · 2026</span><span class="cover-bot" style="font-size:9.5px;color:var(--bone);letter-spacing:.18em;text-transform:uppercase;">© 2026 African Safari Group</span></div>
+  </section>
+
+</div>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Brand Guidelines 2026";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

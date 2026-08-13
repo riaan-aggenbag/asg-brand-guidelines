@@ -1,0 +1,95 @@
+/* African Safari Group — LIGHT+ theme (proposal, additive)
+   The light edition with pigment and a dark frame: a warm sand ground (deeper
+   than ivory), white cards, ink header/hero/footer islands, and Heritage Sand
+   #C39F77 as the CTA fill — brass kept for links, rules and pressed states.
+   Apply with data-theme="lightplus". Loads AFTER styles.css. */
+
+[data-theme="lightplus"] {
+  /* Camel takes the brass fill slots; deep brass stays for links/pressed */
+  --asg-brass:     #C39F77;
+  --asg-brass-500: #C39F77;
+  --asg-brass-400: #B58E63;   /* hover darkens on light ground */
+  --asg-brass-a20: rgba(195, 159, 119, 0.20);
+  --asg-brass-a40: rgba(195, 159, 119, 0.40);
+
+  /* Surfaces — warm sand ground, warm-white raised */
+  --surface-base:         #EFE6D8;
+  --surface-raised:       #FBF7F0;
+  --surface-overlay:      #FFFFFF;
+  --surface-inset:        #E2D6C2;
+  --surface-ivory:        var(--asg-warm-ivory);
+  --surface-ivory-raised: var(--asg-white);
+
+  /* Text — ink on sand */
+  --text-primary:   var(--asg-ink);
+  --text-body:      var(--asg-soft-charcoal);
+  --text-muted:     #746A5E;
+  --text-faint:     #9E9280;
+  --text-on-brass:  #FFFFFF; /* brand rule: white on brass, both themes */
+
+  /* Accent — camel fills, brass for links and pressed */
+  --accent:         #C39F77;
+  --accent-hover:   #B58E63;
+  --accent-active:  var(--asg-brass);
+  --accent-quiet:   var(--asg-brass);
+  --link:           var(--asg-brass-600);
+
+  /* Borders */
+  --border-subtle:  rgba(23, 20, 17, 0.08);
+  --border-default: rgba(23, 20, 17, 0.14);
+  --border-strong:  #B4A890;
+  --border-rule:    var(--asg-brass);
+
+  /* Focus */
+  --focus-ring:        var(--asg-brass);
+  --focus-ring-shadow: 0 0 0 3px var(--asg-brass-a40);
+
+  /* Base tokens components reference directly */
+  --asg-ivory-a08:    rgba(23, 20, 17, 0.05);
+  --asg-ivory-a14:    rgba(23, 20, 17, 0.09);
+  --asg-charcoal-500: #CDBFA9;
+  --asg-charcoal:     var(--asg-white);
+  --asg-ink-900:      #2B2622;
+
+  /* Feedback — light tints */
+  --success:    #5B7A48;  --success-bg: #E9EEDD;
+  --warning:    #9A6A25;  --warning-bg: #F4E7CF;
+  --danger:     #A8443B;  --danger-bg:  #F5DFD9;
+  --info:       var(--asg-brass-600);  --info-bg: #EDE2CE;
+
+  --asg-ink-a60: rgba(23, 20, 17, 0.45);
+
+  --shadow-sm: 0 1px 2px rgba(74, 68, 60, 0.10);
+  --shadow-md: 0 6px 18px rgba(74, 68, 60, 0.12);
+  --shadow-lg: 0 16px 40px rgba(74, 68, 60, 0.16);
+  --shadow-xl: 0 30px 70px rgba(74, 68, 60, 0.20);
+
+  color: var(--text-body);
+  background: var(--surface-base);
+}
+[data-theme="lightplus"] ::selection { background: var(--asg-brass-a40); color: var(--asg-ink); }
+
+/* ---- Dark-frame islands: chrome + photo heroes keep the ink system ---- */
+[data-theme="lightplus"] :is(.site-header, .site-footer, .sbn-header, .sbn-footer, .eb-nav, .eb-footer, .hero, .rsv-hero) {
+  --surface-base:    var(--asg-ink);
+  --surface-raised:  #322B23;
+  --surface-overlay: #3B342B;
+  --surface-inset:   #453D33;
+  --text-primary:    var(--asg-warm-ivory);
+  --text-body:       #D9D1C6;
+  --text-muted:      #9A9085;
+  --text-faint:      #8A8175;
+  --border-subtle:   rgba(246, 241, 234, 0.08);
+  --border-default:  rgba(246, 241, 234, 0.14);
+  --border-strong:   #5A4F42;
+  --asg-ivory-a08:   rgba(246, 241, 234, 0.08);
+  --asg-ivory-a14:   rgba(246, 241, 234, 0.14);
+  --asg-charcoal-500:#3A342E;
+  --asg-charcoal:    #2B2622;
+  --asg-brass-400:   #D3B48F;   /* hover lightens inside dark islands */
+  --accent:          #C39F77;
+  --accent-hover:    #D3B48F;
+  --accent-active:   var(--asg-brass);
+  --link:            #C39F77;
+}
+[data-theme="lightplus"] :is(.site-footer, .sbn-footer, .eb-footer) { background: var(--asg-ink); }

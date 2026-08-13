@@ -1,0 +1,97 @@
+/* African Safari Group — Colour System
+   "A darker, richer system." One deep near-black ground, a single brass accent
+   used like brass fittings (the 60/30/10 rule), warm neutrals throughout.
+   Base palette tokens, then semantic aliases. Use the aliases in product work. */
+
+:root {
+  /* ---- Base palette (the seven brand colours) ---- */
+  --asg-ink:            #171411; /* Primary ground — heroes, headers, footers */
+  --asg-charcoal:       #2B2622; /* Dark UI elements, secondary dark ground */
+  --asg-soft-charcoal:  #4A443C; /* Body copy on light backgrounds */
+  --asg-brass:          #A8794B; /* Primary accent — CTAs, links, sparingly */
+  --asg-heritage-sand:  #C39F77; /* Legacy tone — tints & secondary accents only */
+  --asg-warm-ivory:     #F6F1EA; /* Light ground — editorial pages, email */
+  --asg-bone:           #B9AFA2; /* Borders & dividers on light ground */
+  --asg-badge-green:    #4F6B51; /* Sightings / inclusion status — "Most drives", "Included" */
+  --asg-white:          #FFFFFF;
+
+  /* ---- Derived tints & shades (for states, scrims, tints) ---- */
+  --asg-ink-900:        #0E0C0A; /* deepest — overlays, scrim bottoms */
+  --asg-ink-800:        #171411;
+  --asg-ink-700:        #211D19;
+  --asg-charcoal-600:   #2B2622;
+  --asg-charcoal-500:   #3A342E;
+  --asg-brass-600:      #8E6238; /* brass pressed / darker */
+  --asg-brass-500:      #A8794B; /* brass base */
+  --asg-brass-400:      #BB9165; /* brass hover (lighter) */
+  --asg-sand-tint:      #E8DCCB; /* heritage sand at low strength */
+  --asg-ivory-200:      #EFE7DB; /* ivory, one step down — card on ivory */
+  --asg-bone-300:       #D8CFC2; /* hairline on ivory */
+
+  /* Transparent brass for focus rings / subtle fills */
+  --asg-brass-a20:      rgba(168, 121, 75, 0.20);
+  --asg-brass-a40:      rgba(168, 121, 75, 0.40);
+  --asg-ivory-a08:      rgba(246, 241, 234, 0.08);
+  --asg-ivory-a14:      rgba(246, 241, 234, 0.14);
+  --asg-ink-a60:        rgba(14, 12, 10, 0.60);
+
+  /* =========================================================
+     SEMANTIC ALIASES — prefer these in product work
+     Default theme is DARK (ink ground), matching brand heroes.
+     ========================================================= */
+
+  /* Surfaces */
+  --surface-base:       var(--asg-ink);          /* page ground */
+  --surface-raised:     #322B23;                 /* cards, panels — a clear step above ground */
+  --surface-overlay:    #3B342B;                 /* menus, popovers — above cards */
+  --surface-inset:      #453D33;                 /* wells, inputs — the lightest surface step */
+  --surface-ivory:      var(--asg-warm-ivory);   /* light editorial sections */
+  --surface-ivory-raised: var(--asg-white);      /* card on ivory */
+
+  /* Text (on dark ground) */
+  --text-primary:       var(--asg-warm-ivory);   /* headlines, key copy */
+  --text-body:          #D9D1C6;                 /* long-form body on dark */
+  --text-muted:         #9A9085;                 /* captions, meta */
+  --text-faint:         #8A8175;                 /* disabled, placeholder — legible on input fields */
+  --text-on-brass:      #FFFFFF;                 /* Brand rule: Safari Brass CTAs take WHITE text.
+                                                    Labels min 12px semibold tracked caps; where brass
+                                                    carries smaller text, fill with --asg-brass-600. */
+
+  /* Text (on light/ivory ground) */
+  --text-primary-ink:   var(--asg-ink);
+  --text-body-ink:      var(--asg-soft-charcoal);
+  --text-muted-ink:     #7A7166;
+
+  /* Accent */
+  --accent:             var(--asg-brass);
+  --accent-hover:       var(--asg-brass-400);
+  --accent-active:      var(--asg-brass-600);
+  --accent-quiet:       var(--asg-heritage-sand); /* secondary accent / tints */
+  --link:               var(--asg-brass);
+  --link-on-light:      var(--asg-brass-600);
+
+  /* Borders & dividers */
+  --border-subtle:      var(--asg-ivory-a08);    /* hairlines on dark */
+  --border-default:     var(--asg-ivory-a14);    /* dividers, card edges on dark */
+  --border-strong:      #5A4F42;                 /* inputs, emphasis on dark */
+  --border-on-light:    var(--asg-bone);         /* dividers on ivory */
+  --border-rule:        var(--asg-brass);        /* the brass rule-line moments */
+
+  /* Focus */
+  --focus-ring:         var(--asg-brass);
+  --focus-ring-shadow:  0 0 0 3px var(--asg-brass-a40);
+
+  /* Feedback (kept warm + restrained, never neon) */
+  --success:            #6E8A5A;
+  --success-bg:         #20231B;
+  --warning:            #C08A3E;
+  --warning-bg:         #2A2117;
+  --danger:             #B5524A;
+  --danger-bg:          #2A1815;
+  --info:               var(--asg-heritage-sand);
+  --info-bg:            #241F19;
+
+  /* Scrim — the mandatory dark gradient behind the mark / text over photos */
+  --scrim-bottom: linear-gradient(to top, rgba(14,12,10,0.92) 0%, rgba(14,12,10,0.55) 38%, rgba(14,12,10,0) 100%); /* @kind other */
+  --scrim-full: linear-gradient(to top, rgba(14,12,10,0.85) 0%, rgba(14,12,10,0.35) 50%, rgba(14,12,10,0.55) 100%); /* @kind other */
+}

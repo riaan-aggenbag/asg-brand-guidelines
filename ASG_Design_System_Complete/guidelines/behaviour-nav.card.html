@@ -1,0 +1,56 @@
+<!-- @dsCard group="Patterns" viewport="900x480" name="Behaviour — Breadcrumbs, Nav Handoff, Scrollspy" subtitle="How detail pages navigate — implemented in the Flagship kit" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;padding:26px 30px;background:var(--surface-base);display:flex;flex-direction:column;gap:20px;}
+  .rule{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:start;padding:18px 0 22px;border-bottom:1px solid var(--border-subtle);}
+  .rule:last-child{border-bottom:0;padding-bottom:0;}
+  .n{font-family:var(--font-serif);font-size:15px;color:var(--accent);}
+  .n b{display:block;font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-primary);margin-top:6px;line-height:1.5;}
+  .rule p{font-family:var(--font-body);font-size:12.5px;line-height:1.65;color:var(--text-body);margin:0 0 12px;max-width:62ch;}
+  .rule p b{color:var(--text-primary);font-weight:600;}
+  .demo{border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow:hidden;}
+  .demo-hero{position:relative;height:64px;background:linear-gradient(180deg,#3A342E, #211D19);padding:10px 14px;}
+  .crumb{font-family:var(--font-body);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--asg-heritage-sand);}
+  .crumb i{font-style:normal;opacity:.55;margin:0 5px;}
+  .crumb u{text-decoration:none;color:var(--asg-heritage-sand);}
+  .bars{display:flex;flex-direction:column;}
+  .bar{display:flex;align-items:center;gap:14px;padding:8px 14px;font-family:var(--font-body);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;}
+  .bar--main{background:var(--asg-ink-900);color:var(--text-body);}
+  .bar--sub{background:var(--surface-raised);color:var(--text-muted);border-top:1px solid var(--border-subtle);}
+  .bar--sub span{padding:4px 0;border-bottom:2px solid transparent;}
+  .bar--sub .on{color:var(--accent);border-bottom-color:var(--asg-brass);}
+  .arrow{color:var(--text-faint);font-family:var(--font-body);font-size:11px;padding:2px 14px;}
+</style>
+</head>
+<body>
+  <div class="rule">
+    <div class="n">01<b>Breadcrumbs over the hero</b></div>
+    <div>
+      <p>Breadcrumbs sit <b>top-left over the hero image</b> — no background panel. Links are Heritage Sand, brass on hover; the current page is <b>plain text, never a link</b>. (<code>Breadcrumb hero</code>)</p>
+      <div class="demo"><div class="demo-hero"><span class="crumb"><u>Home</u><i>/</i><u>Reserves</u><i>/</i><u>Amakhala</u><i>/</i>Woodbury Lodge</span></div></div>
+    </div>
+  </div>
+  <div class="rule">
+    <div class="n">02<b>Nav handoff</b></div>
+    <div>
+      <p>The main nav is sticky <b>until the page sub-nav meets it</b>, then slides away over <b>0.28s</b> and the sub-nav owns the top of the viewport. Scrolling back up reverses the handoff. One bar owns the top at a time — never stacked chrome.</p>
+      <div class="demo bars">
+        <div class="bar bar--main">ASG &nbsp;·&nbsp; Destinations &nbsp; Experiences &nbsp; Accommodation</div>
+        <div class="arrow">↓ sub-nav reaches the header → header slides away (0.28s)</div>
+        <div class="bar bar--sub"><span class="on">Overview</span><span>Gallery</span><span>Rooms</span><span>Best Time</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="rule">
+    <div class="n">03<b>Sub-nav scrollspy</b></div>
+    <div>
+      <p>The sub-nav tracks scroll position: a <b>brass underline follows the section in view</b>. Bare <code>href="#"</code> links (e.g. the CTA) are excluded from the spy — they would throw on <code>querySelector</code> and kill the script.</p>
+      <div class="demo bars"><div class="bar bar--sub"><span>Overview</span><span>Gallery</span><span class="on">Rooms</span><span>Best Time</span><span>Reviews</span></div></div>
+    </div>
+  </div>
+</body>
+</html>

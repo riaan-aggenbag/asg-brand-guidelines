@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASG Design Review — August 2026</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+body{margin:0;background:#F6F1EA;color:#4A443C;font-family:var(--font-body,'Poppins',sans-serif);font-size:14.5px;line-height:1.62}
+a{color:#8E6238;text-decoration-color:rgba(168,121,75,.4)}a:hover{color:#A8794B}
+.wrap{max-width:880px;margin:0 auto;padding:58px 32px 90px}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#A8794B;font-weight:600;margin:0 0 10px}
+h1{font-family:var(--font-display,'Lora',serif);font-weight:500;font-size:40px;color:#171411;margin:0 0 14px;line-height:1.12}
+h2{font-family:var(--font-display,'Lora',serif);font-weight:500;font-size:25px;color:#171411;margin:56px 0 6px;padding-top:34px;border-top:1px solid #D8CFC2}
+h3{font-size:15px;color:#171411;margin:26px 0 6px;font-weight:600}
+p{margin:8px 0;text-wrap:pretty}
+ul,ol{margin:8px 0;padding-left:22px}li{margin:5px 0}
+.lead{font-size:16.5px;color:#2B2622;max-width:66ch}
+.meta{font-size:12.5px;color:#7A7166;margin-top:16px}
+.card{background:#FFFFFF;border:1px solid #D8CFC2;border-radius:10px;padding:20px 24px;margin:16px 0}
+.swrow{display:flex;gap:10px;align-items:center;margin:10px 0;flex-wrap:wrap}
+.sw{width:44px;height:44px;border-radius:8px;border:1px solid rgba(23,20,17,.14);flex:none}
+.swlab{font-size:12px;color:#7A7166;min-width:170px}
+.tag{display:inline-block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:2px}
+.tag.s{background:#EBF0E3;color:#5B7A48}.tag.m{background:#F6EBD7;color:#9A6A25}.tag.l{background:#F7E3DF;color:#A8443B}
+.who{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#A8794B;font-weight:600}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.kv{font-size:13px;color:#4A443C}
+.kv b{color:#171411}
+.rule{color:#A8794B;font-weight:600}
+blockquote{margin:10px 0;padding:2px 0 2px 16px;border-left:2px solid #C39F77;color:#2B2622;font-style:italic}
+.num{font-family:var(--font-display,'Lora',serif);font-size:21px;color:#C39F77;font-weight:500;margin-right:10px}
+ol.rank{list-style:none;padding:0;counter-reset:r}
+ol.rank>li{counter-increment:r;padding:14px 0;border-bottom:1px solid #E5DCCE;margin:0}
+ol.rank>li::before{content:counter(r,decimal-leading-zero);font-family:var(--font-display,'Lora',serif);font-size:19px;color:#C39F77;margin-right:14px}
+</style></head>
+<body><div class="wrap">
+<p class="eyebrow">African Safari Group · Internal</p>
+<h1>Design review &amp; the Balanced theme</h1>
+<p class="lead">Everything reviewed against the goal — the world leader in planning, orchestrating and offering African safaris — with three reference competitors studied page by page. Feedback only: nothing original was modified. The one new artifact is a proposed third theme, delivered as a single additive token file.</p>
+<p class="meta">August 2026 · Covers: flagship website, direct bookings, editorial blends, component library, templates, mobile · Companion: <a href="Theme Compare.html">Theme Compare — the same live screens in Dark / Balanced / Light</a></p>
+
+<h2>1 · The Balanced theme</h2>
+<p>Your read on the two themes is right, and it is a <em>value</em> problem, not a colour problem. Dark sits on #171411 with near-black inputs — rich, but heavy; every screen is midnight. Light sits on ivory with white cards — airy, but the warmth drains out; it can read generic. Balanced keeps the exact same seven brand colours and typography and moves only the ground: a warm espresso ladder, roughly two stops lighter than Dark.</p>
+<div class="card">
+<div class="swrow"><span class="sw" style="background:#171411"></span><span class="swlab">Dark ground · #171411</span><span class="sw" style="background:#332D26"></span><span class="swlab">Balanced ground · #332D26</span><span class="sw" style="background:#F6F1EA"></span><span class="swlab">Light ground · #F6F1EA</span></div>
+<div class="swrow"><span class="sw" style="background:#443C32"></span><span class="swlab">Cards · #443C32</span><span class="sw" style="background:#60564A"></span><span class="swlab">Inputs / wells · #60564A</span><span class="sw" style="background:#C39F77"></span><span class="swlab">Accent (CTA, links) · #C39F77</span><span class="sw" style="background:#A8794B"></span><span class="swlab">Brass · pressed / deep states</span></div>
+</div>
+<p>What Balanced changes, in words:</p>
+<ul>
+<li><b>Ground and cards lift</b> from near-black to warm espresso, on a deliberately <em>wide</em> value ladder — ground #332D26 → cards #443C32 → inputs #60564A — so each surface separates on its own, without leaning on hairline borders. (You spotted this \u2014 and Dark's ladder has now been widened the same way: cards #322B23, inputs #453D33.)</li>
+<li><b>#C39F77 comes home.</b> Heritage Sand becomes the working accent — primary CTAs, links, focus rings, the rule-line moments — with ink text on top (strong contrast). Safari Brass #A8794B steps down to hover/pressed and deep accents, so the pair reads as one metal catching different light.</li>
+<li><b>Borders gain two steps</b> of visibility and placeholder text lightens, fixing the low-separation issues we patched one by one on Dark.</li>
+</ul>
+<p>It is delivered as <code>tokens/theme-balanced.css</code> — additive, nothing existing touched — and activates with <code>data-theme="balanced"</code> on any root, exactly like Light. See it live in <a href="Theme Compare.html">Theme Compare</a>. If you approve it, the decision to make is which theme is the <em>default</em> for each product; my suggestion is Balanced for the flagship site and both editions kept for bookings (travellers toggle).</p>
+
+<h3>Complementary palettes worth considering</h3>
+<p>The system is intentionally two-metal. If you want more range without breaking it, these three families sit naturally under the brand — used one per screen at most, never as CTAs:</p>
+<div class="card">
+<div class="swrow"><span class="sw" style="background:#55603F"></span><span class="sw" style="background:#97A17C"></span><span class="sw" style="background:#E6E9DC"></span><span class="swlab" style="min-width:0"><b>Mopane green</b> — conservation stories, positive-impact badges, success states.</span></div>
+<div class="swrow"><span class="sw" style="background:#A65B3B"></span><span class="sw" style="background:#C97E5A"></span><span class="sw" style="background:#F3E0D5"></span><span class="swlab" style="min-width:0"><b>Kalahari clay</b> — special offers, editorial pull-quotes, seasonal campaigns.</span></div>
+<div class="swrow"><span class="sw" style="background:#46586A"></span><span class="sw" style="background:#8BA0B3"></span><span class="sw" style="background:#E2E8EC"></span><span class="swlab" style="min-width:0"><b>Riverine slate</b> — maps, practical/logistics UI, insurance and documents.</span></div>
+</div>
+
+<h2>2 · What the references do — and what we do better</h2>
+<h3>Safari.com — the closest model for tone</h3>
+<p>Quiet, editorial, low density: one idea per band, serif headlines with a single italicised word, enormous real photography (a lodge page carries an 18-photo gallery). The craft is in the <b>reassurance layer</b>: a reply-time promise ("as little as 15 minutes") runs from the top bar to every form footer; microcopy under each field explains why it is asked ("Used only for trip coordination. No sales calls."); pricing is disarmed head-on ("You pay the lodge's rate, never a markup").</p>
+<p>Their lodge page is the anatomy lesson: sticky in-page anchors (Overview · Availability · Rates · Offers · Family · Gallery), a live availability check, a full seasonal rate table with currency switcher and validity dates, family policy in specific detail, current offers in prose, and a <b>named specialist with photo</b> attached to the lodge, backed by one dated traveller quote. Their team page gives every specialist a photo, WhatsApp and email, and two dated verbatim reviews; the enquiry wizard anchors budget in real numbers ($1,000 / $1,500 / $2,500+ pp per day) and lets guests pick contact channel, WhatsApp and iMessage included.</p>
+<h3>Go2Africa — the planning IA</h3>
+<p>Warmer and denser. The trust arsenal is industrial: review platform score and count with recency stamps, award logos, B-Corp status. Language is "Help me plan", not "Enquire". Destinations split into why-go / where-to-go / when-to-go; there is a travel-by-month entry point; tour cards carry from–to price ranges so budget expectations are set on the card, not after a call; itineraries carry positive-impact tags.</p>
+<h3>Rhino Africa — the authority voice</h3>
+<p>Bold claims stated flatly (the authority framing, traveller counts, most-awarded), a video hero, and partner-brand logo walls — the lodges they sell (Singita-tier names) doing the proving for them. Density sits between the other two.</p>
+<h3>What we already do better than all three</h3>
+<ul>
+<li><b>One design language end to end.</b> All three references break style the moment you leave marketing — funnels drop into plain forms. Our marketing site and booking flow are one system, and that seamlessness <em>is</em> the brand promise.</li>
+<li><b>A distinctive ground.</b> All three sit on white. Our dark-luxury identity (and Balanced keeps this) is ownable shelf-space none of them occupies.</li>
+<li><b>A real self-serve booking flow</b> with transparent fee lines and live-rate framing — the references all funnel to "talk to us".</li>
+<li><b>Typographic restraint and a token-driven system</b> — three switchable themes from one component set; none of them can do this.</li>
+</ul>
+
+<h2>3 · Product assessments</h2>
+<h3><span class="who">Flagship website</span></h3>
+<div class="grid2">
+<div class="card kv"><b>Strong</b><ul><li>Cinematic dark heroes with the mandated scrim; photography-first layouts ready for real imagery.</li><li>Editorial band rhythm (ivory / sand / white) gives long pages pace.</li><li>Lora + Poppins pairing is distinctive and consistently applied.</li><li>Enquire form is clean and honest — no dark patterns.</li></ul></div>
+<div class="card kv"><b>Weak</b><ul><li>Navigation is four flat links; every reference runs a deep destination/experience menu. Our IA is the thinnest part of the product.</li><li>Proof layer is nearly absent: no named, dated guest quotes; no award / membership strip; no review score anywhere.</li><li>Enquire asks for details but gives nothing back: no reply-time promise, no budget anchors, no contact-channel choice, no reassurance microcopy.</li><li>Footer is thin — references use footers as a second homepage (featured trips, reads, contact channels).</li><li>No visible human: no phone, no WhatsApp, no specialist faces.</li></ul></div>
+</div>
+<div class="card kv"><b>Missing entirely</b> — destination &amp; experience library (the core content type of this industry); lodge detail page with rates/availability; team page; testimonials page; travel-by-month / seasonality tool; brochures or any lead magnet; search.</div>
+
+<h3><span class="who">Direct bookings</span></h3>
+<div class="grid2">
+<div class="card kv"><b>Strong</b><ul><li>Complete funnel — results → property → checkout → confirmation — with a stepper that keeps guests oriented.</li><li>Filters are genuinely useful and now work as a mobile sheet.</li><li>Fee transparency (conservation levy as a line item) builds trust the references don't attempt in-flow.</li><li>Light/dark parity held across every screen.</li></ul></div>
+<div class="card kv"><b>Weak</b><ul><li>Result cards are interchangeable — no "known for" one-liner, no differentiator between a R12k and R45k lodge beyond price.</li><li>Property page is thin against the Safari.com anatomy: no seasonal rate table, no what's-included, no family policy, no current offers, no anchor nav.</li><li>Checkout has no reassurance near payment (secure-payment cue, cancellation terms, "a human checks every booking").</li><li>Confirmation dead-ends — no onward path.</li></ul></div>
+</div>
+<div class="card kv"><b>Missing entirely</b> — compare tray (2–3 lodges side by side); map view of results; saved / wishlist; a named specialist escape hatch ("prefer a human? Thandi knows this reserve"); post-booking trip hub (documents, transfers, packing, one contact).</div>
+
+<h3><span class="who">Component library &amp; templates</span></h3>
+<div class="grid2">
+<div class="card kv"><b>Strong</b><ul><li>27+ components with real states, tokens, icon set, and now the mobile drawer — coverage for what's built is solid.</li><li>Three deck templates keep internal material on-brand.</li></ul></div>
+<div class="card kv"><b>Gaps the roadmap above will need</b><ul><li>RateTable (seasonal rates), AnchorNav/Tabs, Breadcrumb, ReviewCard (quote + name + date + source), SpecialistCard, StatStrip, Itinerary Timeline (day-by-day), Gallery/lightbox, MapSlot, Toast.</li><li>Templates: itinerary/proposal document (already agreed as priority 2), guest email set, destination one-pager.</li></ul></div>
+</div>
+
+<h2>4 · Suggestions, ranked by impact</h2>
+<ol class="rank">
+<li><b>Build the proof layer everywhere.</b><span class="tag m">Medium</span><br>Named + dated guest quotes, review score + count, award/membership strip, partner-lodge logo wall. This is the single widest gap between us and all three references, and it costs no new pages — it threads into existing ones.</li>
+<li><b>Deepen the lodge/property page to the full anatomy.</b><span class="tag l">Large</span><br>Anchor nav, seasonal rate table with validity dates + currency, what's-included, family policy, current offers, gallery. This page is where safari decisions actually happen; ours is currently a summary, the references' are a dossier.</li>
+<li><b>Put humans in the product.</b><span class="tag m">Medium</span><br>SpecialistCard attached to lodges, enquiry and checkout; a team page template with per-person reviews and WhatsApp/email. "Orchestrated by people who live this" is your differentiator — currently invisible.</li>
+<li><b>Upgrade the enquire flow into a planning conversation.</b><span class="tag m">Medium</span><br>Reply-time promise, budget tiers with real per-day anchors, contact-channel choice (WhatsApp included), reassurance microcopy under fields, an example-filled trip-details prompt.</li>
+<li><b>Give the flagship a real IA.</b><span class="tag l">Large</span><br>Destinations and Experiences as first-class sections with a mega-menu; why-go / when-to-go / where-to-stay structure per destination; travel-by-month entry point.</li>
+<li><b>Adopt Balanced (pending your eye on the compare page)</b><span class="tag s">Small</span><br>and decide per-product defaults. The token file is done; adoption is a one-line attribute per product.</li>
+<li><b>Commission the imagery program.</b><span class="tag m">Medium</span><br>Every layout is photography-first and every slot is a placeholder. 6–10 hero-grade lodge/wildlife photos would change perceived quality more than any code.</li>
+<li><b>Results differentiation:</b> a "known for" line per lodge, compare tray, map toggle.<span class="tag m">Medium</span></li>
+<li><b>The itinerary/proposal artifact</b> (agreed priority 2) — day-by-day timeline, printable, specialist-signed.<span class="tag m">Medium</span></li>
+<li><b>Post-booking trip hub.</b><span class="tag l">Large</span><br>Confirmation currently dead-ends; the "seamless in between" story lives here — documents, transfers, packing, one named contact.</li>
+<li><b>Checkout reassurance strip</b> — secure payment, cancellation summary, human-checked bookings.<span class="tag s">Small</span></li>
+<li><b>Footer as second homepage</b> + visible contact channels sitewide.<span class="tag s">Small</span></li>
+</ol>
+
+<h2>5 · Waiting on you</h2>
+<p>Open <a href="Theme Compare.html">Theme Compare</a> and judge Balanced against Dark and Light on the three live screens. Then pick the suggestions you want pulled into the build queue — my recommendation for the next three moves: <span class="rule">proof layer (1)</span>, <span class="rule">lodge page anatomy (2)</span>, and <span class="rule">the itinerary artifact (9)</span>, with Balanced adopted along the way if it earns your approval.</p>
+</div></body></html>

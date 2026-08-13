@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theme Compare — Dark · Balanced · Light · Light +</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+html{background:#211D18}body{margin:0;font-family:var(--font-body,'Poppins',sans-serif);color:#F6F1EA;background:#211D18;padding:34px 40px 60px}
+a{color:#C39F77}a:hover{color:#D3B48F}
+.hd{max-width:1460px;margin:0 auto 8px}
+.hd h1{font-family:var(--font-display,'Lora',serif);font-weight:500;font-size:30px;margin:0 0 6px;color:#F6F1EA}
+.hd p{margin:0;font-size:13.5px;color:#B5AA9B;max-width:74ch;line-height:1.55}
+.legend{display:flex;gap:22px;margin:16px 0 6px;flex-wrap:wrap}
+.legend div{display:flex;align-items:center;gap:8px;font-size:12px;color:#B5AA9B}
+.legend i{width:16px;height:16px;border-radius:4px;border:1px solid rgba(246,241,234,.2);display:inline-block}
+.grid{max-width:1460px;margin:0 auto}
+.rowlab{font-family:var(--font-display,'Lora',serif);font-size:19px;color:#F6F1EA;margin:34px 0 12px;padding-top:22px;border-top:1px solid rgba(246,241,234,.12)}
+.row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cell b{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#C39F77;margin-bottom:8px;font-weight:600}
+.port{position:relative;width:100%;aspect-ratio:1440/930;overflow:hidden;border-radius:8px;border:1px solid rgba(246,241,234,.14);background:#171411}
+.port iframe{position:absolute;top:0;left:0;width:1440px;height:930px;border:0;transform-origin:top left}
+.note{max-width:1460px;margin:40px auto 0;font-size:12.5px;color:#8A8175;line-height:1.6}
+</style></head>
+<body>
+<div class="hd">
+<h1>Theme Compare — Dark · Balanced · Light · Light +</h1>
+<p>The same live screens rendered in all four themes. <strong style="color:#E4DBCE">Balanced</strong> lifts the dark system to warm espresso; <strong style="color:#E4DBCE">Light&nbsp;+</strong> gives the light edition pigment and a dark frame — warm sand ground, ink header/hero/footer, camel <span style="color:#C39F77">#C39F77</span> CTAs. Real lodge photography is dropped into every column so image pop can be judged honestly. Full findings: <a href="Design Review.html">Design Review</a>.</p>
+<div class="legend">
+<div><i style="background:#171411"></i>Dark #171411</div>
+<div><i style="background:#332D26"></i>Balanced #332D26</div>
+<div><i style="background:#F6F1EA"></i>Light #F6F1EA</div>
+<div><i style="background:#EFE6D8"></i>Light + #EFE6D8</div>
+<div><i style="background:#C39F77"></i>Accent #C39F77</div>
+<div><i style="background:#A8794B"></i>Brass #A8794B</div>
+</div>
+</div>
+<div class="grid" id="grid"></div>
+<p class="note">Screens are the live prototypes, scaled. Scroll inside any panel to explore; the floating screen-switcher is hidden here. Balanced lives in <code>tokens/theme-balanced.css</code> (<code>data-theme="balanced"</code>), Light&nbsp;+ in <code>tokens/theme-lightplus.css</code> (<code>data-theme="lightplus"</code>) — both additive; originals untouched. Photos: Kopano &amp; Jamala uploads.</p>
+<script>
+const BAL = new URL('tokens/theme-balanced.css', location.href).href;
+const LP  = new URL('tokens/theme-lightplus.css', location.href).href;
+const P = ['vista.jpg','kopano-top.webp','lounge-deck.webp','boma.webp','bed.webp','suite.webp','jamala-1.jpg','jamala-2.jpg','lounge.webp','suite-lounge.webp'].map(n=>new URL('assets/photos/'+n, location.href).href);
+const THEMES = ['dark','balanced','light','lightplus'];
+const LABELS = {dark:'Dark', balanced:'Balanced', light:'Light', lightplus:'Light +'};
+const ROWS = [
+  {label:'Flagship website — Home', src:'ui_kits/flagship-website/index.html', key:'asg-flagship-route', route:'home'},
+  {label:'Direct bookings — Search results', src:'ui_kits/asg-direct-bookings/index.html', key:'asg-sbn-route', route:'results'},
+  {label:'Direct bookings — Checkout', src:'ui_kits/asg-direct-bookings/index.html', key:'asg-sbn-route', route:'checkout'}
+];
+localStorage.setItem('asg-theme','dark');
+function fit(port){const w=port.clientWidth;port.querySelector('iframe').style.transform='scale('+(w/1440)+')';}
+function decorate(d){
+  if(!d.getElementById('__cmp')){const s=d.createElement('style');s.id='__cmp';s.textContent='.screenbar{display:none!important}.photo-slot__tag,.sbn-photo__t{display:none!important}.photo-slot::before,.sbn-photo::before{display:none!important}';d.head.appendChild(s);}
+  if(!d.getElementById('__bal')){const l=d.createElement('link');l.id='__bal';l.rel='stylesheet';l.href=BAL;d.head.appendChild(l);}
+  if(!d.getElementById('__lp')){const l=d.createElement('link');l.id='__lp';l.rel='stylesheet';l.href=LP;d.head.appendChild(l);}
+  d.querySelectorAll('.photo-slot,.sbn-photo,.asg-card__media').forEach((el,i)=>{if(!el.dataset.p){el.dataset.p='1';el.style.background='url('+P[i%P.length]+') center/cover no-repeat';}});
+}
+function setTheme(d, theme){
+  if(theme==='dark') d.documentElement.removeAttribute('data-theme');
+  else d.documentElement.setAttribute('data-theme', theme);
+}
+function enforce(fr, theme){
+  try{
+    const d=fr.contentDocument; if(!d||!d.documentElement) return;
+    decorate(d); setTheme(d, theme);
+    const want=theme==='dark'?null:theme;
+    new MutationObserver(()=>{ if(d.documentElement.getAttribute('data-theme')!==want){ setTheme(d, theme); } })
+      .observe(d.documentElement,{attributes:true,attributeFilter:['data-theme']});
+    [600,1800,4000,8000].forEach(ms=>setTimeout(()=>{try{decorate(d);if(d.documentElement.getAttribute('data-theme')!==want)setTheme(d,theme);}catch(e){}},ms));
+  }catch(e){}
+}
+function waitMounted(fr){
+  return new Promise(res=>{const t0=Date.now();(function poll(){
+    let ok=false; try{const d=fr.contentDocument; ok=!!(d&&d.querySelector('.site-header,.sbn-header'));}catch(e){}
+    if(ok||Date.now()-t0>25000) res(); else setTimeout(poll,200);
+  })();});
+}
+async function mountRow(row){
+  const grid=document.getElementById('grid');
+  const lab=document.createElement('div');lab.className='rowlab';lab.textContent=row.label;grid.appendChild(lab);
+  const r=document.createElement('div');r.className='row';grid.appendChild(r);
+  localStorage.setItem(row.key,row.route);
+  const frames=THEMES.map(t=>{
+    const c=document.createElement('div');c.className='cell';
+    const b=document.createElement('b');b.textContent=LABELS[t];c.appendChild(b);
+    const p=document.createElement('div');p.className='port';
+    const f=document.createElement('iframe');f.src=row.src;p.appendChild(f);c.appendChild(p);r.appendChild(c);
+    fit(p);return {f,t};
+  });
+  await Promise.all(frames.map(({f})=>waitMounted(f)));
+  frames.forEach(({f,t})=>enforce(f,t));
+}
+(async()=>{for(const row of ROWS) await mountRow(row);
+  localStorage.setItem('asg-sbn-route','results');localStorage.setItem('asg-flagship-route','home');})();
+addEventListener('resize',()=>document.querySelectorAll('.port').forEach(fit));
+</script>
+</body></html>

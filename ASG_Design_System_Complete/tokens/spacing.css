@@ -1,0 +1,29 @@
+/* African Safari Group — Spacing
+   Restrained, editorial layouts breathe. 4px base unit, generous section rhythm. */
+
+:root {
+  --space-0:    0;
+  --space-1:    0.25rem;  /* 4px  */
+  --space-2:    0.5rem;   /* 8px  */
+  --space-3:    0.75rem;  /* 12px */
+  --space-4:    1rem;     /* 16px */
+  --space-5:    1.5rem;   /* 24px */
+  --space-6:    2rem;     /* 32px */
+  --space-7:    3rem;     /* 48px */
+  --space-8:    4rem;     /* 64px */
+  --space-9:    6rem;     /* 96px */
+  --space-10:   8rem;     /* 128px */
+
+  /* Semantic rhythm */
+  --gap-inline:     var(--space-2);  /* between inline siblings (icon+label) */
+  --gap-control:    var(--space-3);  /* inside controls */
+  --gap-card:       var(--space-5);  /* card padding */
+  --gap-stack:      var(--space-5);  /* between stacked blocks */
+  --gap-section:    var(--space-9);  /* between page sections — generous */
+
+  /* Layout containers */
+  --container-max:  1200px;  /* editorial max width */
+  --container-wide: 1440px;  /* full marketing width */
+  --container-text: 720px;   /* reading column */
+  --gutter:         clamp(1.25rem, 5vw, 4rem); /* @kind spacing */ /* page side margins — generous */
+}

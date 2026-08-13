@@ -1,0 +1,44 @@
+<!-- @dsCard group="Components" viewport="700x460" name="Drawer" subtitle="Slide-in panel — mobile nav & filters" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--surface-base); }
+  .demo-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .demo-links a { display: block; padding: 14px 0; font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--text-body); border-bottom: 1px solid var(--border-subtle); cursor: pointer; }
+  .demo-links a:hover { color: var(--text-primary); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { Drawer, Button } = window.DesignSystem_e5ff94;
+  function Demo() {
+    const [open, setOpen] = React.useState(true);
+    return (
+      <div style={{height:'100%'}}>
+        {!open && <div style={{padding:28}}><Button icon="menu" onClick={()=>setOpen(true)}>Open drawer</Button></div>}
+        <Drawer open={open} onClose={()=>setOpen(false)} title="Menu"
+          footer={<Button variant="primary" style={{width:'100%'}} onClick={()=>setOpen(false)}>Plan My Safari</Button>}>
+          <ul className="demo-links">
+            <li><a>Destinations</a></li>
+            <li><a>Experiences</a></li>
+            <li><a>Accommodation</a></li>
+            <li><a>About</a></li>
+          </ul>
+          <p style={{fontFamily:'var(--font-body)',fontSize:13,color:'var(--text-muted)',marginTop:18,lineHeight:1.7}}>+27 21 200 5960<br/>bookings@africansafarigroup.com</p>
+        </Drawer>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

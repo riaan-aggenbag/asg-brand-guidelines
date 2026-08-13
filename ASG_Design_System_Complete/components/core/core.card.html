@@ -1,0 +1,135 @@
+<!-- @dsCard group="Components" viewport="700x900" name="Core" subtitle="Buttons, icons, badges, tags, avatars, logo" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; padding: 26px 28px; background: var(--surface-base); }
+  .grid { display: flex; flex-direction: column; gap: 22px; }
+  .group { display: flex; flex-direction: column; gap: 11px; }
+  .h { font-family: var(--font-body); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-muted); }
+  .r { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .grounds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .gnd { border-radius: var(--radius-sm); padding: 14px; display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--border-subtle); }
+  .gnd .r { gap: 8px; }
+  .gnd--dark { background: var(--asg-ink); }
+  .gnd--ivory { background: var(--asg-warm-ivory); border-color: var(--asg-bone-300); }
+  .gnd--blend { background: linear-gradient(135deg, var(--asg-ink) 0%, var(--asg-soft-charcoal) 55%, var(--asg-warm-ivory) 100%); }
+  .gl { font-family: var(--font-body); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
+  .gnd--dark .gl { color: var(--text-muted); }
+  .gnd--ivory .gl { color: var(--text-muted-ink); }
+  .gnd--blend .gl { color: var(--asg-warm-ivory); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { Button, IconButton, Badge, Tag, Avatar, Divider, Logo, Icon, ICON_NAMES } = window.DesignSystem_e5ff94;
+  function Demo() {
+    return (
+      <div className="grid">
+        <div className="group">
+          <div className="h">Buttons</div>
+          <div className="r">
+            <Button variant="primary" iconRight="arrow-right">Plan My Safari</Button>
+            <Button variant="secondary">View Itinerary</Button>
+            <Button variant="ghost" icon="filter">Filter</Button>
+            <Button variant="link" iconRight="arrow-right">See all reserves</Button>
+          </div>
+          <div className="r">
+            <Button size="sm">Small</Button>
+            <Button size="md">Medium</Button>
+            <Button size="lg">Large</Button>
+            <Button loading>Loading</Button>
+            <Button disabled>Disabled</Button>
+          </div>
+        </div>
+        <Divider />
+        <div className="group">
+          <div className="h">White on brass — the rule</div>
+          <div className="r">
+            <Button variant="primary" iconRight="arrow-right">Brass takes white text</Button>
+            <Badge variant="solid">Deep brass under 12px</Badge>
+            <Badge variant="green">Most drives</Badge>
+          </div>
+          <p style={{fontFamily:'var(--font-body)',fontSize:12.5,color:'var(--text-muted)',margin:0,maxWidth:'56ch',lineHeight:1.6}}>Safari Brass CTAs always take a white label — minimum 12px, semibold, tracked caps. Where brass must carry smaller text (badges), the fill steps down to deep brass <code style={{color:'var(--text-body)'}}>--asg-brass-600</code>.</p>
+        </div>
+        <Divider />
+        <div className="group">
+          <div className="h">Icon buttons · Badges · Tags</div>
+          <div className="r">
+            <IconButton icon="search" label="Search" variant="ghost" />
+            <IconButton icon="sliders" label="Filters" variant="outline" />
+            <IconButton icon="arrow-right" label="Next" variant="solid" />
+            <span style={{width:14}} />
+            <Badge variant="brass" dot>Available</Badge>
+            <Badge variant="neutral">Malaria-Free</Badge>
+            <Badge variant="success">Confirmed</Badge>
+            <Badge variant="warning">Few Left</Badge>
+            <span style={{width:14}} />
+            <Tag dot>Sabi Sand</Tag>
+            <Tag selected onClick={()=>{}}>Big Five</Tag>
+            <Tag onRemove={()=>{}}>October</Tag>
+          </div>
+        </div>
+        <Divider />
+        <div className="group">
+          <div className="h">Colour range — badges & tags blend on any ground</div>
+          <div className="grounds">
+            {[['dark','Dark'],['blend','Blended'],['ivory','Light']].map(([g,label]) => (
+              <div key={g} className={`gnd gnd--${g}`}>
+                <span className="gl">{label}</span>
+                <div className="r">
+                  <Badge variant="sand">Sand</Badge>
+                  <Badge variant="gold">Gold</Badge>
+                  <Badge variant="clay">Clay</Badge>
+                  <Badge variant="olive">Olive</Badge>
+                  <Badge variant="moss">Moss</Badge>
+                  <Badge variant="plum">Plum</Badge>
+                  <Badge variant="stone">Stone</Badge>
+                </div>
+                <div className="r">
+                  <Tag color="sand">Sand</Tag>
+                  <Tag color="gold">Gold</Tag>
+                  <Tag color="clay">Clay</Tag>
+                  <Tag color="olive">Olive</Tag>
+                  <Tag color="moss">Moss</Tag>
+                  <Tag color="plum">Plum</Tag>
+                  <Tag color="stone">Stone</Tag>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <Divider />
+        <div className="group">
+          <div className="h">Avatars · Rule line</div>
+          <div className="r">
+            <Avatar name="Riaan Aggenbag" size="sm" />
+            <Avatar name="Sarah Kruger" size="md" ring />
+            <Avatar name="Thandi M" size="lg" />
+            <span style={{width:24}} />
+            <Divider brass />
+            <span style={{width:24}} />
+            <Logo variant="horizontal" tone="white" size={40} iconBase="../../assets/logos/" />
+          </div>
+        </div>
+        <Divider />
+        <div className="group">
+          <div className="h">Icon set</div>
+          <div className="r" style={{gap:'16px',color:'var(--text-body)'}}>
+            {ICON_NAMES.slice(0,18).map(n => <Icon key={n} name={n} size={20} />)}
+          </div>
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

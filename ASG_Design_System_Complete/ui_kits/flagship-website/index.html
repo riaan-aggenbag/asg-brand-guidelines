@@ -1,0 +1,83 @@
+<!-- @dsCard group="Flagship Website" viewport="1440x900" name="Flagship Website" subtitle="Home · Reserve · Lodge · Enquiry — interactive" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>African Safari Group</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-base); }
+  .screenbar{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:1300;display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(14,12,10,.82);backdrop-filter:blur(10px);border:1px solid var(--border-default);box-shadow:var(--shadow-lg);}
+  .screenbar button{font-family:var(--font-body);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);background:none;border:0;padding:8px 15px;border-radius:999px;cursor:pointer;transition:color .15s,background .15s;}
+  .screenbar button:hover{color:var(--text-body);}
+  .screenbar button.on{background:var(--asg-brass-600);color:var(--text-on-brass);}
+  .screenbar__sep{width:1px;align-self:stretch;margin:4px 2px;background:var(--border-default);}
+  /* ---- Light Edition overrides (active under data-theme="light") ---- */
+  [data-theme="light"] .site-header{background:rgba(246,241,234,.85);border-bottom:1px solid var(--border-default);}
+  [data-theme="light"] .photo-slot{background:linear-gradient(135deg,#ece2d4 0%,#ddd0bb 100%);}
+  [data-theme="light"] .photo-slot::before{opacity:.3;}
+  [data-theme="light"] .photo-slot__tag{color:#9a8f7e;}
+  [data-theme="light"] .hero::after{background:linear-gradient(to top, rgba(246,241,234,.92) 0%, rgba(246,241,234,.28) 55%, rgba(246,241,234,.5) 100%);}
+  [data-theme="light"] .rsv-hero::after{background:linear-gradient(to top, rgba(246,241,234,.94) 0%, rgba(246,241,234,.32) 60%, rgba(246,241,234,0) 100%);}
+  [data-theme="light"] .rsv-hero__in h1,[data-theme="light"] .lg-hero__in h1{color:var(--asg-ink);}
+  [data-theme="light"] .rsv-hero__lede{color:var(--asg-soft-charcoal);}
+  [data-theme="light"] .lg-hero::after{background:linear-gradient(to top, rgba(246,241,234,.95) 0%, rgba(246,241,234,.4) 55%, rgba(23,20,17,.28) 100%);}
+  [data-theme="light"] .lg-hero__meta{color:var(--asg-soft-charcoal);}
+  [data-theme="light"] .subnav{background:rgba(246,241,234,.94);border-bottom:1px solid var(--border-default);}
+  [data-theme="light"] .season-band .asg-months__legend{color:var(--asg-bone);}
+  [data-theme="light"] .rsv-bar{background:rgba(246,241,234,.9);border-bottom:1px solid var(--border-default);}
+  [data-theme="light"] .site-footer{background:var(--asg-ivory-200);border-top:1px solid var(--border-default);}
+  [data-theme="light"] .asg-factpill{background:rgba(23,20,17,.06);border-color:rgba(23,20,17,.22);color:var(--asg-ink);}
+  [data-theme="light"] .asg-factpill::before{color:var(--asg-brass-600);}
+  [data-theme="light"] .asg-card__media{background:#ece2d4;}
+  [data-theme="light"] .asg-card__media::after{opacity:0;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="Chrome.jsx"></script>
+<script type="text/babel" src="HomeScreen.jsx"></script>
+<script type="text/babel" src="ReserveScreen.jsx"></script>
+<script type="text/babel" src="LodgeScreen.jsx"></script>
+<script type="text/babel" src="EnquireScreen.jsx"></script>
+<script type="text/babel">
+  const KEY = "asg-flagship-route";
+  const THEME_KEY = "asg-theme";
+  function App() {
+    const [route, setRoute] = React.useState(() => localStorage.getItem(KEY) || "home");
+    const [theme, setTheme] = React.useState(() => localStorage.getItem(THEME_KEY) || "dark");
+    React.useEffect(() => {
+      if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+      else document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem(THEME_KEY, theme);
+    }, [theme]);
+    const go = React.useCallback((r) => {
+      setRoute(r); localStorage.setItem(KEY, r);
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }, []);
+    const Screen = { home: HomeScreen, reserve: ReserveScreen, lodge: LodgeScreen, enquire: EnquireScreen }[route] || HomeScreen;
+    const screens = [["home","Home"],["reserve","Reserve"],["lodge","Lodge"],["enquire","Enquire"]];
+    return (
+      <React.Fragment>
+        <Header route={route} go={go} theme={theme} />
+        <Screen go={go} />
+        <Footer go={go} theme={theme} />
+        <div className="screenbar">
+          {screens.map(([id,label]) => (
+            <button key={id} className={route===id?"on":""} onClick={() => go(id)}>{label}</button>
+          ))}
+          <span className="screenbar__sep"></span>
+          <button onClick={() => setTheme(theme==="light"?"dark":"light")}>{theme==="light"?"Dark":"Light"}</button>
+        </div>
+      </React.Fragment>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

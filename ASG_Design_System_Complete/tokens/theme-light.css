@@ -1,0 +1,71 @@
+/* African Safari Group — Light Edition theme
+   Same seven brand colours, inverted application: Warm Ivory is the dominant
+   ground (60%), Ink/Charcoal carries text & selective dark sections (30%),
+   Safari Brass stays the single 10% signal.
+
+   Default (no attribute) = the dark system. Add data-theme="light" to any root
+   (html, body, a section, a kit) and every component re-skins to the light
+   edition — it remaps the semantic aliases plus the few base tokens the
+   components reference directly. */
+
+[data-theme="light"] {
+  /* Surfaces — ivory ground, white raised */
+  --surface-base:         var(--asg-warm-ivory);
+  --surface-raised:       var(--asg-white);
+  --surface-overlay:      var(--asg-white);
+  --surface-inset:        var(--asg-ivory-200);
+  --surface-ivory:        var(--asg-warm-ivory);
+  --surface-ivory-raised: var(--asg-white);
+
+  /* Text — ink on ivory */
+  --text-primary:   var(--asg-ink);
+  --text-body:      var(--asg-soft-charcoal);
+  --text-muted:     #7A7166;
+  --text-faint:     #A89E90;
+  --text-on-brass:  #FFFFFF; /* brand rule: white on brass, both themes */
+
+  /* Accent — brass darkens on hover for contrast against light */
+  --accent:         var(--asg-brass);
+  --accent-hover:   var(--asg-brass-600);
+  --accent-active:  #6F4C2C;
+  --accent-quiet:   var(--asg-brass-600);
+  --link:           var(--asg-brass-600);
+
+  /* Borders & dividers — ink-based hairlines, bone for strong */
+  --border-subtle:  rgba(23, 20, 17, 0.07);
+  --border-default: rgba(23, 20, 17, 0.12);
+  --border-strong:  var(--asg-bone);
+  --border-rule:    var(--asg-brass);
+
+  /* Focus ring stays brass */
+  --focus-ring:        var(--asg-brass);
+  --focus-ring-shadow: 0 0 0 3px var(--asg-brass-a40);
+
+  /* Base tokens the components reference directly — repurposed for light */
+  --asg-ivory-a08:    rgba(23, 20, 17, 0.05);   /* faint ground wash (ghost hover, neutral badge) */
+  --asg-ivory-a14:    rgba(23, 20, 17, 0.09);
+  --asg-charcoal-500: #D8CFC2;                   /* input hover border, switch track, avatar bg */
+  --asg-charcoal:     var(--asg-white);          /* native <option> background */
+  --asg-ink-900:      #2B2622;                   /* tooltip bubble stays dark — legible on light */
+
+  /* Feedback — light tints instead of dark wells */
+  --success:    #5B7A48;  --success-bg: #EBF0E3;
+  --warning:    #9A6A25;  --warning-bg: #F6EBD7;
+  --danger:     #A8443B;  --danger-bg:  #F7E3DF;
+  --info:       var(--asg-brass-600);  --info-bg: #F1E8DA;
+
+  /* Modal scrim — keep a dark veil behind dialogs (legible focus on light) */
+  --asg-ink-a60: rgba(23, 20, 17, 0.45);
+
+  /* Soft, light shadows on ivory */
+  --shadow-sm: 0 1px 2px rgba(74, 68, 60, 0.10);
+  --shadow-md: 0 6px 18px rgba(74, 68, 60, 0.12);
+  --shadow-lg: 0 16px 40px rgba(74, 68, 60, 0.16);
+  --shadow-xl: 0 30px 70px rgba(74, 68, 60, 0.20);
+
+  color: var(--text-body);
+  background: var(--surface-base);
+}
+
+/* On a light ground the page-level selection should read ink, not ivory */
+[data-theme="light"] ::selection { background: var(--asg-brass-a40); color: var(--asg-ink); }

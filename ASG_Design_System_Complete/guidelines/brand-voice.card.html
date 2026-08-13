@@ -1,0 +1,35 @@
+<!-- @dsCard group="Brand" viewport="700x430" name="Voice — Instead of / Write" subtitle="Specific over superlative. Never salesy, never shouting. Never sales-mechanics jargon." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 22px 26px; background: var(--surface-base); display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: start; }
+  .col { padding: 16px 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-default); }
+  .bad { background: var(--asg-ink-900); }
+  .good { background: var(--asg-charcoal); border-color: var(--asg-brass-a40); }
+  .tag { font-family: var(--font-body); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 10px; }
+  .bad .tag { color: var(--text-faint); }
+  .good .tag { color: var(--accent); }
+  .q { font-family: var(--font-serif); font-size: 17px; line-height: 1.4; margin: 0; }
+  .bad .q { color: var(--text-muted); font-style: italic; }
+  .good .q { color: var(--text-primary); }
+  .rules { grid-column: 1 / -1; border-top: 1px solid var(--border-subtle); padding-top: 16px; display: grid; gap: 11px; }
+  .rule { display: grid; grid-template-columns: 168px 1fr; gap: 14px; align-items: baseline; }
+  .rule .k { font-family: var(--font-body); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .rule .v { font-family: var(--font-body); font-size: 13px; line-height: 1.6; color: var(--text-body); }
+  .rule .v b { color: var(--text-primary); font-weight: 600; }
+  .rule .v s { color: var(--text-faint); }
+</style>
+</head>
+<body>
+  <div class="col bad"><p class="tag">Instead of</p><p class="q">“Experience the adventure of a lifetime on this dream safari!”</p></div>
+  <div class="col good"><p class="tag">Write</p><p class="q">Sabi Sand offers the highest leopard-sighting density in Africa. Three nights gives you the best odds.</p></div>
+  <div class="rules">
+    <div class="rule"><span class="k">Words we never use</span><span class="v"><s>cross-sell</s> · <s>upsell</s> · any sales-mechanics jargon in guest-facing copy. Cross-promotion sections are titled <b>“More of the Reserve”</b>.</span></div>
+    <div class="rule"><span class="k">Temperatures</span><span class="v">Always dual-unit, <b>Celsius first</b> — “8–22&nbsp;°C (46–72&nbsp;°F)” — in panels and running copy alike.</span></div>
+    <div class="rule"><span class="k">Sightings honesty</span><span class="v">Plain probability language is a voice feature: <b>“Leopard — Rarely · elusive.”</b> Never promise a sighting.</span></div>
+  </div>
+</body>
+</html>

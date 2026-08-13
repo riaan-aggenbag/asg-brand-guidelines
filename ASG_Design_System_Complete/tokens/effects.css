@@ -1,0 +1,44 @@
+/* African Safari Group — Radius, Borders, Elevation, Motion
+   Restraint: corners are nearly square, borders are hairlines, shadows are
+   deep-but-soft (never a bright drop-shadow). Confidence is quiet. */
+
+:root {
+  /* ---- Corner radius — minimal, architectural ---- */
+  --radius-none:   0;
+  --radius-xs:     2px;   /* inputs, chips, default controls */
+  --radius-sm:     4px;   /* buttons, small cards */
+  --radius-md:     6px;   /* cards, panels */
+  --radius-lg:     10px;  /* large media cards, dialogs */
+  --radius-pill:   999px; /* avatars, status dots, the occasional pill tag */
+
+  /* ---- Border widths ---- */
+  --border-hairline: 1px; /* @kind other */
+  --border-rule-w: 2px; /* @kind other */  /* the brass rule-line under wordmarks/eyebrows */
+
+  /* ---- Elevation — soft, warm-black shadows on dark ground ---- */
+  --shadow-none:   none;
+  --shadow-sm:     0 1px 2px rgba(8, 6, 4, 0.40);
+  --shadow-md:     0 6px 18px rgba(8, 6, 4, 0.45);
+  --shadow-lg:     0 18px 48px rgba(8, 6, 4, 0.55);
+  --shadow-xl:     0 32px 80px rgba(8, 6, 4, 0.62);
+  /* On ivory ground, shadows are far lighter */
+  --shadow-ivory-sm: 0 1px 2px rgba(74, 68, 60, 0.10);
+  --shadow-ivory-md: 0 10px 30px rgba(74, 68, 60, 0.12);
+
+  /* ---- Motion — fades & gentle slides, no bounce ---- */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */  /* ease-out, calm */
+  --ease-entrance: cubic-bezier(0.16, 1, 0.30, 1); /* @kind other */     /* longer settle */
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+  --dur-fast: 140ms; /* @kind other */
+  --dur-base: 240ms; /* @kind other */
+  --dur-slow: 420ms; /* @kind other */
+  --dur-reveal: 720ms; /* @kind other */  /* editorial image / headline reveals */
+
+  /* ---- Z-index scale ---- */
+  --z-base: 0; /* @kind other */
+  --z-raised: 10; /* @kind other */
+  --z-sticky: 100; /* @kind other */
+  --z-overlay: 1000; /* @kind other */
+  --z-modal: 1100; /* @kind other */
+  --z-toast: 1200; /* @kind other */
+}

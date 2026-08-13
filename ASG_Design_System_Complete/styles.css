@@ -1,0 +1,12 @@
+/* African Safari Group — Design System
+   Single global-CSS entry point. Consumers link THIS file.
+   Import order: fonts → tokens → base. */
+
+@import "tokens/fonts.css";
+@import "tokens/colors.css";
+@import "tokens/typography.css";
+@import "tokens/spacing.css";
+@import "tokens/effects.css";
+@import "tokens/base.css";
+@import "tokens/theme-light.css";
+
