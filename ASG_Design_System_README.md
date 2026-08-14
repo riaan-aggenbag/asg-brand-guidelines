@@ -90,6 +90,7 @@ Authoritative, warm, never salesy. Specific beats superlative. Declarative sente
 - Sightings honesty is a voice feature: "Leopard — Rarely · elusive" style plain-probability language is on-brand. Never promise sightings.
 
 ---
+- **Banned rate claims (13 Aug 2026):** never "book direct", "the lodge's own rate", "no markup" — ASG sells under STO agreements and is not the lodge. Approved claims: **best price guarantee**, **contracted rates**, **no booking fees**. Same family as the cross-sell/upsell ban.
 
 ## 6. OPTION 4 COMPONENT DECISIONS (from Riaan's page-by-page review — all encoded in the export)
 
@@ -105,6 +106,20 @@ Authoritative, warm, never salesy. Specific beats superlative. Declarative sente
 10. **"Cross-sell" section** renamed → eyebrow "More of the Reserve", heading "Other lodges in Amakhala".
 
 ---
+
+## 6B. LODGE PAGE TEMPLATE CANON (13 Aug 2026 — reference: safari_lodge_option4_ink_edition.html)
+The Safari Lodge page is the frozen reference template for all lodge pages. Additions beyond the original Woodbury template:
+- **Good to Know section** (`#good-to-know`, in sub-nav): two `.qf` cards — Arrival & policies + Current specials conditions. Specials card carries `.qf.special` treatment.
+- **FAQ section** (`#faq`, in sub-nav): 12 GEO-optimised questions in two columns, sourced per lodge from its live "Travelers are asking" data. Answer-first, fact-dense, honest (spa/lions answers stay truthful). **FAQPage JSON-LD schema in `<head>` is mandatory** — CMS should auto-generate it from FAQ content.
+- **Specials treatment family (Badge Green #4F6B51, role extended to savings signals):** solid green **SAVE chip** (hero price card, card headers, white text) OR **green top-rule + ~5% tint wash** (props cell `.prop.special`, GTK card `.qf.special`). Nothing else. In-cell links on the special cell use soft green #9FBFA3, not brass.
+- **Lightbox gallery** (vanilla JS, no deps): ink scrim .94, brass circular prev/next, counter, Esc/arrows/scrim-close, body scroll lock. Gallery = 8 tiles, 8th carries "View all N photos" overlay; every tile opens at its index. Room card image is the room-set trigger via corner badge overlay (`.room-lb-trigger`), NOT full scrim — the single room photo must still sell.
+- **Facility icons:** inline Lucide-style SVGs (24 grid, 1.75 stroke, brass, 19px) replace the generic ✓ in Facilities only. Experiences keeps brass ✓ (= "included").
+- **Pull-quote interlude** between FAQ and Reviews: Sand Tint #E8DCCB ground, ink Lora italic 27px, brass rule, Deep Brass tracked-caps attribution. Each lodge gets its own line **from the lodge's own copy — never a fabricated guest quote**.
+- **Reviews:** 6-card grid — mix of service quotes and real lodge guest excerpts (short, attributed). Live reviews are JS-rendered on amakhala.com (unextractable by fetch); production pipes the review feed into this layout.
+- **Specials data per lodge (from amakhala.com/specials):** Pay 2 Stay 3 (33%, 1 May–30 Sep 2026 low season, 3-night stays, single supp 30%, not combinable) at ALL 7 lodges. Kids Under 12 Free additionally at Safari Lodge, Woodbury Lodge, Leeuwenbosch, HillsNek. Safari Lodge kids reality: ages 9–11 free (children 9+ policy).
+- **Sightings frequencies (canonical, amakhala.com/wildlife):** Common = elephant, giraffe, hippo, buffalo, zebra, wildebeest, hyena · Occasional = white rhino, lion · Rare = black rhino, leopard, cheetah, wild dog. Feeds Sightings Status Badges on reserve rebuild.
+
+**Open data issues (live-site fixes for the team):** rate shown as $483 (homepage grid) vs $472 (lodge page) vs $473 (CMS) — one lodge, three prices; rating 4.8 (TripAdvisor badge) vs 9.4/10=4.7 (room data) — page uses 4.7 · 800+ pending Riaan's canonical call.
 
 ## 7. THE DESIGN SYSTEM EXPORT (verified 13 Aug 2026)
 
@@ -162,3 +177,20 @@ The Claude Design export is the machine-usable form of everything above. Stamped
 5. Re-skin the live safari-cms build to Option 4 (brass CTAs/white text, retire #C8A96E, remove "Cross-sell" label).
 6. Claude Design org setup: publish the verified export as the org design system.
 7. Brand book v1.3: fold in the Option 4 formalisation, the brass-600 badge exception, and the seven web patterns so PDF and design system stay in lockstep.
+- Build remaining 5 lodge pages from the Safari Lodge reference (order: Bush Lodge, HillsNek, Leeuwenbosch, Quatermain's, Woodbury Tented Camp) — per-lodge FAQs, pull-quote line, correct specials combo.
+- **Retrofit Woodbury** with template additions (GTK, FAQ+schema, lightbox, save chips, icons, pull-quote) AND remove the banned "book direct / no markup" claims it inherited.
+- Check live safari-cms demo copy for the banned rate claims during the Option 4 re-skin.
+- Design system next iteration (Claude Design): SaveChip, Lightbox, FAQ accordion, facility icon set as patterns; fold voice ban + Badge Green role extension into brand book v1.3.
+- Resolve rate ($472/$473/$483) and rating (4.7/4.8) discrepancies on live site + CMS.
+
+## 11. OVERNIGHT BUILD — ALL AMAKHALA LODGE PAGES (13–14 Aug 2026)
+All seven Amakhala lodge pages now exist on the Option 4 reference template, built from live amakhala.com data. Verified USD rates: Safari $472 · Bush $554 · HillsNek $475 · Leeuwenbosch $299 · Quatermain's $227* · Woodbury Tented $299 · Woodbury Lodge $405 (supersedes €354). Every page: 12 lodge-specific GEO FAQs + FAQPage schema, correct specials combo (Kids-free only at Safari/Woodbury/Leeuwenbosch/HillsNek), honest facility claims (no air-con at HillsNek, no internet at Quatermain's, WiFi main-areas-only where true), per-lodge child policies (Bush/Quatermain's 12+, HillsNek 9+, Woodbury/WTC 6+, Leeuwenbosch all ages), lightbox with per-room photo sets, More-of-the-Reserve cross-links with verified USD prices, zero banned rate claims. `woodbury_lodge_option4_ink_edition_v2.html` REPLACES the old Woodbury file (which carried banned claims and €-pricing).
+
+**Morning flags:** (1) *Quatermain's price: live page served €197 (currency switch); $227 used from ASG CMS card — confirm canonical USD. (2) Reviews: Bush/HillsNek/Leeuwenbosch carry 3 real TripAdvisor excerpts each; Woodbury Tented carries 3; Quatermain's has service quotes only and Woodbury Lodge has 1 TA + service quotes — top up when review feed lands. (3) Live-site data bugs found for the web team: Woodbury Lodge spa-FAQ answer says "Safari Lodge"; Safari Lodge rate appears as $472/$473/$483 in three places; rating 4.7-vs-4.8 call still open. (4) Woodbury Tented rating shown 4.8 (from 9.5/10) — confirm rounding rule (9.4→4.7 at Safari).
+
+## 12. MORNING REVIEW FIXES + NEW CANON (14 Aug 2026)
+- **Props bar canon: four cells, fixed order** — Current Specials → Best Price → Plan With a Consultant → (fourth cell). A builder bug had swallowed the Best Price cell on all six overnight pages (the section swap used "Plan With a Consultant" as its end marker and Best Price sits between). Reinstated everywhere with per-lodge name.
+- **Gallery canon: exactly five tiles** — one tall + four square, "View all N photos" overlay always on the fifth tile, and tiles mirror the first five entries of the lodge lightbox set so tile-click indexes match. Four tiles leaves an empty grid cell; never ship fewer than five.
+- **FAQ uniqueness rule** — no two lodge pages may carry identical Q&A text, including universal topics (malaria, best time, lions, check-in). Universal questions stay, but every answer gets lodge-flavoured phrasing (duplicate-content SEO + AI-search differentiation). Verified: zero identical answers across all seven pages. General questions are the approved filler when a lodge lacks enough unique ones.
+- **Pricing model (operational fact from Riaan)** — base rates live in Pimcore in **ZAR**; the WP sites convert at render time from the visitor's IP-based currency. All prices in these mockups are placeholder USD snapshots; production templates must bind the price field and never hardcode. This explains the earlier $472/$483 and €197-vs-$227 "discrepancies" — they were currency conversion, not data errors. Flags withdrawn.
+- **Remaining flags:** Woodbury Lodge live-site spa-FAQ answer still says "Safari Lodge" (web team); rating rounding rule to confirm (9.5→4.8 used at Woodbury Tented vs 9.4→4.7 at Safari); Quatermain's + Woodbury Lodge review rows to top up when the review feed lands.
