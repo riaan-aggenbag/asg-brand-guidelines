@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leeuwenbosch Country House — Amakhala Game Reserve · Option 4 (Ink Edition)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171411; --charcoal:#2B2622; --soft-charcoal:#4A443C;
+  --brass:#A8794B; --brass-dark:#8F6A40; --sand:#C39F77; --ivory:#F6F1EA; --ivory-dim:#EDE6DB;
+  --bone:#B9AFA2; --white:#FFFFFF; --badge-green:#4F6B51;
+  --serif:'Lora',Georgia,serif; --sans:'Poppins',sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans); color:var(--soft-charcoal); background:var(--ivory); line-height:1.6; -webkit-font-smoothing:antialiased;}
+img{display:block; max-width:100%; height:auto;}
+a{text-decoration:none; color:inherit;}
+.wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+h1,h2,h3,h4{font-family:var(--serif); font-weight:500; color:var(--ink); line-height:1.18;}
+.eyebrow{font-weight:500; font-size:11px; letter-spacing:2.5px; color:var(--brass); text-transform:uppercase;}
+.btn{display:inline-flex; align-items:center; justify-content:center; font-weight:600; font-size:12px; letter-spacing:1.2px; text-transform:uppercase; padding:14px 26px; border-radius:3px; transition:all .2s ease; cursor:pointer; border:none;}
+.btn-brass{background:var(--brass); color:var(--white);}
+.btn-brass:hover{background:var(--brass-dark); transform:translateY(-1px);}
+.btn-outline-dark{background:transparent; color:var(--ivory); border:1px solid rgba(255,255,255,.35);}
+.btn-outline-dark:hover{border-color:var(--brass); color:var(--brass);}
+.btn-outline-light{background:transparent; color:var(--ink); border:1px solid var(--bone);}
+.btn-outline-light:hover{border-color:var(--brass); color:var(--brass);}
+
+.announce{background:var(--charcoal); color:var(--sand); text-align:center; font-size:11.5px; padding:8px 16px;}
+.announce b{color:var(--white); font-weight:500;}
+
+nav{position:sticky; top:0; z-index:60; background:rgba(23,20,17,.97); backdrop-filter:blur(6px); border-bottom:1px solid rgba(255,255,255,.08); transition:transform .28s ease;}
+nav.nav-hidden{transform:translateY(-100%);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; height:78px;}
+.logo img{height:44px; width:auto;}
+.nav-links{display:flex; gap:30px; align-items:center;}
+.nav-links a{font-size:12.5px; letter-spacing:1px; color:var(--ivory-dim); text-transform:uppercase; position:relative; padding:4px 0;}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--brass);transition:width .25s ease;}
+.nav-links a:hover::after{width:100%;}
+
+/* hero */
+.hero{position:relative; min-height:72vh; display:flex; align-items:flex-end; overflow:hidden; background:var(--ink);}
+.hero-bg{position:absolute; top:0; left:0; right:0; bottom:0; background-image:url('https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80012__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Evening%20Sky_3.webp'); background-size:cover; background-position:center 45%;}
+.hero-scrim{position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(180deg, rgba(23,20,17,.55) 0%, rgba(23,20,17,.28) 40%, rgba(23,20,17,.9) 100%);}
+.hero-content{position:relative; z-index:2; width:100%; padding:70px 0 54px;}
+.hero-flex{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap;}
+.crumb-bar{position:absolute; top:26px; left:0; right:0; z-index:3;}
+.crumb{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:var(--sand);}
+.crumb a{color:var(--sand); transition:color .2s ease;}
+.crumb a:hover{color:var(--brass);}
+.crumb .sep{margin:0 7px; opacity:.6;}
+.hero h1{font-size:52px; color:var(--white);}
+.hero .meta{display:flex; align-items:center; gap:14px; margin-top:14px; color:var(--ivory-dim); font-size:13px; flex-wrap:wrap;}
+.hero .stars{color:var(--brass); letter-spacing:2px; font-size:16px; line-height:1; position:relative; top:2px;}
+.hpill{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.22); color:var(--white); font-size:10px; letter-spacing:1.2px; text-transform:uppercase; padding:6px 13px; border-radius:14px; font-weight:500;}
+.price-card{background:var(--ivory); border-radius:6px; padding:26px 28px; min-width:300px; box-shadow:0 30px 60px rgba(0,0,0,.4);}
+.price-card .from{font-size:10px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); font-weight:600;}
+.price-card .amount{font-family:var(--serif); font-size:30px; color:var(--ink); margin:4px 0 16px;}
+.price-card .amount span{font-family:var(--sans); font-size:13px; color:var(--soft-charcoal);}
+.price-card .btn{width:100%; margin-bottom:10px;}
+.price-card .note{font-size:10.5px; color:var(--soft-charcoal); opacity:.75; text-align:center; margin-top:6px;}
+
+/* value props bar */
+.props{background:var(--charcoal); color:var(--ivory);}
+.props .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:0;}
+.prop{padding:24px 26px; border-right:1px solid rgba(255,255,255,.08);}
+.prop:last-child{border-right:none;}
+.prop .k{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--brass); font-weight:600; margin-bottom:6px;}
+.prop .t{font-size:13.5px; color:var(--white); font-weight:500; margin-bottom:4px;}
+.prop .d{font-size:11.5px; color:var(--bone); line-height:1.55;}
+
+/* direct panel */
+.direct{background:var(--ivory-dim); padding:56px 0;}
+.direct h2{font-size:26px; margin-bottom:10px;}
+.direct p{font-weight:300; font-size:14px; max-width:640px;}
+.checks{display:grid; grid-template-columns:1fr 1fr; gap:14px 40px; margin-top:26px; max-width:820px;}
+.check{display:flex; gap:12px; font-size:13.5px; color:var(--soft-charcoal); align-items:flex-start;}
+.check::before{content:'\2713'; flex-shrink:0; width:22px; height:22px; border-radius:50%; background:var(--brass); color:var(--white); font-size:11px; display:flex; align-items:center; justify-content:center; margin-top:1px;}
+
+/* sticky subnav */
+.subnav{position:sticky; top:0; z-index:65; background:var(--ivory); border-bottom:1px solid var(--bone); box-shadow:0 2px 12px rgba(23,20,17,.05);}
+section[id], div[id]{scroll-margin-top:72px;}
+.subnav .wrap{display:flex; align-items:center; gap:28px; height:56px; overflow-x:auto;}
+.subnav a{font-size:11.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--soft-charcoal); white-space:nowrap; padding:4px 0; border-bottom:2px solid transparent;}
+.subnav a:hover, .subnav a.active{color:var(--brass); border-bottom-color:var(--brass);}
+.subnav .cta{margin-left:auto; background:var(--brass); color:var(--white); font-weight:600; padding:10px 20px; border-radius:3px; font-size:11px; border-bottom:none;}
+.subnav .cta:hover{background:var(--brass-dark); color:var(--white);}
+
+section{padding:90px 0;}
+.section-head{max-width:660px; margin-bottom:46px;}
+.section-head h2{font-size:34px; margin-top:12px;}
+.section-head p{font-weight:300; font-size:15px; margin-top:14px; line-height:1.75;}
+
+/* overview */
+.ov-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:52px; align-items:start;}
+.ov-grid p{font-weight:300; font-size:15px; line-height:1.8; margin-top:16px;}
+.qf{background:var(--white); border:1px solid var(--bone); border-radius:6px; padding:28px 30px;}
+.qf h3{font-size:18px; margin-bottom:16px;}
+.qf-row{display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--ivory-dim); font-size:13.5px;}
+.qf-row:last-child{border-bottom:none;}
+.qf-row .k{color:var(--soft-charcoal);}
+.qf-row .v{color:var(--ink); font-weight:500; text-align:right;}
+
+/* gallery */
+.gallery{background:var(--ivory-dim);}
+.g-grid{display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:250px 250px; gap:14px;}
+.g-item{border-radius:6px; overflow:hidden;}
+.g-item img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+.g-item:hover img{transform:scale(1.05);}
+.g-item.tall{grid-row:span 2;}
+
+/* rooms */
+.rooms-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px;}
+.room{background:var(--white); border:1px solid var(--ivory-dim); border-radius:6px; overflow:hidden; display:flex; flex-direction:column;}
+.room .img{height:250px; overflow:hidden;}
+.room .img img{width:100%; height:100%; object-fit:cover;}
+.room .body{padding:26px 28px; flex:1; display:flex; flex-direction:column;}
+.room h3{font-size:20px;}
+.room .spec{font-size:11.5px; letter-spacing:1px; text-transform:uppercase; color:var(--brass); font-weight:500; margin:6px 0 14px;}
+.feat{display:grid; grid-template-columns:1fr 1fr; gap:8px 22px; margin-bottom:20px; flex:1;}
+.feat span{font-size:12.5px; color:var(--soft-charcoal); position:relative; padding-left:16px;}
+.feat span::before{content:'\2713'; position:absolute; left:0; color:var(--brass); font-weight:700;}
+.room .row{display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--ivory-dim); padding-top:18px;}
+.room .pr{font-family:var(--serif); font-size:16px; color:var(--ink);}
+.room .pr span{font-family:var(--sans); font-size:11px; color:var(--soft-charcoal);}
+
+/* experiences & facilities */
+.list-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px 36px; max-width:920px;}
+.list-grid span{font-size:13.5px; color:var(--soft-charcoal); position:relative; padding-left:20px; padding-top:2px; padding-bottom:2px;}
+.list-grid span::before{content:'\2713'; position:absolute; left:0; color:var(--brass); font-weight:700;}
+#facilities .list-grid span{padding-left:0; display:flex; align-items:center; gap:11px;}
+#facilities .list-grid span::before{content:none;}
+#facilities .list-grid svg{width:19px; height:19px; stroke:var(--brass); stroke-width:1.75; fill:none; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0;}
+
+/* seasons + month grid */
+.seasons{background:linear-gradient(135deg,#1F1B17,#171411); color:var(--ivory);}
+.seasons .section-head h2{color:var(--white);}
+.seasons .section-head p{color:var(--bone);}
+.scard-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:40px;}
+.scard{background:var(--charcoal); border:1px solid rgba(255,255,255,.11); border-radius:6px; padding:26px 28px;}
+.scard h3{color:var(--brass); font-size:19px; margin-bottom:4px;}
+.scard .when{font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--sand); font-weight:500; margin-bottom:12px;}
+.scard p{font-size:13.5px; color:var(--bone); line-height:1.7;}
+.months{display:grid; grid-template-columns:repeat(12,1fr); gap:8px;}
+.month{border-radius:4px; padding:14px 6px 12px; text-align:center;}
+.month .m{font-weight:600; font-size:13.5px; letter-spacing:.5px;}
+.month .s{font-size:9.5px; letter-spacing:.5px; text-transform:uppercase; margin-top:5px; opacity:.95; line-height:1.4;}
+.m-peak{background:var(--brass); color:var(--white);}
+.m-good{background:var(--sand); color:var(--ink);}
+.m-fair{background:var(--bone); color:var(--ink);}
+.legend{display:flex; gap:22px; margin-top:20px; font-size:11px; color:var(--bone); align-items:center;}
+.legend i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:7px; vertical-align:-1px;}
+
+/* reviews */
+.reviews-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+.rvcard{background:var(--white); border:1px solid var(--ivory-dim); border-radius:6px; padding:30px;}
+.stars{color:var(--brass); font-size:13px; letter-spacing:2px; margin-bottom:16px;}
+.rvcard p{font-family:var(--serif); font-style:italic; font-size:14.5px; color:var(--charcoal); line-height:1.7; margin-bottom:20px;}
+.rvcard .who{font-size:12px; font-weight:600;}
+.rvcard .who span{color:var(--brass); font-weight:400;}
+
+/* book banner */
+.banner{background:linear-gradient(135deg,#1F1B17,#171411); text-align:center; padding:90px 0;}
+.banner h2{color:var(--white); font-size:32px; margin-bottom:12px;}
+.banner .sub{color:var(--bone); font-size:15px; margin-bottom:34px;}
+.banner .sub b{color:var(--brass); font-family:var(--serif); font-size:19px; font-weight:500;}
+.banner .btns{display:flex; gap:16px; justify-content:center; margin-bottom:22px;}
+.banner .assure{color:#7A7164; font-size:11.5px; letter-spacing:.6px;}
+.banner .assure span{margin:0 12px;}
+
+/* other lodges */
+.xs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+.xcard{background:var(--white); border:1px solid var(--ivory-dim); border-radius:6px; overflow:hidden; transition:box-shadow .25s, transform .25s;}
+.xcard:hover{box-shadow:0 20px 44px rgba(23,20,17,.13); transform:translateY(-3px);}
+.xcard .img{height:170px; overflow:hidden;}
+.xcard .img img{width:100%; height:100%; object-fit:cover;}
+.xcard .body{padding:20px 22px;}
+.xcard h4{font-size:16.5px; margin-bottom:6px;}
+.xcard p{font-size:12.5px; line-height:1.6; margin-bottom:12px;}
+.xcard .pr{font-size:12.5px; color:var(--brass); font-weight:600;}
+
+/* footer */
+footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
+.foot-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:44px; padding-bottom:46px; border-bottom:1px solid rgba(255,255,255,.08);}
+.foot-logo img{height:52px; margin-bottom:18px;}
+.foot-grid p{font-size:13px; line-height:1.7; max-width:300px;}
+.foot-contact{margin-top:16px; font-size:13px;}
+.foot-contact a{display:block; color:var(--sand); margin-bottom:6px;}
+.foot-col h5{font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); margin-bottom:16px; font-weight:600;}
+.foot-col a{display:block; font-size:13px; margin-bottom:10px; opacity:.9;}
+.foot-col a:hover{color:var(--brass); opacity:1;}
+.accred{display:flex; flex-wrap:wrap; gap:10px; margin-top:32px;}
+.acc-pill{border:1px solid rgba(255,255,255,.18); font-size:11px; padding:7px 14px; border-radius:16px;}
+.rev-pill{border:1px solid rgba(168,121,75,.5); color:var(--sand); font-size:11px; padding:7px 14px; border-radius:16px;}
+.foot-bottom{display:flex; justify-content:space-between; padding-top:26px; font-size:12px; color:#7A7164; flex-wrap:wrap; gap:10px;}
+
+@media(max-width:1000px){
+  .ov-grid,.rooms-grid,.scard-grid{grid-template-columns:1fr;}
+  .props .wrap{grid-template-columns:1fr 1fr;}
+  .prop{border-right:none; border-bottom:1px solid rgba(255,255,255,.08);}
+  .g-grid{grid-template-columns:1fr 1fr; grid-template-rows:220px 220px 220px;}
+  .g-item.tall{grid-row:span 1;}
+  .reviews-grid,.xs-grid,.list-grid{grid-template-columns:1fr 1fr;}
+  .months{grid-template-columns:repeat(6,1fr);}
+  .hero h1{font-size:38px;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .reviews-grid,.xs-grid,.list-grid,.checks,.months,.foot-grid{grid-template-columns:1fr;}
+  .gtk-grid{grid-template-columns:1fr !important;}
+  .faq-grid{grid-template-columns:1fr !important;}
+  .months{grid-template-columns:repeat(3,1fr);}
+  .hero h1{font-size:32px;}
+}
+
+/* --- Special: Badge Green savings signal --- */
+.save-chip{display:inline-flex; align-items:center; gap:6px; background:var(--badge-green,#4F6B51); color:#FFFFFF; font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:6px 12px; border-radius:3px;}
+.price-card .save-chip{margin-bottom:10px;}
+.prop.special{border-top:3px solid #4F6B51; background:rgba(79,107,81,.10);}
+.prop.special .k{color:#7FA383;}
+.qf h3 .save-chip{float:right; margin-top:-2px;}
+.qf.special{border:1px solid rgba(79,107,81,.38); border-top:3px solid #4F6B51; background:linear-gradient(rgba(79,107,81,.055), rgba(79,107,81,.055)), var(--white);}
+.qf.special h3{color:#3E5540;}
+.qf.special .qf-row{border-bottom-color:rgba(79,107,81,.14);}
+/* --- Lightbox --- */
+.lb{position:fixed; inset:0; z-index:1000; background:rgba(14,12,10,.94); display:none; align-items:center; justify-content:center;}
+.lb.open{display:flex;}
+.lb img{max-width:88vw; max-height:82vh; border-radius:4px; box-shadow:0 32px 80px rgba(0,0,0,.6);}
+.lb .lb-btn{position:absolute; top:50%; transform:translateY(-50%); width:46px; height:46px; border-radius:50%; background:var(--brass); color:#FFFFFF; border:none; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .24s;}
+.lb .lb-btn:hover{background:#BB9165;}
+.lb .lb-prev{left:26px;} .lb .lb-next{right:26px;}
+.lb .lb-x{position:absolute; top:22px; right:26px; background:transparent; border:none; color:var(--ivory); font-size:26px; cursor:pointer; line-height:1;}
+.lb .lb-count{position:absolute; bottom:24px; left:50%; transform:translateX(-50%); color:var(--ivory); font-family:var(--sans); font-size:11px; letter-spacing:1.5px;}
+.g-item{cursor:pointer; position:relative;}
+.g-more{position:absolute; inset:0; background:rgba(14,12,10,.55); display:flex; align-items:center; justify-content:center; color:#FFFFFF; font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; border-radius:inherit;}
+.room .img.room-lb-trigger{cursor:pointer; position:relative;}
+.room-more{inset:auto 12px 12px auto; background:rgba(14,12,10,.72); padding:8px 14px; border-radius:3px; font-size:10.5px; transition:background .24s;}
+.room .img.room-lb-trigger:hover .room-more{background:rgba(14,12,10,.88);}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Are children welcome at Leeuwenbosch?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — children of any age are welcome, which is rare on a Big 5 reserve. There’s outdoor play equipment, kid meals, board games and babysitting on request. Guests 18 and over are charged as adults."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Are game drives included?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — two guided game drives a day in an open vehicle: one in the afternoon and one the following morning."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is Leeuwenbosch malaria-free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The entire Amakhala Game Reserve sits in the malaria-free Eastern Cape — one reason it suits families with young children."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the house like?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A historic family farmhouse with high ceilings, verandas, original fireplaces and extensive gardens with a chapel. The family’s history on the land is part of every stay."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will we see the Big Five?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The reserve holds the Big Five and guests regularly see four in a single stay — sightings are never guaranteed, but two nights or more gives your ranger the best chance."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can we get married there?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The chapel and gardens host small weddings — a favourite for intimate ceremonies. Ask your consultant for details."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is there a spa or hot tub?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No spa or hot tubs — Leeuwenbosch’s comforts are of the country-house kind: verandas, gardens, fireplaces and a fenced outdoor pool."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "When is the best time to visit?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Game viewing is rewarding year-round. Dry winter (May–September) is peak for sightings as animals gather at water; green summer (October–March) brings lush scenery, newborn animals and migratory birds."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What are the check-in and check-out times?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Check-in is between 14:00 and 17:00, and check-out by 11:00. Early or late times can be requested when you book, subject to availability."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do we get there from Port Elizabeth?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Chief Dawid Stuurman International Airport is about an hour by road via the N2 — the house sits just off the highway between Port Elizabeth and Makhanda. An airport shuttle can be arranged at a surcharge."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can we visit Addo Elephant National Park?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — Addo is 28 km away, and a day visit can be arranged around your game drives. Shamwari Game Reserve is also nearby."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is there WiFi?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Free WiFi is available in the main house areas."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+
+<div class="announce">Option 4 preview · Lodge page in <b>Ink Edition colours</b> — imagery courtesy of Amakhala Game Reserve / African Safari Group.</div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#"><img src="https://amakhala.com/wp-content/uploads/logo/amakhala.png" alt="Amakhala Game Reserve"></a>
+    <div class="nav-links">
+      <a href="#">Reserve</a>
+      <a href="#">Lodges</a>
+      <a href="#">Activities</a>
+      <a href="#">Experiences</a>
+      <a href="#">Specials</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <a class="btn btn-brass" href="#">Start Planning / Enquire</a>
+  </div>
+</nav>
+
+<section class="hero" style="padding:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-scrim"></div>
+  <div class="crumb-bar">
+    <div class="wrap">
+      <div class="crumb"><a href="#">Home</a><span class="sep">/</span><a href="#">Reserves</a><span class="sep">/</span><a href="#">Amakhala</a><span class="sep">/</span>Leeuwenbosch Country House</div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="hero-flex">
+        <div>
+          <div class="eyebrow" style="color:var(--sand);">Eastern Cape, South Africa · Big 5 · Malaria-Free</div>
+          <h1>Leeuwenbosch Country House</h1>
+          <div class="meta">
+            <span class="stars">★★★★★</span>
+            <span>4.5 · 800+ reviews</span>
+            <span class="hpill">Big 5</span>
+            <span class="hpill">Malaria-Free</span>
+          </div>
+        </div>
+        <div class="price-card">
+          <div class="save-chip">Save 33% · Pay 2, Stay 3</div>
+          <div class="from">From</div>
+          <div class="amount">$299 <span>pp / night</span></div>
+          <a href="#" class="btn btn-brass">Start Planning / Enquire</a>
+          <a href="#" class="btn btn-outline-light" style="width:100%;">Check Availability</a>
+          <div class="note">No payment required · we reply within 24 hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="props">
+  <div class="wrap">
+    <div class="prop special"><div class="k">Current Specials</div><div class="t">Pay 2, Stay 3 · Kids stay free</div><div class="d">Three nights for the price of two — 33% off, valid 1 May – 30 Sep 2026. Two children under 12 stay free. Conditions apply — <a href="#good-to-know" style="color:#9FBFA3; text-decoration:underline; text-underline-offset:2px;">see conditions</a>.</div></div>
+    <div class="prop"><div class="k">Plan With a Consultant</div><div class="t">Reply within 24h</div><div class="d">Send your dates and a safari consultant will tailor your stay and confirm availability.</div></div>
+    <div class="prop"><div class="k">Expert Support</div><div class="t">Specialists on call</div><div class="d">Talk to consultants who know Amakhala — from transfers to the best season to travel.</div></div>
+  </div>
+</div>
+
+<div class="direct">
+  <div class="wrap">
+    <h2>Why book through African Safari Group</h2>
+    <p>Your enquiry goes to a dedicated safari consultant — local experts with contracted rates at Leeuwenbosch Country House, personal service, and a reply within 24 hours.</p>
+    <div class="checks">
+      <div class="check">Best price guarantee on contracted rates</div>
+      <div class="check">Personal advice from safari specialists</div>
+      <div class="check">A tailored itinerary for your dates</div>
+      <div class="check">No booking fees — reply within 24 hours</div>
+    </div>
+  </div>
+</div>
+
+<div class="subnav">
+  <div class="wrap">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#experiences">Experiences</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#good-to-know">Good to Know</a>
+    <a href="#best-time">Best Time</a>
+    <a href="#faq">FAQ</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#" class="cta">Start Planning / Enquire</a>
+  </div>
+</div>
+
+<section id="overview">
+  <div class="wrap">
+    <div class="ov-grid">
+      <div>
+        <div class="eyebrow">Overview</div>
+        <h2 style="font-size:34px; margin-top:12px;">A historic family farmhouse on the reserve</h2>
+        <p>Leeuwenbosch is a gracious country house in the malaria-free Amakhala Game Reserve — a historic family farmhouse with high ceilings, verandas and original fireplaces, set in extensive gardens with its own chapel and outdoor pool. The family has opened its home to travellers, and the welcome shows: hot towels and drinks on the lawn after the evening drive, dinners by the fire in the old dining room, and stories of the farm&rsquo;s history at the bar.</p>
+        <p>Two guided game drives a day are included — one in the afternoon, one the next morning — and children of any age are genuinely welcome, with kids&rsquo; play equipment in the garden, kid meals, and babysitting on request. Addo Elephant National Park is 28 km away, and the chapel and gardens make Leeuwenbosch a favourite for small weddings.</p>
+      </div>
+      <div class="qf">
+        <h3>Quick facts</h3>
+        <div class="qf-row"><span class="k">Children</span><span class="v">All ages welcome</span></div>
+        <div class="qf-row"><span class="k">Airport</span><span class="v">64 km · Port Elizabeth</span></div>
+        <div class="qf-row"><span class="k">Stay</span><span class="v">Rooms, suites &amp; family suite</span></div>
+        <div class="qf-row"><span class="k">Wildlife</span><span class="v">Big 5 · Malaria-free</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Gallery</div>
+      <h2>A look around the lodge</h2>
+    </div>
+    <div class="g-grid">
+      <div class="g-item tall"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80012__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Evening%20Sky_3.webp" alt="Leeuwenbosch Country House under the evening sky" loading="lazy"></div>
+      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80031__optimized-desktop/img_4050.webp" alt="Country-style double room" loading="lazy"></div>
+      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80033__optimized-desktop/1mb_leeuwenbosch_suite_5_pixel_2.webp" alt="Luxury suite at Leeuwenbosch" loading="lazy"></div>
+      <div class="g-item g-more-tile"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80035__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Suite_4.webp" alt="Family suite" loading="lazy"><div class="g-more">▦ &nbsp;View all 11 photos</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="rooms">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Rooms &amp; Suites</div>
+      <h2>Where you&rsquo;ll stay</h2>
+    </div>
+    <div class="rooms-grid">
+      <div class="room">
+        <div class="img room-lb-trigger" role="button" tabindex="0" data-set="double" aria-label="View 4 room photos"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80031__optimized-desktop/img_4050.webp" alt="Double Room" loading="lazy"><div class="g-more room-more">▦ &nbsp;View 4 room photos</div></div>
+        <div class="body">
+          <h3>Double Room</h3>
+          <div class="spec">Sleeps 2 · 431 m²</div>
+          <div class="feat"><span>Country-style d&eacute;cor</span><span>Opens onto the veranda</span><span>Private bathroom</span><span>Historic farmhouse setting</span></div>
+          <div class="row">
+            <div class="pr">From $299 <span>pp/night</span></div>
+            <a href="#" class="btn btn-brass" style="padding:11px 22px;">Enquire</a>
+          </div>
+        </div>
+      </div>
+      <div class="room">
+        <div class="img room-lb-trigger" role="button" tabindex="0" data-set="luxury" aria-label="View 3 suite photos"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80033__optimized-desktop/1mb_leeuwenbosch_suite_5_pixel_2.webp" alt="Luxury Suite" loading="lazy"><div class="g-more room-more">▦ &nbsp;View 3 suite photos</div></div>
+        <div class="body">
+          <h3>Luxury Suite</h3>
+          <div class="spec">Sleeps 2 · 603 m²</div>
+          <div class="feat"><span>Lounge area</span><span>Opens onto the veranda</span><span>Country-style d&eacute;cor</span><span>Private bathroom</span></div>
+          <div class="row">
+            <div class="pr">From $299 <span>pp/night</span></div>
+            <a href="#" class="btn btn-brass" style="padding:11px 22px;">Enquire</a>
+          </div>
+        </div>
+      </div>
+      <div class="room">
+        <div class="img room-lb-trigger" role="button" tabindex="0" data-set="famsuite" aria-label="View 3 suite photos"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80035__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Suite_4.webp" alt="Family Suite" loading="lazy"><div class="g-more room-more">▦ &nbsp;View 3 suite photos</div></div>
+        <div class="body">
+          <h3>Family Suite</h3>
+          <div class="spec">Family unit · 646 m²</div>
+          <div class="feat"><span>Two beds</span><span>Space for the whole family</span><span>Garden setting</span><span>Private bathroom</span></div>
+          <div class="row">
+            <div class="pr">From $299 <span>pp/night</span></div>
+            <a href="#" class="btn btn-brass" style="padding:11px 22px;">Enquire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="experiences" style="padding-top:80px; padding-bottom:80px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Experiences · Included</div>
+      <h2>Things to do</h2>
+      <p>Amakhala is a malaria-free Big 5 reserve on the Bushman&rsquo;s River. Two guided game drives a day are included — one each afternoon and the next morning — with the gardens, pool and farm history filling the hours between. Migratory birds arrive November to April.</p>
+    </div>
+    <div class="list-grid">
+      <span>Big 5 game drives</span><span>Guided walking tours</span><span>Hot towels after the drive</span>
+      <span>Gardens, chapel &amp; pool</span><span>Farm history &amp; stories</span><span>Sundowner stops</span>
+      <span>Birdwatching &mdash; 250+ species</span><span>Kids&rsquo; play equipment</span><span>Horse riding (off-site)</span>
+      <span>Addo Elephant Park day trip</span><span>Small weddings in the chapel</span><span>Airport shuttle (extra)</span>
+    </div>
+  </div>
+</section>
+
+<section id="facilities" style="padding-top:80px; padding-bottom:80px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Facilities</div>
+      <h2>What&rsquo;s on offer</h2>
+    </div>
+    <div class="list-grid">
+      <span><svg viewBox="0 0 24 24"><path d="M2 15c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/><path d="M2 19c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/><path d="M15 4v7M9 4v7M9 8h6M9 4.5a2.5 2.5 0 0 0-5 0"/></svg>Outdoor pool (fenced)</span>
+      <span><svg viewBox="0 0 24 24"><path d="M7 3v8M5 3v4a2 2 0 0 0 4 0V3M7 11v10"/><path d="M17 3c-1.7 0-3 2-3 5 0 2 1 3 2 3v10"/><path d="M17 3v18"/></svg>Restaurant &mdash; family friendly</span>
+      <span><svg viewBox="0 0 24 24"><path d="M8 22h8M12 15v7M5 3h14l-7 9z"/><path d="M7 6h10"/></svg>Bar with farm stories</span>
+      <span><svg viewBox="0 0 24 24"><path d="M17 8h1a3 3 0 0 1 0 6h-1"/><path d="M4 8h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M8 2v2M12 2v2"/></svg>Breakfast</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v2"/><circle cx="17" cy="8" r="2.4"/><path d="M17 13c2.5 0 4.5 1.8 4.5 4.3V21"/></svg>All ages · kid meals &amp; babysitting (extra)</span>
+      <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>Free parking</span>
+      <span><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="0.8"/></svg>Free WiFi (main house areas)</span>
+      <span><svg viewBox="0 0 24 24"><path d="M12 3c1 3-2.5 4.5-2.5 8a4.5 4.5 0 0 0 9 0c0-2-1-3.5-2.5-5 0 1.5-.5 2.5-1.5 3C14.5 7.5 14 5 12 3z"/><path d="M12 21a4.5 4.5 0 0 1-4.5-4.5"/></svg>Original fireplaces</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/></svg>Gardens &amp; chapel</span>
+      <span><svg viewBox="0 0 24 24"><path d="M3 7h13l4 4v6h-2"/><path d="M3 7v10h2"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/><path d="M10 17h4"/></svg>Airport shuttle (extra)</span>
+      <span><svg viewBox="0 0 24 24"><path d="M3 18h18"/><path d="M4 18a8 8 0 0 1 16 0"/><path d="M12 10V8M10 8h4"/></svg>Daily housekeeping &amp; laundry (extra)</span>
+      <span><svg viewBox="0 0 24 24"><path d="M12 3v10"/><circle cx="12" cy="17" r="3"/><path d="M9 6l3-3 3 3"/></svg>Warm country-house comfort</span>
+    </div>
+  </div>
+</section>
+
+
+<section id="good-to-know" style="padding-top:80px; padding-bottom:80px; background:var(--ivory-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Practical Details</div>
+      <h2>Good to know</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:26px; max-width:920px;" class="gtk-grid">
+      <div class="qf">
+        <h3>Arrival &amp; policies</h3>
+        <div class="qf-row"><span class="k">Check-in</span><span class="v">14:00 &ndash; 17:00</span></div>
+        <div class="qf-row"><span class="k">Check-out</span><span class="v">By 11:00</span></div>
+        <div class="qf-row"><span class="k">Children</span><span class="v">All ages · 18+ charged as adults</span></div>
+        <div class="qf-row"><span class="k">Cots &amp; extra beds</span><span class="v">Not available</span></div>
+        <div class="qf-row"><span class="k">Pets</span><span class="v">Not allowed</span></div>
+        <div class="qf-row"><span class="k">Payment</span><span class="v">Cards accepted · no cash</span></div>
+      </div>
+      <div class="qf special">
+        <h3>Current specials &mdash; conditions <span class="save-chip">Save 33%</span></h3>
+        <div class="qf-row"><span class="k">Pay 2, Stay 3</span><span class="v">Save 33%</span></div>
+        <div class="qf-row"><span class="k">Valid</span><span class="v">1 May &ndash; 30 Sep 2026 (low season)</span></div>
+        <div class="qf-row"><span class="k">Stay length</span><span class="v">Three-night stays only</span></div>
+        <div class="qf-row"><span class="k">Single supplement</span><span class="v">30%</span></div>
+        <div class="qf-row"><span class="k">Combinable</span><span class="v">Not with other specials</span></div>
+        <div class="qf-row"><span class="k">Kids special</span><span class="v">Two children under 12 stay free</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seasons" id="best-time">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Best Time to Visit</div>
+      <h2>When to go</h2>
+      <p>Game viewing is rewarding year-round and malaria-free. Dry winter is peak for sightings; green summer brings lush scenery and newborn animals.</p>
+    </div>
+    <div class="scard-grid">
+      <div class="scard">
+        <h3>Dry Winter</h3>
+        <div class="when">May – September</div>
+        <p>Animals gather at the water, the bush thins out and viewing is excellent. Cold mornings, minimal rain and few mosquitoes. Peak game viewing.</p>
+      </div>
+      <div class="scard">
+        <h3>Green Summer</h3>
+        <div class="when">October – March</div>
+        <p>Lush landscapes, newborn animals and migratory birds. Warm days of 25–32&nbsp;°C (77–90&nbsp;°F) and busier periods over the SA school holidays. Year-round and malaria-free.</p>
+      </div>
+    </div>
+    <div class="months">
+      <div class="month m-good"><div class="m">Jan</div><div class="s">Green summer</div></div>
+      <div class="month m-good"><div class="m">Feb</div><div class="s">Lush, warm</div></div>
+      <div class="month m-good"><div class="m">Mar</div><div class="s">Newborn game</div></div>
+      <div class="month m-fair"><div class="m">Apr</div><div class="s">Shoulder</div></div>
+      <div class="month m-peak"><div class="m">May</div><div class="s">Dry, prime</div></div>
+      <div class="month m-peak"><div class="m">Jun</div><div class="s">Peak viewing</div></div>
+      <div class="month m-peak"><div class="m">Jul</div><div class="s">Peak viewing</div></div>
+      <div class="month m-peak"><div class="m">Aug</div><div class="s">Peak viewing</div></div>
+      <div class="month m-peak"><div class="m">Sep</div><div class="s">Dry, prime</div></div>
+      <div class="month m-good"><div class="m">Oct</div><div class="s">Green returns</div></div>
+      <div class="month m-good"><div class="m">Nov</div><div class="s">Warm, lush</div></div>
+      <div class="month m-good"><div class="m">Dec</div><div class="s">Busy holidays</div></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--brass);"></i>Peak</span>
+      <span><i style="background:var(--sand);"></i>Good</span>
+      <span><i style="background:var(--bone);"></i>Fair</span>
+    </div>
+  </div>
+</section>
+
+
+<section id="faq" style="padding-top:80px; padding-bottom:80px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Questions</div>
+      <h2>Frequently asked</h2>
+    </div>
+    <div class="faq-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:0 56px; align-items:start;">
+    <div>
+      <details style="border-bottom:1px solid var(--bone); padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">Are children welcome at Leeuwenbosch?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">Yes — children of any age are welcome, which is rare on a Big 5 reserve. There&rsquo;s outdoor play equipment, kid meals, board games and babysitting on request. Guests 18 and over are charged as adults.</p></details>
+      <details style="border-bottom:1px solid var(--bone); padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">Are game drives included?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">Yes — two guided game drives a day in an open vehicle: one in the afternoon and one the following morning.</p></details>
+      <details style="border-bottom:1px solid var(--bone); padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">Is Leeuwenbosch malaria-free?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">Yes. The entire Amakhala Game Reserve sits in the malaria-free Eastern Cape — one reason it suits families with young children.</p></details>
+      <details style="border-bottom:1px solid var(--bone); padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">What is the house like?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">A historic family farmhouse with high ceilings, verandas, original fireplaces and extensive gardens with a chapel. The family&rsquo;s history on the land is part of every stay.</p></details>
+      <details style="border-bottom:1px solid var(--bone); padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">Will we see the Big Five?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">The reserve holds the Big Five and guests regularly see four in a single stay — sightings are never guaranteed, but two nights or more gives your ranger the best chance.</p></details>
+      <details style="padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">Can we get married there?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">The chapel and gardens host small weddings — a favourite for intimate ceremonies. Ask your consultant for details.</p></details>
+    </div>
+    <div>
+      <details style="border-bottom:1px solid var(--bone); padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">Is there a spa or hot tub?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">No spa or hot tubs — Leeuwenbosch&rsquo;s comforts are of the country-house kind: verandas, gardens, fireplaces and a fenced outdoor pool.</p></details>
+      <details style="border-bottom:1px solid var(--bone); padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">When is the best time to visit?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">Game viewing is rewarding year-round. Dry winter (May&ndash;September) is peak for sightings as animals gather at water; green summer (October&ndash;March) brings lush scenery, newborn animals and migratory birds.</p></details>
+      <details style="border-bottom:1px solid var(--bone); padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">What are the check-in and check-out times?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">Check-in is between 14:00 and 17:00, and check-out by 11:00. Early or late times can be requested when you book, subject to availability.</p></details>
+      <details style="border-bottom:1px solid var(--bone); padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">How do we get there from Port Elizabeth?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">Chief Dawid Stuurman International Airport is about an hour by road via the N2 — the house sits just off the highway between Port Elizabeth and Makhanda. An airport shuttle can be arranged at a surcharge.</p></details>
+      <details style="border-bottom:1px solid var(--bone); padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">Can we visit Addo Elephant National Park?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">Yes — Addo is 28 km away, and a day visit can be arranged around your game drives. Shamwari Game Reserve is also nearby.</p></details>
+      <details style="padding:4px 0;"><summary style="cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 0;">Is there WiFi?</summary><p style="font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;">Free WiFi is available in the main house areas.</p></details>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="pullquote" style="background:#E8DCCB; padding:88px 0; text-align:center;">
+  <div class="wrap" style="max-width:820px;">
+    <div style="width:64px; height:2px; background:var(--brass); margin:0 auto 34px;"></div>
+    <p style="font-family:var(--serif); font-style:italic; font-size:27px; line-height:1.5; color:var(--ink);">Hot towels and drinks on the lawn after the evening drive &mdash; a family home opened to travellers.</p>
+    <div style="font-family:var(--sans); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#8E6238; margin-top:26px;">Life at Leeuwenbosch</div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Reviews</div>
+      <h2>4.5 / 5 · 800+ guest reviews</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="rvcard">
+        <div class="stars">★★★★★</div>
+        <p>&ldquo;Roxanne was our reservations specialist and she has been nothing short of fantastic.&rdquo;</p>
+        <div class="who">Ally Brown <span>· TripAdvisor</span></div>
+      </div>
+      <div class="rvcard">
+        <div class="stars">★★★★★</div>
+        <p>&ldquo;If I could give David 10 stars I would. So easy to book, great location and accommodation.&rdquo;</p>
+        <div class="who">Chessie McHugh <span>· Google</span></div>
+      </div>
+      <div class="rvcard">
+        <div class="stars">★★★★★</div>
+        <p>&ldquo;Outstanding help from James throughout. Seamless from quote to arrival.&rdquo;</p>
+        <div class="who">ASG guest <span>· Feedback Co</span></div>
+      </div>
+      <div class="rvcard">
+        <div class="stars">★★★★★</div>
+        <p>&ldquo;Met after the evening safari with hot towels and drinks, served on the lawn.&rdquo;</p>
+        <div class="who">Verified guest <span>· TripAdvisor</span></div>
+      </div>
+      <div class="rvcard">
+        <div class="stars">★★★★★</div>
+        <p>&ldquo;The country house lodge is steeped in rich history, comfortable and welcoming.&rdquo;</p>
+        <div class="who">Verified guest <span>· TripAdvisor</span></div>
+      </div>
+      <div class="rvcard">
+        <div class="stars">★★★★★</div>
+        <p>&ldquo;Secluded by beautiful grounds with little warthogs playing in view.&rdquo;</p>
+        <div class="who">Verified guest <span>· TripAdvisor</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section class="banner">
+  <div class="wrap">
+    <h2>Ready to book Leeuwenbosch Country House?</h2>
+    <div class="sub">From <b>$299</b> pp / night · ★ 4.5 · 800+ reviews</div>
+    <div class="btns">
+      <a href="#" class="btn btn-brass">Start Planning / Enquire</a>
+      <a href="#" class="btn btn-outline-dark">Explore the Reserve</a>
+    </div>
+    <div class="assure">No booking fee<span>·</span>Free cancellation*<span>·</span>Expert support</div>
+  </div>
+</section>
+
+<section class="gallery" style="padding-top:80px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">More of the Reserve</div>
+      <h2>Other lodges in Amakhala</h2>
+    </div>
+    <div class="xs-grid">
+      <a class="xcard" href="#">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__79900__optimized-desktop/Amakhala%20Safari%20Lodge%20_2_9.webp" alt="Safari Lodge" loading="lazy"></div>
+        <div class="body"><h4>Safari Lodge</h4><p>Eleven luxury suites, each with private plunge pool and hot tub.</p><div class="pr">From $472 pppn →</div></div>
+      </a>
+      <a class="xcard" href="#">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80217__optimized-desktop/Aerial%20view_4.webp" alt="Woodbury Lodge" loading="lazy"></div>
+        <div class="body"><h4>Woodbury Lodge</h4><p>Stone-and-thatch chalets perched above the Bushman&rsquo;s River valley.</p><div class="pr">From $405 pppn →</div></div>
+      </a>
+      <a class="xcard" href="#">
+        <div class="img"><img src="https://pim.africansafarigroup.com/B-Lodges/image-thumb__71297__optimized-desktop/copyof___copyof___copyof___589473542.webp" alt="Quatermains 1920s Safari Camp" loading="lazy"></div>
+        <div class="body"><h4>Quatermains 1920s Safari Camp</h4><p>Colonial-style tented camp with private wood-fired hot tubs and boma dinners.</p><div class="pr">From $227 pppn →</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img src="https://amakhala.com/wp-content/uploads/logo/amakhala.png" alt="Amakhala Game Reserve"></div>
+        <p>A 9,000-hectare malaria-free Big Five reserve on the Bushman&rsquo;s River in the Eastern Cape — seven family-run lodges, open-vehicle game drives and an easy add-on to the Garden Route.</p>
+        <div class="foot-contact">
+          <a href="tel:+27212005960">+27 21 200 5960</a>
+          <a href="mailto:bookings@africansafarigroup.com">bookings@africansafarigroup.com</a>
+          <span>Cape Town, South Africa</span>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="#">The Reserve</a><a href="#">Lodges</a><a href="#">Activities</a><a href="#">Experiences</a><a href="#">Specials</a><a href="#">Start Planning</a>
+      </div>
+      <div class="foot-col">
+        <h5>Lodges</h5>
+        <a href="#">Woodbury Lodge</a><a href="#">Safari Lodge</a><a href="#">Bush Lodge</a><a href="#">HillsNek Safari Camp</a><a href="#">Leeuwenbosch Country House</a><a href="#">Quatermains 1920s Safari Camp</a><a href="#">Woodbury Tented Camp</a>
+      </div>
+    </div>
+    <div class="accred">
+      <span class="acc-pill">Cape Town Tourism</span>
+      <span class="acc-pill">SATSA</span>
+      <span class="acc-pill">ATTA Corporate</span>
+      <span class="acc-pill">TripAdvisor Certificate of Excellence</span>
+      <span class="rev-pill">TripAdvisor · 1,000+ reviews</span>
+      <span class="rev-pill">Feedback Company · 1,000+ reviews</span>
+      <span class="rev-pill">Google · 400+ reviews</span>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Amakhala Game Reserve · Eastern Cape, South Africa</div>
+      <div>Option 4 preview — CMS structure × Ink Edition colours · Part of African Safari Group</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.subnav a[href^="#"]'))
+    .filter(function(a){ return a.getAttribute('href').length > 1; });
+  var pairs = links.map(function(a){
+    var el = null;
+    try { el = document.querySelector(a.getAttribute('href')); } catch(e) {}
+    return el ? {link:a, el:el} : null;
+  }).filter(Boolean);
+  var nav = document.querySelector('nav');
+  var subnav = document.querySelector('.subnav');
+  function onScroll(){
+    // --- nav handoff: hide main nav once the subnav meets it, restore on the way back up ---
+    if (nav && subnav){
+      var navH = nav.classList.contains('nav-hidden') ? nav.offsetHeight : nav.getBoundingClientRect().height;
+      var subTop = subnav.getBoundingClientRect().top;
+      if (subTop <= navH + 1) nav.classList.add('nav-hidden');
+      else nav.classList.remove('nav-hidden');
+    }
+    // --- scrollspy: underline follows the section in view ---
+    var offset = 90;
+    var current = pairs[0];
+    for (var i=0;i<pairs.length;i++){
+      if (pairs[i].el.getBoundingClientRect().top - offset <= 0) current = pairs[i];
+    }
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('load', onScroll);
+  onScroll();
+})();
+</script>
+
+<div class="lb" id="lightbox" role="dialog" aria-label="Photo gallery">
+  <button class="lb-x" aria-label="Close">×</button>
+  <button class="lb-btn lb-prev" aria-label="Previous">‹</button>
+  <img id="lb-img" src="" alt="Lodge photo">
+  <button class="lb-btn lb-next" aria-label="Next">›</button>
+  <div class="lb-count" id="lb-count"></div>
+</div>
+<script>
+(function(){
+  var PIM = "https://pim.africansafarigroup.com/_default_upload_bucket/";
+  var SETS = {"lodge": ["image-thumb__80012__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Evening%20Sky_3.webp", "image-thumb__80031__optimized-desktop/img_4050.webp", "image-thumb__80030__optimized-desktop/img_4059.webp", "image-thumb__80038__optimized-desktop/img_4044.webp", "image-thumb__80039__optimized-desktop/img_31731_1.webp", "image-thumb__80033__optimized-desktop/1mb_leeuwenbosch_suite_5_pixel_2.webp", "image-thumb__80032__optimized-desktop/_mg_3186.webp", "image-thumb__80034__optimized-desktop/_mg_3203_2.webp", "image-thumb__80035__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Suite_4.webp", "image-thumb__80036__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Bathroom_2.webp", "image-thumb__80037__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Room%20View%20_3.webp"], "double": ["image-thumb__80031__optimized-desktop/img_4050.webp", "image-thumb__80030__optimized-desktop/img_4059.webp", "image-thumb__80038__optimized-desktop/img_4044.webp", "image-thumb__80039__optimized-desktop/img_31731_1.webp"], "luxury": ["image-thumb__80033__optimized-desktop/1mb_leeuwenbosch_suite_5_pixel_2.webp", "image-thumb__80032__optimized-desktop/_mg_3186.webp", "image-thumb__80034__optimized-desktop/_mg_3203_2.webp"], "famsuite": ["image-thumb__80035__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Suite_4.webp", "image-thumb__80036__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Bathroom_2.webp", "image-thumb__80037__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Room%20View%20_3.webp"]};
+  var lb = document.getElementById('lightbox'), img = document.getElementById('lb-img'), cnt = document.getElementById('lb-count');
+  var set = SETS.lodge, idx = 0;
+  function show(i){ idx = (i + set.length) % set.length; img.src = PIM + set[idx]; cnt.textContent = (idx+1) + ' / ' + set.length; }
+  function open(which, i){ set = SETS[which] || SETS.lodge; lb.classList.add('open'); document.body.style.overflow='hidden'; show(i||0); }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+  document.querySelectorAll('#gallery .g-item').forEach(function(el, i){ el.addEventListener('click', function(){ open('lodge', el.classList.contains('g-more-tile') ? 0 : i); }); });
+  document.querySelectorAll('.room-lb-trigger').forEach(function(el){
+    var which = el.getAttribute('data-set') || 'rooms';
+    el.addEventListener('click', function(){ open(which, 0); });
+    el.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(which, 0); } });
+  });
+  lb.querySelector('.lb-prev').addEventListener('click', function(){ show(idx-1); });
+  lb.querySelector('.lb-next').addEventListener('click', function(){ show(idx+1); });
+  lb.querySelector('.lb-x').addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowLeft') show(idx-1); if(e.key==='ArrowRight') show(idx+1); });
+})();
+</script>
+</body>
+</html>
