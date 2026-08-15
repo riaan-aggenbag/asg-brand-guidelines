@@ -1,6 +1,6 @@
 # ASG Design System — Master Reference
 **African Safari Group · Brand & Design System**
-Version: August 2026 (rev. 15 Aug — Step B closure & sync) · Custodian: Riaan Aggenbag, CEO · Marker: ASG-README-20260815-R1
+Version: August 2026 (rev. 15 Aug — Step B closure & sync) · Custodian: Riaan Aggenbag, CEO · Marker: ASG-README-20260815-R2
 Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (Riaan, 13 Aug 2026).** Design system export v1.2-stamped, verified and approved. One colour system — Safari Brass, white text — across brand book, web, and email. **Live safari-cms fully on canon: Step A (tokens/voice) 14 Aug, Step B (lodge template rollout + site chrome) closed 15 Aug 2026 — see §13.** `/themes/` pointer package (THEME-SPEC.md + design-tokens.json) shipped 15 Aug, commit `19b4492`.
 
 ---
@@ -213,7 +213,7 @@ All seven Amakhala lodge pages now exist on the Option 4 reference template, bui
 - Rooms: two-column grid restored (`grid-template-columns:1fr 1fr`, single column <1000px — 1 room = half-width left-aligned, 2 side by side, 3 = two + one); every room card carries its own image and photo set (Bush Lodge had the Luxury Tent photo on both rooms — fixed; distinct-image count = room count on all seven).
 - Image hosts: `pim.africansafarigroup.com` / `amakhala.com` only.
 - Compiled CSS bundle: `#C8A96E` 0 · `#A89D8C` 0 · Safari Brass / Deep Brass / Badge Green / Ink present · Lora + Poppins declared.
-- Nav handoff (behaviour spec item 7): hidden-state rule `translateY(-100%)` + `.28s` transition present in shipped CSS; sub-nav sticky top:0 over header. *Visual confirmation of slide-away / slide-back / cold `#faq` load — Riaan to confirm; not yet logged.*
+- Nav handoff (behaviour spec item 7): hidden-state rule `translateY(-100%)` + `.28s` transition present in shipped CSS; sub-nav sticky top:0 over header. Visual behaviour confirmed by Riaan 15 Aug 2026 — header slides away when the sub-nav meets it, slides back on scroll-up, hidden on cold deep-link load. Works as designed.
 - Replit "Enable feedback widget" turned OFF in Publishing → Adjust settings → Engagement tools; republished; `replit-cdn` script = 0 on all seven.
 
 **New standing rules recorded 15 Aug 2026:**
