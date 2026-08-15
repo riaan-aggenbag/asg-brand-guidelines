@@ -1,7 +1,7 @@
 # ASG Design System — Master Reference
 **African Safari Group · Brand & Design System**
-Version: August 2026 (rev. 13 Aug, decision update) · Custodian: Riaan Aggenbag, CEO
-Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (Riaan, 13 Aug 2026).** Design system export v1.2-stamped, verified and approved. One colour system — Safari Brass, white text — across brand book, web, and email.
+Version: August 2026 (rev. 15 Aug — Step B closure & sync) · Custodian: Riaan Aggenbag, CEO · Marker: ASG-README-20260815-R1
+Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (Riaan, 13 Aug 2026).** Design system export v1.2-stamped, verified and approved. One colour system — Safari Brass, white text — across brand book, web, and email. **Live safari-cms fully on canon: Step A (tokens/voice) 14 Aug, Step B (lodge template rollout + site chrome) closed 15 Aug 2026 — see §13.** `/themes/` pointer package (THEME-SPEC.md + design-tokens.json) shipped 15 Aug, commit `19b4492`.
 
 ---
 
@@ -13,6 +13,8 @@ Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (R
   - `ASG_Design_System_README.md` — this file, at repo root.
 - **Claude project knowledge** mirrors the reference layer: this README + the export's overview HTML (`ASG Design System.html`), export readme (`DS_Export_README.md`), and `_ds_manifest.json`.
 - **Sync rule:** any change to a design-system file → (1) commit in the git repo, (2) replace the same file in project knowledge. Both copies must always agree.
+- **Pre-commit probe (standing, 15 Aug 2026):** before committing any synced file, `Select-String` for a marker only the correct generation contains (Downloads filename-collision generations `_1`, `_19` … are the known failure mode — the stale `_19` Safari Lodge template got into project knowledge this way). Stage with explicit paths; never `git add .` / `commit -a` in this repo.
+- **`themes/`** — `THEME-SPEC.md` + `design-tokens.json`: the single pointer package for any designer, developer, agency or printer. Reflects brand book v1.2; frozen between deliberate version bumps (next v1.3). Marker `ASG-THEMES-OPT4INK-20260815-R1`.
 
 ---
 
@@ -25,7 +27,7 @@ Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (R
 | **Ink Edition (v1.2)** | Core dark editorial-luxury brand system. 17-page guidelines. | ✅ Canonical brand book. |
 | **Light Edition** | Same palette, inverted ground (Ivory-led). Implemented as `data-theme="light"` layer in the export. | Reference; ships as a theme, not a separate system. |
 | **Option 4 — CMS × Ink** | Option 3's page architecture in Ink Edition colours: Safari Brass CTAs (white text), badges tuned to the Ink family. | ⭐ **OFFICIAL web/CMS system.** All seven patterns + behaviour spec componentised in the design system export. |
-| **Option 3 — Reserve-CMS** | The live safari-cms.replit.app system as-built: pale gold #C8A96E accent (dark button text). | 🗄️ **Retired to archive** (`brand-books/ASG_Option_3_Reserve_System.pdf`). The live site is to be re-skinned to Option 4. |
+| **Option 3 — Reserve-CMS** | The live safari-cms.replit.app system as-built: pale gold #C8A96E accent (dark button text). | 🗄️ **Retired to archive** (`brand-books/ASG_Option_3_Reserve_System.pdf`). Live site re-skinned to Option 4 — Step A 14 Aug, Step B closed 15 Aug 2026 (§13). |
 
 ---
 
@@ -83,7 +85,7 @@ Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (R
 
 Authoritative, warm, never salesy. Specific beats superlative. Declarative sentences. No exclamation points. Speak as "we." Lead with guest experience.
 
-**Words we don't use (guest-facing):** cross-sell, upsell, or any sales-mechanics jargon. (Replaced with e.g. "More of the Reserve." The live safari-cms site still says "Cross-sell" — flag for fixing there.)
+**Words we don't use (guest-facing):** cross-sell, upsell, or any sales-mechanics jargon. (Replaced with "More of the Reserve." Live safari-cms verified 15 Aug 2026: "Cross-sell" = 0 on all seven lodge pages; "More of the Reserve" present on all seven.)
 
 **Content rules added during CMS review (all now on the export's Voice card):**
 - Temperatures always dual-unit: **Celsius first, Fahrenheit second** — e.g. "8–22 °C (46–72 °F)". Applies to panels and in-copy mentions.
@@ -99,7 +101,7 @@ Authoritative, warm, never salesy. Specific beats superlative. Declarative sente
 3. **Temperatures** — dual °C/°F everywhere (see voice rules).
 4. **Breadcrumbs** — top-left of hero image, no background, clickable links (Sand, Brass hover); current page plain text, never a link. → Behaviour card.
 5. **Hero stars** — 16px, optically nudged +2px to align with review text. Production should use inline SVG stars (font glyphs vary by OS).
-6. **Value-prop bar titles** (Current Special / Book Direct / etc.) — 12px tracked caps Brass, not 10px. → `ValuePropBar` component.
+6. **Value-prop bar titles** (Current Specials / Best Price / Plan With a Consultant / Expert Support — "Book Direct" retired under the 13 Aug banned-rate-claims rule) — 12px tracked caps Brass, not 10px. → `ValuePropBar` component.
 7. **Nav behaviour** — main nav sticky until sub-nav meets it, then main nav slides away (0.28s) and sub-nav owns top; reverses on scroll-up. Sub-nav has scrollspy: Brass underline follows section in view. (Bug fixed: bare href="#" links must be excluded from scrollspy or querySelector throws and kills the script.) → Behaviour card.
 8. **Month season grid** — month 13.5px, sub-label 9.5px uppercase; Peak = Brass + white text, Good = Sand + **dark** text, Fair = Bone + dark text. → `MonthGrid` component.
 9. **Status badges (sightings)** — Green #4F6B51 "Most drives" (white text) · Brass "Very often" (white) · Sand "Often" (**INK text**) · Charcoal "Rarely" (ivory). → `SightingsBadge` component.
@@ -108,11 +110,11 @@ Authoritative, warm, never salesy. Specific beats superlative. Declarative sente
 ---
 
 ## 6B. LODGE PAGE TEMPLATE CANON (13 Aug 2026 — reference: safari_lodge_option4_ink_edition.html)
-The Safari Lodge page is the frozen reference template for all lodge pages. Additions beyond the original Woodbury template:
+The Safari Lodge page is the frozen reference template for all lodge pages (`lodge-pages/safari_lodge_option4_ink_edition.html`, 5-tile generation, marker `ASG-SL-5TILE-20260815`). Additions beyond the original Woodbury template:
 - **Good to Know section** (`#good-to-know`, in sub-nav): two `.qf` cards — Arrival & policies + Current specials conditions. Specials card carries `.qf.special` treatment.
 - **FAQ section** (`#faq`, in sub-nav): 12 GEO-optimised questions in two columns, sourced per lodge from its live "Travelers are asking" data. Answer-first, fact-dense, honest (spa/lions answers stay truthful). **FAQPage JSON-LD schema in `<head>` is mandatory** — CMS should auto-generate it from FAQ content.
 - **Specials treatment family (Badge Green #4F6B51, role extended to savings signals):** solid green **SAVE chip** (hero price card, card headers, white text) OR **green top-rule + ~5% tint wash** (props cell `.prop.special`, GTK card `.qf.special`). Nothing else. In-cell links on the special cell use soft green #9FBFA3, not brass.
-- **Lightbox gallery** (vanilla JS, no deps): ink scrim .94, brass circular prev/next, counter, Esc/arrows/scrim-close, body scroll lock. Gallery = 8 tiles, 8th carries "View all N photos" overlay; every tile opens at its index. Room card image is the room-set trigger via corner badge overlay (`.room-lb-trigger`), NOT full scrim — the single room photo must still sell.
+- **Lightbox gallery** (vanilla JS, no deps): ink scrim .94, brass circular prev/next, counter, Esc/arrows/scrim-close, body scroll lock. Gallery = **five tiles** (one tall + four), the fifth carries the "View all N photos" overlay, tiles are the first five entries of the lodge lightbox set so every tile opens on the photo it shows (canon per §12; the 8-tile line that stood here was superseded — Safari Lodge reference template regenerated to canon 15 Aug 2026). Room card image is the room-set trigger via corner badge overlay (`.room-lb-trigger`), NOT full scrim — the single room photo must still sell.
 - **Facility icons:** inline Lucide-style SVGs (24 grid, 1.75 stroke, brass, 19px) replace the generic ✓ in Facilities only. Experiences keeps brass ✓ (= "included").
 - **Pull-quote interlude** between FAQ and Reviews: Sand Tint #E8DCCB ground, ink Lora italic 27px, brass rule, Deep Brass tracked-caps attribution. Each lodge gets its own line **from the lodge's own copy — never a fabricated guest quote**.
 - **Reviews:** 6-card grid — mix of service quotes and real lodge guest excerpts (short, attributed). Live reviews are JS-rendered on amakhala.com (unextractable by fetch); production pipes the review feed into this layout.
@@ -158,7 +160,9 @@ The Claude Design export is the machine-usable form of everything above. Stamped
 - `brand-books/ASG_Option_3_Reserve_System.pdf` — CMS as-built, #C8A96E accent
 - `brand-books/ASG_Option_4_Reserve_System_Ink.pdf` — CMS × Ink concept
 - `brand-books/africansafarigroup_homepage_mockup(.html/_light.html)` — earlier-phase homepage mockups
-- `ASG_Design_System_README.md` — this file
+- `lodge-pages/` — the seven Option 4 lodge reference templates (Safari Lodge, Bush Lodge, HillsNek, Leeuwenbosch, Quatermain's, Woodbury Tented Camp, Woodbury Lodge v2) — content source for the CMS rollout
+- `themes/THEME-SPEC.md` + `themes/design-tokens.json` — the pointer package (see §0)
+- `ASG_Design_System_README.md` — this file (repo root; never relocated)
 
 **Inside the export (`ASG_Design_System_Complete/uploads/`):** `ASG_Brand_Guidelines_v1.2.pdf` (canonical brand book), `ASG_Brand_Quick_Reference_Light.pdf`, Option 4 working HTML (`amakhala_option4_ink_edition.html`, `woodbury_lodge_option4_ink_edition.html`).
 
@@ -171,15 +175,15 @@ The Claude Design export is the machine-usable form of everything above. Stamped
 ## 10. BACKLOG / NEXT SESSION
 
 1. ~~Formal decision: Option 3 vs Option 4~~ — ✅ DONE 13 Aug 2026: Option 4 formalised.
-2. Build remaining six Amakhala lodge pages in Option 4 (harvest each lodge's Pimcore gallery from safari-cms first).
-3. Continue Riaan's page-by-page feedback on the two existing Option 4 pages (mid-review).
+2. ~~Build remaining six Amakhala lodge pages in Option 4~~ — ✅ DONE 13–14 Aug (§11).
+3. ~~Continue Riaan's page-by-page feedback on the two existing Option 4 pages~~ — ✅ folded into §12 canon.
 4. Swap hero star glyphs for inline SVG in the working HTML pages.
-5. Re-skin the live safari-cms build to Option 4 (brass CTAs/white text, retire #C8A96E, remove "Cross-sell" label).
+5. ~~Re-skin the live safari-cms build to Option 4~~ — ✅ DONE: Step A 14 Aug, Step B closed 15 Aug 2026 (§13).
 6. Claude Design org setup: publish the verified export as the org design system.
 7. Brand book v1.3: fold in the Option 4 formalisation, the brass-600 badge exception, and the seven web patterns so PDF and design system stay in lockstep.
-- Build remaining 5 lodge pages from the Safari Lodge reference (order: Bush Lodge, HillsNek, Leeuwenbosch, Quatermain's, Woodbury Tented Camp) — per-lodge FAQs, pull-quote line, correct specials combo.
-- **Retrofit Woodbury** with template additions (GTK, FAQ+schema, lightbox, save chips, icons, pull-quote) AND remove the banned "book direct / no markup" claims it inherited.
-- Check live safari-cms demo copy for the banned rate claims during the Option 4 re-skin.
+- ~~Build remaining 5 lodge pages from the Safari Lodge reference~~ — ✅ DONE (§11).
+- ~~**Retrofit Woodbury**~~ — ✅ DONE: live Woodbury Lodge page now rendered from `woodbury_lodge_option4_ink_edition_v2.html` via the Step B rollout (GTK, FAQ+schema, lightbox, SAVE chips, zero banned claims — probe-verified 15 Aug).
+- ~~Check live safari-cms demo copy for the banned rate claims~~ — ✅ verified 15 Aug: "book direct" / "no markup" / "the lodge's own rate" = 0 on all seven lodge pages; "Free cancellation*" (orphan asterisk, unbacked claim) removed.
 - Design system next iteration (Claude Design): SaveChip, Lightbox, FAQ accordion, facility icon set as patterns; fold voice ban + Badge Green role extension into brand book v1.3.
 - Resolve rate ($472/$473/$483) and rating (4.7/4.8) discrepancies on live site + CMS.
 
@@ -194,3 +198,30 @@ All seven Amakhala lodge pages now exist on the Option 4 reference template, bui
 - **FAQ uniqueness rule** — no two lodge pages may carry identical Q&A text, including universal topics (malaria, best time, lions, check-in). Universal questions stay, but every answer gets lodge-flavoured phrasing (duplicate-content SEO + AI-search differentiation). Verified: zero identical answers across all seven pages. General questions are the approved filler when a lodge lacks enough unique ones.
 - **Pricing model (operational fact from Riaan)** — base rates live in Pimcore in **ZAR**; the WP sites convert at render time from the visitor's IP-based currency. All prices in these mockups are placeholder USD snapshots; production templates must bind the price field and never hardcode. This explains the earlier $472/$483 and €197-vs-$227 "discrepancies" — they were currency conversion, not data errors. Flags withdrawn.
 - **Remaining flags:** Woodbury Lodge live-site spa-FAQ answer still says "Safari Lodge" (web team); rating rounding rule to confirm (9.5→4.8 used at Woodbury Tented vs 9.4→4.7 at Safari); Quatermain's + Woodbury Lodge review rows to top up when the review feed lands.
+
+## 13. STEP B CLOSURE — LIVE CMS ON CANON (15 Aug 2026)
+
+**Method:** every claim below was verified by fetching the live pages/CSS and counting (`Invoke-WebRequest` + regex), never from the agent's narrative. Where agent report and probe disagreed, the probe won — three times.
+
+**Verified on all seven lodge pages** (`/lodges/safari-lodge`, `woodbury-lodge`, `bush-lodge`, `hillsnek-safari-camp`, `leeuwenbosch-country-house`, `quatermains-camp`, `woodbury-tented-camp`):
+- Props bar: 4 cells, canonical order Current Specials → Best Price → Plan With a Consultant → Expert Support.
+- Gallery: 5 tiles, overlay on the fifth; lightbox lodge set + separate room set(s) via corner badge trigger.
+- Good to Know present; FAQ 12 per page + FAQPage JSON-LD; **84 answers, zero identical strings site-wide**.
+- SAVE chips ×2 (hero price card + GTK conditions); temperatures dual-unit Celsius-first; "More of the Reserve" / "Other lodges in Amakhala".
+- Best price guarantee + no booking fees present; banned terms 0 (cross-sell, upsell, book direct, no markup, the lodge's own rate); "Free cancellation*" removed.
+- Footer endorsement **"Part of African Safari Group"** present.
+- Rooms: two-column grid restored (`grid-template-columns:1fr 1fr`, single column <1000px — 1 room = half-width left-aligned, 2 side by side, 3 = two + one); every room card carries its own image and photo set (Bush Lodge had the Luxury Tent photo on both rooms — fixed; distinct-image count = room count on all seven).
+- Image hosts: `pim.africansafarigroup.com` / `amakhala.com` only.
+- Compiled CSS bundle: `#C8A96E` 0 · `#A89D8C` 0 · Safari Brass / Deep Brass / Badge Green / Ink present · Lora + Poppins declared.
+- Nav handoff (behaviour spec item 7): hidden-state rule `translateY(-100%)` + `.28s` transition present in shipped CSS; sub-nav sticky top:0 over header. *Visual confirmation of slide-away / slide-back / cold `#faq` load — Riaan to confirm; not yet logged.*
+- Replit "Enable feedback widget" turned OFF in Publishing → Adjust settings → Engagement tools; republished; `replit-cdn` script = 0 on all seven.
+
+**New standing rules recorded 15 Aug 2026:**
+- **Guest-facing deployments never publish with the Replit feedback widget or "Made with Replit" badge enabled** (Publishing → Adjust settings → Engagement tools — both OFF). Agent redeploys do not change this setting; check it on every republish.
+- **Rooms grid canon:** `.rooms-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px}` collapsing to one column below 1000px; each room card binds its own hero image + photo set — never a sibling's.
+- **Sub-brand footer canon:** the "Part of African Safari Group" endorsement line is mandatory on every sub-brand page footer, including the CMS.
+- **Rate-claim hygiene:** any assurance-row claim not in the approved set (best price guarantee · contracted rates · no booking fees) is removed unless T&Cs back it and it carries a footnote.
+
+**Doc-sync completed in this revision:** §6 item 6 "Book Direct" example retired · §6B gallery line corrected to five tiles · Safari Lodge reference template regenerated (5-tile, index-consistent; stale `_19` retired from project knowledge) · `lodge-pages/` and `themes/` added to manifest · backlog items 2/3/5 + Woodbury retrofit + banned-claims check closed.
+
+**Still open (unchanged):** rating rounding rule / 4.7-vs-4.8 canonical call · Quatermain's + Woodbury Lodge review rows to top up when the review feed lands · live amakhala.com Woodbury Lodge spa-FAQ answer says "Safari Lodge" (web team) · production must bind currency symbol as well as amount (demo renders USD literal) · Claude Design org setup · **brand book v1.3** fold-in: Option 4 formalisation, brass-600 exception, seven web patterns + SaveChip/Lightbox/FAQ-accordion, Badge Green role extension, `/themes/` package, rooms/footer/nav canon above.
