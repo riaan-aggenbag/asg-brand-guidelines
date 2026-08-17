@@ -11,10 +11,10 @@
 | File | What it is | Where it belongs |
 |---|---|---|
 | `asg_itinerary_option4_ink_edition.html` | Self-contained preview (all images inlined, 1.2 MB). Open in a real browser; fonts load from Google Fonts. | Project knowledge (review copy). Do **not** commit — regenerate from the template. |
-| `itinerary_template.html` | The clean template. Every photo/logo is an `<img data-asset="key">` slot; no base64. This is the file a developer reads. | Repo: `templates/wetu/itinerary_template.html` |
-| `assets/*.png` (23) | Reference crops from the live itinerary screenshots + logo rasters cropped from the brand-book PDF. Placeholders only. | Repo: `templates/wetu/assets/` |
-| `build_itinerary.py` | Re-encodes assets and injects them into the template to produce the preview. `python3 build_itinerary.py` | Repo: `templates/wetu/build_itinerary.py` |
-| `ITINERARY-HANDOFF.md` | This document. | Repo: `templates/wetu/` |
+| `itinerary_template.html` | The clean template. Every photo/logo is an `<img data-asset="key">` slot; no base64. This is the file a developer reads. | Repo: `wetu/itinerary_template.html` |
+| `assets/*.png` (23) | Reference crops from the live itinerary screenshots + logo rasters cropped from the brand-book PDF. Placeholders only. | Repo: `wetu/assets/` |
+| `build_itinerary.py` | Re-encodes assets and injects them into the template to produce the preview. `python3 build_itinerary.py` | Repo: `wetu/build_itinerary.py` |
+| `ITINERARY-HANDOFF.md` | This document. | Repo: `wetu/` |
 
 Pre-commit probe: `Select-String "ASG-ITIN-OPT4INK-20260817-R1"` must hit in both HTML files.
 
