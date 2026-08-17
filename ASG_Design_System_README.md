@@ -1,6 +1,6 @@
 # ASG Design System — Master Reference
 **African Safari Group · Brand & Design System**
-Version: August 2026 (rev. 15 Aug — Step B closure & sync) · Custodian: Riaan Aggenbag, CEO · Marker: ASG-README-20260815-R2
+Version: August 2026 (rev. 17 Aug — Step B closure & sync) · Custodian: Riaan Aggenbag, CEO · Marker: ASG-README-20260817-R3
 Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (Riaan, 13 Aug 2026).** Design system export v1.2-stamped, verified and approved. One colour system — Safari Brass, white text — across brand book, web, and email. **Live safari-cms fully on canon: Step A (tokens/voice) 14 Aug, Step B (lodge template rollout + site chrome) closed 15 Aug 2026 — see §13.** `/themes/` pointer package (THEME-SPEC.md + design-tokens.json) shipped 15 Aug, commit `19b4492`.
 
 ---
