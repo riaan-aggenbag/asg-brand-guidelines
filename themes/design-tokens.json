@@ -2,26 +2,26 @@
   "$meta": {
     "name": "ASG Design Tokens — Option 4 · CMS × Ink Edition",
     "package": "themes",
-    "packageVersion": "1.0.0",
-    "reflects": "ASG Brand Guidelines v1.2 · August 2026",
+    "packageVersion": "1.1.0",
+    "reflects": "ASG Brand Guidelines v1.3 · August 2026",
     "system": "Option 4 (CMS × Ink) — the official ASG web/CMS system. Formal decision: Riaan Aggenbag, 13 Aug 2026. All other options retired.",
-    "generated": "2026-08-15",
+    "generated": "2026-08-16",
     "custodian": "Riaan Aggenbag, CEO — African Safari Group",
     "companion": "THEME-SPEC.md (same directory) — the human-readable specification. Both files version together.",
-    "marker": "ASG-THEMES-OPT4INK-20260815-R1",
+    "marker": "ASG-THEMES-V13-20260816-R1",
     "sources": [
-      "ASG_Brand_Guidelines_v1.2.pdf (canonical brand book, 17 pages)",
+      "ASG_Brand_Guidelines_v1.3.pdf (canonical brand book, 27 pages)",
       "ASG_Design_System_Complete export — tokens/colors.css, tokens/typography.css, tokens/spacing.css, tokens/effects.css, tokens/theme-light.css",
-      "ASG_Design_System_README.md (decision record, 13 Aug 2026 revision)"
+      "ASG_Design_System_README.md (decision record)"
     ],
     "notes": [
       "cssVar names match the shipping design-system export exactly. Do not rename.",
       "Default theme is dark (Ink Edition) at :root. Light theme applies under [data-theme=\"light\"].",
       "Email surfaces consume raw hex values only — CSS custom properties are unreliable in email clients.",
-      "One colour system across brand book, web, and email. No per-surface palettes."
+      "One colour system across brand book, web, and email. No per-surface palettes.",
+      "v1.3 (16 Aug 2026): lodge-template + page-behaviour canon added under component.lodgeTemplate and component.behaviour; stamps bumped to v1.3. cssVar names unchanged — additive only."
     ]
   },
-
   "banned": {
     "paleGold": {
       "value": "#C8A96E",
@@ -30,334 +30,1023 @@
     },
     "newAccentColours": "No new accent colours, ever. Safari Brass #A8794B is the only accent.",
     "guestFacingWords": [
-      "cross-sell", "upsell", "book direct", "the lodge's own rate", "no markup",
-      "dream", "unforgettable", "incredible", "amazing", "adventure of a lifetime"
+      "cross-sell",
+      "upsell",
+      "book direct",
+      "the lodge's own rate",
+      "no markup",
+      "dream",
+      "unforgettable",
+      "incredible",
+      "amazing",
+      "adventure of a lifetime"
     ],
-    "approvedRateClaims": ["best price guarantee", "contracted rates", "no booking fees"],
-    "punctuationAndGlyphs": ["exclamation points (never)", "emoji (never)"]
+    "approvedRateClaims": [
+      "best price guarantee",
+      "contracted rates",
+      "no booking fees"
+    ],
+    "punctuationAndGlyphs": [
+      "exclamation points (never)",
+      "emoji (never)"
+    ]
   },
-
   "color": {
     "palette": {
-      "ink":          { "value": "#171411", "cssVar": "--asg-ink",           "rgb": "23 20 17",    "role": "Primary ground — heroes, headers, nav, footers" },
-      "charcoal":     { "value": "#2B2622", "cssVar": "--asg-charcoal",      "rgb": "43 38 34",    "role": "Secondary dark surface — cards, panels, dark-section info cards" },
-      "softCharcoal": { "value": "#4A443C", "cssVar": "--asg-soft-charcoal", "rgb": "74 68 60",    "role": "Body copy on light backgrounds" },
-      "brass":        { "value": "#A8794B", "cssVar": "--asg-brass",         "rgb": "168 121 75",  "role": "THE single accent — CTAs, links, rule-lines, signal only. Always white text." },
-      "heritageSand": { "value": "#C39F77", "cssVar": "--asg-heritage-sand", "rgb": "195 159 119", "role": "Secondary tone — tints, 'Often' badges (ink text at small sizes), month-grid Good state" },
-      "warmIvory":    { "value": "#F6F1EA", "cssVar": "--asg-warm-ivory",    "rgb": "246 241 234", "role": "Light editorial ground — body, cards, email backgrounds" },
-      "bone":         { "value": "#B9AFA2", "cssVar": "--asg-bone",          "rgb": "185 175 162", "role": "Hairlines, dividers on light grounds, month-grid Fair state" },
-      "badgeGreen":   { "value": "#4F6B51", "cssVar": "--asg-badge-green",   "rgb": "79 107 81",   "role": "Status + savings signal — 'Most drives', 'Included', SAVE chips. White text." },
-      "white":        { "value": "#FFFFFF", "cssVar": "--asg-white",         "rgb": "255 255 255", "role": "Raised light surface, text on brass/green/ink" }
+      "ink": {
+        "value": "#171411",
+        "cssVar": "--asg-ink",
+        "rgb": "23 20 17",
+        "role": "Primary ground — heroes, headers, nav, footers"
+      },
+      "charcoal": {
+        "value": "#2B2622",
+        "cssVar": "--asg-charcoal",
+        "rgb": "43 38 34",
+        "role": "Secondary dark surface — cards, panels, dark-section info cards"
+      },
+      "softCharcoal": {
+        "value": "#4A443C",
+        "cssVar": "--asg-soft-charcoal",
+        "rgb": "74 68 60",
+        "role": "Body copy on light backgrounds"
+      },
+      "brass": {
+        "value": "#A8794B",
+        "cssVar": "--asg-brass",
+        "rgb": "168 121 75",
+        "role": "THE single accent — CTAs, links, rule-lines, signal only. Always white text."
+      },
+      "heritageSand": {
+        "value": "#C39F77",
+        "cssVar": "--asg-heritage-sand",
+        "rgb": "195 159 119",
+        "role": "Secondary tone — tints, 'Often' badges (ink text at small sizes), month-grid Good state"
+      },
+      "warmIvory": {
+        "value": "#F6F1EA",
+        "cssVar": "--asg-warm-ivory",
+        "rgb": "246 241 234",
+        "role": "Light editorial ground — body, cards, email backgrounds"
+      },
+      "bone": {
+        "value": "#B9AFA2",
+        "cssVar": "--asg-bone",
+        "rgb": "185 175 162",
+        "role": "Hairlines, dividers on light grounds, month-grid Fair state"
+      },
+      "badgeGreen": {
+        "value": "#4F6B51",
+        "cssVar": "--asg-badge-green",
+        "rgb": "79 107 81",
+        "role": "Status + savings signal — 'Most drives', 'Included', SAVE chips. White text."
+      },
+      "white": {
+        "value": "#FFFFFF",
+        "cssVar": "--asg-white",
+        "rgb": "255 255 255",
+        "role": "Raised light surface, text on brass/green/ink"
+      }
     },
-
     "scale": {
-      "ink900":      { "value": "#0E0C0A", "cssVar": "--asg-ink-900" },
-      "ink800":      { "value": "#171411", "cssVar": "--asg-ink-800" },
-      "ink700":      { "value": "#211D19", "cssVar": "--asg-ink-700" },
-      "charcoal600": { "value": "#2B2622", "cssVar": "--asg-charcoal-600" },
-      "charcoal500": { "value": "#3A342E", "cssVar": "--asg-charcoal-500" },
-      "brass600":    { "value": "#8E6238", "cssVar": "--asg-brass-600", "name": "Deep Brass", "note": "Press/active state; fill for solid brass badges under 12px (approved exception — the fill adapts, never the text colour)" },
-      "brass500":    { "value": "#A8794B", "cssVar": "--asg-brass-500", "name": "Safari Brass" },
-      "brass400":    { "value": "#BB9165", "cssVar": "--asg-brass-400", "note": "Hover state — brass moves lighter on hover, darker on press" },
-      "sandTint":    { "value": "#E8DCCB", "cssVar": "--asg-sand-tint" },
-      "ivory200":    { "value": "#EFE7DB", "cssVar": "--asg-ivory-200", "note": "Ivory Dim — secondary light surface, hairlines, low-contrast panels" },
-      "bone300":     { "value": "#D8CFC2", "cssVar": "--asg-bone-300" }
+      "ink900": {
+        "value": "#0E0C0A",
+        "cssVar": "--asg-ink-900"
+      },
+      "ink800": {
+        "value": "#171411",
+        "cssVar": "--asg-ink-800"
+      },
+      "ink700": {
+        "value": "#211D19",
+        "cssVar": "--asg-ink-700"
+      },
+      "charcoal600": {
+        "value": "#2B2622",
+        "cssVar": "--asg-charcoal-600"
+      },
+      "charcoal500": {
+        "value": "#3A342E",
+        "cssVar": "--asg-charcoal-500"
+      },
+      "brass600": {
+        "value": "#8E6238",
+        "cssVar": "--asg-brass-600",
+        "name": "Deep Brass",
+        "note": "Press/active state; fill for solid brass badges under 12px (approved exception — the fill adapts, never the text colour)"
+      },
+      "brass500": {
+        "value": "#A8794B",
+        "cssVar": "--asg-brass-500",
+        "name": "Safari Brass"
+      },
+      "brass400": {
+        "value": "#BB9165",
+        "cssVar": "--asg-brass-400",
+        "note": "Hover state — brass moves lighter on hover, darker on press"
+      },
+      "sandTint": {
+        "value": "#E8DCCB",
+        "cssVar": "--asg-sand-tint"
+      },
+      "ivory200": {
+        "value": "#EFE7DB",
+        "cssVar": "--asg-ivory-200",
+        "note": "Ivory Dim — secondary light surface, hairlines, low-contrast panels"
+      },
+      "bone300": {
+        "value": "#D8CFC2",
+        "cssVar": "--asg-bone-300"
+      }
     },
-
     "alpha": {
-      "brassA20": { "value": "rgba(168, 121, 75, 0.20)", "cssVar": "--asg-brass-a20" },
-      "brassA40": { "value": "rgba(168, 121, 75, 0.40)", "cssVar": "--asg-brass-a40" },
-      "ivoryA08": { "value": "rgba(246, 241, 234, 0.08)", "cssVar": "--asg-ivory-a08" },
-      "ivoryA14": { "value": "rgba(246, 241, 234, 0.14)", "cssVar": "--asg-ivory-a14" },
-      "inkA60":   { "value": "rgba(14, 12, 10, 0.60)",   "cssVar": "--asg-ink-a60" }
+      "brassA20": {
+        "value": "rgba(168, 121, 75, 0.20)",
+        "cssVar": "--asg-brass-a20"
+      },
+      "brassA40": {
+        "value": "rgba(168, 121, 75, 0.40)",
+        "cssVar": "--asg-brass-a40"
+      },
+      "ivoryA08": {
+        "value": "rgba(246, 241, 234, 0.08)",
+        "cssVar": "--asg-ivory-a08"
+      },
+      "ivoryA14": {
+        "value": "rgba(246, 241, 234, 0.14)",
+        "cssVar": "--asg-ivory-a14"
+      },
+      "inkA60": {
+        "value": "rgba(14, 12, 10, 0.60)",
+        "cssVar": "--asg-ink-a60"
+      }
     },
-
     "scrim": {
-      "bottom": { "value": "linear-gradient(to top, rgba(14,12,10,0.92) 0%, rgba(14,12,10,0.55) 38%, rgba(14,12,10,0) 100%)", "cssVar": "--scrim-bottom", "note": "Mandatory under any text set over photography" },
-      "full":   { "value": "linear-gradient(to top, rgba(14,12,10,0.85) 0%, rgba(14,12,10,0.35) 50%, rgba(14,12,10,0.55) 100%)", "cssVar": "--scrim-full" }
+      "bottom": {
+        "value": "linear-gradient(to top, rgba(14,12,10,0.92) 0%, rgba(14,12,10,0.55) 38%, rgba(14,12,10,0) 100%)",
+        "cssVar": "--scrim-bottom",
+        "note": "Mandatory under any text set over photography"
+      },
+      "full": {
+        "value": "linear-gradient(to top, rgba(14,12,10,0.85) 0%, rgba(14,12,10,0.35) 50%, rgba(14,12,10,0.55) 100%)",
+        "cssVar": "--scrim-full"
+      }
     }
   },
-
   "theme": {
     "dark": {
       "$scope": ":root (default — Ink Edition)",
       "surface": {
-        "base":        { "value": "#171411", "cssVar": "--surface-base", "ref": "--asg-ink" },
-        "raised":      { "value": "#322B23", "cssVar": "--surface-raised" },
-        "overlay":     { "value": "#3B342B", "cssVar": "--surface-overlay" },
-        "inset":       { "value": "#453D33", "cssVar": "--surface-inset" },
-        "ivory":       { "value": "#F6F1EA", "cssVar": "--surface-ivory", "ref": "--asg-warm-ivory" },
-        "ivoryRaised": { "value": "#FFFFFF", "cssVar": "--surface-ivory-raised", "ref": "--asg-white" }
+        "base": {
+          "value": "#171411",
+          "cssVar": "--surface-base",
+          "ref": "--asg-ink"
+        },
+        "raised": {
+          "value": "#322B23",
+          "cssVar": "--surface-raised"
+        },
+        "overlay": {
+          "value": "#3B342B",
+          "cssVar": "--surface-overlay"
+        },
+        "inset": {
+          "value": "#453D33",
+          "cssVar": "--surface-inset"
+        },
+        "ivory": {
+          "value": "#F6F1EA",
+          "cssVar": "--surface-ivory",
+          "ref": "--asg-warm-ivory"
+        },
+        "ivoryRaised": {
+          "value": "#FFFFFF",
+          "cssVar": "--surface-ivory-raised",
+          "ref": "--asg-white"
+        }
       },
       "text": {
-        "primary":    { "value": "#F6F1EA", "cssVar": "--text-primary", "ref": "--asg-warm-ivory" },
-        "body":       { "value": "#D9D1C6", "cssVar": "--text-body" },
-        "muted":      { "value": "#9A9085", "cssVar": "--text-muted" },
-        "faint":      { "value": "#8A8175", "cssVar": "--text-faint" },
-        "onBrass":    { "value": "#FFFFFF", "cssVar": "--text-on-brass", "rule": "White on brass, ALWAYS, in both themes" },
-        "primaryInk": { "value": "#171411", "cssVar": "--text-primary-ink", "note": "For light panels inside dark pages" },
-        "bodyInk":    { "value": "#4A443C", "cssVar": "--text-body-ink" },
-        "mutedInk":   { "value": "#7A7166", "cssVar": "--text-muted-ink", "note": "Minimum weight for muted text on light grounds" }
+        "primary": {
+          "value": "#F6F1EA",
+          "cssVar": "--text-primary",
+          "ref": "--asg-warm-ivory"
+        },
+        "body": {
+          "value": "#D9D1C6",
+          "cssVar": "--text-body"
+        },
+        "muted": {
+          "value": "#9A9085",
+          "cssVar": "--text-muted"
+        },
+        "faint": {
+          "value": "#8A8175",
+          "cssVar": "--text-faint"
+        },
+        "onBrass": {
+          "value": "#FFFFFF",
+          "cssVar": "--text-on-brass",
+          "rule": "White on brass, ALWAYS, in both themes"
+        },
+        "primaryInk": {
+          "value": "#171411",
+          "cssVar": "--text-primary-ink",
+          "note": "For light panels inside dark pages"
+        },
+        "bodyInk": {
+          "value": "#4A443C",
+          "cssVar": "--text-body-ink"
+        },
+        "mutedInk": {
+          "value": "#7A7166",
+          "cssVar": "--text-muted-ink",
+          "note": "Minimum weight for muted text on light grounds"
+        }
       },
       "accent": {
-        "default": { "value": "#A8794B", "cssVar": "--accent",        "ref": "--asg-brass" },
-        "hover":   { "value": "#BB9165", "cssVar": "--accent-hover",  "ref": "--asg-brass-400" },
-        "active":  { "value": "#8E6238", "cssVar": "--accent-active", "ref": "--asg-brass-600" },
-        "quiet":   { "value": "#C39F77", "cssVar": "--accent-quiet",  "ref": "--asg-heritage-sand" }
+        "default": {
+          "value": "#A8794B",
+          "cssVar": "--accent",
+          "ref": "--asg-brass"
+        },
+        "hover": {
+          "value": "#BB9165",
+          "cssVar": "--accent-hover",
+          "ref": "--asg-brass-400"
+        },
+        "active": {
+          "value": "#8E6238",
+          "cssVar": "--accent-active",
+          "ref": "--asg-brass-600"
+        },
+        "quiet": {
+          "value": "#C39F77",
+          "cssVar": "--accent-quiet",
+          "ref": "--asg-heritage-sand"
+        }
       },
       "link": {
-        "default": { "value": "#A8794B", "cssVar": "--link", "ref": "--asg-brass" },
-        "onLight": { "value": "#8E6238", "cssVar": "--link-on-light", "ref": "--asg-brass-600" }
+        "default": {
+          "value": "#A8794B",
+          "cssVar": "--link",
+          "ref": "--asg-brass"
+        },
+        "onLight": {
+          "value": "#8E6238",
+          "cssVar": "--link-on-light",
+          "ref": "--asg-brass-600"
+        }
       },
       "border": {
-        "subtle":  { "value": "rgba(246, 241, 234, 0.08)", "cssVar": "--border-subtle", "ref": "--asg-ivory-a08" },
-        "default": { "value": "rgba(246, 241, 234, 0.14)", "cssVar": "--border-default", "ref": "--asg-ivory-a14" },
-        "strong":  { "value": "#5A4F42", "cssVar": "--border-strong" },
-        "onLight": { "value": "#B9AFA2", "cssVar": "--border-on-light", "ref": "--asg-bone" },
-        "rule":    { "value": "#A8794B", "cssVar": "--border-rule", "ref": "--asg-brass", "note": "The brass rule-line" }
+        "subtle": {
+          "value": "rgba(246, 241, 234, 0.08)",
+          "cssVar": "--border-subtle",
+          "ref": "--asg-ivory-a08"
+        },
+        "default": {
+          "value": "rgba(246, 241, 234, 0.14)",
+          "cssVar": "--border-default",
+          "ref": "--asg-ivory-a14"
+        },
+        "strong": {
+          "value": "#5A4F42",
+          "cssVar": "--border-strong"
+        },
+        "onLight": {
+          "value": "#B9AFA2",
+          "cssVar": "--border-on-light",
+          "ref": "--asg-bone"
+        },
+        "rule": {
+          "value": "#A8794B",
+          "cssVar": "--border-rule",
+          "ref": "--asg-brass",
+          "note": "The brass rule-line"
+        }
       },
       "focus": {
-        "ring":       { "value": "#A8794B", "cssVar": "--focus-ring" },
-        "ringShadow": { "value": "0 0 0 3px rgba(168, 121, 75, 0.40)", "cssVar": "--focus-ring-shadow" }
+        "ring": {
+          "value": "#A8794B",
+          "cssVar": "--focus-ring"
+        },
+        "ringShadow": {
+          "value": "0 0 0 3px rgba(168, 121, 75, 0.40)",
+          "cssVar": "--focus-ring-shadow"
+        }
       },
       "feedback": {
-        "success":   { "value": "#6E8A5A", "cssVar": "--success" },
-        "successBg": { "value": "#20231B", "cssVar": "--success-bg" },
-        "warning":   { "value": "#C08A3E", "cssVar": "--warning" },
-        "warningBg": { "value": "#2A2117", "cssVar": "--warning-bg" },
-        "danger":    { "value": "#B5524A", "cssVar": "--danger" },
-        "dangerBg":  { "value": "#2A1815", "cssVar": "--danger-bg" },
-        "info":      { "value": "#C39F77", "cssVar": "--info", "ref": "--asg-heritage-sand" },
-        "infoBg":    { "value": "#241F19", "cssVar": "--info-bg" }
+        "success": {
+          "value": "#6E8A5A",
+          "cssVar": "--success"
+        },
+        "successBg": {
+          "value": "#20231B",
+          "cssVar": "--success-bg"
+        },
+        "warning": {
+          "value": "#C08A3E",
+          "cssVar": "--warning"
+        },
+        "warningBg": {
+          "value": "#2A2117",
+          "cssVar": "--warning-bg"
+        },
+        "danger": {
+          "value": "#B5524A",
+          "cssVar": "--danger"
+        },
+        "dangerBg": {
+          "value": "#2A1815",
+          "cssVar": "--danger-bg"
+        },
+        "info": {
+          "value": "#C39F77",
+          "cssVar": "--info",
+          "ref": "--asg-heritage-sand"
+        },
+        "infoBg": {
+          "value": "#241F19",
+          "cssVar": "--info-bg"
+        }
       },
       "shadow": {
-        "sm": { "value": "0 1px 2px rgba(8, 6, 4, 0.40)",   "cssVar": "--shadow-sm" },
-        "md": { "value": "0 6px 18px rgba(8, 6, 4, 0.45)",  "cssVar": "--shadow-md" },
-        "lg": { "value": "0 18px 48px rgba(8, 6, 4, 0.55)", "cssVar": "--shadow-lg" },
-        "xl": { "value": "0 32px 80px rgba(8, 6, 4, 0.62)", "cssVar": "--shadow-xl" },
-        "ivorySm": { "value": "0 1px 2px rgba(74, 68, 60, 0.10)",   "cssVar": "--shadow-ivory-sm" },
-        "ivoryMd": { "value": "0 10px 30px rgba(74, 68, 60, 0.12)", "cssVar": "--shadow-ivory-md" }
+        "sm": {
+          "value": "0 1px 2px rgba(8, 6, 4, 0.40)",
+          "cssVar": "--shadow-sm"
+        },
+        "md": {
+          "value": "0 6px 18px rgba(8, 6, 4, 0.45)",
+          "cssVar": "--shadow-md"
+        },
+        "lg": {
+          "value": "0 18px 48px rgba(8, 6, 4, 0.55)",
+          "cssVar": "--shadow-lg"
+        },
+        "xl": {
+          "value": "0 32px 80px rgba(8, 6, 4, 0.62)",
+          "cssVar": "--shadow-xl"
+        },
+        "ivorySm": {
+          "value": "0 1px 2px rgba(74, 68, 60, 0.10)",
+          "cssVar": "--shadow-ivory-sm"
+        },
+        "ivoryMd": {
+          "value": "0 10px 30px rgba(74, 68, 60, 0.12)",
+          "cssVar": "--shadow-ivory-md"
+        }
       }
     },
-
     "light": {
       "$scope": "[data-theme=\"light\"] — Light Edition (same palette, inverted ground; ships as a theme, not a separate system)",
       "surface": {
-        "base":        { "value": "#F6F1EA", "cssVar": "--surface-base", "ref": "--asg-warm-ivory" },
-        "raised":      { "value": "#FFFFFF", "cssVar": "--surface-raised", "ref": "--asg-white" },
-        "overlay":     { "value": "#FFFFFF", "cssVar": "--surface-overlay" },
-        "inset":       { "value": "#EFE7DB", "cssVar": "--surface-inset", "ref": "--asg-ivory-200" }
+        "base": {
+          "value": "#F6F1EA",
+          "cssVar": "--surface-base",
+          "ref": "--asg-warm-ivory"
+        },
+        "raised": {
+          "value": "#FFFFFF",
+          "cssVar": "--surface-raised",
+          "ref": "--asg-white"
+        },
+        "overlay": {
+          "value": "#FFFFFF",
+          "cssVar": "--surface-overlay"
+        },
+        "inset": {
+          "value": "#EFE7DB",
+          "cssVar": "--surface-inset",
+          "ref": "--asg-ivory-200"
+        }
       },
       "text": {
-        "primary": { "value": "#171411", "cssVar": "--text-primary", "ref": "--asg-ink" },
-        "body":    { "value": "#4A443C", "cssVar": "--text-body", "ref": "--asg-soft-charcoal" },
-        "muted":   { "value": "#7A7166", "cssVar": "--text-muted" },
-        "faint":   { "value": "#A89E90", "cssVar": "--text-faint", "note": "Decorative captions only — NEVER body text (MUTED_DARK-type tones are too weak on light grounds)" },
-        "onBrass": { "value": "#FFFFFF", "cssVar": "--text-on-brass", "rule": "White on brass, ALWAYS, in both themes" }
+        "primary": {
+          "value": "#171411",
+          "cssVar": "--text-primary",
+          "ref": "--asg-ink"
+        },
+        "body": {
+          "value": "#4A443C",
+          "cssVar": "--text-body",
+          "ref": "--asg-soft-charcoal"
+        },
+        "muted": {
+          "value": "#7A7166",
+          "cssVar": "--text-muted"
+        },
+        "faint": {
+          "value": "#A89E90",
+          "cssVar": "--text-faint",
+          "note": "Decorative captions only — NEVER body text (MUTED_DARK-type tones are too weak on light grounds)"
+        },
+        "onBrass": {
+          "value": "#FFFFFF",
+          "cssVar": "--text-on-brass",
+          "rule": "White on brass, ALWAYS, in both themes"
+        }
       },
       "accent": {
-        "default": { "value": "#A8794B", "cssVar": "--accent" },
-        "hover":   { "value": "#8E6238", "cssVar": "--accent-hover", "ref": "--asg-brass-600" },
-        "active":  { "value": "#6F4C2C", "cssVar": "--accent-active" },
-        "quiet":   { "value": "#8E6238", "cssVar": "--accent-quiet" }
+        "default": {
+          "value": "#A8794B",
+          "cssVar": "--accent"
+        },
+        "hover": {
+          "value": "#8E6238",
+          "cssVar": "--accent-hover",
+          "ref": "--asg-brass-600"
+        },
+        "active": {
+          "value": "#6F4C2C",
+          "cssVar": "--accent-active"
+        },
+        "quiet": {
+          "value": "#8E6238",
+          "cssVar": "--accent-quiet"
+        }
       },
       "link": {
-        "default": { "value": "#8E6238", "cssVar": "--link", "ref": "--asg-brass-600", "note": "Deep Brass for links on light — contrast" }
+        "default": {
+          "value": "#8E6238",
+          "cssVar": "--link",
+          "ref": "--asg-brass-600",
+          "note": "Deep Brass for links on light — contrast"
+        }
       },
       "border": {
-        "subtle":  { "value": "rgba(23, 20, 17, 0.07)", "cssVar": "--border-subtle" },
-        "default": { "value": "rgba(23, 20, 17, 0.12)", "cssVar": "--border-default" },
-        "strong":  { "value": "#B9AFA2", "cssVar": "--border-strong", "ref": "--asg-bone" },
-        "rule":    { "value": "#A8794B", "cssVar": "--border-rule" }
+        "subtle": {
+          "value": "rgba(23, 20, 17, 0.07)",
+          "cssVar": "--border-subtle"
+        },
+        "default": {
+          "value": "rgba(23, 20, 17, 0.12)",
+          "cssVar": "--border-default"
+        },
+        "strong": {
+          "value": "#B9AFA2",
+          "cssVar": "--border-strong",
+          "ref": "--asg-bone"
+        },
+        "rule": {
+          "value": "#A8794B",
+          "cssVar": "--border-rule"
+        }
       },
       "focus": {
-        "ring":       { "value": "#A8794B", "cssVar": "--focus-ring" },
-        "ringShadow": { "value": "0 0 0 3px rgba(168, 121, 75, 0.40)", "cssVar": "--focus-ring-shadow" }
+        "ring": {
+          "value": "#A8794B",
+          "cssVar": "--focus-ring"
+        },
+        "ringShadow": {
+          "value": "0 0 0 3px rgba(168, 121, 75, 0.40)",
+          "cssVar": "--focus-ring-shadow"
+        }
       },
       "feedback": {
-        "success":   { "value": "#5B7A48", "cssVar": "--success" },
-        "successBg": { "value": "#EBF0E3", "cssVar": "--success-bg" },
-        "warning":   { "value": "#9A6A25", "cssVar": "--warning" },
-        "warningBg": { "value": "#F6EBD7", "cssVar": "--warning-bg" },
-        "danger":    { "value": "#A8443B", "cssVar": "--danger" },
-        "dangerBg":  { "value": "#F7E3DF", "cssVar": "--danger-bg" },
-        "info":      { "value": "#8E6238", "cssVar": "--info" },
-        "infoBg":    { "value": "#F1E8DA", "cssVar": "--info-bg" }
+        "success": {
+          "value": "#5B7A48",
+          "cssVar": "--success"
+        },
+        "successBg": {
+          "value": "#EBF0E3",
+          "cssVar": "--success-bg"
+        },
+        "warning": {
+          "value": "#9A6A25",
+          "cssVar": "--warning"
+        },
+        "warningBg": {
+          "value": "#F6EBD7",
+          "cssVar": "--warning-bg"
+        },
+        "danger": {
+          "value": "#A8443B",
+          "cssVar": "--danger"
+        },
+        "dangerBg": {
+          "value": "#F7E3DF",
+          "cssVar": "--danger-bg"
+        },
+        "info": {
+          "value": "#8E6238",
+          "cssVar": "--info"
+        },
+        "infoBg": {
+          "value": "#F1E8DA",
+          "cssVar": "--info-bg"
+        }
       },
       "shadow": {
-        "sm": { "value": "0 1px 2px rgba(74, 68, 60, 0.10)",   "cssVar": "--shadow-sm" },
-        "md": { "value": "0 6px 18px rgba(74, 68, 60, 0.12)",  "cssVar": "--shadow-md" },
-        "lg": { "value": "0 16px 40px rgba(74, 68, 60, 0.16)", "cssVar": "--shadow-lg" },
-        "xl": { "value": "0 30px 70px rgba(74, 68, 60, 0.20)", "cssVar": "--shadow-xl" }
+        "sm": {
+          "value": "0 1px 2px rgba(74, 68, 60, 0.10)",
+          "cssVar": "--shadow-sm"
+        },
+        "md": {
+          "value": "0 6px 18px rgba(74, 68, 60, 0.12)",
+          "cssVar": "--shadow-md"
+        },
+        "lg": {
+          "value": "0 16px 40px rgba(74, 68, 60, 0.16)",
+          "cssVar": "--shadow-lg"
+        },
+        "xl": {
+          "value": "0 30px 70px rgba(74, 68, 60, 0.20)",
+          "cssVar": "--shadow-xl"
+        }
       }
     }
   },
-
   "typography": {
     "family": {
-      "serif":   { "value": "\"Lora\", Georgia, \"Times New Roman\", serif", "cssVar": "--font-serif", "role": "Display and headlines ONLY — one serif moment per view" },
-      "sans":    { "value": "\"Poppins\", system-ui, -apple-system, \"Segoe UI\", sans-serif", "cssVar": "--font-sans", "role": "Body, UI, labels, and ALL numerals" },
-      "display": { "value": "var(--font-serif)", "cssVar": "--font-display" },
-      "body":    { "value": "var(--font-sans)",  "cssVar": "--font-body" },
-      "numeric": { "value": "var(--font-sans)",  "cssVar": "--font-numeric", "note": "Numerals always Poppins — sole exception: the PriceCard From-price serif-numeral moment" }
+      "serif": {
+        "value": "\"Lora\", Georgia, \"Times New Roman\", serif",
+        "cssVar": "--font-serif",
+        "role": "Display and headlines ONLY — one serif moment per view"
+      },
+      "sans": {
+        "value": "\"Poppins\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+        "cssVar": "--font-sans",
+        "role": "Body, UI, labels, and ALL numerals"
+      },
+      "display": {
+        "value": "var(--font-serif)",
+        "cssVar": "--font-display"
+      },
+      "body": {
+        "value": "var(--font-sans)",
+        "cssVar": "--font-body"
+      },
+      "numeric": {
+        "value": "var(--font-sans)",
+        "cssVar": "--font-numeric",
+        "note": "Numerals always Poppins — sole exception: the PriceCard From-price serif-numeral moment"
+      }
     },
     "weight": {
-      "regular":  { "value": "400", "cssVar": "--fw-regular" },
-      "medium":   { "value": "500", "cssVar": "--fw-medium" },
-      "semibold": { "value": "600", "cssVar": "--fw-semibold" },
-      "bold":     { "value": "700", "cssVar": "--fw-bold" }
+      "regular": {
+        "value": "400",
+        "cssVar": "--fw-regular"
+      },
+      "medium": {
+        "value": "500",
+        "cssVar": "--fw-medium"
+      },
+      "semibold": {
+        "value": "600",
+        "cssVar": "--fw-semibold"
+      },
+      "bold": {
+        "value": "700",
+        "cssVar": "--fw-bold"
+      }
     },
     "size": {
-      "display": { "value": "clamp(2.75rem, 1.6rem + 4.6vw, 4.5rem)",  "cssVar": "--fs-display" },
-      "h1":      { "value": "clamp(2.25rem, 1.5rem + 3vw, 3.25rem)",   "cssVar": "--fs-h1" },
-      "h2":      { "value": "clamp(1.75rem, 1.25rem + 2vw, 2.5rem)",   "cssVar": "--fs-h2" },
-      "h3":      { "value": "1.5rem",    "cssVar": "--fs-h3" },
-      "h4":      { "value": "1.25rem",   "cssVar": "--fs-h4" },
-      "lead":    { "value": "1.1875rem", "cssVar": "--fs-lead" },
-      "body":    { "value": "1rem",      "cssVar": "--fs-body" },
-      "bodySm":  { "value": "0.9375rem", "cssVar": "--fs-body-sm" },
-      "caption": { "value": "0.8125rem", "cssVar": "--fs-caption" },
-      "eyebrow": { "value": "0.75rem",   "cssVar": "--fs-eyebrow", "note": "12px — also the value-prop bar title size (tracked caps, brass)" },
-      "micro":   { "value": "0.6875rem", "cssVar": "--fs-micro" }
+      "display": {
+        "value": "clamp(2.75rem, 1.6rem + 4.6vw, 4.5rem)",
+        "cssVar": "--fs-display"
+      },
+      "h1": {
+        "value": "clamp(2.25rem, 1.5rem + 3vw, 3.25rem)",
+        "cssVar": "--fs-h1"
+      },
+      "h2": {
+        "value": "clamp(1.75rem, 1.25rem + 2vw, 2.5rem)",
+        "cssVar": "--fs-h2"
+      },
+      "h3": {
+        "value": "1.5rem",
+        "cssVar": "--fs-h3"
+      },
+      "h4": {
+        "value": "1.25rem",
+        "cssVar": "--fs-h4"
+      },
+      "lead": {
+        "value": "1.1875rem",
+        "cssVar": "--fs-lead"
+      },
+      "body": {
+        "value": "1rem",
+        "cssVar": "--fs-body"
+      },
+      "bodySm": {
+        "value": "0.9375rem",
+        "cssVar": "--fs-body-sm"
+      },
+      "caption": {
+        "value": "0.8125rem",
+        "cssVar": "--fs-caption"
+      },
+      "eyebrow": {
+        "value": "0.75rem",
+        "cssVar": "--fs-eyebrow",
+        "note": "12px — also the value-prop bar title size (tracked caps, brass)"
+      },
+      "micro": {
+        "value": "0.6875rem",
+        "cssVar": "--fs-micro"
+      }
     },
     "lineHeight": {
-      "display": { "value": "1.04", "cssVar": "--lh-display" },
-      "heading": { "value": "1.12", "cssVar": "--lh-heading" },
-      "snug":    { "value": "1.3",  "cssVar": "--lh-snug" },
-      "body":    { "value": "1.65", "cssVar": "--lh-body" },
-      "ui":      { "value": "1.45", "cssVar": "--lh-ui" }
+      "display": {
+        "value": "1.04",
+        "cssVar": "--lh-display"
+      },
+      "heading": {
+        "value": "1.12",
+        "cssVar": "--lh-heading"
+      },
+      "snug": {
+        "value": "1.3",
+        "cssVar": "--lh-snug"
+      },
+      "body": {
+        "value": "1.65",
+        "cssVar": "--lh-body"
+      },
+      "ui": {
+        "value": "1.45",
+        "cssVar": "--lh-ui"
+      }
     },
     "letterSpacing": {
-      "display":  { "value": "-0.015em", "cssVar": "--ls-display" },
-      "heading":  { "value": "-0.01em",  "cssVar": "--ls-heading" },
-      "body":     { "value": "0",        "cssVar": "--ls-body" },
-      "eyebrow":  { "value": "0.22em",   "cssVar": "--ls-eyebrow", "note": "Tracked caps for eyebrows/labels only — never body, never below ~9pt" },
-      "button":   { "value": "0.06em",   "cssVar": "--ls-button" },
-      "wordmark": { "value": "0.34em",   "cssVar": "--ls-wordmark" }
+      "display": {
+        "value": "-0.015em",
+        "cssVar": "--ls-display"
+      },
+      "heading": {
+        "value": "-0.01em",
+        "cssVar": "--ls-heading"
+      },
+      "body": {
+        "value": "0",
+        "cssVar": "--ls-body"
+      },
+      "eyebrow": {
+        "value": "0.22em",
+        "cssVar": "--ls-eyebrow",
+        "note": "Tracked caps for eyebrows/labels only — never body, never below ~9pt"
+      },
+      "button": {
+        "value": "0.06em",
+        "cssVar": "--ls-button"
+      },
+      "wordmark": {
+        "value": "0.34em",
+        "cssVar": "--ls-wordmark"
+      }
     },
     "measure": {
-      "default": { "value": "68ch", "cssVar": "--measure", "note": "Body line length 60–75 characters" },
-      "tight":   { "value": "46ch", "cssVar": "--measure-tight" }
+      "default": {
+        "value": "68ch",
+        "cssVar": "--measure",
+        "note": "Body line length 60–75 characters"
+      },
+      "tight": {
+        "value": "46ch",
+        "cssVar": "--measure-tight"
+      }
     },
     "assets": {
       "selfHosted": true,
       "files": [
         "assets/fonts/lora-latin-var.woff2 (400–700, normal)",
         "assets/fonts/lora-latin-italic-var.woff2 (400–700, italic)",
-        "assets/fonts/poppins-latin-400.woff2", "assets/fonts/poppins-latin-italic-400.woff2",
-        "assets/fonts/poppins-latin-500.woff2", "assets/fonts/poppins-latin-600.woff2", "assets/fonts/poppins-latin-700.woff2"
+        "assets/fonts/poppins-latin-400.woff2",
+        "assets/fonts/poppins-latin-italic-400.woff2",
+        "assets/fonts/poppins-latin-500.woff2",
+        "assets/fonts/poppins-latin-600.woff2",
+        "assets/fonts/poppins-latin-700.woff2"
       ]
     }
   },
-
   "space": {
-    "0":  { "value": "0",       "cssVar": "--space-0" },
-    "1":  { "value": "0.25rem", "cssVar": "--space-1" },
-    "2":  { "value": "0.5rem",  "cssVar": "--space-2" },
-    "3":  { "value": "0.75rem", "cssVar": "--space-3" },
-    "4":  { "value": "1rem",    "cssVar": "--space-4" },
-    "5":  { "value": "1.5rem",  "cssVar": "--space-5" },
-    "6":  { "value": "2rem",    "cssVar": "--space-6" },
-    "7":  { "value": "3rem",    "cssVar": "--space-7" },
-    "8":  { "value": "4rem",    "cssVar": "--space-8" },
-    "9":  { "value": "6rem",    "cssVar": "--space-9" },
-    "10": { "value": "8rem",    "cssVar": "--space-10" },
-    "gapInline":  { "value": "var(--space-2)", "cssVar": "--gap-inline" },
-    "gapControl": { "value": "var(--space-3)", "cssVar": "--gap-control" },
-    "gapCard":    { "value": "var(--space-5)", "cssVar": "--gap-card" },
-    "gapStack":   { "value": "var(--space-5)", "cssVar": "--gap-stack" },
-    "gapSection": { "value": "var(--space-9)", "cssVar": "--gap-section" }
+    "0": {
+      "value": "0",
+      "cssVar": "--space-0"
+    },
+    "1": {
+      "value": "0.25rem",
+      "cssVar": "--space-1"
+    },
+    "2": {
+      "value": "0.5rem",
+      "cssVar": "--space-2"
+    },
+    "3": {
+      "value": "0.75rem",
+      "cssVar": "--space-3"
+    },
+    "4": {
+      "value": "1rem",
+      "cssVar": "--space-4"
+    },
+    "5": {
+      "value": "1.5rem",
+      "cssVar": "--space-5"
+    },
+    "6": {
+      "value": "2rem",
+      "cssVar": "--space-6"
+    },
+    "7": {
+      "value": "3rem",
+      "cssVar": "--space-7"
+    },
+    "8": {
+      "value": "4rem",
+      "cssVar": "--space-8"
+    },
+    "9": {
+      "value": "6rem",
+      "cssVar": "--space-9"
+    },
+    "10": {
+      "value": "8rem",
+      "cssVar": "--space-10"
+    },
+    "gapInline": {
+      "value": "var(--space-2)",
+      "cssVar": "--gap-inline"
+    },
+    "gapControl": {
+      "value": "var(--space-3)",
+      "cssVar": "--gap-control"
+    },
+    "gapCard": {
+      "value": "var(--space-5)",
+      "cssVar": "--gap-card"
+    },
+    "gapStack": {
+      "value": "var(--space-5)",
+      "cssVar": "--gap-stack"
+    },
+    "gapSection": {
+      "value": "var(--space-9)",
+      "cssVar": "--gap-section"
+    }
   },
-
   "layout": {
-    "containerMax":  { "value": "1200px", "cssVar": "--container-max" },
-    "containerWide": { "value": "1440px", "cssVar": "--container-wide" },
-    "containerText": { "value": "720px",  "cssVar": "--container-text" },
-    "gutter":        { "value": "clamp(1.25rem, 5vw, 4rem)", "cssVar": "--gutter" }
+    "containerMax": {
+      "value": "1200px",
+      "cssVar": "--container-max"
+    },
+    "containerWide": {
+      "value": "1440px",
+      "cssVar": "--container-wide"
+    },
+    "containerText": {
+      "value": "720px",
+      "cssVar": "--container-text"
+    },
+    "gutter": {
+      "value": "clamp(1.25rem, 5vw, 4rem)",
+      "cssVar": "--gutter"
+    }
   },
-
   "radius": {
-    "none": { "value": "0",     "cssVar": "--radius-none" },
-    "xs":   { "value": "2px",   "cssVar": "--radius-xs" },
-    "sm":   { "value": "4px",   "cssVar": "--radius-sm" },
-    "md":   { "value": "6px",   "cssVar": "--radius-md" },
-    "lg":   { "value": "10px",  "cssVar": "--radius-lg" },
-    "pill": { "value": "999px", "cssVar": "--radius-pill" },
+    "none": {
+      "value": "0",
+      "cssVar": "--radius-none"
+    },
+    "xs": {
+      "value": "2px",
+      "cssVar": "--radius-xs"
+    },
+    "sm": {
+      "value": "4px",
+      "cssVar": "--radius-sm"
+    },
+    "md": {
+      "value": "6px",
+      "cssVar": "--radius-md"
+    },
+    "lg": {
+      "value": "10px",
+      "cssVar": "--radius-lg"
+    },
+    "pill": {
+      "value": "999px",
+      "cssVar": "--radius-pill"
+    },
     "note": "Near-square corners are the brand posture. FactPill hero badges are the 22px-radius exception."
   },
-
   "borderWidth": {
-    "hairline": { "value": "1px", "cssVar": "--border-hairline" },
-    "rule":     { "value": "2px", "cssVar": "--border-rule-w" }
+    "hairline": {
+      "value": "1px",
+      "cssVar": "--border-hairline"
+    },
+    "rule": {
+      "value": "2px",
+      "cssVar": "--border-rule-w"
+    }
   },
-
   "motion": {
-    "easeStandard": { "value": "cubic-bezier(0.22, 0.61, 0.36, 1)", "cssVar": "--ease-standard" },
-    "easeEntrance": { "value": "cubic-bezier(0.16, 1, 0.30, 1)",    "cssVar": "--ease-entrance" },
-    "easeExit":     { "value": "cubic-bezier(0.4, 0, 1, 1)",        "cssVar": "--ease-exit" },
-    "durFast":      { "value": "140ms", "cssVar": "--dur-fast" },
-    "durBase":      { "value": "240ms", "cssVar": "--dur-base" },
-    "durSlow":      { "value": "420ms", "cssVar": "--dur-slow" },
-    "durReveal":    { "value": "720ms", "cssVar": "--dur-reveal" }
+    "easeStandard": {
+      "value": "cubic-bezier(0.22, 0.61, 0.36, 1)",
+      "cssVar": "--ease-standard"
+    },
+    "easeEntrance": {
+      "value": "cubic-bezier(0.16, 1, 0.30, 1)",
+      "cssVar": "--ease-entrance"
+    },
+    "easeExit": {
+      "value": "cubic-bezier(0.4, 0, 1, 1)",
+      "cssVar": "--ease-exit"
+    },
+    "durFast": {
+      "value": "140ms",
+      "cssVar": "--dur-fast"
+    },
+    "durBase": {
+      "value": "240ms",
+      "cssVar": "--dur-base"
+    },
+    "durSlow": {
+      "value": "420ms",
+      "cssVar": "--dur-slow"
+    },
+    "durReveal": {
+      "value": "720ms",
+      "cssVar": "--dur-reveal"
+    }
   },
-
   "zIndex": {
-    "base":    { "value": "0",    "cssVar": "--z-base" },
-    "raised":  { "value": "10",   "cssVar": "--z-raised" },
-    "sticky":  { "value": "100",  "cssVar": "--z-sticky" },
-    "overlay": { "value": "1000", "cssVar": "--z-overlay" },
-    "modal":   { "value": "1100", "cssVar": "--z-modal" },
-    "toast":   { "value": "1200", "cssVar": "--z-toast" }
+    "base": {
+      "value": "0",
+      "cssVar": "--z-base"
+    },
+    "raised": {
+      "value": "10",
+      "cssVar": "--z-raised"
+    },
+    "sticky": {
+      "value": "100",
+      "cssVar": "--z-sticky"
+    },
+    "overlay": {
+      "value": "1000",
+      "cssVar": "--z-overlay"
+    },
+    "modal": {
+      "value": "1100",
+      "cssVar": "--z-modal"
+    },
+    "toast": {
+      "value": "1200",
+      "cssVar": "--z-toast"
+    }
   },
-
   "component": {
-    "factPill": { "background": "rgba(255,255,255,0.10)", "border": "rgba(255,255,255,0.28)", "radius": "22px", "effect": "backdrop blur", "glyph": "brass ✦", "rule": "Hero stats are frosted pills — never bare text on photography" },
+    "factPill": {
+      "background": "rgba(255,255,255,0.10)",
+      "border": "rgba(255,255,255,0.28)",
+      "radius": "22px",
+      "effect": "backdrop blur",
+      "glyph": "brass ✦",
+      "rule": "Hero stats are frosted pills — never bare text on photography"
+    },
     "sightingsBadge": {
-      "mostDrives": { "background": "#4F6B51", "text": "#FFFFFF" },
-      "veryOften":  { "background": "#A8794B", "text": "#FFFFFF" },
-      "often":      { "background": "#C39F77", "text": "#171411", "note": "Sand takes INK text at small sizes" },
-      "rarely":     { "background": "#2B2622", "text": "#F6F1EA" }
+      "mostDrives": {
+        "background": "#4F6B51",
+        "text": "#FFFFFF"
+      },
+      "veryOften": {
+        "background": "#A8794B",
+        "text": "#FFFFFF"
+      },
+      "often": {
+        "background": "#C39F77",
+        "text": "#171411",
+        "note": "Sand takes INK text at small sizes"
+      },
+      "rarely": {
+        "background": "#2B2622",
+        "text": "#F6F1EA"
+      }
     },
     "monthGrid": {
-      "peak": { "background": "#A8794B", "text": "#FFFFFF" },
-      "good": { "background": "#C39F77", "text": "#171411" },
-      "fair": { "background": "#B9AFA2", "text": "#171411" }
+      "peak": {
+        "background": "#A8794B",
+        "text": "#FFFFFF"
+      },
+      "good": {
+        "background": "#C39F77",
+        "text": "#171411"
+      },
+      "fair": {
+        "background": "#B9AFA2",
+        "text": "#171411"
+      }
     },
     "specials": {
-      "saveChip": { "background": "#4F6B51", "text": "#FFFFFF", "rule": "Solid Badge Green SAVE chip (hero price card, card headers) OR green top-rule + ~5% tint wash on cells — nothing else" },
-      "linkOnSpecialCell": { "value": "#9FBFA3", "note": "Soft green for in-cell links on the special props cell — not brass" }
+      "saveChip": {
+        "background": "#4F6B51",
+        "text": "#FFFFFF",
+        "rule": "Solid Badge Green SAVE chip (hero price card, card headers) OR green top-rule + ~5% tint wash on cells — nothing else"
+      },
+      "linkOnSpecialCell": {
+        "value": "#9FBFA3",
+        "note": "Soft green for in-cell links on the special props cell — not brass"
+      }
     },
-    "brassBadgeException": { "rule": "Solid brass fills carrying text UNDER 12px step the fill down to Deep Brass #8E6238 (--asg-brass-600). All brass at 12px+ stays #A8794B. The fill adapts, never the text colour — text on brass is always #FFFFFF." },
-    "lightbox": { "scrim": "rgba(14,12,10,0.94) ink scrim", "controls": "brass circular prev/next + counter", "behaviour": "Esc / arrow keys / scrim-click close, body scroll lock", "roomSet": "separate room-photo set opened via corner badge trigger — never a full scrim over the room card image" }
+    "brassBadgeException": {
+      "rule": "Solid brass fills carrying text UNDER 12px step the fill down to Deep Brass #8E6238 (--asg-brass-600). All brass at 12px+ stays #A8794B. The fill adapts, never the text colour — text on brass is always #FFFFFF."
+    },
+    "lightbox": {
+      "scrim": "rgba(14,12,10,0.94) ink scrim",
+      "controls": "brass circular prev/next + counter",
+      "behaviour": "Esc / arrow keys / scrim-click close, body scroll lock",
+      "roomSet": "separate room-photo set opened via corner badge trigger — never a full scrim over the room card image"
+    },
+    "faqAccordion": {
+      "schema": "FAQPage JSON-LD in <head> is mandatory; CMS auto-generates from FAQ content",
+      "uniqueness": "Answers unique per page — zero identical strings across pages, verified programmatically"
+    },
+    "lodgeTemplate": {
+      "propsBar": "Four cells, fixed order: Current Specials, Best Price, Plan With a Consultant, Expert Support",
+      "gallery": "Exactly five index-consistent tiles (first five of the lodge lightbox set); overlay on the fifth",
+      "roomsGrid": "grid-template-columns:1fr 1fr; one column below 1000px; each card binds its own hero image + photo set",
+      "goodToKnow": "Policies + specials conditions; required on every lodge page",
+      "moreOfTheReserve": "Fixed cross-promotion label; never 'cross-sell'",
+      "footerEndorsement": "'Part of African Safari Group' — mandatory on every sub-brand footer, CMS included",
+      "pricing": "Pimcore ZAR base rates; IP currency conversion at render; price field always bound, never hardcoded",
+      "pullQuote": "From the lodge's own copy — never a fabricated guest quote",
+      "imageHosts": [
+        "pim.africansafarigroup.com",
+        "amakhala.com"
+      ]
+    },
+    "behaviour": {
+      "navHandoff": "Main nav sticky until sub-nav meets it, then translateY(-100%) 0.28s; reverses on scroll-up; hidden on cold deep-link load",
+      "scrollspy": "Brass underline follows section in view; bare href='#' excluded so querySelector never throws",
+      "noFeedbackWidget": "Guest-facing deployments never publish a feedback widget or third-party 'made with' badge",
+      "breadcrumbs": "Top-left of hero, no background; links Sand with brass hover; current page plain text, never a link"
+    }
   },
-
   "email": {
     "note": "Email clients get raw hex — never CSS variables. One colour system: same hexes as web.",
     "background": "#F6F1EA",
     "headerFooterBackground": "#171411",
-    "headline": { "fontStack": "'Lora', Georgia, 'Times New Roman', serif", "color": "#171411" },
-    "body": { "fontStack": "'Poppins', 'Segoe UI', system-ui, sans-serif", "color": "#4A443C", "note": "System stacks are graceful degradation only — Poppins/Lora are the brand faces" },
-    "button": { "background": "#A8794B", "text": "#FFFFFF", "radius": "4px", "rule": "One button per email. White text, always." },
+    "headline": {
+      "fontStack": "'Lora', Georgia, 'Times New Roman', serif",
+      "color": "#171411"
+    },
+    "body": {
+      "fontStack": "'Poppins', 'Segoe UI', system-ui, sans-serif",
+      "color": "#4A443C",
+      "note": "System stacks are graceful degradation only — Poppins/Lora are the brand faces"
+    },
+    "button": {
+      "background": "#A8794B",
+      "text": "#FFFFFF",
+      "radius": "4px",
+      "rule": "One button per email. White text, always."
+    },
     "ruleLine": "#A8794B",
     "hairline": "#EFE7DB"
   },
-
   "print": {
     "note": "CMYK values are formula conversions for briefing designers — ALWAYS wet-proof against the press before a run. Pantone matching to be settled at first major print run.",
     "cmyk": {
-      "ink":          { "hex": "#171411", "cmyk": "0 / 13 / 26 / 91" },
-      "charcoal":     { "hex": "#2B2622", "cmyk": "0 / 12 / 21 / 83" },
-      "softCharcoal": { "hex": "#4A443C", "cmyk": "0 / 8 / 19 / 71" },
-      "brass":        { "hex": "#A8794B", "cmyk": "0 / 28 / 55 / 34" },
-      "deepBrass":    { "hex": "#8E6238", "cmyk": "0 / 31 / 61 / 44" },
-      "heritageSand": { "hex": "#C39F77", "cmyk": "0 / 18 / 39 / 24" },
-      "warmIvory":    { "hex": "#F6F1EA", "cmyk": "0 / 2 / 5 / 4" },
-      "bone":         { "hex": "#B9AFA2", "cmyk": "0 / 5 / 12 / 27" },
-      "badgeGreen":   { "hex": "#4F6B51", "cmyk": "26 / 0 / 24 / 58" }
+      "ink": {
+        "hex": "#171411",
+        "cmyk": "0 / 13 / 26 / 91"
+      },
+      "charcoal": {
+        "hex": "#2B2622",
+        "cmyk": "0 / 12 / 21 / 83"
+      },
+      "softCharcoal": {
+        "hex": "#4A443C",
+        "cmyk": "0 / 8 / 19 / 71"
+      },
+      "brass": {
+        "hex": "#A8794B",
+        "cmyk": "0 / 28 / 55 / 34"
+      },
+      "deepBrass": {
+        "hex": "#8E6238",
+        "cmyk": "0 / 31 / 61 / 44"
+      },
+      "heritageSand": {
+        "hex": "#C39F77",
+        "cmyk": "0 / 18 / 39 / 24"
+      },
+      "warmIvory": {
+        "hex": "#F6F1EA",
+        "cmyk": "0 / 2 / 5 / 4"
+      },
+      "bone": {
+        "hex": "#B9AFA2",
+        "cmyk": "0 / 5 / 12 / 27"
+      },
+      "badgeGreen": {
+        "hex": "#4F6B51",
+        "cmyk": "26 / 0 / 24 / 58"
+      }
     },
     "stock": "Uncoated or soft-touch matte. No glossy UV, no rainbow foil."
   },
-
   "rules": [
     "60/30/10 — Ink/Charcoal 60% · Ivory/White 30% · Brass 10%. Brass is a fitting, not a floor: never a large background fill.",
     "Brass takes WHITE text (#FFFFFF), always, in both themes. No exceptions.",

@@ -4,12 +4,12 @@
 
 | | |
 |---|---|
-| **Reflects** | ASG Brand Guidelines **v1.2** · August 2026 |
+| **Reflects** | ASG Brand Guidelines **v1.3** · August 2026 |
 | **System** | **Option 4 (CMS × Ink)** — the official ASG system across brand book, web/CMS, and email |
-| **Themes package** | v1.0.0 · Generated 2026-08-15 |
+| **Themes package** | v1.1.0 · Generated 2026-08-16 |
 | **Custodian** | Riaan Aggenbag, CEO |
 | **Companion file** | `design-tokens.json` (machine-readable; CSS variable names match the shipping export exactly) |
-| **Spec marker** | `ASG-THEMES-OPT4INK-20260815-R1` |
+| **Spec marker** | `ASG-THEMES-V13-20260816-R1` |
 
 **Who this is for.** Any designer, developer, agency, or printer producing anything carrying the ASG name — websites, emails, social profiles, brochures, itineraries, decks, stationery. If you are briefed on ASG work, this document and `design-tokens.json` are your contract. Nothing outside them is on-brand.
 
@@ -39,8 +39,11 @@ These are settled. They are not open for reinterpretation per project.
 | 13 Aug 2026 | **Banned rate claims:** never "book direct", "the lodge's own rate", "no markup" — ASG sells under STO agreements and is not the lodge. Approved claims: **best price guarantee · contracted rates · no booking fees**. |
 | Aug 2026 | **Brass small-fill exception:** solid brass fills carrying text **under 12px** step the *fill* down to Deep Brass `#8E6238` (`--asg-brass-600`). All brass at 12px+ stays `#A8794B`. **The fill adapts, never the text colour.** |
 | Aug 2026 | **Badge Green `#4F6B51` role extended** from sightings/inclusion status to savings signals (SAVE chips). |
+| 15 Aug 2026 | **Lodge template canon:** props bar is four cells in fixed order; the gallery is exactly five index-consistent tiles; rooms are a two-column grid with per-room images; FAQ answers are unique per page with mandatory FAQPage JSON-LD. |
+| 15 Aug 2026 | **Chrome canon:** the "Part of African Safari Group" endorsement line is mandatory on every sub-brand footer (CMS included); nav-handoff + scrollspy are the standard page behaviours; guest-facing deployments never ship a feedback widget or third-party badge. |
+| 15 Aug 2026 | **Rate-claim hygiene:** any assurance-row claim outside the approved set is removed unless T&Cs back it and it carries a footnote. |
 | Standing | **No new accent colours, ever.** Safari Brass is the only accent. |
-| Standing | Canonical brand book is **v1.2**; every design-system export stamps "Reflects ASG Brand Guidelines v1.2". Next deliberate bump: v1.3. |
+| Standing | Canonical brand book is **v1.3**; every design-system export stamps "Reflects ASG Brand Guidelines v1.3". Next deliberate bump: v1.4. |
 
 ---
 
@@ -227,10 +230,19 @@ The seven componentised patterns (in the design-system export, each with card, J
 5. **Sightings frequencies** source from `amakhala.com/wildlife` — Common / Occasional / Rare per species. Honest probability language only.
 6. **Pricing:** Pimcore holds **ZAR base rates**; the site converts at render by visitor IP. Mockup prices are placeholder snapshots — **the price field is always bound, never hardcoded** in production templates.
 7. Breadcrumbs: top-left of hero, no background; links in Sand with brass hover; current page plain text, never a link.
+8. **Gallery is index-consistent:** the five tiles are the first five entries of the lodge lightbox set, so every tile opens on the photo it shows. Room photos are a separate set via a corner badge — never a full scrim over the room card image.
+9. **Rooms grid:** `grid-template-columns:1fr 1fr`, collapsing to one column below 1000px. Each room card binds its own hero image and photo set — never a sibling's.
+10. **FAQPage JSON-LD** in the page `<head>` is mandatory; the CMS auto-generates it from the FAQ content. FAQ answers are unique per page — zero identical strings across pages, verified programmatically.
+11. **Pull-quote interlude** (Sand-tint ground, ink Lora italic, brass rule) comes from the lodge's own copy — never a fabricated guest quote. Facility rows use inline Lucide-style brass icons; Experiences keep the brass check (= included).
 
----
+### 8.1 Page Behaviours (CMS)
 
-## 9. Application by Surface
+- **Nav handoff:** the main nav is sticky until the sub-nav meets it, then slides away (`translateY(-100%)`, 0.28s) and the sub-nav owns the top. Reverses on scroll-up; hidden on cold deep-link load.
+- **Scrollspy:** a brass underline follows the section in view. Bare `href="#"` links are excluded so the querySelector never throws.
+- **No feedback widget:** guest-facing deployments never publish with a feedback widget or third-party "made with" badge enabled — checked on every republish.
+- **Rate-claim hygiene:** any assurance-row claim outside *best price guarantee · contracted rates · no booking fees* is removed unless T&Cs back it and it carries a footnote.
+
+
 
 One colour system everywhere. The surface changes; the identity does not.
 
@@ -296,17 +308,17 @@ Focus states: 3px brass ring (`--focus-ring-shadow`) on all interactive elements
 
 ## 12. Governance, Versioning & Sync
 
-- **Canonical brand book: v1.2.** This package reflects it and stamps it. Content changes to `/themes/` ride the next deliberate bump (**v1.3**) — never hand-edited between sprints.
-- **v1.3 fold-in list (open):** Option 4 formalisation into the PDF brand book; brass-600 exception; the seven web patterns; SaveChip / Lightbox / FAQ-accordion as export patterns; Badge Green role extension; this `/themes/` package.
+- **Canonical brand book: v1.3.** This package reflects it and stamps it. Content changes to `/themes/` ride the next deliberate bump (**v1.4**) — never hand-edited between sprints.
+- **v1.3 fold-in list (closed 16 Aug 2026):** Option 4 formalisation, the brass-600 exception, the seven web patterns, SaveChip / Lightbox / FAQ-accordion, the Badge Green role extension, the 15 Aug lodge/chrome canon, and this `/themes/` package are all now in the PDF brand book (v1.3, 27 pages) — Sections 05, 07, 10 and 11.
 - **Sync discipline (standing):** any change to a design-system file → **(1)** commit in `asg-brand-guidelines` git repo, **(2)** replace the same file in Claude project knowledge. Both copies must always agree.
-- **Pre-commit probe:** before committing a synced file, `Select-String` for a marker only the correct generation contains — this file's marker is `ASG-THEMES-OPT4INK-20260815-R1` (also in `design-tokens.json → $meta.marker`). Guards against Downloads filename-collision generations.
+- **Pre-commit probe:** before committing a synced file, `Select-String` for a marker only the correct generation contains — this file's marker is `ASG-THEMES-V13-20260816-R1` (also in `design-tokens.json → $meta.marker`). Guards against Downloads filename-collision generations.
 - **Verification posture:** agent "everything verified" narratives are not sufficient — grep/`Select-String` actual file content before declaring a step closed.
 
 **Known doc-sync items (recorded, not blocking):**
 
-1. `ASG_Design_System_README.md` still describes the earlier 8-tile gallery; the post-build canon is **5 tiles, overlay on the fifth** (systemic fix, commit `e2e8d89`). Align at v1.3.
-2. The same README's ValuePropBar note lists "Book Direct" as an example title — superseded by the 13 Aug banned-rate-claims decision (live template correctly reads "Best price guarantee on contracted rates"). Align at v1.3.
-3. Live CMS: remove the "Cross-sell" label ("More of the Reserve" is the fixed replacement). Woodbury page retrofit (Good to Know, FAQ, SAVE chips, ink-scrim lightbox) pending.
+1. ~~8-tile gallery in the README~~ — **resolved at v1.3.** Canon is five index-consistent tiles, overlay on the fifth.
+2. ~~"Book Direct" ValuePropBar example~~ — **resolved at v1.3.** Retired under the banned-rate-claims rule; the approved title is "Best Price".
+3. ~~Cross-sell label / Woodbury retrofit~~ — **resolved 15 Aug 2026.** "More of the Reserve" live on all seven lodge pages; Woodbury retrofitted (GTK, FAQ, SAVE chips, ink-scrim lightbox).
 
 ---
 
@@ -316,12 +328,12 @@ Focus states: 3px brass ring (`--focus-ring-shadow`) on all interactive elements
 |---|---|
 | `/themes/THEME-SPEC.md` | This document — the pointer spec for humans |
 | `/themes/design-tokens.json` | Machine-readable tokens — hexes, CSS vars, scales, themes, component values, email/print maps |
-| `ASG_Design_System_Complete/` | Full v1.2-stamped export — `tokens/*.css`, components, UI kits, fonts, logos. Replaced wholesale on re-export |
-| `brand-books/` | Canonical PDFs surviving export swaps — `ASG_Brand_Guidelines_v1.2.pdf` (source of truth), quick references, Option archives |
+| `ASG_Design_System_Complete/` | Full export — `tokens/*.css`, components, UI kits, fonts, logos. Still v1.2-stamped; re-stamps to v1.3 on the next wholesale Claude Design re-export (never hand-edited) |
+| `brand-books/` | Canonical PDFs surviving export swaps — `ASG_Brand_Guidelines_v1.3.pdf` (source of truth), quick reference, Option archives; superseded books in `brand-books/archive/` |
 | `ASG_Design_System_README.md` | Decision record & export verification log, repo root |
 
-**Consumption rule:** web projects link the export's compiled `styles.css` and read tokens as CSS variables; email and print consume raw values from `design-tokens.json`. When this spec and any downstream file disagree, **the brand book v1.2 + this `/themes/` package win**, and the downstream file gets fixed.
+**Consumption rule:** web projects link the export's compiled `styles.css` and read tokens as CSS variables; email and print consume raw values from `design-tokens.json`. When this spec and any downstream file disagree, **the brand book v1.3 + this `/themes/` package win**, and the downstream file gets fixed.
 
 ---
 
-*African Safari Group · Reflects ASG Brand Guidelines v1.2 · August 2026 · Marker: ASG-THEMES-OPT4INK-20260815-R1*
+*African Safari Group · Reflects ASG Brand Guidelines v1.3 · August 2026 · Marker: ASG-THEMES-V13-20260816-R1*
