@@ -1,7 +1,7 @@
 # ASG Design System — Master Reference
 **African Safari Group · Brand & Design System**
-Version: August 2026 (rev. 17 Aug — Step B closure & sync) · Custodian: Riaan Aggenbag, CEO · Marker: ASG-README-20260817-R3
-Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (Riaan, 13 Aug 2026).** Design system export v1.2-stamped, verified and approved. One colour system — Safari Brass, white text — across brand book, web, and email. **Live safari-cms fully on canon: Step A (tokens/voice) 14 Aug, Step B (lodge template rollout + site chrome) closed 15 Aug 2026 — see §13.** `/themes/` pointer package (THEME-SPEC.md + design-tokens.json) shipped 15 Aug, commit `19b4492`.
+Version: August 2026 (rev. 17 Aug — brand book v1.3 build & sync) · Custodian: Riaan Aggenbag, CEO · Marker: ASG-README-20260817-R4
+Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (Riaan, 13 Aug 2026).** Canonical brand book is now **v1.3 (27 pages)** — Option 4, extended colour/contrast, voice, the Web & CMS system and a governance record folded into the PDF (see §14). One colour system — Safari Brass, white text — across brand book, web, and email. **Live safari-cms fully on canon: Step A (tokens/voice) 14 Aug, Step B (lodge template rollout + site chrome) closed 15 Aug 2026 — see §13.** `/themes/` pointer package re-stamped v1.3 (marker `ASG-THEMES-V13-20260816-R1`); v1.3 committed (`57ac621`) and the Drive brand kit refreshed 17 Aug 2026. The design system export stays v1.2-stamped until the next wholesale re-export.
 
 ---
 
@@ -9,12 +9,13 @@ Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (R
 
 - **Git repo:** `github.com/riaan-aggenbag/asg-brand-guidelines` — the canonical home.
   - `ASG_Design_System_Complete/` — the full Claude Design export (replaced wholesale on each re-export; never store keeper files here).
-  - `brand-books/` — canonical deliverables that survive export swaps: Light Edition PDF, Ink one-pager, assets zip, Option 3 & 4 concept PDFs, homepage mockups.
+  - `brand-books/` — canonical deliverables that survive export swaps: **ASG_Brand_Guidelines_v1.3.pdf** (the book), **ASG_Brand_Quick_Reference_v1.3.pdf**, the assets zip, the Option 3 & 4 concept PDFs, homepage mockups, the v1.3 generators in `brand-books/build/`, and superseded editions in `brand-books/archive/`.
   - `ASG_Design_System_README.md` — this file, at repo root.
 - **Claude project knowledge** mirrors the reference layer: this README + the export's overview HTML (`ASG Design System.html`), export readme (`DS_Export_README.md`), and `_ds_manifest.json`.
 - **Sync rule:** any change to a design-system file → (1) commit in the git repo, (2) replace the same file in project knowledge. Both copies must always agree.
 - **Pre-commit probe (standing, 15 Aug 2026):** before committing any synced file, `Select-String` for a marker only the correct generation contains (Downloads filename-collision generations `_1`, `_19` … are the known failure mode — the stale `_19` Safari Lodge template got into project knowledge this way). Stage with explicit paths; never `git add .` / `commit -a` in this repo.
-- **`themes/`** — `THEME-SPEC.md` + `design-tokens.json`: the single pointer package for any designer, developer, agency or printer. Reflects brand book v1.2; frozen between deliberate version bumps (next v1.3). Marker `ASG-THEMES-OPT4INK-20260815-R1`.
+- **`themes/`** — `THEME-SPEC.md` + `design-tokens.json`: the single pointer package for any designer, developer, agency or printer. Reflects brand book **v1.3**; frozen between deliberate version bumps (next v1.4). Package v1.1.0, marker `ASG-THEMES-V13-20260816-R1`.
+- **Distribution mirror (Drive):** the shared `_ASG Brand Kit – CURRENT (vN · …)` folder is the human-facing copy for designers, agencies and printers. Refreshed **wholesale** on each release — rename the folder to the new version (keeps its ID and every share link), swap the book / quick-reference / THEME-SPEC / tokens, move the superseded set to `zz Archive`, update `00 READ ME FIRST`. Never hand-edited between releases; hand people the folder link, not loose files.
 
 ---
 
@@ -24,9 +25,9 @@ Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (R
 
 | System | What it is | Status |
 |---|---|---|
-| **Ink Edition (v1.2)** | Core dark editorial-luxury brand system. 17-page guidelines. | ✅ Canonical brand book. |
+| **Ink Edition (v1.3)** | Core dark editorial-luxury brand system. 27-page guidelines (17 at v1.2). | ✅ Canonical brand book. |
 | **Light Edition** | Same palette, inverted ground (Ivory-led). Implemented as `data-theme="light"` layer in the export. | Reference; ships as a theme, not a separate system. |
-| **Option 4 — CMS × Ink** | Option 3's page architecture in Ink Edition colours: Safari Brass CTAs (white text), badges tuned to the Ink family. | ⭐ **OFFICIAL web/CMS system.** All seven patterns + behaviour spec componentised in the design system export. |
+| **Option 4 — CMS × Ink** | Option 3's page architecture in Ink Edition colours: Safari Brass CTAs (white text), badges tuned to the Ink family. | ⭐ **OFFICIAL web/CMS system.** All seven patterns + behaviour spec componentised in the export **and folded into the brand book (Sections 10–11) at v1.3.** |
 | **Option 3 — Reserve-CMS** | The live safari-cms.replit.app system as-built: pale gold #C8A96E accent (dark button text). | 🗄️ **Retired to archive** (`brand-books/ASG_Option_3_Reserve_System.pdf`). Live site re-skinned to Option 4 — Step A 14 Aug, Step B closed 15 Aug 2026 (§13). |
 
 ---
@@ -42,7 +43,7 @@ Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (R
 | Deep Brass | #8E6238 | `--asg-brass-600` — active states; small-badge fill (see approved exception) |
 | Heritage Sand | #C39F77 | Secondary accent, tints. **Takes DARK text at small sizes** (see month grid rule). |
 | Warm Ivory | #F6F1EA | Light ground — body, cards, email backgrounds |
-| Ivory Dim | #EDE6DB | Secondary light surface |
+| Ivory Dim | #EFE7DB | Secondary light surface (corrected from #EDE6DB to match tokens, v1.3) |
 | Bone | #B9AFA2 | Borders, dividers, "Fair" state blocks |
 | Badge Green | #4F6B51 | `--asg-badge-green` — "Included / Most drives" status |
 
@@ -73,7 +74,7 @@ Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (R
 
 - **Lion crest is fixed** — never redrawn, never recoloured outside Ink / Ivory / Brass / Heritage Sand / White.
 - Lockups: **Stacked** (square formats, avatars) and **Horizontal** (preferred for website headers).
-- Icon-only mark: favicon, avatars, where brand is established. Full mane, correct crop (fixed in brand book v1.1; v1.2 is canonical).
+- Icon-only mark: favicon, avatars, where brand is established. Full mane, correct crop (fixed in brand book v1.1; v1.3 is canonical).
 - Clear space = icon height on all sides. Min sizes: 32px stacked / 20px icon (digital).
 - Approved variations: On Ink (white) · On Ivory (black) · On Brass (white) · On Heritage Sand (white).
 - **Sub-brands** (Sabi Sand, Amakhala, SafariBookNow): same icon + serif setting; only the name beneath changes. Every sub-brand carries "Part of African Safari Group" in its footer.
@@ -83,7 +84,7 @@ Status: **Option 4 (CMS × Ink) formalised as THE official ASG web/CMS system (R
 
 ## 5. VOICE & TONE
 
-Authoritative, warm, never salesy. Specific beats superlative. Declarative sentences. No exclamation points. Speak as "we." Lead with guest experience.
+Authoritative, warm, never salesy. Specific beats superlative. Declarative sentences. No exclamation points. No emoji. Speak as "we." Lead with guest experience.
 
 **Words we don't use (guest-facing):** cross-sell, upsell, or any sales-mechanics jargon. (Replaced with "More of the Reserve." Live safari-cms verified 15 Aug 2026: "Cross-sell" = 0 on all seven lodge pages; "More of the Reserve" present on all seven.)
 
@@ -125,7 +126,7 @@ The Safari Lodge page is the frozen reference template for all lodge pages (`lod
 
 ## 7. THE DESIGN SYSTEM EXPORT (verified 13 Aug 2026)
 
-The Claude Design export is the machine-usable form of everything above. Stamped **"Reflects ASG Brand Guidelines v1.2 · August 2026"** (readme, overview meta, footer, and Light overview — all verified).
+The Claude Design export is the machine-usable form of everything above. Stamped **"Reflects ASG Brand Guidelines v1.2 · August 2026"** (readme, overview meta, footer, and Light overview — all verified). The canonical book is now v1.3; this export stays v1.2-stamped **by design** and re-stamps to v1.3 on the next wholesale re-export (§14).
 
 **Verified in the final export:**
 - `--text-on-brass: #FFFFFF` in both `tokens/colors.css` and `tokens/theme-light.css`.
@@ -153,22 +154,24 @@ The Claude Design export is the machine-usable form of everything above. Stamped
 ## 9. FILE MANIFEST
 
 **Git repo `asg-brand-guidelines` (canonical):**
-- `ASG_Design_System_Complete/` — full v1.2-stamped export (replaced wholesale each re-export)
-- `brand-books/ASG_Brand_Guidelines_Light.pdf` — Light Edition (reference only)
-- `brand-books/ASG_Brand_Quick_Reference.pdf` — Ink one-pager
-- `brand-books/ASG_Design_System_Assets.zip` — one-pager + 6 logo PNGs
-- `brand-books/ASG_Option_3_Reserve_System.pdf` — CMS as-built, #C8A96E accent
-- `brand-books/ASG_Option_4_Reserve_System_Ink.pdf` — CMS × Ink concept
+- `ASG_Design_System_Complete/` — full v1.2-stamped export (replaced wholesale each re-export; re-stamps to v1.3 next re-export)
+- `brand-books/ASG_Brand_Guidelines_v1.3.pdf` — **canonical brand book (27 pages, marker `ASG-BOOK-V13-20260816-R1`)**
+- `brand-books/ASG_Brand_Quick_Reference_v1.3.pdf` — Ink one-pager (marker `ASG-QR-V13-20260816-R1`)
+- `brand-books/build/build_brandbook_v13.py` + `build_onepager_v13.py` — v1.3 generators (committed)
+- `brand-books/ASG_Design_System_Assets.zip` — assets + 6 logo PNGs
+- `brand-books/ASG_Option_3_Reserve_System.pdf` — CMS as-built, #C8A96E accent (archived decision)
+- `brand-books/ASG_Option_4_Reserve_System_Ink.pdf` — CMS × Ink concept (archived decision)
+- `brand-books/archive/` — superseded editions: `ASG_Brand_Guidelines_Light.pdf`, `ASG_Brand_Quick_Reference.pdf` (Light is now a theme; the Ink one-pager is replaced by v1.3)
 - `brand-books/africansafarigroup_homepage_mockup(.html/_light.html)` — earlier-phase homepage mockups
 - `lodge-pages/` — the seven Option 4 lodge reference templates (Safari Lodge, Bush Lodge, HillsNek, Leeuwenbosch, Quatermain's, Woodbury Tented Camp, Woodbury Lodge v2) — content source for the CMS rollout
 - `themes/THEME-SPEC.md` + `themes/design-tokens.json` — the pointer package (see §0)
 - `ASG_Design_System_README.md` — this file (repo root; never relocated)
 
-**Inside the export (`ASG_Design_System_Complete/uploads/`):** `ASG_Brand_Guidelines_v1.2.pdf` (canonical brand book), `ASG_Brand_Quick_Reference_Light.pdf`, Option 4 working HTML (`amakhala_option4_ink_edition.html`, `woodbury_lodge_option4_ink_edition.html`).
+**Inside the export (`ASG_Design_System_Complete/uploads/`):** `ASG_Brand_Guidelines_v1.2.pdf` (frozen v1.2 copy — the canonical book is now `brand-books/ASG_Brand_Guidelines_v1.3.pdf`), `ASG_Brand_Quick_Reference_Light.pdf`, Option 4 working HTML (`amakhala_option4_ink_edition.html`, `woodbury_lodge_option4_ink_edition.html`).
 
 **Claude project knowledge (reference layer):** this README · `ASG Design System.html` (overview) · `DS_Export_README.md` (export readme, renamed) · `_ds_manifest.json` · brand-book PDFs.
 
-**Build scripts** (sandbox `/home/claude/`, regenerate any PDF): build_brandbook_v2.py, build_brandbook_light.py, build_onepager*.py, build_option_3.py, build_option_4.py, build_homepage*.py. Sandbox resets between sessions — scripts also implied recoverable from chat history if needed.
+**Build scripts:** the v1.3 generators `build_brandbook_v13.py` + `build_onepager_v13.py` are **committed to `brand-books/build/`** (no longer sandbox-only). Earlier scripts (build_brandbook_v2.py, build_brandbook_light.py, build_onepager*.py, build_option_3.py, build_option_4.py, build_homepage*.py) live in the sandbox and are recoverable from chat history.
 
 ---
 
@@ -180,11 +183,11 @@ The Claude Design export is the machine-usable form of everything above. Stamped
 4. Swap hero star glyphs for inline SVG in the working HTML pages.
 5. ~~Re-skin the live safari-cms build to Option 4~~ — ✅ DONE: Step A 14 Aug, Step B closed 15 Aug 2026 (§13).
 6. Claude Design org setup: publish the verified export as the org design system.
-7. Brand book v1.3: fold in the Option 4 formalisation, the brass-600 badge exception, and the seven web patterns so PDF and design system stay in lockstep.
+7. ~~Brand book v1.3: fold in the Option 4 formalisation, the brass-600 badge exception, and the seven web patterns~~ — ✅ DONE 16–17 Aug 2026 (§14). Book, `/themes/`, quick reference and Drive kit all on v1.3.
 - ~~Build remaining 5 lodge pages from the Safari Lodge reference~~ — ✅ DONE (§11).
 - ~~**Retrofit Woodbury**~~ — ✅ DONE: live Woodbury Lodge page now rendered from `woodbury_lodge_option4_ink_edition_v2.html` via the Step B rollout (GTK, FAQ+schema, lightbox, SAVE chips, zero banned claims — probe-verified 15 Aug).
 - ~~Check live safari-cms demo copy for the banned rate claims~~ — ✅ verified 15 Aug: "book direct" / "no markup" / "the lodge's own rate" = 0 on all seven lodge pages; "Free cancellation*" (orphan asterisk, unbacked claim) removed.
-- Design system next iteration (Claude Design): SaveChip, Lightbox, FAQ accordion, facility icon set as patterns; fold voice ban + Badge Green role extension into brand book v1.3.
+- Design system next iteration (Claude Design): SaveChip, Lightbox, FAQ accordion, facility icon set as export patterns. (The voice ban + Badge Green role extension are now in brand book v1.3 — §14.)
 - Resolve rate ($472/$473/$483) and rating (4.7/4.8) discrepancies on live site + CMS.
 
 ## 11. OVERNIGHT BUILD — ALL AMAKHALA LODGE PAGES (13–14 Aug 2026)
@@ -224,4 +227,27 @@ All seven Amakhala lodge pages now exist on the Option 4 reference template, bui
 
 **Doc-sync completed in this revision:** §6 item 6 "Book Direct" example retired · §6B gallery line corrected to five tiles · Safari Lodge reference template regenerated (5-tile, index-consistent; stale `_19` retired from project knowledge) · `lodge-pages/` and `themes/` added to manifest · backlog items 2/3/5 + Woodbury retrofit + banned-claims check closed.
 
-**Still open (unchanged):** rating rounding rule / 4.7-vs-4.8 canonical call · Quatermain's + Woodbury Lodge review rows to top up when the review feed lands · live amakhala.com Woodbury Lodge spa-FAQ answer says "Safari Lodge" (web team) · production must bind currency symbol as well as amount (demo renders USD literal) · Claude Design org setup · **brand book v1.3** fold-in: Option 4 formalisation, brass-600 exception, seven web patterns + SaveChip/Lightbox/FAQ-accordion, Badge Green role extension, `/themes/` package, rooms/footer/nav canon above.
+**Still open (unchanged):** rating rounding rule / 4.7-vs-4.8 canonical call · Quatermain's + Woodbury Lodge review rows to top up when the review feed lands · live amakhala.com Woodbury Lodge spa-FAQ answer says "Safari Lodge" (web team) · production must bind currency symbol as well as amount (demo renders USD literal) · Claude Design org setup. **Brand book v1.3 fold-in — ✅ CLOSED 16–17 Aug 2026, recorded in §14.**
+
+## 14. BRAND BOOK v1.3 BUILD & SYNC (16–17 Aug 2026)
+
+**What shipped:** the canonical brand book moved from v1.2 (17 pages) to **v1.3 (27 pages)**, folding every post-print decision into the PDF itself; the `/themes/` package and quick reference were re-stamped to match. Built with reportlab from the genuine v1.2 source PDF; a `--faithful` mode reproduces the exact 17-page v1.2 byte-for-byte as a regression proof (approved before any v1.3 page was written).
+
+**Markers (probe before every sync):**
+- Book — `ASG-BOOK-V13-20260816-R1` (PDF Keywords)
+- Quick reference — `ASG-QR-V13-20260816-R1`
+- `/themes/` (THEME-SPEC.md + design-tokens.json) — `ASG-THEMES-V13-20260816-R1`
+
+**Page map (27):** Cover · Contents (11 sections) · 01 Brand Essence · 02 Logo System (Mark; Clear Space) · 03 Logo Colour & Usage · 04 Sub-Brand Architecture · 05 Colour System (Palette; **Extended System & Retired Tones — new**; **Contrast Rules — new**; In Practice) · 06 Typography (Lora & Poppins; Rules) · 07 Voice & Tone (Voice; **Words & Formats — new**) · 08 Photography Direction · 09 Applications (Web; Email & Social; Print) · 10 Web & CMS System (**Hero & Signal; Booking & Proof; Specials/Gallery/FAQ; Lodge Anatomy; Lodge Rules — all new**) · 11 Governance (**Decisions of Record; The Pointer Package — new**) · Closing (version history + marker).
+
+**Content folded in:** Option 4 formalised; pale gold #C8A96E retired on the page; the brass-600 sub-12px fill exception; the seven web patterns + SaveChip / Lightbox / FAQ-accordion; Badge Green savings role; the 15 Aug lodge-template + chrome + rate-claim canon; the PriceCard serif-numeral exception. Two banned lines corrected **in the book**: the p10 "no markup at checkout" type specimen → "Best price guarantee on contracted rates, with no booking fees."; the voice rule harmonised to "No exclamation points. No emoji." (matching THEME-SPEC/tokens).
+
+**Build notes (probe-verified):** ✦ ✓ ✕ are absent from Poppins/Lora and would render blank, so the four-point star, check and cross are drawn as **vector paths**. All buttons, pills, FAQ rows, anatomy rows and decisions rows are vertically centred via a **cap-height helper** (defect Riaan caught at checkpoint B). Photography sourcing note reseated above the footer. **Ivory Dim corrected to #EFE7DB** to match tokens (README had #EDE6DB).
+
+**Committed** — `57ac621`, scoped `-- brand-books themes`: v1.3 book + quick reference, both generators, THEME-SPEC.md + design-tokens.json (v1.3), and `git mv` of `ASG_Brand_Guidelines_Light.pdf` + `ASG_Brand_Quick_Reference.pdf` → `brand-books/archive/`. A pre-existing `.gitignore` change and the `templates/wetu/ → wetu/` rename staged in the index were **deliberately excluded** (scoped commit) and remain pending for a separate commit.
+
+**Frozen by design** (re-stamp on next wholesale re-export, never hand-edited): `ASG_Design_System_Complete/`, `DS_Export_README.md`, `_ds_manifest.json`, and the v1.2 book inside the export's `uploads/`.
+
+**Distribution + project knowledge:** Drive brand-kit folder renamed to v1.3, the four v1.3 files swapped in, six superseded files moved to `zz Archive`, `00 READ ME FIRST` doc updated. Project knowledge swapped to the v1.3 set (v1.2 book + old one-pagers removed so no stale copy surfaces in search).
+
+**Still open after v1.3:** rating rounding rule / 4.7-vs-4.8 canonical call · Quatermain's + Woodbury Lodge review rows to top up when the feed lands · live amakhala.com Woodbury Lodge spa-FAQ answer says "Safari Lodge" (web team) · production must bind currency symbol as well as amount · Claude Design org setup **and the export re-stamp to v1.3** on next re-export.
