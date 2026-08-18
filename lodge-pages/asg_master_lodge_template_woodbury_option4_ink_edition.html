@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<!--
+  ASG MASTER LODGE TEMPLATE — Woodbury Lodge · Amakhala Game Reserve
+  Option 4 · CMS x Ink Edition · static design reference (the blueprint every lodge page clones). NOT the CMS build.
+  Marker: ASG-LODGE-MASTER-OPT4INK-20260818-R1
+  Reflects ASG Brand Guidelines v1.3 · THEME-SPEC.md §8 lodge canon · approved reviews pattern (18 Aug 2026)
+  Binding contract: every element carrying a data-bind attribute is populated by the CMS at render.
+    Pimcore holds ZAR base rates; amount + currency symbol + currency code bind together by visitor IP.
+    Review ratings and counts read from the licensed widgets. Photo counts read from the media set.
+    All values shown here are placeholder snapshots. Never hardcode a bound value in production.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="asg-marker" content="ASG-LODGE-MASTER-OPT4INK-20260818-R1">
+<meta name="asg-brand-guidelines" content="Reflects ASG Brand Guidelines v1.3">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Woodbury Lodge — Amakhala Game Reserve · ASG Master Lodge Template (Option 4 · Ink Edition)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171411; --charcoal:#2B2622; --soft-charcoal:#4A443C;
+  --brass:#A8794B; --brass-600:#8E6238; --sand:#C39F77; --ivory:#F6F1EA; --ivory-dim:#EFE7DB;
+  --bone:#B9AFA2; --white:#FFFFFF; --badge-green:#4F6B51;
+  --serif:'Lora',Georgia,serif; --sans:'Poppins',sans-serif;
+  --check-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  --chev-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2.5 4.5l3.5 3.5 3.5-3.5' fill='none' stroke='%23F6F1EA' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans); color:var(--soft-charcoal); background:var(--ivory); line-height:1.6; -webkit-font-smoothing:antialiased;}
+img{display:block; max-width:100%; height:auto;}
+a{text-decoration:none; color:inherit;}
+.wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+h1,h2,h3,h4{font-family:var(--serif); font-weight:500; color:var(--ink); line-height:1.18;}
+.eyebrow{font-weight:500; font-size:11px; letter-spacing:2.5px; color:var(--brass); text-transform:uppercase;}
+.btn{display:inline-flex; align-items:center; justify-content:center; font-weight:600; font-size:12px; letter-spacing:1.2px; text-transform:uppercase; padding:14px 26px; border-radius:3px; transition:all .2s ease; cursor:pointer; border:none;}
+.btn-brass{background:var(--brass); color:var(--white);}
+.btn-brass:hover{background:var(--brass-600); transform:translateY(-1px);}
+.btn-outline-dark{background:transparent; color:var(--ivory); border:1px solid rgba(255,255,255,.35);}
+.btn-outline-dark:hover{border-color:var(--brass); color:var(--brass);}
+.btn-outline-light{background:transparent; color:var(--ink); border:1px solid var(--bone);}
+.btn-outline-light:hover{border-color:var(--brass); color:var(--brass);}
+
+/* top bar — currency switcher (canonical order USD · GBP · EUR · AUD · MXN · ZAR) + phone lines */
+.topbar{background:var(--charcoal); color:var(--bone); font-size:11px; letter-spacing:.3px; border-bottom:1px solid rgba(255,255,255,.06);}
+.topbar .wrap{display:flex; align-items:center; justify-content:space-between; height:38px; gap:16px;}
+.tb-cur{display:flex; align-items:center; gap:9px; text-transform:uppercase; letter-spacing:1.5px; font-size:9.5px; color:var(--sand); font-weight:500;}
+.tb-cur select{appearance:none; -webkit-appearance:none; background:transparent; border:1px solid rgba(255,255,255,.18); color:var(--ivory); font-family:var(--sans); font-size:11px; letter-spacing:.6px; padding:4px 24px 4px 9px; border-radius:3px; cursor:pointer; -webkit-mask:none; background-image:var(--chev-mask); background-repeat:no-repeat; background-position:right 8px center; background-size:9px 9px;}
+.tb-cur select:focus-visible{outline:1px solid var(--brass); outline-offset:1px;}
+.tb-right{display:flex; align-items:center; gap:22px; white-space:nowrap;}
+.tb-right a{color:var(--ivory-dim); transition:color .2s ease; display:inline-flex; align-items:center;}
+.tb-right a:hover{color:var(--brass);}
+.tb-right .cc{color:var(--sand); font-size:9px; letter-spacing:1.5px; margin-right:7px; font-weight:500;}
+.tb-right .tb-link{color:var(--sand); text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(195,159,119,.45);}
+.tb-right .tb-link:hover{color:var(--brass);}
+
+nav{position:sticky; top:0; z-index:60; background:rgba(23,20,17,.97); backdrop-filter:blur(6px); border-bottom:1px solid rgba(255,255,255,.08); transition:transform .28s ease;}
+nav.nav-hidden{transform:translateY(-100%);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; height:78px;}
+.logo img{height:44px; width:auto;}
+.nav-links{display:flex; gap:30px; align-items:center;}
+.nav-links a{font-size:12.5px; letter-spacing:1px; color:var(--ivory-dim); text-transform:uppercase; position:relative; padding:4px 0;}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--brass);transition:width .25s ease;}
+.nav-links a:hover::after{width:100%;}
+nav .btn{white-space:nowrap;}
+.nav-tools{display:none; align-items:center; gap:6px;}
+.nav-icon{width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:transparent; border:none; cursor:pointer; color:var(--ivory); border-radius:3px;}
+.nav-icon svg{width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;}
+.nav-icon.call svg{stroke:var(--brass);}
+.nav-icon:focus-visible{outline:1px solid var(--brass); outline-offset:2px;}
+.mnav{display:none; position:fixed; left:0; right:0; top:0; bottom:0; z-index:59; background:var(--ink); padding:110px 32px 40px; overflow-y:auto;}
+nav.open ~ .mnav, body.menu-open .mnav{display:block;}
+.mnav a.item{display:block; font-family:var(--serif); font-size:26px; color:var(--white); padding:14px 0; border-bottom:1px solid rgba(255,255,255,.08);}
+.mnav a.item:hover{color:var(--brass);}
+.mnav .mnav-contact{margin-top:28px; display:flex; flex-direction:column; gap:12px; font-size:13px; color:var(--bone);}
+.mnav .mnav-contact a{color:var(--ivory-dim);}
+.mnav .mnav-contact .cc{color:var(--sand); font-size:9px; letter-spacing:1.5px; margin-right:8px; font-weight:500;}
+.mnav .btn{margin-top:28px; width:100%;}
+body.menu-open{overflow:hidden;}
+body.menu-open nav{transform:none !important;}
+
+/* hero */
+.hero{position:relative; min-height:72vh; display:flex; align-items:flex-end; overflow:hidden; background:var(--ink);}
+.hero-bg{position:absolute; top:0; left:0; right:0; bottom:0; background-image:url('https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80217__optimized-desktop/Aerial%20view_4.webp'); background-size:cover; background-position:center 45%;}
+.hero-scrim{position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(180deg, rgba(23,20,17,.55) 0%, rgba(23,20,17,.28) 40%, rgba(23,20,17,.9) 100%);}
+.hero-content{position:relative; z-index:2; width:100%; padding:70px 0 54px;}
+.hero-flex{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap;}
+.crumb-bar{position:absolute; top:26px; left:0; right:0; z-index:3;}
+.crumb{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:var(--sand);}
+.crumb a{color:var(--sand); transition:color .2s ease;}
+.crumb a:hover{color:var(--brass);}
+.crumb .sep{margin:0 7px; opacity:.6;}
+.hero h1{font-size:52px; color:var(--white);}
+.hero .meta{display:flex; align-items:center; gap:14px; margin-top:14px; color:var(--ivory-dim); font-size:13px; flex-wrap:wrap;}
+.hero .meta .pills{display:inline-flex; gap:8px; flex-wrap:wrap;}
+/* star component (approved reviews pattern) — partial-fill SVG, fill % = (displayed star / 5) x 100 */
+.stars{display:inline-block; position:relative; line-height:0; white-space:nowrap; font-size:0;}
+.stars .empty,.stars .fill{display:flex; gap:2px;}
+.stars svg{width:var(--star,15px); height:var(--star,15px); display:block; flex:none;}
+.stars .empty svg{fill:var(--ivory-dim);}
+.stars .fill{position:absolute; top:0; left:0; overflow:hidden;}
+.stars .fill svg{fill:var(--brass);}
+.hero .stars .empty svg{fill:rgba(255,255,255,.22);}
+.i-star{width:12px; height:12px; fill:var(--brass); vertical-align:-1px;}
+.hpill{display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.28); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); color:var(--white); font-size:10px; letter-spacing:1.2px; text-transform:uppercase; padding:6px 13px; border-radius:22px; font-weight:500;}
+.hpill svg{width:9px; height:9px; fill:var(--brass); flex:none;}
+.hero .meta .rating{color:var(--ivory-dim);}
+.hero .meta .rating:hover{color:var(--white);}
+.hero .meta .rating b{color:var(--white);}
+.price-card{background:var(--ivory); border-radius:6px; padding:26px 28px; min-width:min(300px,100%); box-shadow:0 30px 60px rgba(0,0,0,.4);}
+.price-card .from{font-size:10px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); font-weight:600;}
+.price-card .amount{font-family:var(--serif); font-size:30px; color:var(--ink); margin:4px 0 16px;}
+.price-card .amount .val{font-family:var(--serif);}
+.price-card .amount .unit{font-family:var(--sans); font-size:13px; color:var(--soft-charcoal);}
+.price-card .btn{width:100%; margin-bottom:10px;}
+.price-card .note{font-size:10.5px; color:var(--soft-charcoal); opacity:.8; text-align:center; margin-top:6px; line-height:1.55;}
+.pc-contact{display:flex; justify-content:center; gap:22px; margin-top:14px; padding-top:14px; border-top:1px solid var(--ivory-dim);}
+.pc-contact a{display:inline-flex; align-items:center; gap:7px; font-size:11px; letter-spacing:.9px; text-transform:uppercase; font-weight:600; color:var(--ink);}
+.pc-contact a:hover{color:var(--brass);}
+.pc-contact svg{width:15px; height:15px; fill:none; stroke:var(--brass); stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;}
+.pc-assure{margin-top:12px; text-align:center; font-size:9.5px; letter-spacing:1.1px; text-transform:uppercase; color:var(--soft-charcoal); line-height:1.9;}
+.pc-assure span{white-space:nowrap;}
+.pc-assure span + span::before{content:''; display:inline-block; width:3px; height:3px; border-radius:50%; background:var(--brass); margin:0 8px; vertical-align:2px;}
+
+/* value props bar */
+.props{background:var(--charcoal); color:var(--ivory);}
+.props .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:0;}
+.prop{padding:24px 26px; border-right:1px solid rgba(255,255,255,.08);}
+.prop:last-child{border-right:none;}
+.prop .k{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--brass); font-weight:600; margin-bottom:6px;}
+.prop .t{font-size:13.5px; color:var(--white); font-weight:500; margin-bottom:4px;}
+.prop .d{font-size:11.5px; color:var(--bone); line-height:1.55;}
+
+/* trust row — Tier-1 accreditations lead, then the reviews signal; sits under the props bar so trust is next to price and CTA */
+.trust{background:var(--ivory-dim); border-bottom:1px solid var(--bone);}
+.trust .wrap{display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px 0; padding-top:15px; padding-bottom:15px;}
+.trust .t{display:inline-flex; align-items:center; font-size:10px; letter-spacing:1.3px; text-transform:uppercase; color:var(--soft-charcoal); font-weight:500; white-space:nowrap;}
+.trust .t + .t::before{content:''; width:4px; height:4px; border-radius:50%; background:var(--brass); margin:0 14px; opacity:.85; flex:none;}
+@media(max-width:1100px){ .trust .rv{flex-basis:100%; justify-content:center; margin-top:2px;} .trust .rv::before{display:none;} }
+@media(max-width:900px){ .trust .lg{display:none;} }
+.trust .rv{color:var(--ink); font-weight:600;}
+.trust .rv svg{margin-right:7px;}
+.trust .rv b{font-weight:700;}
+
+/* enquiry checklist idiom (brass check circles) — used by the six-reason section */
+.checks{display:grid; grid-template-columns:1fr 1fr; gap:14px 40px; margin-top:26px; max-width:820px;}
+.check{display:flex; gap:12px; font-size:13.5px; color:var(--soft-charcoal); align-items:flex-start;}
+.check::before{content:''; flex-shrink:0; width:22px; height:22px; border-radius:50%; background:var(--brass) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M3 8.5l3.2 3.2L13 4.5' fill='none' stroke='%23FFFFFF' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/11px 11px no-repeat; margin-top:1px;}
+
+/* sticky subnav */
+.subnav{position:sticky; top:0; z-index:65; background:var(--ivory); border-bottom:1px solid var(--bone); box-shadow:0 2px 12px rgba(23,20,17,.05);}
+section[id], div[id]{scroll-margin-top:72px;}
+.subnav .wrap{display:flex; align-items:center; gap:28px; height:56px; overflow-x:auto; scrollbar-width:none;}
+.subnav .wrap::-webkit-scrollbar{display:none;}
+@media(max-width:640px){ .subnav .wrap{gap:22px; -webkit-mask-image:linear-gradient(90deg,#000 86%,transparent); mask-image:linear-gradient(90deg,#000 86%,transparent);} }
+.subnav a{font-size:11.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--soft-charcoal); white-space:nowrap; padding:4px 0; border-bottom:2px solid transparent;}
+.subnav a:hover, .subnav a.active{color:var(--brass); border-bottom-color:var(--brass);}
+/* the sub-nav is wayfinding only; the sticky booking bar (below) owns the persistent action so no view carries two brass buttons */
+
+/* sticky booking bar — appears once the hero PriceCard scrolls out; bottom-docked, one brass action, price in visitor currency */
+.bookbar{position:fixed; left:0; right:0; bottom:0; z-index:70; background:rgba(23,20,17,.97); backdrop-filter:blur(6px); border-top:1px solid rgba(255,255,255,.1); transform:translateY(102%); transition:transform .32s ease; padding-bottom:env(safe-area-inset-bottom);}
+.bookbar.show{transform:translateY(0);}
+.bookbar .wrap{display:flex; align-items:center; gap:22px; height:66px;}
+.bb-price{color:var(--ivory); white-space:nowrap; line-height:1.2;}
+.bb-price .l{display:block; font-size:9.5px; letter-spacing:1.6px; text-transform:uppercase; color:var(--sand); font-weight:500; margin-bottom:2px;}
+.bb-price b{font-size:16px; font-weight:600; color:var(--white);}
+.bb-price .u{font-size:11px; color:var(--bone); margin-left:5px;}
+.bb-form{display:flex; align-items:center; gap:10px; margin-left:auto;}
+.bb-field{display:flex; align-items:center; gap:6px; border:1px solid rgba(255,255,255,.18); border-radius:3px; padding:0 4px 0 11px; height:40px; color:var(--bone); font-size:10px; letter-spacing:1.3px; text-transform:uppercase; font-weight:500;}
+.bb-field select{appearance:none; -webkit-appearance:none; background:transparent; background-image:var(--chev-mask); background-repeat:no-repeat; background-position:right 5px center; background-size:9px 9px; border:none; color:var(--white); font-family:var(--sans); font-size:12.5px; font-weight:500; padding:0 20px 0 4px; cursor:pointer;}
+.bb-field select:focus-visible{outline:1px solid var(--brass); outline-offset:1px; border-radius:2px;}
+.bookbar .btn{padding:12px 20px; white-space:nowrap;}
+.bookbar .btn-outline-dark{height:40px; padding:0 18px;}
+body.bookbar-on{padding-bottom:70px;}
+
+section{padding:90px 0;}
+.section-head{max-width:660px; margin-bottom:46px;}
+.section-head h2{font-size:34px; margin-top:12px;}
+.section-head p{font-weight:300; font-size:15px; margin-top:14px; line-height:1.75;}
+
+/* overview */
+.ov-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:52px; align-items:start;}
+.ov-grid p{font-weight:300; font-size:15px; line-height:1.8; margin-top:16px;}
+.qf{background:var(--white); border:1px solid var(--bone); border-radius:6px; padding:28px 30px;}
+.qf h3{font-size:18px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; gap:8px 14px; flex-wrap:wrap;}
+.qf-row{display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--ivory-dim); font-size:13.5px;}
+.qf-row:last-child{border-bottom:none;}
+.qf-row .k{color:var(--soft-charcoal);}
+.qf-row .v{color:var(--ink); font-weight:500; text-align:right;}
+
+/* guests love — five short signals guests report most, sits between the overview and the gallery */
+.gl{background:var(--white); border-top:1px solid var(--ivory-dim); border-bottom:1px solid var(--ivory-dim);}
+.gl .wrap{display:grid; grid-template-columns:auto repeat(5,1fr); gap:0 28px; align-items:center; padding-top:22px; padding-bottom:22px;}
+.gl .eyebrow{white-space:nowrap; padding-right:24px; border-right:1px solid var(--ivory-dim);}
+.gl-item{display:flex; align-items:center; gap:12px; font-size:12px; color:var(--soft-charcoal); line-height:1.45; white-space:nowrap;}
+.gl-item svg{width:20px; height:20px; fill:none; stroke:var(--brass); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; flex:none;}
+.gl-item b{display:block; color:var(--ink); font-weight:600; font-size:12.5px;}
+@media(max-width:1120px){ .gl .wrap{grid-template-columns:repeat(3,1fr); gap:16px 24px;} .gl .eyebrow{grid-column:1 / -1; border-right:none; padding-right:0;} }
+@media(max-width:640px){ .gl .wrap{grid-template-columns:1fr; gap:14px;} }
+
+/* gallery */
+.gallery{background:var(--ivory-dim);}
+.g-grid{display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:250px 250px; gap:14px;}
+.g-item{border-radius:6px; overflow:hidden;}
+.g-item img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+.g-item:hover img{transform:scale(1.05);}
+.g-item.tall{grid-row:span 2;}
+
+/* rooms */
+.rooms-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px;}
+.room{background:var(--white); border:1px solid var(--ivory-dim); border-radius:6px; overflow:hidden; display:flex; flex-direction:column;}
+.room .img{height:250px; overflow:hidden;}
+.room .img img{width:100%; height:100%; object-fit:cover;}
+.room .body{padding:26px 28px; flex:1; display:flex; flex-direction:column;}
+.room h3{font-size:20px;}
+.room .spec{font-size:11.5px; letter-spacing:1px; text-transform:uppercase; color:var(--brass); font-weight:500; margin:6px 0 14px;}
+.feat{display:grid; grid-template-columns:1fr 1fr; gap:8px 22px; margin-bottom:20px; flex:1;}
+.feat span{font-size:12.5px; color:var(--soft-charcoal); position:relative; padding-left:16px;}
+.feat span::before{content:''; position:absolute; left:0; top:5px; width:11px; height:11px; background:var(--brass); -webkit-mask:var(--check-mask) center/contain no-repeat; mask:var(--check-mask) center/contain no-repeat;}
+.room .row{display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--ivory-dim); padding-top:18px;}
+.room .pr{font-family:var(--sans); font-size:15px; font-weight:600; color:var(--ink);}
+.room .pr span{font-family:var(--sans); font-size:11px; color:var(--soft-charcoal); font-weight:400;}
+.room .desc{font-size:13.5px; font-weight:300; line-height:1.7; color:var(--soft-charcoal); margin-bottom:16px;}
+.room .incl{font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--badge-green); font-weight:600; margin-bottom:12px; display:flex; align-items:center; gap:8px;}
+.room .incl::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--badge-green); flex:none;}
+.room .bath{font-size:12px; color:var(--soft-charcoal); margin:-6px 0 18px; opacity:.85;}
+.room .bath b{color:var(--ink); font-weight:600;}
+
+/* specials — the offer card; Badge Green top rule = savings signal, brass = the single action */
+.offer{background:var(--white); border:1px solid var(--ivory-dim); border-top:3px solid var(--badge-green); border-radius:6px; padding:34px 36px 32px; display:grid; grid-template-columns:1.1fr 1fr; gap:32px 52px; align-items:start;}
+.offer h3{font-size:27px; margin:14px 0 8px;}
+.offer .valid{font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); font-weight:600;}
+.offer p{font-weight:300; font-size:14.5px; line-height:1.75; margin-top:14px; max-width:520px;}
+.off-cta{margin-top:24px; display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
+.off-note{font-size:11px; letter-spacing:.6px; color:var(--soft-charcoal); opacity:.85;}
+.off-lists{display:grid; grid-template-columns:1fr 1fr; gap:24px 28px; padding-top:6px;}
+.off-list h4{font-family:var(--sans); font-size:10.5px; letter-spacing:1.6px; text-transform:uppercase; color:var(--ink); font-weight:600; margin-bottom:12px;}
+.off-list ul{list-style:none;}
+.off-list li{position:relative; padding-left:20px; font-size:13px; color:var(--soft-charcoal); line-height:1.6; margin-bottom:8px;}
+.off-list li::before{content:''; position:absolute; left:0; top:7px; width:11px; height:11px; background:var(--brass); -webkit-mask:var(--check-mask) center/contain no-repeat; mask:var(--check-mask) center/contain no-repeat;}
+.off-list.cond li::before{width:7px; height:1px; top:11px; background:var(--bone); -webkit-mask:none; mask:none;}
+.off-foot{margin-top:22px; font-size:12px; color:var(--soft-charcoal);}
+.off-foot a{color:var(--brass); text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(168,121,75,.4);}
+
+/* experiences & facilities */
+.list-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px 36px; max-width:920px;}
+.list-grid span{font-size:13.5px; color:var(--soft-charcoal); position:relative; padding-left:20px; padding-top:2px; padding-bottom:2px;}
+.list-grid span::before{content:''; position:absolute; left:0; top:8px; width:12px; height:12px; background:var(--brass); -webkit-mask:var(--check-mask) center/contain no-repeat; mask:var(--check-mask) center/contain no-repeat;}
+#facilities .list-grid span{padding-left:0; display:flex; align-items:center; gap:11px;}
+#facilities .list-grid span::before{content:none;}
+#facilities .list-grid svg{width:19px; height:19px; stroke:var(--brass); stroke-width:1.75; fill:none; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0;}
+
+/* facilities: dietary note + full categorised list (disclosure keeps the section restrained) */
+.fac-note{margin-top:28px; font-size:13px; color:var(--soft-charcoal); max-width:920px;}
+.fac-note b{color:var(--ink); font-weight:600;}
+.fac-all{margin-top:22px; max-width:920px; border-top:1px solid var(--bone); border-bottom:1px solid var(--bone);}
+.fac-all summary{list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding:16px 0; font-size:11.5px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); font-weight:600;}
+.fac-all summary::-webkit-details-marker{display:none;}
+.fac-all summary::after{content:''; width:12px; height:12px; flex:none; background:var(--brass); -webkit-mask:var(--chev-mask) center/contain no-repeat; mask:var(--chev-mask) center/contain no-repeat; transition:transform .25s ease;}
+.fac-all[open] summary::after{transform:rotate(180deg);}
+.fac-cats{display:grid; grid-template-columns:repeat(3,1fr); gap:20px 36px; padding:6px 0 30px;}
+.fac-cat h4{font-family:var(--sans); font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink); font-weight:600; margin-bottom:5px;}
+.fac-cat p{font-size:13px; color:var(--soft-charcoal); line-height:1.65;}
+.fac-cat i{font-style:normal; color:var(--bone);}
+
+/* what's nearby */
+.near-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+.near-grid .qf-row .v{white-space:nowrap; margin-left:14px;}
+.near-note{margin-top:18px; font-size:12px; color:var(--soft-charcoal); opacity:.85;}
+.qf .sub{font-size:12px; color:var(--soft-charcoal); opacity:.85; margin-top:12px; line-height:1.6;}
+
+/* good to know footnotes */
+.gtk-foot{margin-top:22px; max-width:920px; font-size:12px; color:var(--soft-charcoal); line-height:1.7;}
+.gtk-foot p + p{margin-top:6px;}
+
+/* faq */
+.faq-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 56px; align-items:start;}
+.faq-grid details{border-bottom:1px solid var(--bone); padding:4px 0;}
+.faq-grid details:last-child{border-bottom:none;}
+.faq-grid summary{list-style:none; cursor:pointer; font-weight:600; color:var(--ink); font-size:14.5px; padding:14px 34px 14px 0; position:relative;}
+.faq-grid summary::-webkit-details-marker{display:none;}
+.faq-grid summary::after{content:''; position:absolute; right:4px; top:50%; width:12px; height:12px; margin-top:-6px; background:var(--brass); -webkit-mask:var(--chev-mask) center/contain no-repeat; mask:var(--chev-mask) center/contain no-repeat; transition:transform .25s ease;}
+.faq-grid details[open] summary::after{transform:rotate(180deg);}
+.faq-grid p{font-size:13.5px; color:var(--soft-charcoal); line-height:1.7; padding:0 0 16px;}
+.faq-grid p b{color:var(--ink); font-weight:600;}
+
+/* seasons + month grid */
+.seasons{background:linear-gradient(135deg,#1F1B17,#171411); color:var(--ivory);}
+.seasons .section-head h2{color:var(--white);}
+.seasons .section-head p{color:var(--bone);}
+.scard-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:40px;}
+.scard{background:var(--charcoal); border:1px solid rgba(255,255,255,.11); border-radius:6px; padding:26px 28px;}
+.scard h3{color:var(--brass); font-size:19px; margin-bottom:4px;}
+.scard .when{font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--sand); font-weight:500; margin-bottom:12px;}
+.scard p{font-size:13.5px; color:var(--bone); line-height:1.7;}
+.months{display:grid; grid-template-columns:repeat(12,1fr); gap:8px;}
+.month{border-radius:4px; padding:14px 6px 12px; text-align:center;}
+.month .m{font-weight:600; font-size:13.5px; letter-spacing:.5px;}
+.month .s{font-size:9.5px; letter-spacing:.5px; text-transform:uppercase; margin-top:5px; opacity:.95; line-height:1.4;}
+.m-peak{background:var(--brass); color:var(--white);}
+.m-good{background:var(--sand); color:var(--ink);}
+.m-fair{background:var(--bone); color:var(--ink);}
+.legend{display:flex; gap:22px; margin-top:20px; font-size:11px; color:var(--bone); align-items:center;}
+.legend i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:7px; vertical-align:-1px;}
+
+/* ================= reviews — approved pattern (18 Aug 2026), Block A: lodge review section ================= */
+/* production replaces this block with the licensed TripAdvisor widget; static rendering is a design reference only */
+.reviews{padding:78px 0 92px; background:var(--ivory);}
+.rv-summary{text-align:center; max-width:640px; margin:0 auto 54px;}
+.rv-divider{display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:26px;}
+.rv-divider .rule{width:46px; height:1px; background:var(--brass); opacity:.55;}
+.rv-emblem{width:34px; height:34px; flex:none;}
+.rv-source-eyebrow{font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--brass); font-weight:600; margin-bottom:18px;}
+.rv-score-row{display:flex; align-items:center; justify-content:center; gap:18px; flex-wrap:wrap;}
+.rv-score{font-family:var(--sans); font-weight:700; font-size:52px; color:var(--ink); line-height:1; letter-spacing:-1px;}
+.rv-score .of{font-weight:400; font-size:20px; color:var(--bone); letter-spacing:0;}
+.rv-stars-lg{--star:26px;}
+.rv-count{margin-top:16px; font-size:12.5px; letter-spacing:1.4px; text-transform:uppercase; color:var(--soft-charcoal);}
+.rv-count b{color:var(--ink); font-weight:600;}
+.reviews-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+.rvcard{background:var(--white); border:1px solid var(--ivory-dim); border-radius:7px; padding:28px 28px 24px; display:flex; flex-direction:column; transition:box-shadow .25s ease, transform .25s ease;}
+.rvcard:hover{box-shadow:0 22px 46px rgba(23,20,17,.10); transform:translateY(-3px);}
+.rv-head{display:flex; align-items:center; gap:13px; margin-bottom:18px;}
+.rv-avatar{width:44px; height:44px; border-radius:50%; flex:none; background:var(--ink); color:var(--ivory); font-family:var(--serif); font-size:17px; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 1.5px var(--brass), 0 0 0 4px var(--white), 0 0 0 5px var(--ivory-dim);}
+.rv-who{min-width:0;}
+.rv-name{font-size:13px; font-weight:600; color:var(--ink); letter-spacing:.1px;}
+.rv-date{font-size:11px; color:var(--bone); margin-top:2px; letter-spacing:.3px;}
+.rvcard .stars{--star:14px; margin-bottom:14px;}
+.rv-meta-row{display:flex; align-items:center; margin-bottom:14px;}
+.rv-meta-row .stars{margin-bottom:0;}
+.score-chip{display:inline-flex; align-items:center; margin-left:10px; font-size:10px; font-weight:600; letter-spacing:.5px; color:var(--white); background:var(--brass-600); padding:3px 8px; border-radius:11px; line-height:1.4;}
+.rv-title{font-family:var(--serif); font-weight:500; font-size:15.5px; color:var(--ink); margin-bottom:9px; line-height:1.3;}
+.rv-body{font-size:13.5px; color:var(--soft-charcoal); line-height:1.72; flex:1;}
+.rv-src{margin-top:20px; padding-top:15px; border-top:1px solid var(--ivory-dim); display:flex; align-items:center; gap:8px; font-size:10px; letter-spacing:1.6px; text-transform:uppercase; color:var(--bone); font-weight:500;}
+.rv-src .dot{width:6px; height:6px; border-radius:50%; background:var(--brass); flex:none;}
+.rv-src b{color:var(--soft-charcoal); font-weight:600;}
+.rv-more{text-align:center; margin-top:44px;}
+.rv-more .note{margin-top:16px; font-size:12px; color:var(--soft-charcoal); letter-spacing:.3px;}
+.rv-more .note a{color:var(--brass); text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(168,121,75,.4);}
+.rv-more .note b{color:var(--ink); font-weight:600;}
+
+/* why book with ASG — six reasons in the checklist idiom + accreditation row */
+.why{background:var(--ivory-dim);}
+.why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:30px 40px; margin-top:8px;}
+.why-grid .check{align-items:flex-start;}
+.why-grid h4{font-family:var(--sans); font-size:14px; font-weight:600; color:var(--ink); margin-bottom:5px; line-height:1.4;}
+.why-grid p{font-size:13px; line-height:1.65; color:var(--soft-charcoal); font-weight:300;}
+.acc-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:44px; padding-top:30px; border-top:1px solid var(--bone);}
+.acc-row .lbl{width:100%; font-size:10.5px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); font-weight:600; margin-bottom:2px;}
+.acc-row .pill{border:1px solid var(--bone); color:var(--soft-charcoal); font-size:11px; padding:8px 14px; border-radius:16px; background:var(--white);}
+
+/* enquiry — four steps, contact last, one brass action per step */
+.enq .section-head{margin-bottom:34px;}
+.eq-card{background:var(--white); border:1px solid var(--ivory-dim); border-radius:7px; max-width:860px; margin:0 auto; overflow:hidden;}
+.eq-head{padding:22px 34px 0; display:flex; align-items:baseline; justify-content:space-between; gap:20px;}
+.eq-prog{font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); font-weight:600;}
+.eq-prog b{color:var(--ink); font-weight:700; letter-spacing:.5px;}
+.eq-title-cur{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:var(--soft-charcoal);}
+.eq-bar{display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:14px 34px 0;}
+.eq-bar span{height:2px; background:var(--ivory-dim); border-radius:1px; transition:background .25s ease;}
+.eq-bar span.on{background:var(--brass);}
+.eq-panel{display:none; padding:30px 34px 6px;}
+.eq-panel.on{display:block;}
+.eq-panel h3{font-size:24px; margin-bottom:8px;}
+.eq-panel .lead{font-size:14px; font-weight:300; line-height:1.7; color:var(--soft-charcoal); max-width:600px;}
+.eq-q{font-size:10.5px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); font-weight:600; margin:24px 0 12px;}
+.chips{display:flex; flex-wrap:wrap; gap:8px;}
+.chip{font-family:var(--sans); font-size:12.5px; color:var(--ink); background:transparent; border:1px solid var(--bone); border-radius:22px; padding:9px 16px; cursor:pointer; transition:all .18s ease; line-height:1.2;}
+.chip:hover{border-color:var(--brass); color:var(--brass);}
+.chip.on{background:var(--brass); border-color:var(--brass); color:var(--white);}
+.chip:focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
+.ctrs{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:620px;}
+.ctr{border:1px solid var(--ivory-dim); border-radius:6px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px;}
+.ctr .lab{font-size:13px; color:var(--ink); font-weight:500;}
+.ctr .lab small{display:block; font-size:11px; color:var(--bone); font-weight:400; margin-top:1px;}
+.ctr .ctl{display:flex; align-items:center; gap:10px;}
+.ctr button{width:30px; height:30px; border-radius:50%; border:1px solid var(--bone); background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--ink); transition:all .18s ease;}
+.ctr button:hover{border-color:var(--brass); color:var(--brass);}
+.ctr button svg{width:12px; height:12px; fill:none; stroke:currentColor; stroke-width:1.8;}
+.ctr .val{min-width:16px; text-align:center; font-weight:600; font-size:14px; color:var(--ink);}
+.eq-cur{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:6px;}
+.eq-cur select{appearance:none; -webkit-appearance:none; font-family:var(--sans); font-size:12.5px; color:var(--ink); border:1px solid var(--bone); border-radius:3px; padding:9px 30px 9px 12px; background:var(--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2.5 4.5l3.5 3.5 3.5-3.5' fill='none' stroke='%23171411' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 10px center/9px 9px; cursor:pointer;}
+.fields{display:grid; grid-template-columns:1fr 1fr; gap:16px 20px;}
+.field{display:flex; flex-direction:column; gap:6px;}
+.field.full{grid-column:1 / -1;}
+.field label{font-size:10.5px; letter-spacing:1.4px; text-transform:uppercase; color:var(--soft-charcoal); font-weight:600;}
+.field input,.field textarea{width:100%; border:1px solid var(--bone); border-radius:3px; padding:12px 14px; font-family:var(--sans); font-size:13.5px; color:var(--ink); background:var(--white); transition:border-color .18s ease;}
+.field input:focus,.field textarea:focus{outline:none; border-color:var(--brass);}
+.field textarea{min-height:96px; resize:vertical;}
+.consent{display:flex; align-items:flex-start; gap:10px; font-size:12.5px; color:var(--soft-charcoal); margin-top:18px; line-height:1.55;}
+.consent input{accent-color:var(--brass); width:16px; height:16px; margin-top:2px; flex:none;}
+.consent a{color:var(--brass); text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(168,121,75,.4);}
+.eq-foot{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 34px 26px; border-top:1px solid var(--ivory-dim); margin-top:24px; flex-wrap:wrap;}
+.eq-back{font-family:var(--sans); font-size:12px; letter-spacing:1.2px; text-transform:uppercase; font-weight:600; color:var(--soft-charcoal); background:transparent; border:none; cursor:pointer; padding:10px 0;}
+.eq-back:hover{color:var(--brass);}
+.eq-actions{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-left:auto;}
+.eq-expect{font-size:11.5px; color:var(--soft-charcoal); opacity:.85;}
+.eq-done{display:none; padding:44px 34px 40px; text-align:center;}
+.eq-done.on{display:block;}
+.eq-done .rv-divider{margin-bottom:22px;}
+.eq-done h3{font-size:26px; margin-bottom:10px;}
+.eq-done p{font-size:14px; font-weight:300; color:var(--soft-charcoal); max-width:520px; margin:0 auto; line-height:1.75;}
+.eq-assure{margin-top:14px; font-size:9.5px; letter-spacing:1.1px; text-transform:uppercase; color:var(--soft-charcoal); text-align:center; padding:0 34px 26px;}
+.eq-assure span + span::before{content:''; display:inline-block; width:3px; height:3px; border-radius:50%; background:var(--brass); margin:0 8px; vertical-align:2px;}
+.more-foot{margin-top:34px;}
+
+/* book banner */
+.banner{background:linear-gradient(135deg,#1F1B17,#171411); text-align:center; padding:90px 0;}
+.banner h2{color:var(--white); font-size:32px; margin-bottom:12px;}
+.banner .sub{color:var(--bone); font-size:15px; margin-bottom:34px;}
+.banner .sub b{color:var(--brass); font-family:var(--sans); font-size:16px; font-weight:600; letter-spacing:.3px;}
+.banner .assure a{color:var(--sand); text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(195,159,119,.45);}
+.banner .assure a:hover{color:var(--brass);}
+.banner .btns{display:flex; gap:16px; justify-content:center; margin-bottom:22px;}
+.banner .assure{color:rgba(185,175,162,.62); font-size:11.5px; letter-spacing:.6px;}
+.banner .assure span{margin:0 12px;}
+
+/* other lodges */
+.xs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+.xcard{background:var(--white); border:1px solid var(--ivory-dim); border-radius:6px; overflow:hidden; transition:box-shadow .25s, transform .25s;}
+.xcard:hover{box-shadow:0 20px 44px rgba(23,20,17,.13); transform:translateY(-3px);}
+.xcard .img{height:170px; overflow:hidden;}
+.xcard .img img{width:100%; height:100%; object-fit:cover;}
+.xcard .body{padding:20px 22px;}
+.xcard h4{font-size:16.5px; margin-bottom:6px;}
+.xcard p{font-size:12.5px; line-height:1.6; margin-bottom:12px;}
+.xcard .pr{font-size:12.5px; color:var(--brass); font-weight:600; display:inline-flex; align-items:center; gap:6px;}
+.xcard .pr svg{width:12px; height:12px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+
+/* footer */
+footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
+.foot-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr 1.15fr; gap:44px; padding-bottom:46px; border-bottom:1px solid rgba(255,255,255,.08);}
+.foot-endorse{font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--sand); font-weight:500; margin:-4px 0 16px;}
+.foot-logo img{height:52px; margin-bottom:18px;}
+.foot-grid p{font-size:13px; line-height:1.7; max-width:300px;}
+.foot-contact{margin-top:16px; font-size:13px;}
+.foot-contact a{display:block; color:var(--sand); margin-bottom:6px;}
+.foot-col h5{font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--brass); margin-bottom:16px; font-weight:600;}
+.foot-col a{display:block; font-size:13px; margin-bottom:10px; opacity:.9;}
+.foot-col a:hover{color:var(--brass); opacity:1;}
+.foot-col .cc{color:var(--sand); font-size:9px; letter-spacing:1.5px; margin-right:8px; font-weight:500; text-transform:uppercase;}
+.foot-social{display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:16px;}
+.foot-social a{display:inline; font-size:12px; margin:0; opacity:.8;}
+.foot-legal{display:flex; flex-wrap:wrap; gap:6px 18px;}
+.foot-legal a:hover{color:var(--brass);}
+.accred{display:flex; flex-wrap:wrap; gap:10px; margin-top:32px;}
+.acc-pill{border:1px solid rgba(255,255,255,.18); font-size:11px; padding:7px 14px; border-radius:16px;}
+.rev-pill{border:1px solid rgba(168,121,75,.5); color:var(--sand); font-size:11px; padding:7px 14px; border-radius:16px;}
+.foot-bottom{display:flex; justify-content:space-between; padding-top:26px; font-size:12px; color:rgba(185,175,162,.62); flex-wrap:wrap; gap:10px;}
+
+@media(max-width:1000px){
+  .ov-grid,.rooms-grid,.scard-grid,.offer{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .ctrs{grid-template-columns:1fr;}
+  .fac-cats{grid-template-columns:1fr 1fr;}
+  .near-grid{grid-template-columns:1fr;}
+  .props .wrap{grid-template-columns:1fr 1fr;}
+  .prop{border-right:none; border-bottom:1px solid rgba(255,255,255,.08);}
+  .g-grid{grid-template-columns:1fr 1fr; grid-template-rows:220px 220px 220px;}
+  .g-item.tall{grid-row:span 1;}
+  .reviews-grid,.xs-grid,.list-grid{grid-template-columns:1fr 1fr;}
+  .months{grid-template-columns:repeat(6,1fr);}
+  .hero h1{font-size:38px;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .tb-right a:not(:first-child):not(.tb-link){display:none;}
+  .bb-field{display:none;}
+  .nav-links{gap:18px;}
+  .nav-links a{font-size:11.5px; letter-spacing:.8px;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  nav > .wrap > .btn{display:none;}
+  .nav-tools{display:flex;}
+  .props .wrap{grid-template-columns:1fr;}
+  .prop{padding:18px 0;}
+  .prop:last-child{border-bottom:none;}
+  .prop .d{font-size:12px;}
+  .trust .wrap{flex-wrap:nowrap; overflow-x:auto; justify-content:flex-start; scrollbar-width:none; -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent); mask-image:linear-gradient(90deg,#000 88%,transparent);}
+  .trust .wrap::-webkit-scrollbar{display:none;}
+  .trust .lg{display:inline-flex;}
+  .trust .rv{flex-basis:auto; margin-top:0;}
+  .trust .rv::before{display:inline-block;}
+  .trust .t:last-child{padding-right:40px;}
+  .trust .t + .t::before{margin:0 12px;}
+  .pc-contact{gap:16px;}
+  .g-grid{grid-template-rows:200px 200px 170px;}
+  .g-item:last-child{grid-column:span 2;}
+  .banner .btns{flex-wrap:wrap;}
+  .banner .btns .btn{width:100%;}
+  .rv-score{font-size:44px;}
+  .hero-content{padding:96px 0 40px;}
+  .hero-flex{gap:28px;}
+  .hero .meta{gap:10px 12px;}
+  .hero .meta .pills{flex-basis:100%;}
+  .lg-only{display:none;}
+  .crumb{font-size:10px; letter-spacing:1.1px;}
+  .crumb a:first-child, .crumb a:first-child + .sep{display:none;}
+  .price-card{min-width:0; width:100%;}
+  .reviews-grid,.xs-grid,.list-grid,.checks,.months,.foot-grid{grid-template-columns:1fr;}
+  .gtk-grid{grid-template-columns:1fr !important;}
+  .off-lists{grid-template-columns:1fr;}
+  .offer{padding:26px 22px 24px;}
+  .off-cta .btn{width:100%;}
+  .faq-grid{grid-template-columns:1fr;}
+  .fac-cats{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .fields{grid-template-columns:1fr;}
+  .eq-head,.eq-bar,.eq-panel,.eq-foot,.eq-done,.eq-assure{padding-left:20px; padding-right:20px;}
+  .eq-actions{width:100%;}
+  .eq-actions .btn{width:100%;}
+  .eq-expect{width:100%; text-align:center;}
+  .months{grid-template-columns:repeat(3,1fr);}
+  .hero h1{font-size:32px;}
+  .tb-right .tb-link{display:none;}
+  .bookbar .wrap{height:62px; gap:12px; padding:0 18px;}
+  .bookbar .btn-outline-dark{display:none;}
+  .bb-form{margin-left:auto;}
+  .bookbar .btn{padding:11px 14px; font-size:10.5px; letter-spacing:1px;}
+  .bb-price .l{display:none;}
+  .bb-price .code{display:none;}
+  .bb-price b{font-size:15px;}
+  body.bookbar-on{padding-bottom:66px;}
+}
+
+@media(max-width:380px){
+  .hero .eyebrow{font-size:9.5px; letter-spacing:1.4px;}
+  .hero .meta{font-size:12.5px;}
+  .hero h1{font-size:30px;}
+}
+/* --- Special: Badge Green savings signal --- */
+.save-chip{display:inline-flex; align-items:center; gap:6px; background:var(--badge-green,#4F6B51); color:#FFFFFF; font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:6px 12px; border-radius:3px;}
+.price-card .save-chip{margin-bottom:10px;}
+.prop.special{border-top:3px solid #4F6B51; background:rgba(79,107,81,.10);}
+.prop.special .k{color:#7FA383;}
+.qf h3 .save-chip{float:none; margin:0; flex:none;}
+.qf.special{border:1px solid rgba(79,107,81,.38); border-top:3px solid #4F6B51; background:linear-gradient(rgba(79,107,81,.055), rgba(79,107,81,.055)), var(--white);}
+.qf.special h3{color:#3E5540;}
+.qf.special .qf-row{border-bottom-color:rgba(79,107,81,.14);}
+/* --- Lightbox --- */
+.lb{position:fixed; inset:0; z-index:1000; background:rgba(14,12,10,.94); display:none; align-items:center; justify-content:center;}
+.lb.open{display:flex;}
+.lb img{max-width:88vw; max-height:82vh; border-radius:4px; box-shadow:0 32px 80px rgba(0,0,0,.6);}
+.lb .lb-btn{position:absolute; top:50%; transform:translateY(-50%); width:46px; height:46px; border-radius:50%; background:var(--brass); color:#FFFFFF; border:none; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .24s;}
+.lb .lb-btn:hover{background:var(--brass-600);}
+.lb .lb-btn svg{width:20px; height:20px; fill:none; stroke:#FFFFFF; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+.lb .lb-x svg{width:22px; height:22px; fill:none; stroke:var(--ivory); stroke-width:1.8; stroke-linecap:round;}
+.lb .lb-prev{left:26px;} .lb .lb-next{right:26px;}
+.lb .lb-x{position:absolute; top:22px; right:26px; background:transparent; border:none; color:var(--ivory); cursor:pointer; line-height:0; padding:6px;}
+.lb .lb-count{position:absolute; bottom:24px; left:50%; transform:translateX(-50%); color:var(--ivory); font-family:var(--sans); font-size:11px; letter-spacing:1.5px;}
+.g-item{cursor:pointer; position:relative;}
+.g-more{position:absolute; inset:0; background:rgba(14,12,10,.55); display:flex; align-items:center; justify-content:center; color:#FFFFFF; font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; border-radius:inherit;}
+.g-more svg{width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:1.5; margin-right:9px; flex:none;}
+.room .img.room-lb-trigger{cursor:pointer; position:relative;}
+.room-more{inset:auto 12px 12px auto; background:rgba(14,12,10,.72); padding:8px 14px; border-radius:3px; font-size:10.5px; transition:background .24s;}
+.room .img.room-lb-trigger:hover .room-more{background:rgba(14,12,10,.88);}
+</style>
+<!-- FAQPage JSON-LD: CMS-generated in production; this static snapshot mirrors the visible FAQ one-for-one -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Are game drives and meals included?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — meals are all-inclusive and two guided game drives a day come with every stay. High tea with homemade breads and cakes is a Woodbury tradition."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What are the chalets like?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Seven stand-alone stone-and-thatch chalets among indigenous trees, each with a private deck over the plains, air conditioning, minibar, and an en-suite bathroom with heated floors."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Are children welcome?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Children from 6 years are welcome. The two family chalets sleep up to four, with an inter-leading twin room for privacy. Guests 12 and over are charged as adults."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is Woodbury Lodge malaria-free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — like the rest of Amakhala, Woodbury Lodge is malaria-free. No antimalarial medication is needed at any time of year."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will we see elephants?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Very likely — the resident herd regularly passes below the lodge in the late afternoon, and elephant sightings on Amakhala are classed as common."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will we see lions?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Lions are resident and actively tracked. Like all wild sightings they’re never guaranteed — though with elephants passing below the lodge, the Big Five rarely feel far away."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is there a spa or hot tub?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No spa and no hot tubs — Woodbury’s comforts run to heated bathroom floors, two pools overlooking the plains, and a fire under the stars."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is there WiFi?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Free WiFi is available in the main lodge areas; the chalets themselves stay unplugged."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "When is the best time to visit?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "There’s no wrong month. Dry winter (May–September) gives the clearest sightings from the valley; green summer (October–March) brings calves, cubs and migratory birdlife."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What are the check-in and check-out times?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Arrive between 13:00 and 14:00; rooms are released by 11:00 on departure day. Ask your consultant about early or late arrangements — the lodge accommodates where it can."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do we get there from Gqeberha (Port Elizabeth)?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Chief Dawid Stuurman International Airport is about 75 km by road — roughly an hour via the N2. Transfers can be arranged."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can we visit Addo Elephant National Park?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — Addo Elephant National Park is about 50 km from the lodge; your consultant can build a day visit into your itinerary."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is there parking at the lodge?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — free private parking on site, with accessible bays. No reservation is needed for the parking itself."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can we bring pets?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No — pets are not allowed at Woodbury Lodge, in common with the rest of the reserve."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can the restaurant cater for dietary requirements?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — meals are taken at the lodge restaurant and are all-inclusive. Vegetarian, gluten-free and dairy-free options are available, and special diet menus can be arranged on request; tell your consultant when you book."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How much does a stay cost?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Rates start from $405 per person per night sharing, all-inclusive with two game drives a day. Rates vary by season and chalet type; your consultant confirms the exact rate for your dates in writing, with no booking fees."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+
+<!-- vector symbols — the fonts carry no ✦ ✓ ✕ glyphs, so every icon is drawn (brand rule) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="star" viewBox="0 0 20 20"><path d="M10 1.6l2.47 5.16 5.68.72-4.18 3.9 1.08 5.62L10 14.9l-5.05 2.7 1.08-5.62L1.85 8.08l5.68-.72z"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 16 16"><path d="M8 0l1.6 6.4L16 8l-6.4 1.6L8 16l-1.6-6.4L0 8l6.4-1.6z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 16 16"><rect x="1.5" y="1.5" width="5" height="5" rx=".5"/><rect x="9.5" y="1.5" width="5" height="5" rx=".5"/><rect x="1.5" y="9.5" width="5" height="5" rx=".5"/><rect x="9.5" y="9.5" width="5" height="5" rx=".5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 9h8M8 12.5h5" stroke-linecap="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4M12 4v6M2 18h20" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4zM6 2v2M10 2v2M14 2v2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 8.82a15 15 0 0 1 20 0M5 12.86a10 10 0 0 1 14 0M8.5 16.43a5 5 0 0 1 7 0M12 20h.01" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-parking" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 16 16"><path d="M3 8h10" stroke-linecap="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 16 16"><path d="M3 8h10M8 3v10" stroke-linecap="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.2"/></symbol>
+</svg>
+
+<div class="topbar" role="region" aria-label="Currency and contact">
+  <div class="wrap">
+    <label class="tb-cur"><span>Currency</span>
+      <select data-bind="currency.code" aria-label="Currency">
+        <option value="USD" selected>USD $</option>
+        <option value="GBP">GBP £</option>
+        <option value="EUR">EUR €</option>
+        <option value="AUD">AUD $</option>
+        <option value="MXN">MXN $</option>
+        <option value="ZAR">ZAR R</option>
+      </select>
+    </label>
+    <div class="tb-right">
+      <a href="tel:08082342098"><span class="cc">UK</span>0808 234 2098</a>
+      <a href="tel:18888543008"><span class="cc">US</span>1 888 854 3008</a>
+      <a href="tel:1800571902"><span class="cc">AU</span>1 800 571 902</a>
+      <a href="tel:18447875906"><span class="cc">CA</span>1 844 787 5906</a>
+      <a href="#enquire" class="tb-link">Request a callback</a>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#"><img src="https://amakhala.com/wp-content/uploads/logo/amakhala.png" alt="Amakhala Game Reserve"></a>
+    <div class="nav-links">
+      <a href="#">Reserve</a>
+      <a href="#">Lodges</a>
+      <a href="#">Specials</a>
+      <a href="#">Activities</a>
+      <a href="#">Map</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <a class="btn btn-brass" href="#enquire">Speak to a Safari Expert</a>
+    <div class="nav-tools">
+      <a class="nav-icon call" href="tel:+27212005960" aria-label="Call African Safari Group"><svg aria-hidden="true"><use href="#i-phone"/></svg></a>
+      <button class="nav-icon menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav" aria-label="Site menu">
+  <a class="item" href="#">Reserve</a>
+  <a class="item" href="#">Lodges</a>
+  <a class="item" href="#">Specials</a>
+  <a class="item" href="#">Activities</a>
+  <a class="item" href="#">Map</a>
+  <a class="item" href="#reviews">Reviews</a>
+  <div class="mnav-contact">
+    <a href="tel:+27212005960"><span class="cc">SA</span>+27 21 200 5960</a>
+    <a href="tel:08082342098"><span class="cc">UK</span>0808 234 2098</a>
+    <a href="tel:18888543008"><span class="cc">US</span>1 888 854 3008</a>
+    <a href="tel:1800571902"><span class="cc">AU</span>1 800 571 902</a>
+    <a href="tel:18447875906"><span class="cc">CA</span>1 844 787 5906</a>
+    <a href="mailto:bookings@africansafarigroup.com">bookings@africansafarigroup.com</a>
+  </div>
+  <a class="btn btn-brass" href="#enquire">Speak to a Safari Expert</a>
+</div>
+
+<section class="hero" style="padding:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-scrim"></div>
+  <div class="crumb-bar">
+    <div class="wrap">
+      <div class="crumb"><a href="#">Home</a><span class="sep">/</span><a href="#">Reserves</a><span class="sep">/</span><a href="#">Amakhala</a><span class="sep">/</span>Woodbury Lodge</div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="hero-flex">
+        <div>
+          <div class="eyebrow" style="color:var(--sand);">Amakhala Game Reserve · Eastern Cape<span class="lg-only">, South Africa</span></div>
+          <h1>Woodbury Lodge</h1>
+          <div class="meta">
+            <span class="stars" style="--star:15px" data-bind="reviews.lodge.starPct"><span class="empty"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="fill" style="width:96%"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></span>
+            <a class="rating" href="#reviews"><b data-bind="reviews.lodge.rating">4.8</b> · <span data-bind="reviews.lodge.count">448</span> reviews on TripAdvisor</a>
+            <span class="pills"><span class="hpill"><svg aria-hidden="true"><use href="#i-spark"/></svg>Big 5</span><span class="hpill"><svg aria-hidden="true"><use href="#i-spark"/></svg>Malaria-Free</span></span>
+          </div>
+        </div>
+        <div class="price-card" aria-label="Rates and enquiry">
+          <div class="save-chip">Save 33% · Pay 2, Stay 3</div>
+          <div class="from">From</div>
+          <div class="amount"><span class="val"><span data-bind="price.symbol">$</span><span data-bind="price.amount">405</span></span> <span class="unit">pp / night · <span data-bind="price.code">USD</span></span></div>
+          <a href="#enquire" class="btn btn-brass">Speak to a Safari Expert</a>
+          <a href="#rooms" class="btn btn-outline-light" style="width:100%;">Check Availability</a>
+          <div class="note">No payment required &middot; a safari specialist replies within 15 minutes in working hours</div>
+          <div class="pc-contact">
+            <a href="#" data-bind="contact.whatsapp"><svg aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+            <a href="tel:+27212005960"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call us</a>
+          </div>
+          <div class="pc-assure"><span>No booking fees</span><span>Best price guarantee</span><span>Free cancellation*</span><span>Secure &amp; private</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="props">
+  <div class="wrap">
+    <div class="prop special"><div class="k">Current Specials</div><div class="t">Pay 2, Stay 3 · Kids stay free</div><div class="d">Three nights for the price of two — 33% off, valid 1 May – 30 Sep 2026. Two children aged 6–11 stay free. Conditions apply — <a href="#good-to-know" style="color:#9FBFA3; text-decoration:underline; text-underline-offset:2px;">see conditions</a>.</div></div>
+    <div class="prop"><div class="k">Best Price</div><div class="t">Best price guarantee</div><div class="d">Our contracted rates at Woodbury Lodge mean you won&rsquo;t find a better price for the same stay &mdash; and there are no booking fees.</div></div>
+    <div class="prop"><div class="k">Plan With a Consultant</div><div class="t">Reply within 15 minutes</div><div class="d">Send your dates and a safari specialist replies within 15 minutes in working hours, tailors the stay to you and confirms availability.</div></div>
+    <div class="prop"><div class="k">Expert Support</div><div class="t">One consultant, start to finish</div><div class="d">Talk to consultants who know Amakhala &mdash; transfers, the best season to travel, which chalet to ask for &mdash; before, during and after your trip.</div></div>
+  </div>
+</div>
+
+<div class="trust" aria-label="Accreditations and guest reviews">
+  <div class="wrap">
+    <span class="t">SATSA</span>
+    <span class="t">ATTA</span>
+    <span class="t lg">Cape Town Tourism</span>
+    <span class="t">TripAdvisor Certificate of Excellence</span>
+    <span class="t lg">Travellers&rsquo; Choice 2026</span>
+    <a class="t rv" href="#reviews"><svg class="i-star" aria-hidden="true"><use href="#star"/></svg><b>4.9</b>&nbsp;&middot;&nbsp;<span data-bind="reviews.total">4,300+</span>&nbsp;verified reviews</a>
+  </div>
+</div>
+
+<div class="subnav" aria-label="On this page">
+  <div class="wrap">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#rooms">Rooms &amp; Rates</a>
+    <a href="#specials">Specials</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#good-to-know">Good to Know</a>
+    <a href="#faq">FAQ</a>
+    <a href="#reviews">Reviews</a>
+  </div>
+</div>
+
+<section id="overview">
+  <div class="wrap">
+    <div class="ov-grid">
+      <div>
+        <div class="eyebrow">Overview</div>
+        <h2 style="font-size:34px; margin-top:12px;">Stone and thatch above the river valley</h2>
+        <p>Woodbury Lodge stands against a cliff above the Bushman&rsquo;s River valley — seven stone-and-thatch chalets tucked among indigenous trees alive with birdsong, connected by stone walkways, each with a private deck and panoramic views over the plains. Family-run since 1999, the lodge keeps its welcome personal: high tea with homemade breads and cakes, drinks by the pool overlooking the plains, storytelling around the campfire under the stars.</p>
+        <p>Meals are all-inclusive, two guided game drives a day come with every stay, and elephants are regular late-afternoon visitors below the lodge. The en-suite bathrooms carry a small luxury you notice on winter mornings: heated floors. Two family chalets with inter-leading twin rooms welcome children from six years.</p>
+      </div>
+      <div class="qf">
+        <h3>Quick facts</h3>
+        <div class="qf-row"><span class="k">Chalets</span><span class="v">7 stone-and-thatch chalets</span></div>
+        <div class="qf-row"><span class="k">Board</span><span class="v">All-inclusive · two game drives daily</span></div>
+        <div class="qf-row"><span class="k">Pools</span><span class="v">Two outdoor pools over the plains</span></div>
+        <div class="qf-row"><span class="k">Children</span><span class="v">6+ years · family chalets sleep 4</span></div>
+        <div class="qf-row"><span class="k">Airport</span><span class="v">Chief Dawid Stuurman Intl · 72 km</span></div>
+        <div class="qf-row"><span class="k">Nearby</span><span class="v">Addo Elephant NP 50 km · Grahamstown 51 km</span></div>
+        <div class="qf-row"><span class="k">Wildlife</span><span class="v">Big 5 · Malaria-free</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gl" id="guests-love" aria-label="What guests love">
+  <div class="wrap">
+    <div class="eyebrow">Guests love</div>
+    <div class="gl-item"><svg aria-hidden="true"><use href="#i-pin"/></svg><span><b>Location <span data-bind="lodge.locationScore">9.4</span></b>rated by recent guests</span></div>
+    <div class="gl-item"><svg aria-hidden="true"><use href="#i-bed"/></svg><span><b>Comfortable beds</b>rated highly for sleep</span></div>
+    <div class="gl-item"><svg aria-hidden="true"><use href="#i-coffee"/></svg><span><b>Breakfast</b>vegetarian, vegan, buffet</span></div>
+    <div class="gl-item"><svg aria-hidden="true"><use href="#i-wifi"/></svg><span><b>Free WiFi</b>rated excellent</span></div>
+    <div class="gl-item"><svg aria-hidden="true"><use href="#i-parking"/></svg><span><b>Free parking</b>private, on site</span></div>
+  </div>
+</div>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Gallery</div>
+      <h2>A look around the lodge</h2>
+    </div>
+    <div class="g-grid">
+      <div class="g-item tall"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80217__optimized-desktop/Aerial%20view_4.webp" alt="Woodbury Lodge above the Bushman's River valley" loading="lazy"></div>
+      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80219__optimized-desktop/Bedroom_7.webp" alt="Chalet bedroom" loading="lazy"></div>
+      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80234__optimized-desktop/woodbury_lodge_eoom_1_5.webp" alt="Stone-and-thatch chalet interior" loading="lazy"></div>
+      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80235__optimized-desktop/img_90312_4.webp" alt="Chalet detail" loading="lazy"></div>
+      <div class="g-item g-more-tile"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80236__optimized-desktop/mc-142_2.webp" alt="Chalet with plains view" loading="lazy"><div class="g-more"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>View all <span data-bind="gallery.count">17</span> photos</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="rooms">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Rooms &amp; Rates</div>
+      <h2>Where you&rsquo;ll stay</h2>
+      <p>Two chalet types, both stone-and-thatch with a private deck over the plains, air conditioning, minibar and an en-suite bathroom with heated floors. Rates are per person per night sharing, all-inclusive, with two guided game drives a day.</p>
+    </div>
+    <div class="rooms-grid">
+      <div class="room" data-bind="rooms.chalet">
+        <div class="img room-lb-trigger" role="button" tabindex="0" data-set="chalet" aria-label="View 6 chalet photos"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80234__optimized-desktop/woodbury_lodge_eoom_1_5.webp" alt="Chalet with 2 Game Drives — interior" loading="lazy"><div class="g-more room-more"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>View 6 chalet photos</span></div></div>
+        <div class="body">
+          <h3>Chalet with 2 Game Drives</h3>
+          <div class="spec">Sleeps 2 · 323 m² · King or twin on request</div>
+          <p class="desc">A stone-and-thatch chalet with a private deck overlooking the reserve and a spacious en-suite bathroom with heated floors and views over the plain.</p>
+          <div class="incl">Included: all meals · two game drives a day</div>
+          <div class="feat"><span>Private deck over the plains</span><span>Heated bathroom floors</span><span>Air-conditioned · minibar</span><span>Tea &amp; coffee station</span><span>Bath and shower</span><span>Free WiFi in main areas</span></div>
+          <div class="bath"><b>In your bathroom:</b> bath, shower, hairdryer, free toiletries, towels</div>
+          <div class="row">
+            <div class="pr">From <span data-bind="rooms.chalet.price.symbol">$</span><span data-bind="rooms.chalet.price.amount">405</span> <span>pp / night</span></div>
+            <a href="#enquire" class="btn btn-outline-light" style="padding:11px 22px;">Enquire</a>
+          </div>
+        </div>
+      </div>
+      <div class="room" data-bind="rooms.familyChalet">
+        <div class="img room-lb-trigger" role="button" tabindex="0" data-set="famchalet" aria-label="View 3 family chalet photos"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80240__optimized-desktop/img_90312_5.webp" alt="Family Chalet with 2 Game Drives" loading="lazy"><div class="g-more room-more"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>View 3 family chalet photos</span></div></div>
+        <div class="body">
+          <h3>Family Chalet with 2 Game Drives</h3>
+          <div class="spec">Sleeps up to 4 · 484 m² · Inter-leading twin room</div>
+          <p class="desc">The same stone-and-thatch chalet with an extra inter-leading twin room, separated by a partition for privacy. Children from six years are welcome; guests 12 and over are charged as adults.</p>
+          <div class="incl">Included: all meals · two game drives a day</div>
+          <div class="feat"><span>Inter-leading twin room</span><span>Private deck over the plains</span><span>Heated bathroom floors</span><span>Air-conditioned · minibar</span><span>King or twin on request</span><span>Children from 6 years</span></div>
+          <div class="bath"><b>In your bathroom:</b> bath, shower, hairdryer, free toiletries, towels</div>
+          <div class="row">
+            <div class="pr">From <span data-bind="rooms.familyChalet.price.symbol">$</span><span data-bind="rooms.familyChalet.price.amount">405</span> <span>pp / night</span></div>
+            <a href="#enquire" class="btn btn-outline-light" style="padding:11px 22px;">Enquire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="specials" style="background:var(--ivory-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Current Special</div>
+      <h2>Three nights for the price of two</h2>
+      <p>Winter stays of three nights, priced as two &mdash; with the reserve at its clearest for game viewing.</p>
+    </div>
+    <div class="offer" data-bind="specials[0]">
+      <div>
+        <div class="save-chip">Save 33%</div>
+        <h3>Pay 2, Stay 3</h3>
+        <div class="valid">Valid 1 May &ndash; 30 Sep 2026 &middot; low season</div>
+        <p>Book a three-night stay between May and September and pay for two. Winter is dry-season viewing at Amakhala &mdash; animals gather at the water and the bush thins out. Kids special: two children aged 6&ndash;11 stay free in a Family Chalet.</p>
+        <div class="off-cta"><a class="btn btn-brass" href="#enquire">Enquire about this offer</a><span class="off-note">Best price guarantee &middot; No booking fees</span></div>
+      </div>
+      <div class="off-lists">
+        <div class="off-list cond"><h4>Rate conditions</h4><ul><li>Valid for the stay dates shown</li><li>Three-night stays only</li><li>Not combinable with other specials</li><li>Single supplement 30%</li></ul></div>
+        <div class="off-list"><h4>What&rsquo;s included</h4><ul><li>Accommodation</li><li>All meals</li><li>Selected house beverages</li><li>Two game drives a day</li></ul></div>
+      </div>
+    </div>
+    <div class="off-foot">Full conditions in <a href="#good-to-know">Good to know</a>. Rates and availability confirmed in writing by your consultant before any payment.</div>
+  </div>
+</section>
+
+<section id="experiences" style="padding-top:80px; padding-bottom:80px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Experiences · Included</div>
+      <h2>Things to do</h2>
+      <p>Amakhala is a malaria-free Big 5 reserve on the Bushman&rsquo;s River. Two guided game drives a day are included, with hiking, birding and the river below — and elephants often pass right beneath the lodge. Migratory birds arrive November to April.</p>
+    </div>
+    <div class="list-grid">
+      <span>Big 5 game drives</span><span>Elephant sightings below the lodge</span><span>Hiking on the reserve</span>
+      <span>Guided walking tours (extra)</span><span>Bushman&rsquo;s River cruise</span><span>Sundowner stops</span>
+      <span>Birdwatching &mdash; 250+ species</span><span>High tea &mdash; homemade breads &amp; cakes</span><span>Campfire storytelling</span>
+      <span>Addo Elephant Park day trip</span><span>Two pools over the plains</span><span>Airport transfers arranged</span>
+    </div>
+  </div>
+</section>
+
+<section id="facilities" style="padding-top:80px; padding-bottom:80px; background:var(--ivory-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Facilities</div>
+      <h2>What&rsquo;s on offer</h2>
+    </div>
+    <div class="list-grid">
+      <span><svg viewBox="0 0 24 24"><path d="M2 15c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/><path d="M2 19c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/><path d="M15 4v7M9 4v7M9 8h6M9 4.5a2.5 2.5 0 0 0-5 0"/></svg>Two swimming pools with a view</span>
+      <span><svg viewBox="0 0 24 24"><path d="M7 3v8M5 3v4a2 2 0 0 0 4 0V3M7 11v10"/><path d="M17 3c-1.7 0-3 2-3 5 0 2 1 3 2 3v10"/><path d="M17 3v18"/></svg>Restaurant &mdash; all-inclusive meals</span>
+      <span><svg viewBox="0 0 24 24"><path d="M8 22h8M12 15v7M5 3h14l-7 9z"/><path d="M7 6h10"/></svg>Bar &amp; minibar</span>
+      <span><svg viewBox="0 0 24 24"><path d="M17 8h1a3 3 0 0 1 0 6h-1"/><path d="M4 8h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M8 2v2M12 2v2"/></svg>Breakfast &amp; famous high tea</span>
+      <span><svg viewBox="0 0 24 24"><path d="M12 3v10"/><circle cx="12" cy="17" r="3"/><path d="M9 6l3-3 3 3"/></svg>Heated bathroom floors</span>
+      <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>Free parking on site</span>
+      <span><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="0.8"/></svg>Free WiFi (main lodge areas)</span>
+      <span><svg viewBox="0 0 24 24"><path d="M5 9h11v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M16 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M8 3c-.8 1 .8 2 0 3M12 3c-.8 1 .8 2 0 3"/></svg>Tea &amp; coffee in all chalets</span>
+      <span><svg viewBox="0 0 24 24"><path d="M9.5 6.5A2.5 2.5 0 1 1 12 9H2"/><path d="M13.5 18.5A2.5 2.5 0 1 0 16 16H2"/></svg>Air conditioning &amp; heating</span>
+      <span><svg viewBox="0 0 24 24"><path d="M12 3c1 3-2.5 4.5-2.5 8a4.5 4.5 0 0 0 9 0c0-2-1-3.5-2.5-5 0 1.5-.5 2.5-1.5 3C14.5 7.5 14 5 12 3z"/><path d="M12 21a4.5 4.5 0 0 1-4.5-4.5"/></svg>Outdoor fireplace &amp; campfire</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v2"/><circle cx="17" cy="8" r="2.4"/><path d="M17 13c2.5 0 4.5 1.8 4.5 4.3V21"/></svg>Family chalets · board games</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/></svg>Private decks over the plains</span>
+    </div>
+    <p class="fac-note"><b>Restaurant</b> &middot; all meals included &middot; dietary options: vegetarian, gluten-free and dairy-free, with special diet menus on request.</p>
+    <details class="fac-all" data-bind="facilities.all">
+      <summary><span>Full facilities list &middot; <span data-bind="facilities.count">56</span> items</span></summary>
+      <div class="fac-cats">
+        <div class="fac-cat"><h4>Bathroom</h4><p>Bath, shower, hairdryer, free toiletries, towels; private en-suite</p></div>
+        <div class="fac-cat"><h4>Bedroom</h4><p>Linen, wardrobe or closet</p></div>
+        <div class="fac-cat"><h4>Views &amp; outdoors</h4><p>Mountain and plains views, private deck, terrace and sun terrace, outdoor furniture, outdoor fireplace</p></div>
+        <div class="fac-cat"><h4>In the chalet</h4><p>Electric kettle, tea and coffee maker, minibar, socket near the bed, clothes rack, seating area, air conditioning, heating, electric blankets, mosquito net, private entrance</p></div>
+        <div class="fac-cat"><h4>Activities</h4><p>Game drives (included), hiking, walking tours <i>&middot; additional charge</i></p></div>
+        <div class="fac-cat"><h4>Food &amp; drink</h4><p>Restaurant, bar, minibar, fruit, special diet menus on request</p></div>
+        <div class="fac-cat"><h4>Internet</h4><p>Free WiFi in public areas</p></div>
+        <div class="fac-cat"><h4>Parking</h4><p>Free private parking on site (no reservation needed), accessible parking</p></div>
+        <div class="fac-cat"><h4>Services</h4><p>Daily housekeeping, private check-in and check-out, luggage storage, wake-up service, shared lounge and TV area, laundry <i>&middot; additional charge</i></p></div>
+        <div class="fac-cat"><h4>Family</h4><p>Family chalets, board games and puzzles</p></div>
+        <div class="fac-cat"><h4>Safety &amp; security</h4><p>24-hour security, CCTV in common areas and outside, fire extinguishers, safety deposit box</p></div>
+        <div class="fac-cat"><h4>Pools</h4><p>Two outdoor pools with a view, open all year, pool towels, sun loungers</p></div>
+        <div class="fac-cat"><h4>General</h4><p>Non-smoking chalets, open all year</p></div>
+        <div class="fac-cat"><h4>Languages spoken</h4><p>English, Afrikaans, Xhosa</p></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="nearby">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Property Surroundings</div>
+      <h2>What&rsquo;s nearby</h2>
+      <p>About an hour by road from the airport via the N2, with Addo Elephant National Park close enough for a day visit. Airport transfers can be arranged.</p>
+    </div>
+    <div class="near-grid" data-bind="nearby">
+      <div class="qf">
+        <h3>Reserves &amp; landmarks</h3>
+        <div class="qf-row"><span class="k">Karel Landman Monument</span><span class="v">8 km</span></div>
+        <div class="qf-row"><span class="k">Lalibela Private Game Reserve</span><span class="v">10 km</span></div>
+        <div class="qf-row"><span class="k">Addo Elephant National Park</span><span class="v">50 km</span></div>
+        <div class="qf-row"><span class="k">Makhanda (Grahamstown)</span><span class="v">51 km</span></div>
+      </div>
+      <div class="qf">
+        <h3>Restaurants &amp; caf&eacute;s</h3>
+        <div class="qf-row"><span class="k">Bushman Sands</span><span class="v">22 km</span></div>
+        <p class="sub">All meals are included at the lodge restaurant, with high tea in the afternoon.</p>
+      </div>
+      <div class="qf">
+        <h3>Closest airport</h3>
+        <div class="qf-row"><span class="k">Chief Dawid Stuurman International (Gqeberha)</span><span class="v">72 km</span></div>
+        <p class="sub">Roughly an hour by road via the N2. Ask your consultant about transfers.</p>
+      </div>
+    </div>
+    <p class="near-note">Distances are measured in straight lines; actual travel distances vary.</p>
+    <!-- CMS: map embed slot (Google Maps; ink-styled JSON style pending) -->
+  </div>
+</section>
+
+
+<section id="good-to-know" style="padding-top:80px; padding-bottom:80px; background:var(--ivory-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Practical Details</div>
+      <h2>Good to know</h2>
+      <p>Policies and offer conditions for Woodbury Lodge, in one place.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:26px; max-width:920px;" class="gtk-grid">
+      <div class="qf" data-bind="policies">
+        <h3>Arrival &amp; policies</h3>
+        <div class="qf-row"><span class="k">Check-in</span><span class="v">13:00 &ndash; 14:00</span></div>
+        <div class="qf-row"><span class="k">Check-out</span><span class="v">By 11:00</span></div>
+        <div class="qf-row"><span class="k">Early or late arrival</span><span class="v">On request via your consultant</span></div>
+        <div class="qf-row"><span class="k">Children</span><span class="v">6+ years · 12+ charged as adults</span></div>
+        <div class="qf-row"><span class="k">Cots &amp; extra beds</span><span class="v">Not available</span></div>
+        <div class="qf-row"><span class="k">Pets</span><span class="v">Not allowed</span></div>
+        <div class="qf-row"><span class="k">Smoking</span><span class="v">Non-smoking chalets</span></div>
+        <div class="qf-row"><span class="k">Cards accepted</span><span class="v">Major credit cards · cash not accepted</span></div>
+        <div class="qf-row"><span class="k">Special requests</span><span class="v">Add at booking · met where possible</span></div>
+        <div class="qf-row"><span class="k">Malaria</span><span class="v">Malaria-free · no prophylaxis needed</span></div>
+        <div class="qf-row"><span class="k">Languages</span><span class="v">English · Afrikaans · Xhosa</span></div>
+      </div>
+      <div class="qf special">
+        <h3><span>Current specials &mdash; conditions</span><span class="save-chip">Save 33%</span></h3>
+        <div class="qf-row"><span class="k">Pay 2, Stay 3</span><span class="v">Save 33%</span></div>
+        <div class="qf-row"><span class="k">Valid</span><span class="v">1 May &ndash; 30 Sep 2026 (low season)</span></div>
+        <div class="qf-row"><span class="k">Stay length</span><span class="v">Three-night stays only</span></div>
+        <div class="qf-row"><span class="k">Single supplement</span><span class="v">30%</span></div>
+        <div class="qf-row"><span class="k">Combinable</span><span class="v">Not with other specials</span></div>
+        <div class="qf-row"><span class="k">Kids special</span><span class="v">Two children 6&ndash;11 stay free</span></div>
+      </div>
+    </div>
+    <div class="gtk-foot">
+      <p>*Free cancellation: cancellation terms vary by lodge, rate and season. Your consultant confirms the terms that apply to your dates in writing before you pay a deposit.</p>
+      <p>The lodge accepts major credit cards and reserves the right to hold an amount before arrival. Rates and availability are always confirmed in writing by your consultant.</p>
+    </div>
+  </div>
+</section>
+
+<section class="seasons" id="best-time">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Best Time to Visit</div>
+      <h2>When to go</h2>
+      <p>Game viewing is rewarding year-round and malaria-free. Dry winter is peak for sightings; green summer brings lush scenery and newborn animals.</p>
+    </div>
+    <div class="scard-grid">
+      <div class="scard">
+        <h3>Dry Winter</h3>
+        <div class="when">May – September</div>
+        <p>Animals gather at the water, the bush thins out and viewing is excellent. Cold mornings, minimal rain and few mosquitoes. Peak game viewing.</p>
+      </div>
+      <div class="scard">
+        <h3>Green Summer</h3>
+        <div class="when">October – March</div>
+        <p>Lush landscapes, newborn animals and migratory birds. Warm days of 25–32&nbsp;°C (77–90&nbsp;°F) and busier periods over the SA school holidays. Year-round and malaria-free.</p>
+      </div>
+    </div>
+    <div class="months">
+      <div class="month m-good"><div class="m">Jan</div><div class="s">Green summer</div></div>
+      <div class="month m-good"><div class="m">Feb</div><div class="s">Lush, warm</div></div>
+      <div class="month m-good"><div class="m">Mar</div><div class="s">Newborn game</div></div>
+      <div class="month m-fair"><div class="m">Apr</div><div class="s">Shoulder</div></div>
+      <div class="month m-peak"><div class="m">May</div><div class="s">Dry, prime</div></div>
+      <div class="month m-peak"><div class="m">Jun</div><div class="s">Peak viewing</div></div>
+      <div class="month m-peak"><div class="m">Jul</div><div class="s">Peak viewing</div></div>
+      <div class="month m-peak"><div class="m">Aug</div><div class="s">Peak viewing</div></div>
+      <div class="month m-peak"><div class="m">Sep</div><div class="s">Dry, prime</div></div>
+      <div class="month m-good"><div class="m">Oct</div><div class="s">Green returns</div></div>
+      <div class="month m-good"><div class="m">Nov</div><div class="s">Warm, lush</div></div>
+      <div class="month m-good"><div class="m">Dec</div><div class="s">Busy holidays</div></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--brass);"></i>Peak</span>
+      <span><i style="background:var(--sand);"></i>Good</span>
+      <span><i style="background:var(--bone);"></i>Fair</span>
+    </div>
+  </div>
+</section>
+
+
+<section id="faq" style="padding-top:80px; padding-bottom:80px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Questions</div>
+      <h2>Frequently asked</h2>
+    </div>
+    <div class="faq-grid" data-bind="faq">
+    <div>
+      <details><summary>Are game drives and meals included?</summary><p>Yes &mdash; meals are all-inclusive and two guided game drives a day come with every stay. High tea with homemade breads and cakes is a Woodbury tradition.</p></details>
+      <details><summary>What are the chalets like?</summary><p>Seven stand-alone stone-and-thatch chalets among indigenous trees, each with a private deck over the plains, air conditioning, minibar, and an en-suite bathroom with heated floors.</p></details>
+      <details><summary>Are children welcome?</summary><p>Children from 6 years are welcome. The two family chalets sleep up to four, with an inter-leading twin room for privacy. Guests 12 and over are charged as adults.</p></details>
+      <details><summary>Is Woodbury Lodge malaria-free?</summary><p>Yes &mdash; like the rest of Amakhala, Woodbury Lodge is malaria-free. No antimalarial medication is needed at any time of year.</p></details>
+      <details><summary>Will we see elephants?</summary><p>Very likely &mdash; the resident herd regularly passes below the lodge in the late afternoon, and elephant sightings on Amakhala are classed as common.</p></details>
+      <details><summary>Will we see lions?</summary><p>Lions are resident and actively tracked. Like all wild sightings they&rsquo;re never guaranteed &mdash; though with elephants passing below the lodge, the Big Five rarely feel far away.</p></details>
+      <details><summary>Is there a spa or hot tub?</summary><p>No spa and no hot tubs &mdash; Woodbury&rsquo;s comforts run to heated bathroom floors, two pools overlooking the plains, and a fire under the stars.</p></details>
+      <details><summary>Is there WiFi?</summary><p>Free WiFi is available in the main lodge areas; the chalets themselves stay unplugged.</p></details>
+    </div>
+    <div>
+      <details><summary>When is the best time to visit?</summary><p>There&rsquo;s no wrong month. Dry winter (May&ndash;September) gives the clearest sightings from the valley; green summer (October&ndash;March) brings calves, cubs and migratory birdlife.</p></details>
+      <details><summary>What are the check-in and check-out times?</summary><p>Arrive between 13:00 and 14:00; rooms are released by 11:00 on departure day. Ask your consultant about early or late arrangements &mdash; the lodge accommodates where it can.</p></details>
+      <details><summary>How do we get there from Gqeberha (Port Elizabeth)?</summary><p>Chief Dawid Stuurman International Airport is about 75 km by road &mdash; roughly an hour via the N2. Transfers can be arranged.</p></details>
+      <details><summary>Can we visit Addo Elephant National Park?</summary><p>Yes &mdash; Addo Elephant National Park is about 50 km from the lodge; your consultant can build a day visit into your itinerary.</p></details>
+      <details><summary>Is there parking at the lodge?</summary><p>Yes &mdash; free private parking on site, with accessible bays. No reservation is needed for the parking itself.</p></details>
+      <details><summary>Can we bring pets?</summary><p>No &mdash; pets are not allowed at Woodbury Lodge, in common with the rest of the reserve.</p></details>
+      <details><summary>Can the restaurant cater for dietary requirements?</summary><p>Yes &mdash; meals are taken at the lodge restaurant and are all-inclusive. Vegetarian, gluten-free and dairy-free options are available, and special diet menus can be arranged on request; tell your consultant when you book.</p></details>
+      <details><summary>How much does a stay cost?</summary><p>Rates start from <b><span data-bind="price.symbol">$</span><span data-bind="price.amount">405</span></b> per person per night sharing, all-inclusive with two game drives a day. Rates vary by season and chalet type; your consultant confirms the exact rate for your dates in writing, with no booking fees.</p></details>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="pullquote" style="background:#E8DCCB; padding:88px 0; text-align:center;">
+  <div class="wrap" style="max-width:820px;">
+    <div style="width:64px; height:2px; background:var(--brass); margin:0 auto 34px;"></div>
+    <p style="font-family:var(--serif); font-style:italic; font-size:27px; line-height:1.5; color:var(--ink);">Seven stone-and-thatch chalets against the cliff, indigenous trees alive with birdsong, elephants passing below.</p>
+    <div style="font-family:var(--sans); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#8E6238; margin-top:26px;">Life at Woodbury Lodge</div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews" aria-labelledby="rv-heading">
+  <div class="wrap">
+
+    <div class="rv-summary">
+      <div class="rv-divider">
+        <span class="rule"></span>
+        <svg class="rv-emblem" viewBox="0 0 48 48" fill="none" stroke="#A8794B" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <circle cx="24" cy="24" r="7.5" fill="#A8794B" stroke="none"/>
+          <g opacity=".9">
+            <line x1="24" y1="4"  x2="24" y2="12"/><line x1="24" y1="36" x2="24" y2="44"/>
+            <line x1="4"  y1="24" x2="12" y2="24"/><line x1="36" y1="24" x2="44" y2="24"/>
+            <line x1="10" y1="10" x2="15.5" y2="15.5"/><line x1="32.5" y1="32.5" x2="38" y2="38"/>
+            <line x1="38" y1="10" x2="32.5" y2="15.5"/><line x1="15.5" y1="32.5" x2="10" y2="38"/>
+          </g>
+        </svg>
+        <span class="rule"></span>
+      </div>
+      <div class="rv-source-eyebrow" id="rv-heading">TripAdvisor Reviews</div>
+      <div class="rv-score-row">
+        <div class="rv-score"><span data-bind="reviews.lodge.rating">4.8</span><span class="of"> / 5</span></div>
+        <div class="stars rv-stars-lg" data-bind="reviews.lodge.starPct"><span class="empty"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="fill" style="width:96%"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></div>
+      </div>
+      <div class="rv-count">Based on <b data-bind="reviews.lodge.count">448</b> verified guest reviews</div>
+    </div>
+
+    <div class="reviews-grid" data-bind="reviews.lodge.cards">
+      <div class="rvcard">
+        <div class="rv-head">
+          <div class="rv-avatar" aria-hidden="true">O</div>
+          <div class="rv-who"><div class="rv-name">owenl</div><div class="rv-date">February 2026</div></div>
+        </div>
+        <div class="stars"><span class="empty"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="fill" style="width:100%"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></div>
+        <div class="rv-title">Wonderful trip to Woodbury Lodge</div>
+        <div class="rv-body">Personal feel, nothing a bother, and all staff fantastic. The all-inclusive food had a superb choice.</div>
+        <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
+      </div>
+      <div class="rvcard">
+        <div class="rv-head">
+          <div class="rv-avatar" aria-hidden="true">T</div>
+          <div class="rv-who"><div class="rv-name">TallulahOxford</div><div class="rv-date">October 2025</div></div>
+        </div>
+        <div class="stars"><span class="empty"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="fill" style="width:100%"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></div>
+        <div class="rv-title">A lovely game reserve</div>
+        <div class="rv-body">Our first safari holiday, and every drive was different &mdash; each one felt like a new adventure.</div>
+        <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
+      </div>
+      <div class="rvcard">
+        <div class="rv-head">
+          <div class="rv-avatar" aria-hidden="true">A</div>
+          <div class="rv-who"><div class="rv-name">Anthea O</div><div class="rv-date">September 2025</div></div>
+        </div>
+        <div class="stars"><span class="empty"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="fill" style="width:100%"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></div>
+        <div class="rv-title">Mesmerising safari experience</div>
+        <div class="rv-body">The meals were delectable and the staff catered to our every need. Breath-taking views throughout.</div>
+        <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
+      </div>
+      <div class="rvcard">
+        <div class="rv-head">
+          <div class="rv-avatar" aria-hidden="true">C</div>
+          <div class="rv-who"><div class="rv-name">cadbury</div><div class="rv-date">February 2026</div></div>
+        </div>
+        <div class="stars"><span class="empty"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="fill" style="width:100%"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></div>
+        <div class="rv-title">Highlight of our South African trip</div>
+        <div class="rv-body">After three lodges on our trip, this was definitely our favourite. The reserve is just perfect.</div>
+        <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
+      </div>
+      <div class="rvcard">
+        <div class="rv-head">
+          <div class="rv-avatar" aria-hidden="true">P</div>
+          <div class="rv-who"><div class="rv-name">Pablo D</div><div class="rv-date">October 2025</div></div>
+        </div>
+        <div class="stars"><span class="empty"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="fill" style="width:100%"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></div>
+        <div class="rv-title">Well worth the visit</div>
+        <div class="rv-body">Staff amazing, food delicious, and the game drives were outstanding. One of those places you remember.</div>
+        <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
+      </div>
+      <div class="rvcard">
+        <div class="rv-head">
+          <div class="rv-avatar" aria-hidden="true">G</div>
+          <div class="rv-who"><div class="rv-name">Georgia O</div><div class="rv-date">July 2025</div></div>
+        </div>
+        <div class="stars"><span class="empty"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span class="fill" style="width:100%"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></div>
+        <div class="rv-title">Excellent lodge</div>
+        <div class="rv-body">A superb safari &mdash; a spacious room, wonderful food, and warm hosts from arrival to departure.</div>
+        <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
+      </div>
+    </div>
+
+    <div class="rv-more">
+      <a class="btn btn-outline-light" href="#">All <span data-bind="reviews.lodge.count">448</span> reviews on TripAdvisor</a>
+      <div class="note">African Safari Group is rated <b>4.9 / 5</b> across <b data-bind="reviews.total">4,300+</b> verified reviews on TripAdvisor, Feedback Company and Google &middot; <a href="#">Read all reviews</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="why" id="why-book">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">African Safari Group</div>
+      <h2>Why book with African Safari Group</h2>
+      <p>Consultation-led, with contracted rates at every lodge we sell. One specialist, one written quote, no booking fees.</p>
+    </div>
+    <div class="why-grid">
+      <div class="check"><div><h4>Expert, local advice</h4><p>Consultants based in Cape Town who know Amakhala&rsquo;s lodges, seasons and transfers first-hand.</p></div></div>
+      <div class="check"><div><h4>Best price guarantee</h4><p>Contracted rates at Woodbury Lodge &mdash; you won&rsquo;t find a better price for the same stay.</p></div></div>
+      <div class="check"><div><h4>Support before, during and after</h4><p>Your consultant stays with you from the first quote to the flight home, and is reachable while you travel.</p></div></div>
+      <div class="check"><div><h4>No booking fees</h4><p>Our advice and planning cost you nothing; there is no booking fee, ever.</p></div></div>
+      <div class="check"><div><h4>Full service &mdash; flights and transfers</h4><p>Flights, road and air transfers and add-ons arranged in one itinerary, so nothing falls between the gaps.</p></div></div>
+      <div class="check"><div><h4>One consultant, start to finish</h4><p>A named specialist owns your booking from enquiry to return &mdash; no hand-offs between departments.</p></div></div>
+    </div>
+    <div class="acc-row" data-bind="accreditations" aria-label="Accreditations">
+      <span class="lbl">Accredited &amp; recognised</span>
+      <!-- CMS: swap text pills for the approved logo files (ink versions on light grounds) once placed on pim -->
+      <span class="pill">SATSA Member 3099</span>
+      <span class="pill">ATTA Corporate Member</span>
+      <span class="pill">Cape Town Tourism &middot; Classic Tier</span>
+      <span class="pill">TripAdvisor Certificate of Excellence</span>
+      <span class="pill">Travellers&rsquo; Choice 2026</span>
+    </div>
+  </div>
+</section>
+
+<section class="enq" id="enquire">
+  <div class="wrap">
+    <div class="section-head" style="max-width:860px; margin-left:auto; margin-right:auto; text-align:center;">
+      <div class="eyebrow">Speak to a Safari Expert</div>
+      <h2>Start planning your stay</h2>
+      <p>Four short steps, about two minutes. Your contact details come last, and a safari specialist replies within 15 minutes in working hours.</p>
+    </div>
+    <div class="eq-card" data-bind="enquiry">
+      <div class="eq-head"><div class="eq-prog">Progress <b class="eq-num">01</b> / 04</div><div class="eq-title-cur">When</div></div>
+      <div class="eq-bar" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+
+      <div class="eq-panel on" data-title="When">
+        <h3>When would you like to travel?</h3>
+        <p class="lead">A month is enough to start. Dry winter (May to September) is peak game viewing; green summer brings calves and migratory birds.</p>
+        <div class="eq-q">Dates</div>
+        <div class="chips" data-single="1"><button type="button" class="chip on">I have an idea</button><button type="button" class="chip">I have exact dates</button></div>
+        <div class="eq-q">Month</div>
+        <div class="chips" data-single="1"><button type="button" class="chip">Jan</button><button type="button" class="chip">Feb</button><button type="button" class="chip">Mar</button><button type="button" class="chip">Apr</button><button type="button" class="chip">May</button><button type="button" class="chip">Jun</button><button type="button" class="chip">Jul</button><button type="button" class="chip">Aug</button><button type="button" class="chip">Sep</button><button type="button" class="chip">Oct</button><button type="button" class="chip">Nov</button><button type="button" class="chip">Dec</button><button type="button" class="chip on">Any month</button></div>
+        <div class="eq-q">Trip length</div>
+        <div class="chips" data-single="1"><button type="button" class="chip">Under a week</button><button type="button" class="chip on">One week</button><button type="button" class="chip">Ten days</button><button type="button" class="chip">Two weeks</button><button type="button" class="chip">Two weeks or more</button></div>
+      </div>
+
+      <div class="eq-panel" data-title="Who">
+        <h3>Who is travelling?</h3>
+        <p class="lead">Guests 12 and over count as adults at Woodbury Lodge; children from six years are welcome. This helps us check the right chalets.</p>
+        <div class="eq-q">Party</div>
+        <div class="chips" data-single="1"><button type="button" class="chip">Just me</button><button type="button" class="chip on">My partner</button><button type="button" class="chip">My family</button><button type="button" class="chip">Friends</button></div>
+        <div class="eq-q">Guests</div>
+        <div class="ctrs">
+          <div class="ctr" data-min="1"><div class="lab">Adults<small>12 years and over</small></div><div class="ctl"><button type="button" class="dec" aria-label="Fewer adults"><svg><use href="#i-minus"/></svg></button><span class="val">2</span><button type="button" class="inc" aria-label="More adults"><svg><use href="#i-plus"/></svg></button></div></div>
+          <div class="ctr" data-min="0"><div class="lab">Children<small>6 to 11 years</small></div><div class="ctl"><button type="button" class="dec" aria-label="Fewer children"><svg><use href="#i-minus"/></svg></button><span class="val">0</span><button type="button" class="inc" aria-label="More children"><svg><use href="#i-plus"/></svg></button></div></div>
+          <div class="ctr" data-min="0"><div class="lab">Rooms<small>chalets needed</small></div><div class="ctl"><button type="button" class="dec" aria-label="Fewer rooms"><svg><use href="#i-minus"/></svg></button><span class="val">1</span><button type="button" class="inc" aria-label="More rooms"><svg><use href="#i-plus"/></svg></button></div></div>
+        </div>
+      </div>
+
+      <div class="eq-panel" data-title="Budget">
+        <h3>What is your budget per person?</h3>
+        <p class="lead">For the whole trip &mdash; accommodation, activities and local travel &mdash; excluding international flights. A range is fine; your consultant works within it.</p>
+        <div class="eq-q">Currency</div>
+        <div class="eq-cur"><select data-bind="enquiry.currency" aria-label="Currency"><option>USD $</option><option>GBP £</option><option>EUR €</option><option>AUD $</option><option>MXN $</option><option>ZAR R</option></select></div>
+        <div class="eq-q">Per person</div>
+        <div class="chips" data-single="1"><button type="button" class="chip">Under 5,000</button><button type="button" class="chip on">5,000 &ndash; 10,000</button><button type="button" class="chip">10,000 &ndash; 20,000</button><button type="button" class="chip">20,000 or more</button><button type="button" class="chip">Prefer to discuss</button></div>
+      </div>
+
+      <div class="eq-panel" data-title="Details">
+        <h3>How can we reach you?</h3>
+        <p class="lead">Your details are used only to reply to this enquiry. A named specialist writes back &mdash; no automated quotes.</p>
+        <div class="fields" style="margin-top:22px;">
+          <div class="field"><label for="eq-first">First name</label><input id="eq-first" type="text" autocomplete="given-name"></div>
+          <div class="field"><label for="eq-last">Last name</label><input id="eq-last" type="text" autocomplete="family-name"></div>
+          <div class="field"><label for="eq-email">Email</label><input id="eq-email" type="email" autocomplete="email"></div>
+          <div class="field"><label for="eq-phone">Phone (with country code)</label><input id="eq-phone" type="tel" autocomplete="tel"></div>
+          <div class="field full"><label for="eq-notes">Anything else we should know?</label><textarea id="eq-notes" placeholder="Occasion, must-see sightings, other lodges you are considering"></textarea></div>
+        </div>
+        <div class="eq-q">Reach me by</div>
+        <div class="chips" data-single="1"><button type="button" class="chip on">Email</button><button type="button" class="chip">Phone</button><button type="button" class="chip">WhatsApp</button></div>
+        <label class="consent"><input type="checkbox"><span>I have read and agree to the <a href="#">Privacy Policy</a> of African Safari Group.</span></label>
+      </div>
+
+      <div class="eq-done" role="status">
+        <div class="rv-divider"><span class="rule"></span><svg class="rv-emblem" viewBox="0 0 48 48" fill="none" stroke="#A8794B" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="24" cy="24" r="7.5" fill="#A8794B" stroke="none"/><g opacity=".9"><line x1="24" y1="4" x2="24" y2="12"/><line x1="24" y1="36" x2="24" y2="44"/><line x1="4" y1="24" x2="12" y2="24"/><line x1="36" y1="24" x2="44" y2="24"/><line x1="10" y1="10" x2="15.5" y2="15.5"/><line x1="32.5" y1="32.5" x2="38" y2="38"/><line x1="38" y1="10" x2="32.5" y2="15.5"/><line x1="15.5" y1="32.5" x2="10" y2="38"/></g></svg><span class="rule"></span></div>
+        <h3>Thank you. A safari specialist has your enquiry.</h3>
+        <p>You will hear from a named consultant within 15 minutes in working hours, with availability for your dates and a written quote to follow. Nothing is booked and no payment is taken until you say so.</p>
+      </div>
+
+      <div class="eq-foot">
+        <button type="button" class="eq-back" style="visibility:hidden;">Back</button>
+        <div class="eq-actions">
+          <span class="eq-expect">Two minutes &middot; contact details last</span>
+          <button type="button" class="btn btn-brass eq-next">Next</button>
+          <button type="button" class="btn btn-brass eq-send" style="display:none;" data-bind="enquiry.submit">Send to a Safari Expert</button>
+        </div>
+      </div>
+      <div class="eq-assure"><span>No booking fees</span><span>Best price guarantee</span><span>Free cancellation*</span><span>Secure &amp; private</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="banner" id="contact">
+  <div class="wrap">
+    <h2>Prefer to talk it through?</h2>
+    <div class="sub">Safari specialists in Cape Town, in working hours SAST &middot; <b>+27 21 200 5960</b></div>
+    <div class="btns">
+      <a href="tel:+27212005960" class="btn btn-brass">Call +27 21 200 5960</a>
+      <a href="#" data-bind="contact.whatsapp" class="btn btn-outline-dark">WhatsApp</a>
+    </div>
+    <div class="assure">No booking fee<span>&middot;</span>Best price guarantee<span>&middot;</span>Free cancellation*<span>&middot;</span><a href="#enquire">Or request a callback</a></div>
+  </div>
+</section>
+
+<section class="gallery" id="more" style="padding-top:80px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">More of the Reserve</div>
+      <h2>Other lodges in Amakhala</h2>
+    </div>
+    <div class="xs-grid" data-bind="siblingLodges">
+      <a class="xcard" href="#">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__79900__optimized-desktop/Amakhala%20Safari%20Lodge%20_2_9.webp" alt="Safari Lodge" loading="lazy"></div>
+        <div class="body"><h4>Safari Lodge</h4><p>Eleven luxury suites, each with private plunge pool and hot tub.</p><div class="pr"><span>From <span data-bind="price.symbol">$</span><span data-bind="siblingLodges[0].price.amount">472</span> pppn</span><svg aria-hidden="true"><use href="#i-next"/></svg></div></div>
+      </a>
+      <a class="xcard" href="#">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__79989__optimized-desktop/Bush%20Lodge%20_1_4.webp" alt="Bush Lodge" loading="lazy"></div>
+        <div class="body"><h4>Bush Lodge</h4><p>Intimate tented lodge overlooking a waterhole, with private plunge pools.</p><div class="pr"><span>From <span data-bind="price.symbol">$</span><span data-bind="siblingLodges[1].price.amount">554</span> pppn</span><svg aria-hidden="true"><use href="#i-next"/></svg></div></div>
+      </a>
+      <a class="xcard" href="#">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80012__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Evening%20Sky_3.webp" alt="Leeuwenbosch Country House" loading="lazy"></div>
+        <div class="body"><h4>Leeuwenbosch Country House</h4><p>Historic family farmhouse with gardens, chapel and all ages welcome.</p><div class="pr"><span>From <span data-bind="price.symbol">$</span><span data-bind="siblingLodges[2].price.amount">299</span> pppn</span><svg aria-hidden="true"><use href="#i-next"/></svg></div></div>
+      </a>
+    </div>
+    <div class="more-foot"><a class="btn btn-outline-light" href="#">All seven Amakhala lodges</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img src="https://amakhala.com/wp-content/uploads/logo/amakhala.png" alt="Amakhala Game Reserve"></div>
+        <div class="foot-endorse">Part of African Safari Group</div>
+        <p>A 9,000-hectare malaria-free Big Five reserve on the Bushman&rsquo;s River in the Eastern Cape &mdash; seven family-run lodges, open-vehicle game drives and an easy add-on to the Garden Route.</p>
+        <p style="margin-top:12px;">African Safari Group is an inbound tour operator covering Southern and East Africa&rsquo;s finest safari lodges, sold under contracted rates with a best price guarantee and no booking fees.</p>
+        <div class="foot-social">
+          <a href="#">Facebook</a><a href="#">Instagram</a><a href="#">X</a><a href="#">LinkedIn</a><a href="#">YouTube</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="#">The Reserve</a><a href="#">Lodges</a><a href="#">Specials</a><a href="#">Activities</a><a href="#">Wildlife</a><a href="#">Map</a><a href="#reviews">Reviews</a><a href="#enquire">Speak to a Safari Expert</a>
+      </div>
+      <div class="foot-col">
+        <h5>Lodges</h5>
+        <a href="#">Woodbury Lodge</a><a href="#">Safari Lodge</a><a href="#">Bush Lodge</a><a href="#">HillsNek Safari Camp</a><a href="#">Leeuwenbosch Country House</a><a href="#">Quatermains 1920s Safari Camp</a><a href="#">Woodbury Tented Camp</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="tel:+27212005960"><span class="cc">SA</span>+27 21 200 5960</a>
+        <a href="tel:08082342098"><span class="cc">UK</span>0808 234 2098</a>
+        <a href="tel:18888543008"><span class="cc">US</span>1 888 854 3008</a>
+        <a href="tel:1800571902"><span class="cc">AU</span>1 800 571 902</a>
+        <a href="tel:18447875906"><span class="cc">CA</span>1 844 787 5906</a>
+        <a href="mailto:bookings@africansafarigroup.com">bookings@africansafarigroup.com</a>
+        <a href="#" style="opacity:.75;">Cape Town, South Africa</a>
+      </div>
+    </div>
+    <div class="accred" aria-label="Accreditations and verified review counts">
+      <span class="acc-pill">SATSA Member 3099</span>
+      <span class="acc-pill">ATTA Corporate Member</span>
+      <span class="acc-pill">Cape Town Tourism · Classic Tier</span>
+      <span class="acc-pill">TripAdvisor Certificate of Excellence</span>
+      <span class="rev-pill">TripAdvisor · <span data-bind="reviews.ta.count">818</span> reviews</span>
+      <span class="rev-pill">Feedback Company · <span data-bind="reviews.fc.count">2,846</span> reviews</span>
+      <span class="rev-pill">Google · <span data-bind="reviews.go.count">683</span> reviews</span>
+    </div>
+    <div class="foot-bottom">
+      <div>&copy; 2026 African Safari Group &middot; Amakhala Game Reserve, Eastern Cape, South Africa</div>
+      <div class="foot-legal"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy</a><a href="#">Cookies</a><a href="#">Data Protection</a><a href="#">Refund Policy</a><a href="#">Limitations &amp; Disclaimers</a><a href="#">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="bookbar" role="region" aria-label="Rates and availability">
+  <div class="wrap">
+    <div class="bb-price"><span class="l">Woodbury Lodge · from</span><b><span data-bind="price.symbol">$</span><span data-bind="price.amount">405</span></b><span class="u">pp / night<span class="code"> · <span data-bind="price.code">USD</span></span></span></div>
+    <div class="bb-form">
+      <label class="bb-field">Adults<select data-bind="availability.adults" aria-label="Adults"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+      <label class="bb-field">Children<select data-bind="availability.children" aria-label="Children"><option selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+      <label class="bb-field">Rooms<select data-bind="availability.rooms" aria-label="Rooms"><option selected>1</option><option>2</option><option>3</option><option>4</option></select></label>
+      <a href="#rooms" class="btn btn-outline-dark">Check Availability</a>
+      <a href="#enquire" class="btn btn-brass">Speak to a Safari Expert</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // mobile menu: toggles the ink drawer; closes on link tap or Escape
+  var btn = document.querySelector('.nav-icon.menu'), drawer = document.getElementById('mnav');
+  if (!btn || !drawer) return;
+  function setOpen(on){ document.body.classList.toggle('menu-open', on); btn.setAttribute('aria-expanded', on ? 'true' : 'false'); btn.querySelector('use').setAttribute('href', on ? '#i-close' : '#i-menu'); }
+  btn.addEventListener('click', function(){ setOpen(!document.body.classList.contains('menu-open')); });
+  drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setOpen(false); });
+})();
+</script>
+<script>
+(function(){
+  // sticky booking bar: show once the hero PriceCard has scrolled out of view; hide while the enquiry form or footer is on screen
+  var bar = document.querySelector('.bookbar'), card = document.querySelector('.price-card');
+  if (bar && card && 'IntersectionObserver' in window){
+    var pastCard = false, blockers = {};
+    function paint(){ var on = pastCard && !Object.keys(blockers).some(function(k){ return blockers[k]; }); bar.classList.toggle('show', on); document.body.classList.toggle('bookbar-on', on); }
+    new IntersectionObserver(function(es){ es.forEach(function(e){ pastCard = !e.isIntersecting && e.boundingClientRect.top < 0; }); paint(); }, {threshold:0}).observe(card);
+    var stops = [document.getElementById('enquire'), document.getElementById('contact'), document.querySelector('footer')].filter(Boolean);
+    stops.forEach(function(el, i){ new IntersectionObserver(function(es){ es.forEach(function(e){ blockers['s'+i] = e.isIntersecting; }); paint(); }, {threshold:0}).observe(el); });
+  }
+})();
+</script>
+<script>
+(function(){
+  // enquiry stepper — styled-static: steps switch client-side, nothing is submitted (the CMS wires submission)
+  var root = document.getElementById('enquire'); if (!root) return;
+  var panels = Array.prototype.slice.call(root.querySelectorAll('.eq-panel')), dots = Array.prototype.slice.call(root.querySelectorAll('.eq-bar span'));
+  var num = root.querySelector('.eq-num'), cur = root.querySelector('.eq-title-cur'), back = root.querySelector('.eq-back'), next = root.querySelector('.eq-next'), send = root.querySelector('.eq-send'), done = root.querySelector('.eq-done'), foot = root.querySelector('.eq-foot'), expect = root.querySelector('.eq-expect');
+  var i = 0;
+  function paint(){
+    panels.forEach(function(p,k){ p.classList.toggle('on', k===i); });
+    dots.forEach(function(d,k){ d.classList.toggle('on', k<=i); });
+    num.textContent = ('0'+(i+1)).slice(-2); cur.textContent = panels[i].getAttribute('data-title');
+    back.style.visibility = i ? 'visible' : 'hidden';
+    next.style.display = i < panels.length-1 ? '' : 'none';
+    send.style.display = i === panels.length-1 ? '' : 'none';
+    expect.textContent = i === panels.length-1 ? 'A specialist replies within 15 minutes in working hours' : 'Two minutes \u00b7 contact details last';
+  }
+  next.addEventListener('click', function(){ i = Math.min(i+1, panels.length-1); paint(); });
+  back.addEventListener('click', function(){ i = Math.max(i-1, 0); paint(); });
+  send.addEventListener('click', function(e){ e.preventDefault(); panels.forEach(function(p){ p.classList.remove('on'); }); done.classList.add('on'); foot.style.display='none'; root.querySelector('.eq-head').style.display='none'; root.querySelector('.eq-bar').style.display='none'; });
+  root.querySelectorAll('.chips').forEach(function(g){ g.addEventListener('click', function(e){ var b = e.target.closest('.chip'); if (!b) return; if (g.getAttribute('data-single')==='1'){ g.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on'); }); b.classList.add('on'); } else { b.classList.toggle('on'); } }); });
+  root.querySelectorAll('.ctr').forEach(function(c){ var v = c.querySelector('.val'), min = parseInt(c.getAttribute('data-min')||'0',10);
+    c.querySelector('.inc').addEventListener('click', function(){ v.textContent = Math.min(parseInt(v.textContent,10)+1, 20); });
+    c.querySelector('.dec').addEventListener('click', function(){ v.textContent = Math.max(parseInt(v.textContent,10)-1, min); }); });
+  paint();
+})();
+</script>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.subnav a[href^="#"]'))
+    .filter(function(a){ return a.getAttribute('href').length > 1; });
+  var pairs = links.map(function(a){
+    var el = null;
+    try { el = document.querySelector(a.getAttribute('href')); } catch(e) {}
+    return el ? {link:a, el:el} : null;
+  }).filter(Boolean);
+  var nav = document.querySelector('nav');
+  var subnav = document.querySelector('.subnav');
+  function onScroll(){
+    // --- nav handoff: hide main nav once the subnav meets it, restore on the way back up ---
+    if (nav && subnav){
+      var navH = nav.classList.contains('nav-hidden') ? nav.offsetHeight : nav.getBoundingClientRect().height;
+      var subTop = subnav.getBoundingClientRect().top;
+      if (subTop <= navH + 1) nav.classList.add('nav-hidden');
+      else nav.classList.remove('nav-hidden');
+    }
+    // --- scrollspy: underline follows the section in view ---
+    var offset = 90;
+    var current = pairs[0];
+    for (var i=0;i<pairs.length;i++){
+      if (pairs[i].el.getBoundingClientRect().top - offset <= 0) current = pairs[i];
+    }
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if (current){
+      var changed = !current.link.classList.contains('active');
+      current.link.classList.add('active');
+      // keep the active label in view when the sub-nav scrolls horizontally (phones)
+      var w = subnav && subnav.querySelector('.wrap');
+      if (changed && w && w.scrollWidth > w.clientWidth) w.scrollTo({left: Math.max(0, current.link.offsetLeft - 32), behavior:'smooth'});
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('load', onScroll);
+  onScroll();
+})();
+</script>
+
+<div class="lb" id="lightbox" role="dialog" aria-label="Photo gallery">
+  <button class="lb-x" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  <button class="lb-btn lb-prev" aria-label="Previous"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
+  <img id="lb-img" src="" alt="Lodge photo">
+  <button class="lb-btn lb-next" aria-label="Next"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+  <div class="lb-count" id="lb-count"></div>
+</div>
+<script>
+(function(){
+  var PIM = "https://pim.africansafarigroup.com/_default_upload_bucket/";
+  var SETS = {"lodge": ["image-thumb__80217__optimized-desktop/Aerial%20view_4.webp", "image-thumb__80219__optimized-desktop/Bedroom_7.webp", "image-thumb__80234__optimized-desktop/woodbury_lodge_eoom_1_5.webp", "image-thumb__80235__optimized-desktop/img_90312_4.webp", "image-thumb__80236__optimized-desktop/mc-142_2.webp", "image-thumb__80237__optimized-desktop/mc-41_7.webp", "image-thumb__80238__optimized-desktop/Private%20deck_6.webp", "image-thumb__80239__optimized-desktop/mc-51_4.webp", "image-thumb__80240__optimized-desktop/img_90312_5.webp", "image-thumb__80241__optimized-desktop/img_90362_4.webp", "image-thumb__80242__optimized-desktop/mc-41_8.webp", "image-thumb__80218__optimized-desktop/Bathroom_7.webp", "image-thumb__80220__optimized-desktop/Breakfast_5.webp", "image-thumb__80221__optimized-desktop/img_1726_4.webp", "image-thumb__80231__optimized-desktop/woodbury_lodge_eoom_1_4.webp", "image-thumb__80223__optimized-desktop/img_62011_3.webp", "image-thumb__80224__optimized-desktop/Interior%20detail_5.webp"], "chalet": ["image-thumb__80234__optimized-desktop/woodbury_lodge_eoom_1_5.webp", "image-thumb__80235__optimized-desktop/img_90312_4.webp", "image-thumb__80236__optimized-desktop/mc-142_2.webp", "image-thumb__80237__optimized-desktop/mc-41_7.webp", "image-thumb__80238__optimized-desktop/Private%20deck_6.webp", "image-thumb__80239__optimized-desktop/mc-51_4.webp"], "famchalet": ["image-thumb__80240__optimized-desktop/img_90312_5.webp", "image-thumb__80241__optimized-desktop/img_90362_4.webp", "image-thumb__80242__optimized-desktop/mc-41_8.webp"]};
+  var lb = document.getElementById('lightbox'), img = document.getElementById('lb-img'), cnt = document.getElementById('lb-count');
+  var set = SETS.lodge, idx = 0;
+  function show(i){ idx = (i + set.length) % set.length; img.src = PIM + set[idx]; cnt.textContent = (idx+1) + ' / ' + set.length; }
+  function open(which, i){ set = SETS[which] || SETS.lodge; lb.classList.add('open'); document.body.style.overflow='hidden'; show(i||0); }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+  document.querySelectorAll('#gallery .g-item').forEach(function(el, i){ el.addEventListener('click', function(){ open('lodge', el.classList.contains('g-more-tile') ? 0 : i); }); });
+  document.querySelectorAll('.room-lb-trigger').forEach(function(el){
+    var which = el.getAttribute('data-set') || 'rooms';
+    el.addEventListener('click', function(){ open(which, 0); });
+    el.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(which, 0); } });
+  });
+  lb.querySelector('.lb-prev').addEventListener('click', function(){ show(idx-1); });
+  lb.querySelector('.lb-next').addEventListener('click', function(){ show(idx+1); });
+  lb.querySelector('.lb-x').addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowLeft') show(idx-1); if(e.key==='ArrowRight') show(idx+1); });
+})();
+</script>
+</body>
+</html>
