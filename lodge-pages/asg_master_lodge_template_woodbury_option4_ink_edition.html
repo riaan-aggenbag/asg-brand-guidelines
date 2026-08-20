@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <!--
   ASG MASTER LODGE TEMPLATE — Woodbury Lodge · Amakhala Game Reserve
-  Option 4 · CMS x Ink Edition · static design reference (the blueprint every lodge page clones). NOT the CMS build.
-  Marker: ASG-LODGE-MASTER-OPT4INK-20260818-R1
-  Reflects ASG Brand Guidelines v1.3 · THEME-SPEC.md §8 lodge canon · approved reviews pattern (18 Aug 2026)
-  Binding contract: every element carrying a data-bind attribute is populated by the CMS at render.
-    Pimcore holds ZAR base rates; amount + currency symbol + currency code bind together by visitor IP.
-    Review ratings and counts read from the licensed widgets. Photo counts read from the media set.
-    All values shown here are placeholder snapshots. Never hardcode a bound value in production.
+  Option 4 · Ink Edition · static design reference (the blueprint every lodge and standalone page clones). NOT the production build.
+  Marker: ASG-LODGE-MASTER-OPT4INK-20260820-R2
+  Reflects ASG Brand Guidelines v1.3 · THEME-SPEC.md §8 lodge canon + §9.1 Astro/Cloudflare output rules · approved reviews pattern (18 Aug 2026)
+  Platform (R3): Astro on Cloudflare Pages/Workers. Static HTML + vanilla CSS custom properties; lodge, content and rate data
+    inject from the central database at build time; JavaScript minimal and dependency-free. No WordPress, no on-site CMS.
+  Binding contract: every element carrying a data-bind attribute is populated at build time.
+    Currency (R3): rates render in the rate sheet's native currency only — ZAR for Amakhala. No visitor-currency conversion in any form.
+    Rates state (ledger D-048): a Pimcore rate row loaded by the product team from the STO agreement is displayable — loading is the
+    verification. A row displays while today falls within its validity window; future-dated windows display as forthcoming seasons;
+    lapsed, undated or malformed windows fail validity and render enquire, per row, never blocking the lodge. 12-month re-verification
+    backstop. body[data-rates-state] switches every rate surface for review: "certified" = backed by a rate row passing the D-048
+    validity rule (rate figures render); "fallback" = no validity-passing row (figures suppressed, enquire-led rendering). Woodbury
+    Manor has no rate structure and is permanently fallback. Default in this reference: fallback. Flip the body attribute to review
+    both states. Review ratings and counts read from the licensed widgets. Photo counts read from the media set.
+    All rate values in this file are obviously-fake placeholders (R 00,000). Never hardcode a bound value in production.
+  Image contract (ledger D-046, dims in markup): hero 16:9 1920x1080 (CSS background, viewport-cropped) · gallery tall 2:3 800x1200 ·
+    gallery square 1:1 800x800 · room card 3:2 1200x800 · sibling card 3:2 1200x800 · thumbnail 1:1 400x400. Logos sit outside the
+    photo-slot set; stamp their width/height from the placed asset's intrinsic pixels.
+  Components: every repeatable block is delimited by component comments (component: name ... /component) — standing per-output rule.
 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="asg-marker" content="ASG-LODGE-MASTER-OPT4INK-20260818-R1">
+<meta name="asg-marker" content="ASG-LODGE-MASTER-OPT4INK-20260820-R2">
 <meta name="asg-brand-guidelines" content="Reflects ASG Brand Guidelines v1.3">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Woodbury Lodge — Amakhala Game Reserve · ASG Master Lodge Template (Option 4 · Ink Edition)</title>
@@ -43,12 +55,9 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:500; color:var(--ink); line-he
 .btn-outline-light{background:transparent; color:var(--ink); border:1px solid var(--bone);}
 .btn-outline-light:hover{border-color:var(--brass); color:var(--brass);}
 
-/* top bar — currency switcher (canonical order USD · GBP · EUR · AUD · MXN · ZAR) + phone lines */
+/* top bar — phone lines. The R2 currency switcher is removed under the R3 native-currency ruling — not replaced. */
 .topbar{background:var(--charcoal); color:var(--bone); font-size:11px; letter-spacing:.3px; border-bottom:1px solid rgba(255,255,255,.06);}
-.topbar .wrap{display:flex; align-items:center; justify-content:space-between; height:38px; gap:16px;}
-.tb-cur{display:flex; align-items:center; gap:9px; text-transform:uppercase; letter-spacing:1.5px; font-size:9.5px; color:var(--sand); font-weight:500;}
-.tb-cur select{appearance:none; -webkit-appearance:none; background:transparent; border:1px solid rgba(255,255,255,.18); color:var(--ivory); font-family:var(--sans); font-size:11px; letter-spacing:.6px; padding:4px 24px 4px 9px; border-radius:3px; cursor:pointer; -webkit-mask:none; background-image:var(--chev-mask); background-repeat:no-repeat; background-position:right 8px center; background-size:9px 9px;}
-.tb-cur select:focus-visible{outline:1px solid var(--brass); outline-offset:1px;}
+.topbar .wrap{display:flex; align-items:center; justify-content:flex-end; height:38px; gap:16px;}
 .tb-right{display:flex; align-items:center; gap:22px; white-space:nowrap;}
 .tb-right a{color:var(--ivory-dim); transition:color .2s ease; display:inline-flex; align-items:center;}
 .tb-right a:hover{color:var(--brass);}
@@ -159,7 +168,7 @@ section[id], div[id]{scroll-margin-top:72px;}
 .subnav a:hover, .subnav a.active{color:var(--brass); border-bottom-color:var(--brass);}
 /* the sub-nav is wayfinding only; the sticky booking bar (below) owns the persistent action so no view carries two brass buttons */
 
-/* sticky booking bar — appears once the hero PriceCard scrolls out; bottom-docked, one brass action, price in visitor currency */
+/* sticky booking bar — appears once the hero PriceCard scrolls out; bottom-docked, one brass action, price line in the rate sheet's native currency, gated by the D-048 rates state */
 .bookbar{position:fixed; left:0; right:0; bottom:0; z-index:70; background:rgba(23,20,17,.97); backdrop-filter:blur(6px); border-top:1px solid rgba(255,255,255,.1); transform:translateY(102%); transition:transform .32s ease; padding-bottom:env(safe-area-inset-bottom);}
 .bookbar.show{transform:translateY(0);}
 .bookbar .wrap{display:flex; align-items:center; gap:22px; height:66px;}
@@ -174,6 +183,24 @@ section[id], div[id]{scroll-margin-top:72px;}
 .bookbar .btn{padding:12px 20px; white-space:nowrap;}
 .bookbar .btn-outline-dark{height:40px; padding:0 18px;}
 body.bookbar-on{padding-bottom:70px;}
+
+/* rates state (ledger D-048) — body[data-rates-state] gates every rate surface. "certified" = backed by a rate row passing the
+   D-048 validity rule: loaded by the product team from the STO agreement (loading is the verification); displays while today falls
+   inside the validity window; future-dated windows display as forthcoming seasons; lapsed, undated or malformed windows fail
+   validity and render enquire, per row, never blocking the lodge; 12-month re-verification backstop. "fallback" = no
+   validity-passing row: rate figures suppressed, enquire-led. Sibling-card from-lines gate per sibling lodge's own state at build
+   time; the single body attribute gates them together here for review only. Woodbury Manor: permanently fallback (no rate structure). */
+.pc-fallback{display:none;}
+.pc-fallback .fb-line{font-family:var(--serif); font-size:21px; color:var(--ink); margin:4px 0 16px; line-height:1.4;}
+.bb-fallback{display:none; color:var(--ivory); white-space:nowrap; line-height:1.2; min-width:0;}
+.bb-fallback .l{display:block; font-size:9.5px; letter-spacing:1.6px; text-transform:uppercase; color:var(--sand); font-weight:500; margin-bottom:2px;}
+.bb-fallback b{font-size:13.5px; font-weight:600; color:var(--white); letter-spacing:.2px;}
+body[data-rates-state="fallback"] .price-card .pc-rate{display:none;}
+body[data-rates-state="fallback"] .price-card .pc-fallback{display:block;}
+body[data-rates-state="fallback"] #rooms .pr{display:none;}
+body[data-rates-state="fallback"] .xcard .pr > span{display:none;}
+body[data-rates-state="fallback"] .bb-price{display:none;}
+body[data-rates-state="fallback"] .bb-fallback{display:block;}
 
 section{padding:90px 0;}
 .section-head{max-width:660px; margin-bottom:46px;}
@@ -516,6 +543,8 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
   .tb-right .tb-link{display:none;}
   .bookbar .wrap{height:62px; gap:12px; padding:0 18px;}
   .bookbar .btn-outline-dark{display:none;}
+  .bb-fallback .l{display:none;}
+  .bb-fallback b{font-size:11.5px; white-space:normal; line-height:1.3; display:block; max-width:46vw;}
   .bb-form{margin-left:auto;}
   .bookbar .btn{padding:11px 14px; font-size:10.5px; letter-spacing:1px;}
   .bb-price .l{display:none;}
@@ -687,16 +716,18 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
    "name": "How much does a stay cost?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Rates start from $405 per person per night sharing, all-inclusive with two game drives a day. Rates vary by season and chalet type; your consultant confirms the exact rate for your dates in writing, with no booking fees."
+    "text": "Rates are per person per night sharing, all-inclusive with two game drives a day. They vary by season and chalet type; your consultant confirms the exact rate for your dates in writing, with no booking fees."
    }
   }
  ]
 }
 </script>
 </head>
-<body>
+<body data-rates-state="fallback">
+<!-- rates-state default: fallback. Flip to "certified" to review the rate-backed rendering (D-048). -->
 
 <!-- vector symbols — the fonts carry no ✦ ✓ ✕ glyphs, so every icon is drawn (brand rule) -->
+<!-- component: icon-defs -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="star" viewBox="0 0 20 20"><path d="M10 1.6l2.47 5.16 5.68.72-4.18 3.9 1.08 5.62L10 14.9l-5.05 2.7 1.08-5.62L1.85 8.08l5.68-.72z"/></symbol>
   <symbol id="i-spark" viewBox="0 0 16 16"><path d="M8 0l1.6 6.4L16 8l-6.4 1.6L8 16l-1.6-6.4L0 8l6.4-1.6z"/></symbol>
@@ -716,19 +747,11 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
   <symbol id="i-plus" viewBox="0 0 16 16"><path d="M3 8h10M8 3v10" stroke-linecap="round"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.2"/></symbol>
 </svg>
+<!-- /component -->
 
-<div class="topbar" role="region" aria-label="Currency and contact">
+<!-- component: topbar -->
+<div class="topbar" role="region" aria-label="Contact">
   <div class="wrap">
-    <label class="tb-cur"><span>Currency</span>
-      <select data-bind="currency.code" aria-label="Currency">
-        <option value="USD" selected>USD $</option>
-        <option value="GBP">GBP £</option>
-        <option value="EUR">EUR €</option>
-        <option value="AUD">AUD $</option>
-        <option value="MXN">MXN $</option>
-        <option value="ZAR">ZAR R</option>
-      </select>
-    </label>
     <div class="tb-right">
       <a href="tel:08082342098"><span class="cc">UK</span>0808 234 2098</a>
       <a href="tel:18888543008"><span class="cc">US</span>1 888 854 3008</a>
@@ -738,10 +761,12 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     </div>
   </div>
 </div>
+<!-- /component -->
 
+<!-- component: site-header -->
 <nav>
   <div class="wrap">
-    <a class="logo" href="#"><img src="https://amakhala.com/wp-content/uploads/logo/amakhala.png" alt="Amakhala Game Reserve"></a>
+    <a class="logo" href="#"><img src="https://amakhala.com/wp-content/uploads/logo/amakhala.png" alt="Amakhala Game Reserve"><!-- logo: outside the D-046 photo-slot set; stamp width/height from the placed asset’s intrinsic px --></a>
     <div class="nav-links">
       <a href="#">Reserve</a>
       <a href="#">Lodges</a>
@@ -757,6 +782,8 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     </div>
   </div>
 </nav>
+<!-- /component -->
+<!-- component: mobile-nav-drawer -->
 <div class="mnav" id="mnav" aria-label="Site menu">
   <a class="item" href="#">Reserve</a>
   <a class="item" href="#">Lodges</a>
@@ -774,15 +801,19 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
   </div>
   <a class="btn btn-brass" href="#enquire">Speak to a Safari Expert</a>
 </div>
+<!-- /component -->
 
+<!-- component: hero -->
 <section class="hero" style="padding:0;">
   <div class="hero-bg"></div>
   <div class="hero-scrim"></div>
-  <div class="crumb-bar">
+  <!-- component: breadcrumbs -->
+<div class="crumb-bar">
     <div class="wrap">
       <div class="crumb"><a href="#">Home</a><span class="sep">/</span><a href="#">Reserves</a><span class="sep">/</span><a href="#">Amakhala</a><span class="sep">/</span>Woodbury Lodge</div>
     </div>
   </div>
+<!-- /component -->
   <div class="hero-content">
     <div class="wrap">
       <div class="hero-flex">
@@ -795,10 +826,17 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
             <span class="pills"><span class="hpill"><svg aria-hidden="true"><use href="#i-spark"/></svg>Big 5</span><span class="hpill"><svg aria-hidden="true"><use href="#i-spark"/></svg>Malaria-Free</span></span>
           </div>
         </div>
-        <div class="price-card" aria-label="Rates and enquiry">
+        <!-- component: price-card -->
+<div class="price-card" aria-label="Rates and enquiry">
           <div class="save-chip">Save 33% · Pay 2, Stay 3</div>
-          <div class="from">From</div>
-          <div class="amount"><span class="val"><span data-bind="price.symbol">$</span><span data-bind="price.amount">405</span></span> <span class="unit">pp / night · <span data-bind="price.code">USD</span></span></div>
+          <div class="pc-rate">
+            <div class="from">From</div>
+            <div class="amount"><span class="val"><span data-bind="price.symbol">R</span> <span data-bind="price.amount">00,000</span></span> <span class="unit">pp / night · <span data-bind="price.code">ZAR</span></span></div>
+          </div>
+          <div class="pc-fallback">
+            <div class="from">Rates on request</div>
+            <div class="fb-line">Confirmed for your dates in writing</div>
+          </div>
           <a href="#enquire" class="btn btn-brass">Speak to a Safari Expert</a>
           <a href="#rooms" class="btn btn-outline-light" style="width:100%;">Check Availability</a>
           <div class="note">No payment required &middot; a safari specialist replies within 15 minutes in working hours</div>
@@ -808,11 +846,14 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
           </div>
           <div class="pc-assure"><span>No booking fees</span><span>Best price guarantee</span><span>Free cancellation*</span><span>Secure &amp; private</span></div>
         </div>
+<!-- /component -->
       </div>
     </div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: value-prop-bar -->
 <div class="props">
   <div class="wrap">
     <div class="prop special"><div class="k">Current Specials</div><div class="t">Pay 2, Stay 3 · Kids stay free</div><div class="d">Three nights for the price of two — 33% off, valid 1 May – 30 Sep 2026. Two children aged 6–11 stay free. Conditions apply — <a href="#good-to-know" style="color:#9FBFA3; text-decoration:underline; text-underline-offset:2px;">see conditions</a>.</div></div>
@@ -821,7 +862,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     <div class="prop"><div class="k">Expert Support</div><div class="t">One consultant, start to finish</div><div class="d">Talk to consultants who know Amakhala &mdash; transfers, the best season to travel, which chalet to ask for &mdash; before, during and after your trip.</div></div>
   </div>
 </div>
+<!-- /component -->
 
+<!-- component: trust-row -->
 <div class="trust" aria-label="Accreditations and guest reviews">
   <div class="wrap">
     <span class="t">SATSA</span>
@@ -832,7 +875,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     <a class="t rv" href="#reviews"><svg class="i-star" aria-hidden="true"><use href="#star"/></svg><b>4.9</b>&nbsp;&middot;&nbsp;<span data-bind="reviews.total">4,300+</span>&nbsp;verified reviews</a>
   </div>
 </div>
+<!-- /component -->
 
+<!-- component: sub-nav -->
 <div class="subnav" aria-label="On this page">
   <div class="wrap">
     <a href="#overview" class="active">Overview</a>
@@ -845,7 +890,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     <a href="#reviews">Reviews</a>
   </div>
 </div>
+<!-- /component -->
 
+<!-- component: overview -->
 <section id="overview">
   <div class="wrap">
     <div class="ov-grid">
@@ -868,7 +915,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     </div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: guests-love -->
 <div class="gl" id="guests-love" aria-label="What guests love">
   <div class="wrap">
     <div class="eyebrow">Guests love</div>
@@ -879,7 +928,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     <div class="gl-item"><svg aria-hidden="true"><use href="#i-parking"/></svg><span><b>Free parking</b>private, on site</span></div>
   </div>
 </div>
+<!-- /component -->
 
+<!-- component: gallery -->
 <section class="gallery" id="gallery">
   <div class="wrap">
     <div class="section-head">
@@ -887,15 +938,17 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       <h2>A look around the lodge</h2>
     </div>
     <div class="g-grid">
-      <div class="g-item tall"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80217__optimized-desktop/Aerial%20view_4.webp" alt="Woodbury Lodge above the Bushman's River valley" loading="lazy"></div>
-      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80219__optimized-desktop/Bedroom_7.webp" alt="Chalet bedroom" loading="lazy"></div>
-      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80234__optimized-desktop/woodbury_lodge_eoom_1_5.webp" alt="Stone-and-thatch chalet interior" loading="lazy"></div>
-      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80235__optimized-desktop/img_90312_4.webp" alt="Chalet detail" loading="lazy"></div>
-      <div class="g-item g-more-tile"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80236__optimized-desktop/mc-142_2.webp" alt="Chalet with plains view" loading="lazy"><div class="g-more"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>View all <span data-bind="gallery.count">17</span> photos</span></div></div>
+      <div class="g-item tall"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80217__optimized-desktop/Aerial%20view_4.webp" alt="Woodbury Lodge above the Bushman's River valley" width="800" height="1200" loading="lazy"></div>
+      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80219__optimized-desktop/Bedroom_7.webp" alt="Chalet bedroom" width="800" height="800" loading="lazy"></div>
+      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80234__optimized-desktop/woodbury_lodge_eoom_1_5.webp" alt="Stone-and-thatch chalet interior" width="800" height="800" loading="lazy"></div>
+      <div class="g-item"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80235__optimized-desktop/img_90312_4.webp" alt="Chalet detail" width="800" height="800" loading="lazy"></div>
+      <div class="g-item g-more-tile"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80236__optimized-desktop/mc-142_2.webp" alt="Chalet with plains view" width="800" height="800" loading="lazy"><div class="g-more"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>View all <span data-bind="gallery.count">17</span> photos</span></div></div>
     </div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: rooms -->
 <section id="rooms">
   <div class="wrap">
     <div class="section-head">
@@ -904,8 +957,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       <p>Two chalet types, both stone-and-thatch with a private deck over the plains, air conditioning, minibar and an en-suite bathroom with heated floors. Rates are per person per night sharing, all-inclusive, with two guided game drives a day.</p>
     </div>
     <div class="rooms-grid">
-      <div class="room" data-bind="rooms.chalet">
-        <div class="img room-lb-trigger" role="button" tabindex="0" data-set="chalet" aria-label="View 6 chalet photos"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80234__optimized-desktop/woodbury_lodge_eoom_1_5.webp" alt="Chalet with 2 Game Drives — interior" loading="lazy"><div class="g-more room-more"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>View 6 chalet photos</span></div></div>
+      <!-- component: room-card -->
+<div class="room" data-bind="rooms.chalet">
+        <div class="img room-lb-trigger" role="button" tabindex="0" data-set="chalet" aria-label="View 6 chalet photos"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80234__optimized-desktop/woodbury_lodge_eoom_1_5.webp" alt="Chalet with 2 Game Drives — interior" width="1200" height="800" loading="lazy"><div class="g-more room-more"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>View 6 chalet photos</span></div></div>
         <div class="body">
           <h3>Chalet with 2 Game Drives</h3>
           <div class="spec">Sleeps 2 · 323 m² · King or twin on request</div>
@@ -914,13 +968,15 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
           <div class="feat"><span>Private deck over the plains</span><span>Heated bathroom floors</span><span>Air-conditioned · minibar</span><span>Tea &amp; coffee station</span><span>Bath and shower</span><span>Free WiFi in main areas</span></div>
           <div class="bath"><b>In your bathroom:</b> bath, shower, hairdryer, free toiletries, towels</div>
           <div class="row">
-            <div class="pr">From <span data-bind="rooms.chalet.price.symbol">$</span><span data-bind="rooms.chalet.price.amount">405</span> <span>pp / night</span></div>
+            <div class="pr">From <span data-bind="rooms.chalet.price.symbol">R</span> <span data-bind="rooms.chalet.price.amount">00,000</span> <span>pp / night</span></div>
             <a href="#enquire" class="btn btn-outline-light" style="padding:11px 22px;">Enquire</a>
           </div>
         </div>
       </div>
-      <div class="room" data-bind="rooms.familyChalet">
-        <div class="img room-lb-trigger" role="button" tabindex="0" data-set="famchalet" aria-label="View 3 family chalet photos"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80240__optimized-desktop/img_90312_5.webp" alt="Family Chalet with 2 Game Drives" loading="lazy"><div class="g-more room-more"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>View 3 family chalet photos</span></div></div>
+<!-- /component -->
+      <!-- component: room-card -->
+<div class="room" data-bind="rooms.familyChalet">
+        <div class="img room-lb-trigger" role="button" tabindex="0" data-set="famchalet" aria-label="View 3 family chalet photos"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80240__optimized-desktop/img_90312_5.webp" alt="Family Chalet with 2 Game Drives" width="1200" height="800" loading="lazy"><div class="g-more room-more"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>View 3 family chalet photos</span></div></div>
         <div class="body">
           <h3>Family Chalet with 2 Game Drives</h3>
           <div class="spec">Sleeps up to 4 · 484 m² · Inter-leading twin room</div>
@@ -929,15 +985,18 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
           <div class="feat"><span>Inter-leading twin room</span><span>Private deck over the plains</span><span>Heated bathroom floors</span><span>Air-conditioned · minibar</span><span>King or twin on request</span><span>Children from 6 years</span></div>
           <div class="bath"><b>In your bathroom:</b> bath, shower, hairdryer, free toiletries, towels</div>
           <div class="row">
-            <div class="pr">From <span data-bind="rooms.familyChalet.price.symbol">$</span><span data-bind="rooms.familyChalet.price.amount">405</span> <span>pp / night</span></div>
+            <div class="pr">From <span data-bind="rooms.familyChalet.price.symbol">R</span> <span data-bind="rooms.familyChalet.price.amount">00,000</span> <span>pp / night</span></div>
             <a href="#enquire" class="btn btn-outline-light" style="padding:11px 22px;">Enquire</a>
           </div>
         </div>
       </div>
+<!-- /component -->
     </div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: specials -->
 <section id="specials" style="background:var(--ivory-dim);">
   <div class="wrap">
     <div class="section-head">
@@ -945,7 +1004,8 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       <h2>Three nights for the price of two</h2>
       <p>Winter stays of three nights, priced as two &mdash; with the reserve at its clearest for game viewing.</p>
     </div>
-    <div class="offer" data-bind="specials[0]">
+    <!-- component: specials-offer -->
+<div class="offer" data-bind="specials[0]">
       <div>
         <div class="save-chip">Save 33%</div>
         <h3>Pay 2, Stay 3</h3>
@@ -958,10 +1018,13 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
         <div class="off-list"><h4>What&rsquo;s included</h4><ul><li>Accommodation</li><li>All meals</li><li>Selected house beverages</li><li>Two game drives a day</li></ul></div>
       </div>
     </div>
+<!-- /component -->
     <div class="off-foot">Full conditions in <a href="#good-to-know">Good to know</a>. Rates and availability confirmed in writing by your consultant before any payment.</div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: experiences -->
 <section id="experiences" style="padding-top:80px; padding-bottom:80px;">
   <div class="wrap">
     <div class="section-head">
@@ -977,7 +1040,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     </div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: facilities -->
 <section id="facilities" style="padding-top:80px; padding-bottom:80px; background:var(--ivory-dim);">
   <div class="wrap">
     <div class="section-head">
@@ -1020,7 +1085,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     </details>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: nearby -->
 <section id="nearby">
   <div class="wrap">
     <div class="section-head">
@@ -1051,8 +1118,10 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     <!-- CMS: map embed slot (Google Maps; ink-styled JSON style pending) -->
   </div>
 </section>
+<!-- /component -->
 
 
+<!-- component: good-to-know -->
 <section id="good-to-know" style="padding-top:80px; padding-bottom:80px; background:var(--ivory-dim);">
   <div class="wrap">
     <div class="section-head">
@@ -1091,7 +1160,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     </div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: best-time -->
 <section class="seasons" id="best-time">
   <div class="wrap">
     <div class="section-head">
@@ -1111,7 +1182,8 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
         <p>Lush landscapes, newborn animals and migratory birds. Warm days of 25–32&nbsp;°C (77–90&nbsp;°F) and busier periods over the SA school holidays. Year-round and malaria-free.</p>
       </div>
     </div>
-    <div class="months">
+    <!-- component: month-grid -->
+<div class="months">
       <div class="month m-good"><div class="m">Jan</div><div class="s">Green summer</div></div>
       <div class="month m-good"><div class="m">Feb</div><div class="s">Lush, warm</div></div>
       <div class="month m-good"><div class="m">Mar</div><div class="s">Newborn game</div></div>
@@ -1125,6 +1197,7 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       <div class="month m-good"><div class="m">Nov</div><div class="s">Warm, lush</div></div>
       <div class="month m-good"><div class="m">Dec</div><div class="s">Busy holidays</div></div>
     </div>
+<!-- /component -->
     <div class="legend">
       <span><i style="background:var(--brass);"></i>Peak</span>
       <span><i style="background:var(--sand);"></i>Good</span>
@@ -1132,8 +1205,10 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     </div>
   </div>
 </section>
+<!-- /component -->
 
 
+<!-- component: faq -->
 <section id="faq" style="padding-top:80px; padding-bottom:80px;">
   <div class="wrap">
     <div class="section-head">
@@ -1159,12 +1234,14 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       <details><summary>Is there parking at the lodge?</summary><p>Yes &mdash; free private parking on site, with accessible bays. No reservation is needed for the parking itself.</p></details>
       <details><summary>Can we bring pets?</summary><p>No &mdash; pets are not allowed at Woodbury Lodge, in common with the rest of the reserve.</p></details>
       <details><summary>Can the restaurant cater for dietary requirements?</summary><p>Yes &mdash; meals are taken at the lodge restaurant and are all-inclusive. Vegetarian, gluten-free and dairy-free options are available, and special diet menus can be arranged on request; tell your consultant when you book.</p></details>
-      <details><summary>How much does a stay cost?</summary><p>Rates start from <b><span data-bind="price.symbol">$</span><span data-bind="price.amount">405</span></b> per person per night sharing, all-inclusive with two game drives a day. Rates vary by season and chalet type; your consultant confirms the exact rate for your dates in writing, with no booking fees.</p></details>
+      <details><summary>How much does a stay cost?</summary><p>Rates are per person per night sharing, all-inclusive with two game drives a day. They vary by season and chalet type; your consultant confirms the exact rate for your dates in writing, with no booking fees.</p></details>
     </div>
     </div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: pull-quote -->
 <section class="pullquote" style="background:#E8DCCB; padding:88px 0; text-align:center;">
   <div class="wrap" style="max-width:820px;">
     <div style="width:64px; height:2px; background:var(--brass); margin:0 auto 34px;"></div>
@@ -1172,11 +1249,14 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     <div style="font-family:var(--sans); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#8E6238; margin-top:26px;">Life at Woodbury Lodge</div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: reviews -->
 <section id="reviews" class="reviews" aria-labelledby="rv-heading">
   <div class="wrap">
 
-    <div class="rv-summary">
+    <!-- component: rating-summary -->
+<div class="rv-summary">
       <div class="rv-divider">
         <span class="rule"></span>
         <svg class="rv-emblem" viewBox="0 0 48 48" fill="none" stroke="#A8794B" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
@@ -1197,9 +1277,11 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       </div>
       <div class="rv-count">Based on <b data-bind="reviews.lodge.count">448</b> verified guest reviews</div>
     </div>
+<!-- /component -->
 
     <div class="reviews-grid" data-bind="reviews.lodge.cards">
-      <div class="rvcard">
+      <!-- component: review-card -->
+<div class="rvcard">
         <div class="rv-head">
           <div class="rv-avatar" aria-hidden="true">O</div>
           <div class="rv-who"><div class="rv-name">owenl</div><div class="rv-date">February 2026</div></div>
@@ -1209,7 +1291,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
         <div class="rv-body">Personal feel, nothing a bother, and all staff fantastic. The all-inclusive food had a superb choice.</div>
         <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
       </div>
-      <div class="rvcard">
+<!-- /component -->
+      <!-- component: review-card -->
+<div class="rvcard">
         <div class="rv-head">
           <div class="rv-avatar" aria-hidden="true">T</div>
           <div class="rv-who"><div class="rv-name">TallulahOxford</div><div class="rv-date">October 2025</div></div>
@@ -1219,7 +1303,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
         <div class="rv-body">Our first safari holiday, and every drive was different &mdash; each one felt like a new adventure.</div>
         <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
       </div>
-      <div class="rvcard">
+<!-- /component -->
+      <!-- component: review-card -->
+<div class="rvcard">
         <div class="rv-head">
           <div class="rv-avatar" aria-hidden="true">A</div>
           <div class="rv-who"><div class="rv-name">Anthea O</div><div class="rv-date">September 2025</div></div>
@@ -1229,7 +1315,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
         <div class="rv-body">The meals were delectable and the staff catered to our every need. Breath-taking views throughout.</div>
         <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
       </div>
-      <div class="rvcard">
+<!-- /component -->
+      <!-- component: review-card -->
+<div class="rvcard">
         <div class="rv-head">
           <div class="rv-avatar" aria-hidden="true">C</div>
           <div class="rv-who"><div class="rv-name">cadbury</div><div class="rv-date">February 2026</div></div>
@@ -1239,7 +1327,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
         <div class="rv-body">After three lodges on our trip, this was definitely our favourite. The reserve is just perfect.</div>
         <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
       </div>
-      <div class="rvcard">
+<!-- /component -->
+      <!-- component: review-card -->
+<div class="rvcard">
         <div class="rv-head">
           <div class="rv-avatar" aria-hidden="true">P</div>
           <div class="rv-who"><div class="rv-name">Pablo D</div><div class="rv-date">October 2025</div></div>
@@ -1249,7 +1339,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
         <div class="rv-body">Staff amazing, food delicious, and the game drives were outstanding. One of those places you remember.</div>
         <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
       </div>
-      <div class="rvcard">
+<!-- /component -->
+      <!-- component: review-card -->
+<div class="rvcard">
         <div class="rv-head">
           <div class="rv-avatar" aria-hidden="true">G</div>
           <div class="rv-who"><div class="rv-name">Georgia O</div><div class="rv-date">July 2025</div></div>
@@ -1259,6 +1351,7 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
         <div class="rv-body">A superb safari &mdash; a spacious room, wonderful food, and warm hosts from arrival to departure.</div>
         <div class="rv-src"><span class="dot"></span>Reviewed on <b>TripAdvisor</b></div>
       </div>
+<!-- /component -->
     </div>
 
     <div class="rv-more">
@@ -1268,7 +1361,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
 
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: why-book -->
 <section class="why" id="why-book">
   <div class="wrap">
     <div class="section-head">
@@ -1284,7 +1379,8 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       <div class="check"><div><h4>Full service &mdash; flights and transfers</h4><p>Flights, road and air transfers and add-ons arranged in one itinerary, so nothing falls between the gaps.</p></div></div>
       <div class="check"><div><h4>One consultant, start to finish</h4><p>A named specialist owns your booking from enquiry to return &mdash; no hand-offs between departments.</p></div></div>
     </div>
-    <div class="acc-row" data-bind="accreditations" aria-label="Accreditations">
+    <!-- component: accreditation-row -->
+<div class="acc-row" data-bind="accreditations" aria-label="Accreditations">
       <span class="lbl">Accredited &amp; recognised</span>
       <!-- CMS: swap text pills for the approved logo files (ink versions on light grounds) once placed on pim -->
       <span class="pill">SATSA Member 3099</span>
@@ -1293,9 +1389,12 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       <span class="pill">TripAdvisor Certificate of Excellence</span>
       <span class="pill">Travellers&rsquo; Choice 2026</span>
     </div>
+<!-- /component -->
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: enquiry -->
 <section class="enq" id="enquire">
   <div class="wrap">
     <div class="section-head" style="max-width:860px; margin-left:auto; margin-right:auto; text-align:center;">
@@ -1303,7 +1402,8 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       <h2>Start planning your stay</h2>
       <p>Four short steps, about two minutes. Your contact details come last, and a safari specialist replies within 15 minutes in working hours.</p>
     </div>
-    <div class="eq-card" data-bind="enquiry">
+    <!-- component: enquiry-stepper -->
+<div class="eq-card" data-bind="enquiry">
       <div class="eq-head"><div class="eq-prog">Progress <b class="eq-num">01</b> / 04</div><div class="eq-title-cur">When</div></div>
       <div class="eq-bar" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
 
@@ -1332,6 +1432,7 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       </div>
 
       <div class="eq-panel" data-title="Budget">
+        <!-- Budget-step currency select: captures the client’s budget currency as consultation data. It survives the R3 native-currency ruling (Gate 1 decision 3, 20 Aug 2026); display conversion was removed with the topbar switcher. Never conflate the two. -->
         <h3>What is your budget per person?</h3>
         <p class="lead">For the whole trip &mdash; accommodation, activities and local travel &mdash; excluding international flights. A range is fine; your consultant works within it.</p>
         <div class="eq-q">Currency</div>
@@ -1371,9 +1472,12 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       </div>
       <div class="eq-assure"><span>No booking fees</span><span>Best price guarantee</span><span>Free cancellation*</span><span>Secure &amp; private</span></div>
     </div>
+<!-- /component -->
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: contact-banner -->
 <section class="banner" id="contact">
   <div class="wrap">
     <h2>Prefer to talk it through?</h2>
@@ -1385,7 +1489,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     <div class="assure">No booking fee<span>&middot;</span>Best price guarantee<span>&middot;</span>Free cancellation*<span>&middot;</span><a href="#enquire">Or request a callback</a></div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: more-of-the-reserve -->
 <section class="gallery" id="more" style="padding-top:80px;">
   <div class="wrap">
     <div class="section-head">
@@ -1393,28 +1499,36 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       <h2>Other lodges in Amakhala</h2>
     </div>
     <div class="xs-grid" data-bind="siblingLodges">
-      <a class="xcard" href="#">
-        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__79900__optimized-desktop/Amakhala%20Safari%20Lodge%20_2_9.webp" alt="Safari Lodge" loading="lazy"></div>
-        <div class="body"><h4>Safari Lodge</h4><p>Eleven luxury suites, each with private plunge pool and hot tub.</p><div class="pr"><span>From <span data-bind="price.symbol">$</span><span data-bind="siblingLodges[0].price.amount">472</span> pppn</span><svg aria-hidden="true"><use href="#i-next"/></svg></div></div>
+      <!-- component: sibling-card -->
+<a class="xcard" href="#">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__79900__optimized-desktop/Amakhala%20Safari%20Lodge%20_2_9.webp" alt="Safari Lodge" width="1200" height="800" loading="lazy"></div>
+        <div class="body"><h4>Safari Lodge</h4><p>Eleven luxury suites, each with private plunge pool and hot tub.</p><div class="pr"><span>From <span data-bind="price.symbol">R</span> <span data-bind="siblingLodges[0].price.amount">00,000</span> pppn</span><svg aria-hidden="true"><use href="#i-next"/></svg></div></div>
       </a>
-      <a class="xcard" href="#">
-        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__79989__optimized-desktop/Bush%20Lodge%20_1_4.webp" alt="Bush Lodge" loading="lazy"></div>
-        <div class="body"><h4>Bush Lodge</h4><p>Intimate tented lodge overlooking a waterhole, with private plunge pools.</p><div class="pr"><span>From <span data-bind="price.symbol">$</span><span data-bind="siblingLodges[1].price.amount">554</span> pppn</span><svg aria-hidden="true"><use href="#i-next"/></svg></div></div>
+<!-- /component -->
+      <!-- component: sibling-card -->
+<a class="xcard" href="#">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__79989__optimized-desktop/Bush%20Lodge%20_1_4.webp" alt="Bush Lodge" width="1200" height="800" loading="lazy"></div>
+        <div class="body"><h4>Bush Lodge</h4><p>Intimate tented lodge overlooking a waterhole, with private plunge pools.</p><div class="pr"><span>From <span data-bind="price.symbol">R</span> <span data-bind="siblingLodges[1].price.amount">00,000</span> pppn</span><svg aria-hidden="true"><use href="#i-next"/></svg></div></div>
       </a>
-      <a class="xcard" href="#">
-        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80012__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Evening%20Sky_3.webp" alt="Leeuwenbosch Country House" loading="lazy"></div>
-        <div class="body"><h4>Leeuwenbosch Country House</h4><p>Historic family farmhouse with gardens, chapel and all ages welcome.</p><div class="pr"><span>From <span data-bind="price.symbol">$</span><span data-bind="siblingLodges[2].price.amount">299</span> pppn</span><svg aria-hidden="true"><use href="#i-next"/></svg></div></div>
+<!-- /component -->
+      <!-- component: sibling-card -->
+<a class="xcard" href="#">
+        <div class="img"><img src="https://pim.africansafarigroup.com/_default_upload_bucket/image-thumb__80012__optimized-desktop/Leeuwenbosch%20Country%20Lodge%20Evening%20Sky_3.webp" alt="Leeuwenbosch Country House" width="1200" height="800" loading="lazy"></div>
+        <div class="body"><h4>Leeuwenbosch Country House</h4><p>Historic family farmhouse with gardens, chapel and all ages welcome.</p><div class="pr"><span>From <span data-bind="price.symbol">R</span> <span data-bind="siblingLodges[2].price.amount">00,000</span> pppn</span><svg aria-hidden="true"><use href="#i-next"/></svg></div></div>
       </a>
+<!-- /component -->
     </div>
     <div class="more-foot"><a class="btn btn-outline-light" href="#">All seven Amakhala lodges</a></div>
   </div>
 </section>
+<!-- /component -->
 
+<!-- component: site-footer -->
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-logo"><img src="https://amakhala.com/wp-content/uploads/logo/amakhala.png" alt="Amakhala Game Reserve"></div>
+        <div class="foot-logo"><img src="https://amakhala.com/wp-content/uploads/logo/amakhala.png" alt="Amakhala Game Reserve"><!-- logo: outside the D-046 photo-slot set; stamp width/height from the placed asset’s intrinsic px --></div>
         <div class="foot-endorse">Part of African Safari Group</div>
         <p>A 9,000-hectare malaria-free Big Five reserve on the Bushman&rsquo;s River in the Eastern Cape &mdash; seven family-run lodges, open-vehicle game drives and an easy add-on to the Garden Route.</p>
         <p style="margin-top:12px;">African Safari Group is an inbound tour operator covering Southern and East Africa&rsquo;s finest safari lodges, sold under contracted rates with a best price guarantee and no booking fees.</p>
@@ -1441,7 +1555,8 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
         <a href="#" style="opacity:.75;">Cape Town, South Africa</a>
       </div>
     </div>
-    <div class="accred" aria-label="Accreditations and verified review counts">
+    <!-- component: accreditation-row -->
+<div class="accred" aria-label="Accreditations and verified review counts">
       <span class="acc-pill">SATSA Member 3099</span>
       <span class="acc-pill">ATTA Corporate Member</span>
       <span class="acc-pill">Cape Town Tourism · Classic Tier</span>
@@ -1450,16 +1565,20 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
       <span class="rev-pill">Feedback Company · <span data-bind="reviews.fc.count">2,846</span> reviews</span>
       <span class="rev-pill">Google · <span data-bind="reviews.go.count">683</span> reviews</span>
     </div>
+<!-- /component -->
     <div class="foot-bottom">
       <div>&copy; 2026 African Safari Group &middot; Amakhala Game Reserve, Eastern Cape, South Africa</div>
       <div class="foot-legal"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy</a><a href="#">Cookies</a><a href="#">Data Protection</a><a href="#">Refund Policy</a><a href="#">Limitations &amp; Disclaimers</a><a href="#">Contact</a></div>
     </div>
   </div>
 </footer>
+<!-- /component -->
 
+<!-- component: sticky-booking-bar -->
 <div class="bookbar" role="region" aria-label="Rates and availability">
   <div class="wrap">
-    <div class="bb-price"><span class="l">Woodbury Lodge · from</span><b><span data-bind="price.symbol">$</span><span data-bind="price.amount">405</span></b><span class="u">pp / night<span class="code"> · <span data-bind="price.code">USD</span></span></span></div>
+    <div class="bb-price"><span class="l">Woodbury Lodge · from</span><b><span data-bind="price.symbol">R</span> <span data-bind="price.amount">00,000</span></b><span class="u">pp / night<span class="code"> · <span data-bind="price.code">ZAR</span></span></span></div>
+    <div class="bb-fallback"><span class="l">Woodbury Lodge</span><b>Replies within 15 minutes in working hours</b></div>
     <div class="bb-form">
       <label class="bb-field">Adults<select data-bind="availability.adults" aria-label="Adults"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
       <label class="bb-field">Children<select data-bind="availability.children" aria-label="Children"><option selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
@@ -1469,7 +1588,9 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
     </div>
   </div>
 </div>
+<!-- /component -->
 
+<!-- component: page-behaviours -->
 <script>
 (function(){
   // mobile menu: toggles the ink drawer; closes on link tap or Escape
@@ -1559,11 +1680,13 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
   onScroll();
 })();
 </script>
+<!-- /component -->
 
+<!-- component: lightbox -->
 <div class="lb" id="lightbox" role="dialog" aria-label="Photo gallery">
   <button class="lb-x" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
   <button class="lb-btn lb-prev" aria-label="Previous"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
-  <img id="lb-img" src="" alt="Lodge photo">
+  <img id="lb-img" src="" alt="Lodge photo" width="1920" height="1080">
   <button class="lb-btn lb-next" aria-label="Next"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
   <div class="lb-count" id="lb-count"></div>
 </div>
@@ -1589,5 +1712,6 @@ footer{background:var(--ink); color:var(--bone); padding:72px 0 30px;}
   document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowLeft') show(idx-1); if(e.key==='ArrowRight') show(idx+1); });
 })();
 </script>
+<!-- /component -->
 </body>
 </html>
