@@ -21,7 +21,7 @@
       "One colour system across brand book, web, and email. No per-surface palettes.",
       "v1.3 (16 Aug 2026): lodge-template + page-behaviour canon added under component.lodgeTemplate and component.behaviour; stamps bumped to v1.3. cssVar names unchanged — additive only.",
       "R2 (18 Aug 2026): versions with THEME-SPEC.md R2. Currency binding refined (amount + symbol + code) and switcher order recorded under component.lodgeTemplate.pricing. No token values changed — $meta and one doc string only; the master lodge template ASG-LODGE-MASTER-OPT4INK-20260818-R1 nine patterns + reviews pattern live in THEME-SPEC §8, export-pending.",
-      "R3 (20 Aug 2026): platform ruling — Astro on Cloudflare Pages/Workers, static HTML/CSS, data injected from the central DB at build time; no WordPress, no on-site CMS. Currency ruling — rates render in the rate sheet's native currency only (ZAR / USD as stored); the R2 switcher and all visitor-currency conversion are removed, not replaced. Static-output rules (component comments, image dimensions, two-state rates block, minimal JS) live in THEME-SPEC §9.1. No token values changed."
+      "R3 (20 Aug 2026): platform ruling — Astro on Cloudflare Pages/Workers, static HTML/CSS, data injected from the central DB at build time; no WordPress, no on-site CMS. Currency ruling — rates render in the rate sheet's native currency only (ZAR / USD as stored); the R2 switcher and all visitor-currency conversion are removed, not replaced. Static-output rules (component comments as a per-output rule, the fallback-default rates block, minimal JS) live in THEME-SPEC §9.1. The ratified aspect-ratio set is added under image.aspectRatios (hero 16:9, gallery tall 2:3, gallery square 1:1, room/reserve 3:2, thumbnail 1:1). No existing token values changed."
     ]
   },
   "banned": {
@@ -971,7 +971,7 @@
       "goodToKnow": "Policies + specials conditions; required on every lodge page",
       "moreOfTheReserve": "Fixed cross-promotion label; never 'cross-sell'",
       "footerEndorsement": "'Part of African Safari Group' — mandatory on every sub-brand footer, CMS included",
-      "pricing": "Rates render in the native currency of the rate sheet only — ZAR for South African lodges (all Amakhala), USD where the sheet is USD-denominated. No visitor-currency conversion in any form (not IP-at-render, not build-time variants, not a switcher). Price field bound, injected from the central DB at build time, never hardcoded. Placeholders obviously fake in the native currency (R 00,000 / $0,000). Rates block has two states: full, and lapsed fallback 'From R xx,xxx — enquire' accepting either symbol. Prices in Poppins.",
+      "pricing": "Rates render in the native currency of the rate sheet only — ZAR for South African lodges (all Amakhala), USD where the sheet is USD-denominated. No visitor-currency conversion in any form (not IP-at-render, not build-time variants, not a switcher). Price field bound, injected from the central DB at build time, never hardcoded. Placeholders obviously fake in the native currency (R 00,000 / $0,000). Rates block DEFAULT state is the enquire-fallback ('From R xx,xxx — enquire' / 'From $x,xxx — enquire', currency-agnostic, equal design quality), rendered until a rate row is certified in the DB; the full rate grid is the enhanced state a lodge graduates into on certification. At launch no rows are certified, so the fallback is the launch state site-wide. Prices in Poppins.",
       "pullQuote": "From the lodge's own copy — never a fabricated guest quote",
       "imageHosts": [
         "pim.africansafarigroup.com",
@@ -983,6 +983,17 @@
       "scrollspy": "Brass underline follows section in view; bare href='#' excluded so querySelector never throws",
       "noFeedbackWidget": "Guest-facing deployments never publish a feedback widget or third-party 'made with' badge",
       "breadcrumbs": "Top-left of hero, no background; links Sand with brass hover; current page plain text, never a link"
+    }
+  },
+  "image": {
+    "note": "Fixed aspect-ratio contract per slot type — one ratio per slot, dimensions in markup, no per-page variation. Cloudflare Images resizes against these source dimensions. Review-card avatars are CSS monogram discs, not image slots (excluded). Ratified 20 Aug 2026 (R3).",
+    "aspectRatios": {
+      "hero":          { "ratio": "16:9", "source": "1920x1080", "note": "Full-bleed hero; one 16:9 source, viewport-cropped shorter on mobile via CSS." },
+      "galleryTall":   { "ratio": "2:3",  "source": "800x1200",  "note": "Portrait tall tile. COUPLED to the current 1-tall-beside-4-square gallery grid — revisit if that grid changes in the Astro build." },
+      "gallerySquare": { "ratio": "1:1",  "source": "800x800",   "note": "The four square gallery tiles." },
+      "roomCard":      { "ratio": "3:2",  "source": "1200x800",  "note": "Room card landscape." },
+      "reserveCard":   { "ratio": "3:2",  "source": "1200x800",  "note": "Sibling / More-of-the-Reserve card — same visual object class as roomCard; shared ratio for even grids." },
+      "thumbnail":     { "ratio": "1:1",  "source": "400x400",   "note": "Small square thumbnails / lightbox strip." }
     }
   },
   "email": {
