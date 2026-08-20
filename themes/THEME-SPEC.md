@@ -6,10 +6,10 @@
 |---|---|
 | **Reflects** | ASG Brand Guidelines **v1.3** · August 2026 |
 | **System** | **Option 4 (CMS × Ink)** — the official ASG system across brand book, web/CMS, and email |
-| **Themes package** | v1.1.1 · Generated 2026-08-18 (rev. R2) |
+| **Themes package** | v1.1.2 · Generated 2026-08-20 (rev. R3) |
 | **Custodian** | Riaan Aggenbag, CEO |
 | **Companion file** | `design-tokens.json` (machine-readable; CSS variable names match the shipping export exactly) |
-| **Spec marker** | `ASG-THEMES-V13-20260818-R2` |
+| **Spec marker** | `ASG-THEMES-V13-20260820-R3` |
 
 **Who this is for.** Any designer, developer, agency, or printer producing anything carrying the ASG name — websites, emails, social profiles, brochures, itineraries, decks, stationery. If you are briefed on ASG work, this document and `design-tokens.json` are your contract. Nothing outside them is on-brand.
 
@@ -46,7 +46,8 @@ These are settled. They are not open for reinterpretation per project.
 | 18 Aug 2026 | **Travellers' Choice 2026 is an ASG-level award.** ASG awards appear only in ASG proof rows — TrustRow, the WhyBook accreditation row, the footer — never in a lodge's quick-facts, FAQ, or lodge-scoped copy. |
 | 18 Aug 2026 | **WhatsApp entry points ship as bound placeholders** (`data-bind="contact.whatsapp"`) until a WhatsApp Business number exists — never hardcoded. Applies to the PriceCard, the contact banner, and the enquiry "reach me by" chip. |
 | 18 Aug 2026 | **Reviews pattern approved** (Ink Edition; static reference `asg_reviews_pattern_ink_edition.html`): ReviewCard + RatingSummary + the tabbed three-source `/reviews/` page (§8.2). Reviews display through the **licensed Elfsight widget**; static rendering is a design reference only, swapped for the live widget on rebuild — one lodge at a time, never retrofitted across the live estate. Counts bound, never hardcoded; stars are partial-fill SVG under the rounding rule; the `/10` chip is Deep Brass. |
-| 18 Aug 2026 | **Currency switcher order locked:** USD · GBP · EUR · AUD · MXN · ZAR. On render, IP geolocation converts the Pimcore ZAR base rate and **binds amount + currency symbol + currency code together** — never hardcode any of the three. |
+| 20 Aug 2026 | **Platform ruling.** ASG sites are built with **Astro, hosted on Cloudflare Pages/Workers** — one shared codebase per portfolio, lodge/rate/content data injected from a central database **at build time**, output is static HTML/CSS with minimal vanilla JS from the edge. No WordPress, no on-site CMS admin, no plugins. The Replit demo is a **visual reference only** — its code is not reused and it is not the hosting model. |
+| 20 Aug 2026 | **Currency ruling (supersedes the R2 switcher row entirely).** Rates render in the **native currency of the rate sheet only** — ZAR for South African lodges (all Amakhala), USD where the sheet is USD-denominated (most East Africa & Botswana). **No visitor-currency conversion of any kind** — not IP-at-render, not build-time variants, not a client-side switcher. One rate sheet, one currency, rendered as stored. Bind the price field (DB-injected at build), never hardcode; placeholders obviously fake in the component's native currency (`R 00,000` / `$0,000` / `{{rate_pppn}}`). Prices stay Poppins. |
 | 18 Aug 2026 | **Response-time promise:** "within 15 minutes in working hours" everywhere. The old "24 hours" is retired; the page never prints "24/7" (see §6). |
 | Standing | **No new accent colours, ever.** Safari Brass is the only accent. |
 | Standing | Canonical brand book is **v1.3**; every design-system export stamps "Reflects ASG Brand Guidelines v1.3". Next deliberate bump: v1.4. |
@@ -244,7 +245,7 @@ The pattern canon has two provenances. The first **seven are componentised in th
 3. **Good to Know** (policies + specials conditions) and **FAQ** sections are required on every lodge page. **FAQ answers must be unique per page** — zero identical strings across pages, verified programmatically.
 4. **SAVE chips:** solid Badge Green `#4F6B51`, white text (hero price card, card headers).
 5. **Sightings frequencies** source from `amakhala.com/wildlife` — Common / Occasional / Rare per species. Honest probability language only.
-6. **Pricing:** Pimcore holds **ZAR base rates**; the site converts at render by visitor IP. **Bind amount + currency symbol + currency code together — never hardcode any of the three.** Canonical switcher order: **USD · GBP · EUR · AUD · MXN · ZAR**. Mockup prices/symbols are placeholder snapshots only.
+6. **Pricing:** rates render in the **native currency of the rate sheet only** (ZAR for Amakhala and all South African lodges; USD where the sheet is USD-denominated). **No visitor-currency conversion — none, in any form.** The price field is bound and injected from the central database at build time — **never hardcoded**. Mockup values are obviously-fake placeholders in the component's native currency (`R 00,000` / `$0,000` / `{{rate_pppn}}`), never plausible numbers. The **rates block ships in two designed states:** (a) full rate display and (b) a lapsed-rate fallback reading "From R xx,xxx — enquire" / "From $x,xxx — enquire" — one component state that accepts either symbol. Prices are Poppins regardless of currency.
 7. Breadcrumbs: top-left of hero, no background; links in Sand with brass hover; current page plain text, never a link.
 8. **Gallery is index-consistent:** the five tiles are the first five entries of the lodge lightbox set, so every tile opens on the photo it shows. Room photos are a separate set via a corner badge — never a full scrim over the room card image.
 9. **Rooms grid:** `grid-template-columns:1fr 1fr`, collapsing to one column below 1000px. Each room card binds its own hero image and photo set — never a sibling's.
@@ -289,7 +290,9 @@ Reference implementation: `asg_reviews_pattern_ink_edition.html` — a static In
 
 One colour system everywhere. The surface changes; the identity does not.
 
-### 9.1 Websites & CMS
+### 9.1 Websites — Astro on Cloudflare
+
+**Build model.** One shared Astro codebase per portfolio renders every domain; content, lodge data and rates inject from a central database **at build time**; output is static HTML + vanilla CSS (custom properties) with **minimal, dependency-free JavaScript**, served from Cloudflare Pages/Workers. No page-builder markup, no WordPress conventions or shortcodes, no React/Vue/heavy framework, no build-tooling assumptions in the HTML. **Output rules:** design in **repeatable components** with consistent class structure, each delimited by `<!-- component: name -->` … `<!-- /component -->` so the Astro translation is trivial; **images** at fixed aspect ratios with dimensions in markup (`width`/`height` or CSS `aspect-ratio`), neutral placeholders assuming Cloudflare Images on-the-fly resizing — never final assets; **JavaScript** minimal and deliberate — describe interactive behaviour in a comment rather than pull a dependency. The Replit demo is a visual reference only.
 
 Dark cinematic hero (bottom-up scrim), one serif headline, single brass CTA. Body content on Ivory for reading; Ink footer. Hairline borders, near-square corners, generous whitespace. Consume tokens via the export's `styles.css` / `tokens/*.css` — never hardcode values that exist as tokens. Reference implementation: the **master lodge template** (`asg_master_lodge_template_woodbury_option4_ink_edition.html`, marker `ASG-LODGE-MASTER-OPT4INK-20260818-R1`) — the canonical build every lodge and standalone page clones; the flagship UI kit in the export supports it.
 
@@ -351,10 +354,10 @@ Focus states: 3px brass ring (`--focus-ring-shadow`) on all interactive elements
 
 ## 12. Governance, Versioning & Sync
 
-- **Canonical brand book: v1.3.** This package reflects it and stamps it. The `/themes/` pointer package (THEME-SPEC + design-tokens) **may be revised within a brand-book version** to fold settled canon — provided both files version together and carry a fresh revision marker (R1 → R2 …). What is frozen between deliberate book bumps (**v1.4**) is the `/themes/`-*consuming* export in `ASG_Design_System_Complete/`, never hand-edited between re-exports. **Revision R2 (18 Aug 2026)** folds the master's nine patterns + four deviations, the reviews pattern (§8.2), the Travellers' Choice / WhatsApp / reply-promise / currency-order confirmations, and restores the §9 heading.
+- **Canonical brand book: v1.3.** This package reflects it and stamps it. The `/themes/` pointer package (THEME-SPEC + design-tokens) **may be revised within a brand-book version** to fold settled canon — provided both files version together and carry a fresh revision marker (R1 → R2 …). What is frozen between deliberate book bumps (**v1.4**) is the `/themes/`-*consuming* export in `ASG_Design_System_Complete/`, never hand-edited between re-exports. **Revision R2 (18 Aug 2026)** folds the master's nine patterns + four deviations, the reviews pattern (§8.2), the Travellers' Choice / WhatsApp / reply-promise / currency-order confirmations, and restores the §9 heading. **Revision R3 (20 Aug 2026)** records the Astro/Cloudflare platform ruling and the native-currency ruling (rates render in the rate sheet's own currency, no conversion of any kind — the R2 switcher row is superseded), and folds the static-output rules (component comments, image dimensions, the two-state rates block, minimal JS) into §8/§9.1.
 - **v1.3 fold-in list (closed 16 Aug 2026):** Option 4 formalisation, the brass-600 exception, the seven web patterns, SaveChip / Lightbox / FAQ-accordion, the Badge Green role extension, the 15 Aug lodge/chrome canon, and this `/themes/` package are all now in the PDF brand book (v1.3, 27 pages) — Sections 05, 07, 10 and 11.
 - **Sync discipline (standing):** any change to a design-system file → **(1)** commit in `asg-brand-guidelines` git repo, **(2)** replace the same file in Claude project knowledge. Both copies must always agree.
-- **Pre-commit probe:** before committing a synced file, `Select-String` for a marker only the correct generation contains — this file's marker is `ASG-THEMES-V13-20260818-R2` (also in `design-tokens.json → $meta.marker`; the two version together). Guards against Downloads filename-collision generations.
+- **Pre-commit probe:** before committing a synced file, `Select-String` for a marker only the correct generation contains — this file's marker is `ASG-THEMES-V13-20260820-R3` (also in `design-tokens.json → $meta.marker`; the two version together). Guards against Downloads filename-collision generations.
 - **Verification posture:** agent "everything verified" narratives are not sufficient — grep/`Select-String` actual file content before declaring a step closed.
 
 **Known doc-sync items (recorded, not blocking):**
@@ -363,6 +366,7 @@ Focus states: 3px brass ring (`--focus-ring-shadow`) on all interactive elements
 2. ~~"Book Direct" ValuePropBar example~~ — **resolved at v1.3.** Retired under the banned-rate-claims rule; the approved title is "Best Price".
 3. ~~Cross-sell label / Woodbury retrofit~~ — **resolved 15 Aug 2026.** "More of the Reserve" live on all seven lodge pages; Woodbury retrofitted (GTK, FAQ, SAVE chips, ink-scrim lightbox).
 4. ~~Missing `## 9. Applications` heading~~ — **restored at R2 (18 Aug 2026).** §8.1 flowed straight into §9.1 with no section heading; the book's Applications section is 09/10. Fixed.
+5. ~~Convert-for-visitor currency model (IP-at-render / switcher)~~ — **removed at R3 (20 Aug 2026).** Superseded by the native-currency ruling: rates render in the rate sheet's own currency, no conversion in any form. The USD figures in README §11 are conversion artifacts, not native Amakhala rates (Amakhala is ZAR).
 
 ---
 
@@ -381,4 +385,4 @@ Focus states: 3px brass ring (`--focus-ring-shadow`) on all interactive elements
 
 ---
 
-*African Safari Group · Reflects ASG Brand Guidelines v1.3 · August 2026 · Marker: ASG-THEMES-V13-20260818-R2*
+*African Safari Group · Reflects ASG Brand Guidelines v1.3 · August 2026 · Marker: ASG-THEMES-V13-20260820-R3*

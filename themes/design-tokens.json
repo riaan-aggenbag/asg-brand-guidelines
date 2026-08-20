@@ -2,13 +2,13 @@
   "$meta": {
     "name": "ASG Design Tokens — Option 4 · CMS × Ink Edition",
     "package": "themes",
-    "packageVersion": "1.1.1",
+    "packageVersion": "1.1.2",
     "reflects": "ASG Brand Guidelines v1.3 · August 2026",
     "system": "Option 4 (CMS × Ink) — the official ASG web/CMS system. Formal decision: Riaan Aggenbag, 13 Aug 2026. All other options retired.",
-    "generated": "2026-08-18",
+    "generated": "2026-08-20",
     "custodian": "Riaan Aggenbag, CEO — African Safari Group",
     "companion": "THEME-SPEC.md (same directory) — the human-readable specification. Both files version together.",
-    "marker": "ASG-THEMES-V13-20260818-R2",
+    "marker": "ASG-THEMES-V13-20260820-R3",
     "sources": [
       "ASG_Brand_Guidelines_v1.3.pdf (canonical brand book, 27 pages)",
       "ASG_Design_System_Complete export — tokens/colors.css, tokens/typography.css, tokens/spacing.css, tokens/effects.css, tokens/theme-light.css",
@@ -20,7 +20,8 @@
       "Email surfaces consume raw hex values only — CSS custom properties are unreliable in email clients.",
       "One colour system across brand book, web, and email. No per-surface palettes.",
       "v1.3 (16 Aug 2026): lodge-template + page-behaviour canon added under component.lodgeTemplate and component.behaviour; stamps bumped to v1.3. cssVar names unchanged — additive only.",
-      "R2 (18 Aug 2026): versions with THEME-SPEC.md R2. Currency binding refined (amount + symbol + code) and switcher order recorded under component.lodgeTemplate.pricing. No token values changed — $meta and one doc string only; the master lodge template ASG-LODGE-MASTER-OPT4INK-20260818-R1 nine patterns + reviews pattern live in THEME-SPEC §8, export-pending."
+      "R2 (18 Aug 2026): versions with THEME-SPEC.md R2. Currency binding refined (amount + symbol + code) and switcher order recorded under component.lodgeTemplate.pricing. No token values changed — $meta and one doc string only; the master lodge template ASG-LODGE-MASTER-OPT4INK-20260818-R1 nine patterns + reviews pattern live in THEME-SPEC §8, export-pending.",
+      "R3 (20 Aug 2026): platform ruling — Astro on Cloudflare Pages/Workers, static HTML/CSS, data injected from the central DB at build time; no WordPress, no on-site CMS. Currency ruling — rates render in the rate sheet's native currency only (ZAR / USD as stored); the R2 switcher and all visitor-currency conversion are removed, not replaced. Static-output rules (component comments, image dimensions, two-state rates block, minimal JS) live in THEME-SPEC §9.1. No token values changed."
     ]
   },
   "banned": {
@@ -970,7 +971,7 @@
       "goodToKnow": "Policies + specials conditions; required on every lodge page",
       "moreOfTheReserve": "Fixed cross-promotion label; never 'cross-sell'",
       "footerEndorsement": "'Part of African Safari Group' — mandatory on every sub-brand footer, CMS included",
-      "pricing": "Pimcore ZAR base rates; IP currency conversion at render. Bind amount + currency symbol + currency code together — never hardcode any of the three. Canonical switcher order: USD · GBP · EUR · AUD · MXN · ZAR.",
+      "pricing": "Rates render in the native currency of the rate sheet only — ZAR for South African lodges (all Amakhala), USD where the sheet is USD-denominated. No visitor-currency conversion in any form (not IP-at-render, not build-time variants, not a switcher). Price field bound, injected from the central DB at build time, never hardcoded. Placeholders obviously fake in the native currency (R 00,000 / $0,000). Rates block has two states: full, and lapsed fallback 'From R xx,xxx — enquire' accepting either symbol. Prices in Poppins.",
       "pullQuote": "From the lodge's own copy — never a fabricated guest quote",
       "imageHosts": [
         "pim.africansafarigroup.com",
@@ -1058,7 +1059,7 @@
     "Headlines in Lora, 6–9 words, one serif moment per view. Everything else — body, UI, labels, ALL numerals — in Poppins.",
     "Text over photography sits on a dark bottom-up scrim, always.",
     "Temperatures dual-unit, Celsius first: 8–22 °C (46–72 °F).",
-    "Prices in Rand: R 14,500 (space after R, thousands comma). Production templates bind price fields to Pimcore ZAR base rates with IP-based currency conversion at render — never hardcode a price.",
+    "Prices in the rate sheet's native currency only — no visitor-currency conversion of any kind. ZAR format R 14,500 (space after R, thousands comma); USD format $1,450 where the sheet is USD-denominated. Bind the price field and inject from the central DB at build time — never hardcode. Placeholders obviously fake (R 00,000 / $0,000).",
     "No exclamation points. No emoji. No sales-mechanics jargon guest-facing — the cross-promotion label is 'More of the Reserve'.",
     "Rate claims: only 'best price guarantee', 'contracted rates', 'no booking fees'. Never 'book direct', 'the lodge's own rate', 'no markup' — ASG sells under STO agreements and is not the lodge.",
     "Restraint is the luxury signal: generous negative space, one primary CTA per view, hairline borders, near-square corners."
