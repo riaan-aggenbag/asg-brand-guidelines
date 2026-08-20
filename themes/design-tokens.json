@@ -2,13 +2,13 @@
   "$meta": {
     "name": "ASG Design Tokens — Option 4 · CMS × Ink Edition",
     "package": "themes",
-    "packageVersion": "1.1.0",
+    "packageVersion": "1.1.1",
     "reflects": "ASG Brand Guidelines v1.3 · August 2026",
     "system": "Option 4 (CMS × Ink) — the official ASG web/CMS system. Formal decision: Riaan Aggenbag, 13 Aug 2026. All other options retired.",
-    "generated": "2026-08-16",
+    "generated": "2026-08-18",
     "custodian": "Riaan Aggenbag, CEO — African Safari Group",
     "companion": "THEME-SPEC.md (same directory) — the human-readable specification. Both files version together.",
-    "marker": "ASG-THEMES-V13-20260816-R1",
+    "marker": "ASG-THEMES-V13-20260818-R2",
     "sources": [
       "ASG_Brand_Guidelines_v1.3.pdf (canonical brand book, 27 pages)",
       "ASG_Design_System_Complete export — tokens/colors.css, tokens/typography.css, tokens/spacing.css, tokens/effects.css, tokens/theme-light.css",
@@ -19,7 +19,8 @@
       "Default theme is dark (Ink Edition) at :root. Light theme applies under [data-theme=\"light\"].",
       "Email surfaces consume raw hex values only — CSS custom properties are unreliable in email clients.",
       "One colour system across brand book, web, and email. No per-surface palettes.",
-      "v1.3 (16 Aug 2026): lodge-template + page-behaviour canon added under component.lodgeTemplate and component.behaviour; stamps bumped to v1.3. cssVar names unchanged — additive only."
+      "v1.3 (16 Aug 2026): lodge-template + page-behaviour canon added under component.lodgeTemplate and component.behaviour; stamps bumped to v1.3. cssVar names unchanged — additive only.",
+      "R2 (18 Aug 2026): versions with THEME-SPEC.md R2. Currency binding refined (amount + symbol + code) and switcher order recorded under component.lodgeTemplate.pricing. No token values changed — $meta and one doc string only; the master lodge template ASG-LODGE-MASTER-OPT4INK-20260818-R1 nine patterns + reviews pattern live in THEME-SPEC §8, export-pending."
     ]
   },
   "banned": {
@@ -969,7 +970,7 @@
       "goodToKnow": "Policies + specials conditions; required on every lodge page",
       "moreOfTheReserve": "Fixed cross-promotion label; never 'cross-sell'",
       "footerEndorsement": "'Part of African Safari Group' — mandatory on every sub-brand footer, CMS included",
-      "pricing": "Pimcore ZAR base rates; IP currency conversion at render; price field always bound, never hardcoded",
+      "pricing": "Pimcore ZAR base rates; IP currency conversion at render. Bind amount + currency symbol + currency code together — never hardcode any of the three. Canonical switcher order: USD · GBP · EUR · AUD · MXN · ZAR.",
       "pullQuote": "From the lodge's own copy — never a fabricated guest quote",
       "imageHosts": [
         "pim.africansafarigroup.com",

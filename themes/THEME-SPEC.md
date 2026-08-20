@@ -6,10 +6,10 @@
 |---|---|
 | **Reflects** | ASG Brand Guidelines **v1.3** · August 2026 |
 | **System** | **Option 4 (CMS × Ink)** — the official ASG system across brand book, web/CMS, and email |
-| **Themes package** | v1.1.0 · Generated 2026-08-16 |
+| **Themes package** | v1.1.1 · Generated 2026-08-18 (rev. R2) |
 | **Custodian** | Riaan Aggenbag, CEO |
 | **Companion file** | `design-tokens.json` (machine-readable; CSS variable names match the shipping export exactly) |
-| **Spec marker** | `ASG-THEMES-V13-20260816-R1` |
+| **Spec marker** | `ASG-THEMES-V13-20260818-R2` |
 
 **Who this is for.** Any designer, developer, agency, or printer producing anything carrying the ASG name — websites, emails, social profiles, brochures, itineraries, decks, stationery. If you are briefed on ASG work, this document and `design-tokens.json` are your contract. Nothing outside them is on-brand.
 
@@ -42,6 +42,12 @@ These are settled. They are not open for reinterpretation per project.
 | 15 Aug 2026 | **Lodge template canon:** props bar is four cells in fixed order; the gallery is exactly five index-consistent tiles; rooms are a two-column grid with per-room images; FAQ answers are unique per page with mandatory FAQPage JSON-LD. |
 | 15 Aug 2026 | **Chrome canon:** the "Part of African Safari Group" endorsement line is mandatory on every sub-brand footer (CMS included); nav-handoff + scrollspy are the standard page behaviours; guest-facing deployments never ship a feedback widget or third-party badge. |
 | 15 Aug 2026 | **Rate-claim hygiene:** any assurance-row claim outside the approved set is removed unless T&Cs back it and it carries a footnote. |
+| 18 Aug 2026 | **Master lodge template shipped.** `asg_master_lodge_template_woodbury_option4_ink_edition.html` — marker `ASG-LODGE-MASTER-OPT4INK-20260818-R1`, sha256 head `724AC63234434F61`, 124,048 bytes. The static master (Option 4 Ink) every lodge and standalone page clones — **not** the CMS build. Nine patterns + four deviations folded to §8; the confirmations below recorded from it. |
+| 18 Aug 2026 | **Travellers' Choice 2026 is an ASG-level award.** ASG awards appear only in ASG proof rows — TrustRow, the WhyBook accreditation row, the footer — never in a lodge's quick-facts, FAQ, or lodge-scoped copy. |
+| 18 Aug 2026 | **WhatsApp entry points ship as bound placeholders** (`data-bind="contact.whatsapp"`) until a WhatsApp Business number exists — never hardcoded. Applies to the PriceCard, the contact banner, and the enquiry "reach me by" chip. |
+| 18 Aug 2026 | **Reviews pattern approved** (Ink Edition; static reference `asg_reviews_pattern_ink_edition.html`): ReviewCard + RatingSummary + the tabbed three-source `/reviews/` page (§8.2). Reviews display through the **licensed Elfsight widget**; static rendering is a design reference only, swapped for the live widget on rebuild — one lodge at a time, never retrofitted across the live estate. Counts bound, never hardcoded; stars are partial-fill SVG under the rounding rule; the `/10` chip is Deep Brass. |
+| 18 Aug 2026 | **Currency switcher order locked:** USD · GBP · EUR · AUD · MXN · ZAR. On render, IP geolocation converts the Pimcore ZAR base rate and **binds amount + currency symbol + currency code together** — never hardcode any of the three. |
+| 18 Aug 2026 | **Response-time promise:** "within 15 minutes in working hours" everywhere. The old "24 hours" is retired; the page never prints "24/7" (see §6). |
 | Standing | **No new accent colours, ever.** Safari Brass is the only accent. |
 | Standing | Canonical brand book is **v1.3**; every design-system export stamps "Reflects ASG Brand Guidelines v1.3". Next deliberate bump: v1.4. |
 
@@ -184,6 +190,7 @@ Write like the specialist a client is grateful to have found — **authoritative
 - Rate claims: only **best price guarantee · contracted rates · no booking fees**.
 - Temperatures always dual-unit, **Celsius first**: `8–22 °C (46–72 °F)` — panels and running copy alike.
 - **Sightings honesty is a voice feature:** plain probability language — "Leopard — Rarely · elusive". Never promise a sighting.
+- **Operational promises are written to the literal truth, never rounded up.** Support is "reachable while you travel"; the enquiry first-reply is "within 15 minutes in working hours." ASG support is strong but not literally 24/7, so the page never prints "24/7" or "24 hours". Specific-over-superlative governs operational claims, not just adjectives.
 
 **Worked example**
 
@@ -209,7 +216,7 @@ Write like the specialist a client is grateful to have found — **authoritative
 
 ## 8. Components & Web Pattern Canon
 
-The seven componentised patterns (in the design-system export, each with card, JSX, `.d.ts`, prompt):
+The pattern canon has two provenances. The first **seven are componentised in the design-system export** (each with card, JSX, `.d.ts`, prompt). The next **nine were established in the master lodge template** (`ASG-LODGE-MASTER-OPT4INK-20260818-R1`) and are **export-pending** — they enter the componentised export at the next wholesale re-export (7 → 16 UI patterns, plus the three reviews components of §8.2). All sixteen are canon now; only their export status differs.
 
 | Pattern | Spec |
 |---|---|
@@ -220,6 +227,15 @@ The seven componentised patterns (in the design-system export, each with card, J
 | **ValuePropBar** | Four columns on Charcoal; titles 12px tracked-caps Brass (e.g. Current Special / Best Price). |
 | **EnquiryChecklist** | Brass check circles — the why-enquire-direct panel. |
 | **AccreditationRow** | Footer proof: bordered membership pills + brass-bordered review counts. |
+| **TrustRow** | Slim Ivory-Dim strip under the props bar: Tier-1 accreditation pills lead, then the reviews signal (★ 4.9 · 4,300+ verified, bound). One scrollable strip on phones. |
+| **StickyBookingBar** | Bottom-docked; appears once the hero PriceCard scrolls out (IntersectionObserver); hides while the enquiry section or the contact banner is on screen; collapses to price + one brass button on mobile. Owns the persistent action — the sub-nav does not. |
+| **GuestsLove** | White hairline band, five short signals with brass stroke icons (location score bound). |
+| **SpecialsOffer** | Offer card: Badge Green top rule, SAVE chip, four rate conditions + four inclusions, one brass CTA. |
+| **NearbyCards** | Three quick-facts cards (reserves/landmarks · restaurants · airport) + a straight-line footnote + a CMS map slot. |
+| **FacilitiesDisclosure** | Twelve iconed highlights + a dietary line + a `<details>` holding the full categorised list (count bound). |
+| **WhyBookGrid** | Six reasons in the EnquiryChecklist idiom + the accreditation row. Trust, no CTA. |
+| **EnquiryStepper** | Four styled-static steps (When → Who → Budget → Details, contact **last**), progress numerals, four-segment bar, one brass action per step, confirmation state, risk-reversal row. No `<form>` — the CMS wires submission. |
+| **MobileNavDrawer** | Logo · brass call icon · menu → ink drawer (Lora items, phone lines, one brass CTA). Closes on link tap or Escape. |
 
 **Lodge-page template canon** (Option 4, per the approved Safari Lodge template and the eight Amakhala builds, commit `e2e8d89`):
 
@@ -228,27 +244,54 @@ The seven componentised patterns (in the design-system export, each with card, J
 3. **Good to Know** (policies + specials conditions) and **FAQ** sections are required on every lodge page. **FAQ answers must be unique per page** — zero identical strings across pages, verified programmatically.
 4. **SAVE chips:** solid Badge Green `#4F6B51`, white text (hero price card, card headers).
 5. **Sightings frequencies** source from `amakhala.com/wildlife` — Common / Occasional / Rare per species. Honest probability language only.
-6. **Pricing:** Pimcore holds **ZAR base rates**; the site converts at render by visitor IP. Mockup prices are placeholder snapshots — **the price field is always bound, never hardcoded** in production templates.
+6. **Pricing:** Pimcore holds **ZAR base rates**; the site converts at render by visitor IP. **Bind amount + currency symbol + currency code together — never hardcode any of the three.** Canonical switcher order: **USD · GBP · EUR · AUD · MXN · ZAR**. Mockup prices/symbols are placeholder snapshots only.
 7. Breadcrumbs: top-left of hero, no background; links in Sand with brass hover; current page plain text, never a link.
 8. **Gallery is index-consistent:** the five tiles are the first five entries of the lodge lightbox set, so every tile opens on the photo it shows. Room photos are a separate set via a corner badge — never a full scrim over the room card image.
 9. **Rooms grid:** `grid-template-columns:1fr 1fr`, collapsing to one column below 1000px. Each room card binds its own hero image and photo set — never a sibling's.
 10. **FAQPage JSON-LD** in the page `<head>` is mandatory; the CMS auto-generates it from the FAQ content. FAQ answers are unique per page — zero identical strings across pages, verified programmatically.
 11. **Pull-quote interlude** (Sand-tint ground, ink Lora italic, brass rule) comes from the lodge's own copy — never a fabricated guest quote. Facility rows use inline Lucide-style brass icons; Experiences keep the brass check (= included).
+12. **Sub-nav is wayfinding-only.** The sticky booking bar owns the persistent action — the sub-nav carries no CTA.
+13. **Per-room CTAs are outline, not brass.** The booking bar's brass primary is in the same viewport; two brass primaries in view would break the one-CTA rule.
+14. **The four-check "why book direct" panel is retired.** Its content moves to the props bar, the PriceCard contact/assurance rows, the TrustRow, and the WhyBookGrid.
+15. **The base `<section class="banner">` is repurposed as the human-access close** — call · WhatsApp · request a callback.
 
 ### 8.1 Page Behaviours (CMS)
 
 - **Nav handoff:** the main nav is sticky until the sub-nav meets it, then slides away (`translateY(-100%)`, 0.28s) and the sub-nav owns the top. Reverses on scroll-up; hidden on cold deep-link load.
 - **Scrollspy:** a brass underline follows the section in view. Bare `href="#"` links are excluded so the querySelector never throws.
+- **Sticky booking bar:** appears once the hero PriceCard scrolls out of view (IntersectionObserver); hides while the enquiry section or the contact banner is on screen; collapses to price + one brass button on mobile. It, not the sub-nav, owns the persistent action.
+- **Mobile nav drawer:** the menu icon toggles an ink drawer (Lora nav items, phone lines, one brass CTA); closes on link tap or Escape.
 - **No feedback widget:** guest-facing deployments never publish with a feedback widget or third-party "made with" badge enabled — checked on every republish.
-- **Rate-claim hygiene:** any assurance-row claim outside *best price guarantee · contracted rates · no booking fees* is removed unless T&Cs back it and it carries a footnote.
+- **Rate-claim hygiene:** any **rate or booking-terms** claim outside *best price guarantee · contracted rates · no booking fees* is removed unless T&Cs back it and it carries a footnote (e.g. "Free cancellation*"). Non-rate assurances (e.g. "Secure & private") must be literally true and, where they imply a policy, link to it.
 
+### 8.2 Reviews Pattern (approved 18 Aug 2026)
 
+Reference implementation: `asg_reviews_pattern_ink_edition.html` — a static Ink-Edition rendering. **Production replaces each block with the licensed Elfsight widget** for that source (TripAdvisor · Google · Feedback Company). Three components:
+
+- **ReviewCard** — warm-white card on Ivory, 1px Ivory-Dim border, ~7px radius, hover-lift only. Monogram avatar (ink disc, Lora initial, 1.5px brass ring — never a scraped profile photo) · name (Poppins 600) + date (Bone) · brass star row · Lora title · Poppins body · brass-dot source line. `/10` sources add a Deep-Brass score chip on the star row.
+- **RatingSummary** — centred lockup: brass lion-mane emblem between two rules · tracked-caps source eyebrow (brass) · large **Poppins** score + `/ 5` · partial star row · verified-count line. All numerals Poppins — the rating is **not** the PriceCard serif-numeral exception.
+- **ReviewsPage** (`/reviews/`) — combined-total lead-in hero (Poppins count, brass `+`, "4.9 / 5 average") · Ink three-source toggle (brass active underline) · per-source panel (RatingSummary + "What guests highlight" + ReviewCard grid + "Load more"), one source visible at a time.
+
+**Rules**
+
+- **Stars are partial-fill SVG**, not glyphs. Fill % = (displayed star ÷ 5) × 100, obeying the **rounding rule**: a `/10` score halves and floors to one decimal, never up (8/10 → 4.0, 9/10 → 4.5, 10/10 → 5.0).
+- **`/10` chip** (Feedback Company): solid **Deep Brass `#8E6238`**, white text — the sub-12px step-down, showing the native score beside the floored stars. The conversion is visible, never hidden.
+- **Aggregate display:** each source's own published figure as-is — TripAdvisor 4.9, Feedback Company 9.8/10 → 4.9, Google 4.9. Only `/10` aggregates convert.
+- **Counts bound, never hardcoded** — combined and per-source counts read from the live widgets, same discipline as prices. The static mock shows "4,300+"; production sums the live counts.
+- **Licensing / lifecycle:** reviews display through the licensed Elfsight widget; the static rendering is a design reference only, swapped for the live widget on rebuild. The **widget Ink-Edition reskin is per-rebuild, one lodge at a time** — live widgets stay as-is across the PPC estate until each site is rebuilt.
+- **No fabricated reviews; no scraped permanent copies.** Names attributed exactly as the source shows them. No emoji, even when a source review contains them.
+
+**Export status:** ReviewCard / RatingSummary / ReviewsPage are new and **export-pending** — added to the componentised export at the next wholesale re-export, alongside the nine master UI patterns.
+
+---
+
+## 9. Applications
 
 One colour system everywhere. The surface changes; the identity does not.
 
 ### 9.1 Websites & CMS
 
-Dark cinematic hero (bottom-up scrim), one serif headline, single brass CTA. Body content on Ivory for reading; Ink footer. Hairline borders, near-square corners, generous whitespace. Consume tokens via the export's `styles.css` / `tokens/*.css` — never hardcode values that exist as tokens. Reference implementations: the Option 4 lodge templates and the flagship UI kit in the export.
+Dark cinematic hero (bottom-up scrim), one serif headline, single brass CTA. Body content on Ivory for reading; Ink footer. Hairline borders, near-square corners, generous whitespace. Consume tokens via the export's `styles.css` / `tokens/*.css` — never hardcode values that exist as tokens. Reference implementation: the **master lodge template** (`asg_master_lodge_template_woodbury_option4_ink_edition.html`, marker `ASG-LODGE-MASTER-OPT4INK-20260818-R1`) — the canonical build every lodge and standalone page clones; the flagship UI kit in the export supports it.
 
 ### 9.2 Email & Newsletters
 
@@ -308,10 +351,10 @@ Focus states: 3px brass ring (`--focus-ring-shadow`) on all interactive elements
 
 ## 12. Governance, Versioning & Sync
 
-- **Canonical brand book: v1.3.** This package reflects it and stamps it. Content changes to `/themes/` ride the next deliberate bump (**v1.4**) — never hand-edited between sprints.
+- **Canonical brand book: v1.3.** This package reflects it and stamps it. The `/themes/` pointer package (THEME-SPEC + design-tokens) **may be revised within a brand-book version** to fold settled canon — provided both files version together and carry a fresh revision marker (R1 → R2 …). What is frozen between deliberate book bumps (**v1.4**) is the `/themes/`-*consuming* export in `ASG_Design_System_Complete/`, never hand-edited between re-exports. **Revision R2 (18 Aug 2026)** folds the master's nine patterns + four deviations, the reviews pattern (§8.2), the Travellers' Choice / WhatsApp / reply-promise / currency-order confirmations, and restores the §9 heading.
 - **v1.3 fold-in list (closed 16 Aug 2026):** Option 4 formalisation, the brass-600 exception, the seven web patterns, SaveChip / Lightbox / FAQ-accordion, the Badge Green role extension, the 15 Aug lodge/chrome canon, and this `/themes/` package are all now in the PDF brand book (v1.3, 27 pages) — Sections 05, 07, 10 and 11.
 - **Sync discipline (standing):** any change to a design-system file → **(1)** commit in `asg-brand-guidelines` git repo, **(2)** replace the same file in Claude project knowledge. Both copies must always agree.
-- **Pre-commit probe:** before committing a synced file, `Select-String` for a marker only the correct generation contains — this file's marker is `ASG-THEMES-V13-20260816-R1` (also in `design-tokens.json → $meta.marker`). Guards against Downloads filename-collision generations.
+- **Pre-commit probe:** before committing a synced file, `Select-String` for a marker only the correct generation contains — this file's marker is `ASG-THEMES-V13-20260818-R2` (also in `design-tokens.json → $meta.marker`; the two version together). Guards against Downloads filename-collision generations.
 - **Verification posture:** agent "everything verified" narratives are not sufficient — grep/`Select-String` actual file content before declaring a step closed.
 
 **Known doc-sync items (recorded, not blocking):**
@@ -319,6 +362,7 @@ Focus states: 3px brass ring (`--focus-ring-shadow`) on all interactive elements
 1. ~~8-tile gallery in the README~~ — **resolved at v1.3.** Canon is five index-consistent tiles, overlay on the fifth.
 2. ~~"Book Direct" ValuePropBar example~~ — **resolved at v1.3.** Retired under the banned-rate-claims rule; the approved title is "Best Price".
 3. ~~Cross-sell label / Woodbury retrofit~~ — **resolved 15 Aug 2026.** "More of the Reserve" live on all seven lodge pages; Woodbury retrofitted (GTK, FAQ, SAVE chips, ink-scrim lightbox).
+4. ~~Missing `## 9. Applications` heading~~ — **restored at R2 (18 Aug 2026).** §8.1 flowed straight into §9.1 with no section heading; the book's Applications section is 09/10. Fixed.
 
 ---
 
@@ -328,6 +372,7 @@ Focus states: 3px brass ring (`--focus-ring-shadow`) on all interactive elements
 |---|---|
 | `/themes/THEME-SPEC.md` | This document — the pointer spec for humans |
 | `/themes/design-tokens.json` | Machine-readable tokens — hexes, CSS vars, scales, themes, component values, email/print maps |
+| `lodge-pages/asg_master_lodge_template_woodbury_option4_ink_edition.html` | The static master template (Option 4 Ink) every lodge and standalone page clones — canonical reference build, marker `ASG-LODGE-MASTER-OPT4INK-20260818-R1`. Not the CMS. |
 | `ASG_Design_System_Complete/` | Full export — `tokens/*.css`, components, UI kits, fonts, logos. Still v1.2-stamped; re-stamps to v1.3 on the next wholesale Claude Design re-export (never hand-edited) |
 | `brand-books/` | Canonical PDFs surviving export swaps — `ASG_Brand_Guidelines_v1.3.pdf` (source of truth), quick reference, Option archives; superseded books in `brand-books/archive/` |
 | `ASG_Design_System_README.md` | Decision record & export verification log, repo root |
@@ -336,4 +381,4 @@ Focus states: 3px brass ring (`--focus-ring-shadow`) on all interactive elements
 
 ---
 
-*African Safari Group · Reflects ASG Brand Guidelines v1.3 · August 2026 · Marker: ASG-THEMES-V13-20260816-R1*
+*African Safari Group · Reflects ASG Brand Guidelines v1.3 · August 2026 · Marker: ASG-THEMES-V13-20260818-R2*
